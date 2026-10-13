@@ -19,11 +19,11 @@
  * 证据: 遍历循环 add ebp,0A0h; 魔数 0x66666667+sar6 = ÷160 */
 typedef struct LevelObj {          /* size = 0xA0 */
     int32_t  index;                /* +0x00  自身序号 */
-    int32_t  idx_prev;             /* +0x04  索引A: 前一顶点 */
-    int32_t  idx_next;             /* +0x08  索引B: 后一顶点 */
+    int32_t  idx_prev;             /* +0x04  索引A: 前一顶点  ★卖出组取此 */
+    int32_t  idx_next;             /* +0x08  索引B: 后一顶点  ★买入组取此 */
     float    low;                  /* +0x0C  LOW  (卖出组价格源) */
     float    high;                 /* +0x10  HIGH (买入组价格源) */
-    int32_t  aux_idx;              /* +0x14  辅助索引 */
+    int32_t  level_type;           /* +0x14  分型选择器: 1=取后继底, -1=取前驱顶 */
     uint8_t  _pad0[0x20 - 0x18];
     int32_t  direction;            /* +0x20  方向: 1=上涨, -1=下跌, 0=未定 */
     uint8_t  _pad1[0x88 - 0x24];
@@ -33,6 +33,23 @@ typedef struct LevelObj {          /* size = 0xA0 */
     float    price;                /* +0x94  ★该点实际价格 */
     int32_t  special;              /* +0x98  特殊标志 */
 } LevelObj;
+
+
+/* ============================================================
+ * 1b. x87 浮点判定规则（第五批补全）
+ *      fnstsw ax  →  AH = {..., C3(6), C2(2), C0(0)}
+ * ============================================================
+ *
+ *  掩码        分支    次数   语义
+ *  test ah,5   jp      49    ST0 == ST1     （C0=0 && C2=0）
+ *  test ah,5   jnp     10    ST0 != ST1 / 不可比
+ *  test ah,41h jne     39    ST0 >  ST1     （C0=0 && C3=0）
+ *  test ah,41h je/jp   26    ST0 == ST1
+ *  test ah,1   jne     12    ST0 <  ST1     （C0=1）
+ *  test ah,1   je       7    ST0 >= ST1
+ *
+ *  合计 147 次 —— 引擎主体是「区间高低点大小比较」(41h 最多)，判等(5)为辅助。
+ */
 
 /* 状态码语义（对应公式 WNMR_线段 中的 VAR5） */
 enum {
@@ -153,6 +170,10 @@ int ArgMin(const float* arr, int n)
 /* ============================================================
  * 5. 主引擎（结构标注）  —— sub_10056190
  *    8173 条指令；145 次 fcompp；无 fadd/fsub/fmul/fdiv
+ *
+ *    ★ 第五批修正：本函数是「同一算法模板的 4 次内联展开」，
+ *      共 24 处状态码写入点（4 组 × 卖4/5/6 + 买1/2/3）。
+ *      4 组仅【临时迭代器槽位】与【数据容器】不同，代码完全一致。
  * ============================================================ */
 
 void MainEngine(LevelObj* list)
@@ -162,31 +183,50 @@ void MainEngine(LevelObj* list)
 
         /* ---- 触发门禁 ---- */
 
-        /* 条件1: 相邻区间价格不相等 (fcompp + test ah,5 + jnp) */
-        int not_equal = (o->low != prev->high);   /* 买入方向判定 */
+        /* 条件1: 相邻区间【不重叠】 —— 三种浮点比较组合 */
+        /*   买入方向: prev->high < o->low      (test ah,1  + jne) */
+        /*   卖出方向: prev->low  > o->high     (test ah,41h + jne) */
+        int gap_up   = (prev->high <  o->low);    /* 低端不重叠 */
+        int gap_down = (prev->low  >  o->high);   /* 高端不重叠 */
 
         /* 条件2: 该点方向未标记 */
         if (o->direction == 1 || o->direction == -1)
             continue;                    /* 已处理 → 跳过 */
 
-        if (!not_equal)
-            continue;
+        /* ---- 标注（对称两组，各 3 码）---- */
 
-        /* ---- 标注（对称两组）---- */
+        if (gap_up) {
+            /* 买入组: 取「后一顶点」(+0x08)，全用 HIGH (+0x10) */
+            LevelObj* b = LookupByIndex(list, o->idx_next);
+            b->status = ST_STRUCT_UP;    /* 1 */
+            b->price  = b->high;
+            b->status = ST_BUY;          /* 2 */  b->price = b->high;
+            b->status = ST_STOPLOSS;     /* 3 */  b->price = b->high;
+        }
 
-        /* 买入组: 全用 HIGH (+0x10) */
-        o->status = ST_BUY;              /* 状态 2 */
-        o->price  = o->high;
-        /* 止损同理取同区间 HIGH → ST_STOPLOSS(3) */
-
-        /* 卖出组: 全用 LOW (+0x0C) */
-        if (o->high != prev->low) {
-            o->status = ST_SELL;         /* 状态 5 */
-            o->price  = o->low;
-            /* 止盈同理取同区间 LOW → ST_TAKEPROFIT(6) */
+        if (gap_down) {
+            /* 卖出组: 取「前一顶点」(+0x04)，全用 LOW (+0x0C) */
+            LevelObj* s = LookupByIndex(list, prev->idx_prev);
+            s->status = ST_STRUCT_DOWN;  /* 4 */
+            s->price  = s->low;
+            s->status = ST_SELL;         /* 5 */  s->price = s->low;
+            s->status = ST_TAKEPROFIT;   /* 6 */  s->price = s->low;
         }
     }
 }
+
+/* ============================================================
+ * 5b. 4 组算法实例对照（第五批）
+ * ============================================================
+ *  实例   卖出段(4/5/6)                        买入段(1/2/3)
+ *  ①    10057c20 / 10057c69 / 10057cf0       1005a1fa / 1005a243 / 1005a2ca
+ *  ②    10058336 / 1005837f / 10058406       1005a85c / 1005a8a5 / 1005a92c
+ *  ③    1005b737 / 1005b780 / 1005b807       1005bcd4 / 1005bd1d / 1005bda4
+ *  ④    1005c47a / 1005c4c3 / 1005c54a       1005cae3 / 1005cb2c / 1005cbb3
+ *
+ *  分型标志写入: 0x10056710 → +0x88 = -1 (底); 0x10056760 → +0x88 = +1 (顶)
+ *  由 +0x14 level_type 选择: ==1 取 +0x08; ==-1 取 +0x04
+ */
 
 /* ============================================================
  * 6. WNMRPRINEW  —— sub_1003a960
