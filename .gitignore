@@ -1,0 +1,13 @@
+# 大体积二进制与逆向产物（不入库，仅保留分析文档）
+*.pdf
+*.dll
+*.exe
+*.dat
+*.pak
+*.bin
+*.taf
+
+# 系统
+.DS_Store
+Thumbs.db
+desktop.ini
