@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PAGE>
+	<SPLITTER Rows="3" Cols="1" Rect="0,1290,0,618" RowH="247,185,186" ColW="1290">
+		<GRID Row="0" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="7">
+			<VIEW ViewType="7" GroupID="0" HisType="3" DivMode="1" Linkage="0">
+				<Windows Count="2">
+					<Win Higth="2.5" Study="NCHBZS"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="VOL"/>
+					<Win Higth="1" Study="MACD"/>
+					<Win Higth="1" Study="主力操盘"/>
+					<Win Higth="1" Study="多空对比"/>
+					<Win Higth="1" Study="动能轨迹"/>
+					<Win Higth="1" Study="MACD1"/>
+					<Win Higth="1" Study="MACD2"/>
+					<Win Higth="1" Study="MACD3"/>
+					<Win Higth="1" Study="KDJ"/>
+					<Win Higth="1" Study="KDJ"/>
+				</Windows>
+			</VIEW>
+		</GRID>
+		<GRID Row="1" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="7">
+			<VIEW ViewType="7" GroupID="0" HisType="5" DivMode="1" Linkage="1">
+				<Windows Count="2">
+					<Win Higth="2.5" Study="NCHBZS"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="VOL"/>
+					<Win Higth="1" Study="MACD"/>
+					<Win Higth="1" Study="主力操盘"/>
+					<Win Higth="1" Study="多空对比"/>
+					<Win Higth="1" Study="动能轨迹"/>
+					<Win Higth="1" Study="MACD1"/>
+					<Win Higth="1" Study="MACD2"/>
+					<Win Higth="1" Study="MACD3"/>
+					<Win Higth="1" Study="KDJ"/>
+					<Win Higth="1" Study="KDJ"/>
+				</Windows>
+			</VIEW>
+		</GRID>
+		<GRID Row="2" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="7">
+			<VIEW ViewType="7" GroupID="0" HisType="101" DivMode="1" Linkage="1">
+				<Windows Count="2">
+					<Win Higth="2.5" Study="NCHBZS"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="VOL"/>
+					<Win Higth="1" Study="MACD"/>
+					<Win Higth="1" Study="主力操盘"/>
+					<Win Higth="1" Study="多空对比"/>
+					<Win Higth="1" Study="动能轨迹"/>
+					<Win Higth="1" Study="MACD1"/>
+					<Win Higth="1" Study="MACD2"/>
+					<Win Higth="1" Study="MACD3"/>
+					<Win Higth="1" Study="KDJ"/>
+					<Win Higth="1" Study="KDJ"/>
+				</Windows>
+			</VIEW>
+		</GRID>
+	</SPLITTER>
+</PAGE>

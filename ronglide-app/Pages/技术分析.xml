@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PAGE>
+	<SPLITTER Rows="1" Cols="2" Rect="0,1020,0,576" RowH="576" ColW="760,260">
+		<GRID Row="0" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="7">
+			<VIEW ViewType="7" GroupID="0" WorkMode="0" FoldType="0" DefaultActive="0" HisType="1" DivMode="1" AxisType="0" SemiLog="false" KLineShape="0" Linkage="0" QuickBarPage="0">
+				<Taggings ShowLine="1" ShowTxt="1"/>
+				<Windows Count="4">
+					<Win Higth="4" Study="NCHFB"/>
+					<Win Higth="1" Study="VOL"/>
+					<Win Higth="1" Study="MACD"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="动能轨迹"/>
+					<Win Higth="1" Study="多空对比"/>
+					<Win Higth="1" Study="动能轨迹"/>
+					<Win Higth="1" Study="MACD1"/>
+					<Win Higth="1" Study="MACD2"/>
+					<Win Higth="1" Study="MACD3"/>
+					<Win Higth="1" Study="KDJ"/>
+					<Win Higth="1" Study="KDJ"/>
+				</Windows>
+			</VIEW>
+		</GRID>
+		<GRID Row="0" Col="1" MinW="20" MinH="20" FixW="260" FixH="0" ViewType="19">
+			<VIEW ViewType="19" GroupID="0" WorkMode="0" FoldType="0" DefaultActive="0">
+				<TAB TabID="1" Title="笔" ViewType="10" FullScreen="0"/>
+				<TAB TabID="2" Title="价" ViewType="12" FullScreen="0"/>
+				<TAB TabID="3" Title="势" ViewType="13" FullScreen="0"/>
+				<TAB TabID="4" Title="联" ViewType="21" FullScreen="0"/>
+				<TAB TabID="5" Title="值" ViewType="45" FullScreen="0"/>
+				<TAB TabID="6" Title="云" ViewType="39" FullScreen="1"/>
+				<TAB TabID="7" Title="筹" ViewType="29" FullScreen="1"/>
+				<VIEW ViewType="5" GroupID="0" WorkMode="0" FoldType="0" DefaultActive="0"/>
+				<VIEW ViewType="10" GroupID="0" WorkMode="0" FoldType="0" DefaultActive="0"/>
+				<VIEW ViewType="12" GroupID="0" WorkMode="0" FoldType="0" DefaultActive="0"/>
+				<VIEW ViewType="13" GroupID="0" WorkMode="0" FoldType="0" DefaultActive="0"/>
+				<VIEW ViewType="21" GroupID="0" WorkMode="0" FoldType="0" DefaultActive="0"/>
+				<VIEW ViewType="45" GroupID="0" WorkMode="0" FoldType="0" DefaultActive="0"/>
+				<VIEW ViewType="39" GroupID="0" WorkMode="0" FoldType="0" DefaultActive="0"/>
+				<VIEW ViewType="29" GroupID="0" WorkMode="0" FoldType="0" DefaultActive="0"/>
+			</VIEW>
+		</GRID>
+	</SPLITTER>
+</PAGE>

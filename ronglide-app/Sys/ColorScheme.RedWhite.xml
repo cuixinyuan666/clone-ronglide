@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CONFIG>
+  <COLORS>
+    <Default COLOR="#FFFFFF" />
+    <ViewBackground COLOR="#FFFFFF" />
+    <ViewBackground2 COLOR="#FFFFFF" />
+    <ViewCaptionBackground COLOR="#FFFFFF" />
+    <ViewBorder COLOR="#E0E0E0" />
+
+    <FloatBk COLOR="#FFFFFF" />
+    <FloatText COLOR="#262626" />
+    <FloatBar COLOR="#CDCD00" />
+
+    <TextEmpty COLOR="#000000" />
+    <Text COLOR="#000000" />
+    <Title COLOR="#000000" />
+    <Value COLOR="#262626" />
+    <ValueUp COLOR="#FF2D1C" />
+    <ValueDown COLOR="#00C730" />
+    <ValueEqual COLOR="#000000" />
+
+    <Name COLOR="#000000" />
+    <Code COLOR="#000000" />
+    <SelfSymbol COLOR="#02E2F4" />
+    <Volume COLOR="#000000" />
+    <BigVolume COLOR="#C000C0" />
+    <VolumeHistogram COLOR="#000000" />
+
+    <Time COLOR="#A4A4A4" />
+    <AxisBorder COLOR="#D0D0D0" />
+    <AxisValue COLOR="#FF2D1C" />
+    <PriceLine COLOR="#000000" />
+    <AvgPriceLine COLOR="#FFA8FF" />
+    <MinVolume R="241" G="154" B="114"/>
+    <MinPriceFill1 COLOR="#BADBF0" />
+    <MinPriceFill2 COLOR="#FEFFFF" />
+
+    <KLineUp COLOR="#FF6161" />
+    <KLineDown COLOR="#008000" />
+    <KLineEqual COLOR="#808080" />
+
+    <KLineOverlap1 COLOR="#969696" />
+    <KLineOverlap2 COLOR="#A84000" />
+    <KLineOverlap3 COLOR="#009654" />
+    <KLineOverlap4 COLOR="#646464" />
+    <KLineOverlap5 COLOR="#646464" />
+    <KlineGap COLOR="#C0C0C0"/>
+
+    <Line1 COLOR="#000000" />
+    <Line2 COLOR="#E0C909" />
+    <Line3 COLOR="#C909E0" />
+    <Line4 COLOR="#0DB62D" />
+    <Line5 COLOR="#0000FF" />
+    <Line6 COLOR="#00FFFF" />
+
+    <OverlapPriceLine1 R="2" G="226" B="244" />
+    <OverlapPriceLine2 R="128" G="128" B="128" />
+    <OverlapPriceLine3 R="201" G="9" B="224" />
+    <OverlapPriceLine4 R="13" G="182" B="45" />
+    <OverlapPriceLine5 R="255" G="0" B="0" />
+
+    <CrossLine R="0" G="0" B="0" />
+    <CrossValue COLOR="#262626" />
+    <CrossValueBackgroud R="0" G="255" B="255" />
+    <SelfLine1 R="0" G="128" B="128" />
+    <SelfLine2 R="255" G="255" B="0" />
+
+    <QuickBarText R="0" G="0" B="0" />
+    <QuickBarTextSeleled R="255" G="0" B="0" />
+    <QuickBarTextMouseOn R="0" G="0" B="0" />
+    <QuickBarTextDisabled R="192" G="192" B="192" />
+
+    <TabBackground R="255" G="255" B="255" />
+    <TabActiveText R="255" G="0" B="0" />
+    <TabActiveTextHover R="255" G="0" B="0" />
+    <TabActiveTextShadow R="255" G="0" B="0" />
+    <TabInactiveText R="0" G="0" B="0" />
+    <TabInactiveTextHover R="0" G="0" B="0" />
+    <TabInactiveTextShadow R="0" G="0" B="0" />
+    <TabDownBackground R="255" G="255" B="255" />
+    <TabArrowTag R="224" G="224" B="224" />
+    <TabArrowTagHover R="255" G="255" B="255" />
+    <TabArrowTagDisabled R="112" G="112" B="112" />
+
+    <MainMenuText COLOR="#FFD6D6" />
+    <MainMenuTextSeleled COLOR="#141414" />
+    <MainMenuTextDisabled COLOR="#FFD6D6" />
+    <MainCaptionText COLOR="#E79C00" />
+    <MainQuickText COLOR="#FFD6D6" />
+    <MainQuickTextSeleled COLOR="#FFFFFF" />
+
+    <ToolBarText COLOR="#444444" />
+    <ToolBarTextDisabled COLOR="#848484" />
+    <ToolBarTextDown COLOR="#BC0000" />
+    <ToolBarTextHot COLOR="#BC0000" />
+    <ToolBarSep COLOR="#444444" />
+
+    <MainCtrlBarBackgroud COLOR="#F6F6F6" />
+    <MainCtrlBarCaptionBackground COLOR="#F6F6F6" />
+    <MainCtrlBarActiveBackground COLOR="#BC0000" />
+    <MainCtrlBarActiveBorder COLOR="#BC0000" />
+    <MainCtrlBarText COLOR="#444444" />
+    <MainCtrlBarActiveText COLOR="#FFFFFF" />
+
+    <InfoBarBackground COLOR="#FFFFFF" />
+    <InfoBarBackground2 COLOR="#F5F5F5" />
+    <InfoBarTitle COLOR="#757575" />
+    <InfoBarValue R="64" G="64" B="64" />
+    <InfoBarValueLight R="0" G="0" B="0" />
+
+    <QListColumnSplit R="128" G="128" B="128" />
+    <QListItemSelectedLine R="0" G="0" B="128" />
+    <QListItemHighLight R="32" G="32" B="164" />
+    <QListHotItemBk R="192" G="192" B="192"/>
+    <MatrixItemSelectedLine R="0" G="0" B="0" />
+    <Hyperlink R="0" G="0" B="255" />
+    <SymbolMark COLOR="#FF2D1C" />
+
+    <DBMatrixBkUp COLOR="#FFC1C1" />
+    <DBMatrixBkDown COLOR="#C5FFC1" />
+    <DBMatrixBk0 COLOR="#FFFEC1" />
+
+    <CostYellow R="0" G="255=" B="255" />
+    <CostYellowOrg R="255" G="255" B="0" />
+    <CostWhite R="0"  G="0" B="0" />
+    <CostRed R="225"  G="0" B="0=" />
+    <CostBlue R="0"  G="0=" B="255" />
+    <CostGreen R="64"  G="255" B="0" />
+  </COLORS>
+
+  <IMAGES>
+    <HScroll IMAGE="hscroll_w.bmp" />
+    <VScroll IMAGE="vscroll_w.bmp" />
+    <logo IMAGE="redwhite\logo.bmp" />
+    <ToolBarBk IMAGE="redwhite\ToolBarBk.bmp" />
+    <MainBar IMAGE="redwhite" />
+
+  </IMAGES>
+</CONFIG>

@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MainMenu_v1>
+	<MenuItem Popup="1" Caption="系统">
+		<MenuItem CmdId="1001" Caption="连接行情" />
+		<MenuItem CmdId="1002" Caption="断开行情" />
+		<MenuItem Seperator="1" />
+		<MenuItem CmdId="1010" Caption="云存储" />
+		<MenuItem CmdId="1015" Caption="云同步" />
+    <MenuItem CmdId="1025" Caption="云同步还原" />
+    <MenuItem Seperator="1" />
+		<MenuItem CmdId="1017" Caption="数据导入" />
+		<MenuItem CmdId="1016" Caption="数据导出" />
+		<MenuItem Seperator="1" />
+		<MenuItem CmdId="1004" Caption="盘后数据下载" />
+		<MenuItem CmdId="1021" Caption="用户数据管理" />
+		<MenuItem CmdId="1011" Caption="版本说明" />
+		<MenuItem CmdId="1014" Caption="系统设置" />
+		<MenuItem CmdId="1022" Caption="自动升级" />
+	</MenuItem>
+	<MenuItem Popup="1" Caption="版面">
+		<MenuItem CmdId="3701" Caption="开始编辑版面" />
+		<MenuItem CmdId="3702" Caption="新建空白版面" />
+		<MenuItem CmdId="3706" Caption="保存版面" />
+		<MenuItem CmdId="3707" Caption="版面另存为..." />
+    <MenuItem Seperator="1" />
+    <MenuItem CmdId="3709" Caption="导入版面..." />
+    <MenuItem CmdId="3708" Caption="导出版面..." />
+    <MenuItem Seperator="1" />
+		<MenuItem CmdId="3721" Caption="插入行（上）" />
+		<MenuItem CmdId="3722" Caption="插入行（下）" />
+		<MenuItem CmdId="3723" Caption="插入列（左）" />
+		<MenuItem CmdId="3724" Caption="插入列（右）" />
+		<MenuItem CmdId="3725" Caption="拆分单元格" />
+		<MenuItem Seperator="1" />
+		<MenuItem CmdId="3726" Caption="删除整行" />
+		<MenuItem CmdId="3727" Caption="删除整列" />
+		<MenuItem CmdId="3728" Caption="删除单元格" />
+		<MenuItem Seperator="1" />
+		<MenuItem Type="ViewList" Caption="设置单元格类型" />
+	</MenuItem>
+	<MenuItem Popup="1" Caption="功能">
+		<MenuItem CmdId="4401" Caption="行情报价" />
+		<MenuItem CmdId="4402" Caption="即时分析" />
+		<MenuItem CmdId="4403" Caption="技术分析" />
+		<MenuItem CmdId="4405" Caption="多股同列" />
+		<MenuItem Seperator="1" />
+		<MenuItem CmdId="1101" Caption="公式管理器" />
+		<MenuItem CmdId="1102" Caption="条件选股" />
+		<MenuItem CmdId="1103" Caption="预警系统" />
+		<MenuItem CmdId="4422" Caption="星空图" />
+		<MenuItem CmdId="4426" Caption="K线训练系统" />
+    <MenuItem CmdId="4436" Caption="0508历史数据" />
+		<MenuItem CmdId="4434" Caption="回归评测" />
+		<MenuItem CmdId="1113" Caption="多指标回归评测" />
+		<MenuItem CmdId="1112" Caption="通知消息" />
+    <MenuItem CmdId="1024" Caption="板块运算" />
+    <MenuItem Seperator="1" />
+    <MenuItem CmdId="1125" Caption="自定义组合商品" />
+ </MenuItem>
+  <MenuItem Popup="1" Caption="缠论">
+    <MenuItem CmdId="4421" Caption="分笔" />
+    <MenuItem CmdId="4410" Caption="分段" />
+    <MenuItem CmdId="4414" Caption="动力共振" />
+    <MenuItem Seperator="1" />
+    <MenuItem CmdId="4411" Caption="笔中枢" />
+    <MenuItem CmdId="4412" Caption="段中枢" />
+    <MenuItem CmdId="4418" Caption="3级别MACD" />
+	  <MenuItem CmdId="4424" Caption="3周期联动" />
+    <MenuItem Seperator="1" />
+    <MenuItem CmdId="4427" Caption="多级联立" />
+    <MenuItem CmdId="4429" Caption="一根筋" />
+    <MenuItem Seperator="1" />
+    <MenuItem CmdId="4432" Caption="走势分解笔" />
+    <MenuItem CmdId="4415" Caption="走势分解线段" />
+    <MenuItem CmdId="4430" Caption="无脑买入笔" />
+    <MenuItem CmdId="4431" Caption="无脑买入线段" />
+    <MenuItem Seperator="1" />
+    <MenuItem CmdId="4441" Caption="磨刀系统" />
+    <MenuItem CmdId="4445" Caption="龙系战法" />
+  </MenuItem>
+  <MenuItem  Popup="1" Caption="矩阵">
+    <MenuItem CmdId="4417" Caption="个股矩阵" />
+    <MenuItem CmdId="4425" Caption="多股矩阵" />
+    <MenuItem CmdId="4437" Caption="多周期矩阵" />
+  </MenuItem>
+	<MenuItem Popup="1" Caption="智慧云">
+		<MenuItem CmdId="4433" Caption="云笔" />
+		<MenuItem CmdId="1110" Caption="云选股" />
+		<MenuItem CmdId="1109" Caption="云盯盘" />
+		<MenuItem CmdId="1124" Caption="云盯盘筛选" />
+    
+	</MenuItem>
+	<MenuItem Popup="1" Caption="多屏">
+		<MenuItem CmdId="1114" Caption="副屏1" />
+		<MenuItem CmdId="1115" Caption="副屏2" />
+		<MenuItem CmdId="1116" Caption="副屏3" />
+		<MenuItem CmdId="1117" Caption="副屏4" />
+		<MenuItem CmdId="1118" Caption="副屏5" />
+		<MenuItem CmdId="1119" Caption="副屏6" />
+		<MenuItem CmdId="1120" Caption="副屏7" />
+		<MenuItem CmdId="1121" Caption="副屏8" />
+		<MenuItem CmdId="1122" Caption="一键多屏" />
+	</MenuItem>
+  <MenuItem Popup="1" Caption="工具">
+	<MenuItem CmdId="4002" Caption="画线工具" />
+  <MenuItem CmdId="4003" Caption="股票仓位计算器" />
+  </MenuItem>
+  <MenuItem Popup="1" Caption="帮助">
+	<MenuItem CmdId="1008" Caption="在线帮助" />
+  </MenuItem>
+</MainMenu_v1>

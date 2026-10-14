@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <KeyWizzard>
+    <Item HKCmd="1" Char="01" Caption="分时成交明细" />
+    <Item HKCmd="2" Char="02" Caption="分价表" />
+    <Item HKCmd="3" Char="03" Caption="上证领先走势" />
+    <Item HKCmd="4" Char="04" Caption="深证领先走势" />
+    <Item HKCmd="5" Char="05" Caption="类型切换" />
+    <Item HKCmd="6" Char="06" Caption="自选股" />
+
+    <Item HKCmd="11" Char="1" Caption="上证A股" />
+    <Item HKCmd="12" Char="2" Caption="上证B股" />
+    <Item HKCmd="13" Char="3" Caption="深证A股" />
+    <Item HKCmd="14" Char="4" Caption="深证B股" />
+    <Item HKCmd="15" Char="5" Caption="上证债券" />
+    <Item HKCmd="16" Char="6" Caption="深证债券" />
+    <Item HKCmd="17" Char="7" Caption="沪深A股" />
+    <Item HKCmd="18" Char="8" Caption="沪深B股" />
+    <Item HKCmd="19" Char="9" Caption="中小企业板" />
+    <Item HKCmd="20" Char="KZZ" Caption="可转债" />
+    
+    <Item HKCmd="115" Char="15" Caption="板块指数" />
+    <Item HKCmd="50" Char="50" Caption="上证50走势" />
+    <Item HKCmd="100" Char="100" Caption="深证100走势" />
+    <Item HKCmd="105" Char="005" Caption="中小企业板指数" />
+    <Item HKCmd="106" Char="006" Caption="创业板指数" />
+    <Item HKCmd="180" Char="180" Caption="上证180走势" />
+    <Item HKCmd="300" Char="300" Caption="沪深300走势" />
+    
+    <Item HKCmd="91" Char="91" Caption="1分钟" />
+    <Item HKCmd="92" Char="92" Caption="5分钟" />
+    <Item HKCmd="93" Char="93" Caption="15分钟" />
+    <Item HKCmd="94" Char="94" Caption="30分钟" />
+    <Item HKCmd="95" Char="95" Caption="60分钟" />
+    <Item HKCmd="96" Char="96" Caption="日线" />
+    <Item HKCmd="97" Char="97" Caption="周线" />
+    <Item HKCmd="98" Char="98" Caption="月线" />
+    <Item HKCmd="99" Char="99" Caption="季线" />
+    <Item HKCmd="910" Char="910" Caption="年线" />
+
+    <Item HKCmd="60" Char="60" Caption="深沪A涨幅排名" />
+    <Item HKCmd="61" Char="61" Caption="沪A涨幅排名" />
+    <Item HKCmd="62" Char="62" Caption="沪B涨幅排名" />
+    <Item HKCmd="63" Char="63" Caption="深A涨幅排名" />
+    <Item HKCmd="64" Char="64" Caption="深B涨幅排名" />
+    <Item HKCmd="65" Char="65" Caption="沪债涨幅排名" />
+    <Item HKCmd="66" Char="66" Caption="深渍涨幅排名" />
+    <Item HKCmd="67" Char="67" Caption="沪深A涨幅排名" />
+    <Item HKCmd="68" Char="68" Caption="沪深B涨幅排名" />
+    <Item HKCmd="69" Char="69" Caption="中小企业板涨幅排名" />
+
+    <Item HKCmd="80" Char="80" Caption="综合排名" />
+    <Item HKCmd="81" Char="81" Caption="上证A股综合排名" />
+    <Item HKCmd="82" Char="82" Caption="上证B股综合排名" />
+    <Item HKCmd="83" Char="83" Caption="深证A股综合排名" />
+    <Item HKCmd="84" Char="84" Caption="深证B股综合排名" />
+    <Item HKCmd="85" Char="85" Caption="上证债券综合排名" />
+    <Item HKCmd="86" Char="86" Caption="深证债券综合排名" />
+    <Item HKCmd="87" Char="87" Caption="深沪A股综合排名" />
+    <Item HKCmd="88" Char="88" Caption="深沪B股综合排名" />
+    <Item HKCmd="89" Char="89" Caption="中小企业板综合排名" />
+  </KeyWizzard>
+
+  <HotKey>
+    <Item Char="114" PageId="4402" SvcId="2" SymbolId="000001"/>
+    <Item Char="115" PageId="4402" SvcId="1" SymbolId="399001"/>
+    <Item Char="90" CmdId="4204" Alt="0" Ctrl="1" Shift="0" />
+    <Item Char="88" CmdId="1129" Alt="1" Ctrl="0" Shift="0" />
+  </HotKey>
+</Config>

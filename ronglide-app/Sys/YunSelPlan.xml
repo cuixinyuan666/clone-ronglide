@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CONFIG_V1>
+	<PLAN Name="RLD云选股策略一" Key="RLDSelectPlan1" Url="" />
+	<PLAN Name="RLD云选股策略二" Key="RLDSelectPlan2" Url="" />
+	<PLAN Name="RLD云选股策略三" Key="RLDSelectPlan3" Url="" />
+	<PLAN Name="RLD云选股策略四" Key="RLDSelectPlan4" Url="" />
+	<PLAN Name="RLD云选股策略五" Key="RLDSelectPlan5" Url="" />
+	<PLAN Name="RLD云选股策略六" Key="RLDSelectPlan6" Url="" />
+</CONFIG_V1>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<QUOTEINFO_V1 Height="18" Ft="18" >
+	<ROW Height="24" >
+		<CELL Ty="1" I="2" W="80" Agn="2" Ft="5" />
+    <CELL Ty="1" I="3" Ft="5" ShowMark="1"  MarkFt="16"/>
+	</ROW>
+	<ROW Height="1" Sep="1" />
+	<ROW>
+		<CELL Ty="1" Txt="当前指数" />
+		<CELL Ty="1" I="229" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="今日开盘" />
+		<CELL Ty="1" I="104" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="昨日收盘" />
+		<CELL Ty="1" I="106" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="指数涨跌" />
+		<CELL Ty="1" I="201" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="指数涨幅" />
+		<CELL Ty="1" I="202" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="最高指数" />
+		<CELL Ty="1" I="107" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="最低指数" />
+		<CELL Ty="1" I="108" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="总成交额" />
+		<CELL Ty="1" I="216" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="总成交量" />
+		<CELL Ty="1" I="212" Agn="2" />
+	</ROW>
+	<ROW Height="1" Sep="1" />
+  <ROW>
+    <CELL Ty="1" Txt="卖5金额" />
+    <CELL Ty="1" I="2012" Agn="2" />
+  </ROW>
+  <ROW>
+    <CELL Ty="1" Txt="卖1金额" />
+    <CELL Ty="1" I="2011" Agn="2" />
+  </ROW>
+  <ROW Height="1" Sep="1" />
+  <ROW>
+		<CELL Ty="1" Txt="买1金额" />
+		<CELL Ty="1" I="2009" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="买5金额" />
+		<CELL Ty="1" I="2010" Agn="2" />
+	</ROW>
+	<ROW Height="1" Sep="1" />
+	<ROW>
+		<CELL Ty="1" Txt="涨家数" />
+		<CELL Ty="1" I="230" Agn="2" />
+		<CELL Ty="1" Txt="涨停数" />
+		<CELL Ty="1" I="233" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="跌家数" />
+		<CELL Ty="1" I="231" Agn="2" />
+		<CELL Ty="1" Txt="跌停数" />
+		<CELL Ty="1" I="234" Agn="2" />
+	</ROW>
+	<ROW Height="1" Sep="1" />
+</QUOTEINFO_V1>

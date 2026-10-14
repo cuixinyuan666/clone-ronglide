@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewList>
+  <Item ViewType="1" Name="空页面" />
+  <Item ViewType="2" Name="标签页" />
+  <Item ViewType="4" Name="个股分类报价" />
+  <Item ViewType="40" Name="个股云计算结果" />
+  <Item ViewType="32" Name="期货分类报价" />
+  <Item ViewType="22" Name="自选股报价" />
+  <Item ViewType="23" Name="板块指数报价" />
+  <Item ViewType="5" Name="盘口行情" />
+  <Item ViewType="6" Name="分时图" />
+  <Item ViewType="13" Name="分时图小窗" />
+  <Item ViewType="21" Name="主指数分时图小窗" />
+  <Item ViewType="17" Name="分时图多股同列" />
+  <Item ViewType="7" Name="技术分析" />
+  <Item ViewType="14" Name="技术分析小窗" />
+  <Item ViewType="20" Name="主指数技术分析小窗" />
+  <Item ViewType="16" Name="技术分析多股同列" />
+  <Item ViewType="18" Name="技术分析多周期同列" />
+  <Item ViewType="9" Name="分时成交明细(多列)" />
+  <Item ViewType="10" Name="分时成交明细(单列)" />
+  <Item ViewType="11" Name="分价表(多列)" />
+  <Item ViewType="12" Name="分价表(单列)" />
+  <Item ViewType="25" Name="F10(Web版)" />
+  <Item ViewType="41" Name="指标评测" />
+  <Item ViewType="31" Name="星空图" />
+  <Item ViewType="35" Name="个股矩阵" />
+  <Item ViewType="37" Name="多股矩阵" />
+  <Item ViewType="48" Name="多指标矩阵" />
+  <Item ViewType="50" Name="多周期矩阵" />
+</ViewList>

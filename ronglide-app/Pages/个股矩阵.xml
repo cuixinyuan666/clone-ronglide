@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PAGE>
+	<SPLITTER Rows="1" Cols="2" Rect="0,1460,0,618" RowH="618" ColW="1200,260">
+		<GRID Row="0" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="0">
+			<SPLITTER Rows="2" Cols="1" Rect="0,1200,0,618" RowH="463,155" ColW="1200">
+				<GRID Row="0" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="7">
+					<VIEW ViewType="7" GroupID="0" HisType="101" DivMode="1" Linkage="0">
+						<Taggings/>
+						<Windows Count="3">
+							<Win Higth="2.5" Study="NCHBZS"/>
+							<Win Higth="1" Study="VOL"/>
+							<Win Higth="1" Study="MACD"/>
+							<Win Higth="1" Study="CHDL"/>
+							<Win Higth="1" Study="主力操盘"/>
+							<Win Higth="1" Study="多空对比"/>
+							<Win Higth="1" Study="动能轨迹"/>
+							<Win Higth="1" Study="MACD1"/>
+							<Win Higth="1" Study="MACD2"/>
+							<Win Higth="1" Study="MACD3"/>
+							<Win Higth="1" Study="KDJ"/>
+							<Win Higth="1" Study="KDJ"/>
+						</Windows>
+					</VIEW>
+				</GRID>
+				<GRID Row="1" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="35">
+					<VIEW ViewType="35" GroupID="0" DivMode="1" Study="笔状态含中继">
+						<History>
+							<H HisType="3"/>
+							<H HisType="4"/>
+							<H HisType="5"/>
+							<H HisType="101"/>
+						</History>
+					</VIEW>
+				</GRID>
+			</SPLITTER>
+		</GRID>
+		<GRID Row="0" Col="1" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="19">
+      <VIEW ViewType="19" WorkMode="0">
+        <TAB TabID="1" Title="笔" ViewType="10" FullScreen="0"/>
+        <TAB TabID="2" Title="价" ViewType="12" FullScreen="0"/>
+        <TAB TabID="3" Title="势" ViewType="13" FullScreen="0"/>
+        <TAB TabID="4" Title="联" ViewType="21" FullScreen="0"/>
+        <TAB TabID="5" Title="值" ViewType="45" FullScreen="0"/>
+        <TAB TabID="6" Title="云" ViewType="39" FullScreen="1"/>
+        <TAB TabID="7" Title="筹" ViewType="29" FullScreen="1"/>
+        <VIEW ViewType="5" WorkMode="0"/>
+        <VIEW ViewType="10" WorkMode="0"/>
+        <VIEW ViewType="12" WorkMode="0"/>
+        <VIEW ViewType="13" WorkMode="0"/>
+        <VIEW ViewType="21" WorkMode="0"/>
+        <VIEW ViewType="45" WorkMode="0"/>
+        <VIEW ViewType="39" WorkMode="0"/>
+        <VIEW ViewType="29" WorkMode="0"/>
+      </VIEW>
+    </GRID>
+	</SPLITTER>
+</PAGE>

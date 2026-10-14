@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CONFIG>
+  <SingItemsBI>
+    <Item name="向上" txt="向上笔" val="-10" />
+    <Item name="顶形成" txt="顶形成" val="3" />
+    <Item name="底形成" txt="底形成" val="-3" />
+    <Item name="向下" txt="向下笔" val="10" />
+  </SingItemsBI>
+
+  <SingItemsFX>
+    <Item name="向上" txt="向上笔" val="-10" />
+    <Item name="顶形成" txt="顶形成" val="3" />
+    <Item name="底形成" txt="底形成" val="-3" />
+    <Item name="向下" txt="向下笔" val="10" />
+  </SingItemsFX>
+
+</CONFIG>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CONFIG>
+  <Item id="#DEFAULT#" img="DEFAULT.jpg" />
+
+  <Item id="CH一买" img="CHBZS1buy.jpg" />
+  <Item id="CH一卖" img="CHBZS1sell.jpg" />
+
+  <Item id="CH二买" img="CHBZS2buy.jpg" />
+  <Item id="CH二卖" img="NCHBZS2sell.jpg" />
+
+  <Item id="CH三买" img="NCHBZS3buy.jpg" />
+  <Item id="CH三卖" img="NCHBZS3sell.jpg" />
+
+  <Item id="CHD一买" img="CHD1Buy.jpg" />
+  <Item id="CHD二买" img="CHD2Buy.jpg" />
+  <Item id="CHD三买" img="CHD3Buy.jpg" />
+
+  <Item id="CHD一卖" img="CHD1SELL.jpg" />
+  <Item id="CHD二卖" img="CHD2SELL.jpg" />
+  <Item id="CHD三卖" img="CHD3SELL.jpg" />
+
+  <Item id="CHDL买入" img="CHDL_Buy.jpg" />
+  <Item id="CHDL卖出" img="CHDL_Sell.jpg" />
+  <Item id="CHDL底" img="CHDL_Di.jpg" />
+  <Item id="CHDL顶" img="CHDL_Ding.jpg" />
+
+  <Item id="CHBZS_GD" img="CHBZS_GD.jpg" />
+  
+  <Item id="NCHBZS一买" img="NCHBZS1buy.jpg" />
+  <Item id="NCHBZS一卖" img="NCHBZS1sell.jpg" />
+
+  <Item id="NCHBZS二买" img="NCHBZS2buy.jpg" />
+  <Item id="NCHBZS二卖" img="NCHBZS2sell.jpg" />
+
+  <Item id="NCHBZS三买" img="NCHBZS3buy.jpg" />
+  <Item id="NCHBZS三卖" img="NCHBZS3sell.jpg" />
+
+  <Item id="NCHDZS一买" img="NCHDZS1Buy.jpg" />
+  <Item id="NCHDZS一卖" img="NCHDZS1Sell.jpg" />
+  
+  <Item id="NCHDZS二买" img="NCHDZS2Buy.jpg" />
+  <Item id="NCHDZS二卖" img="NCHDZS2Sell.jpg" />
+
+  <Item id="NCHDZS三买" img="NCHDZS3Buy.jpg" />
+  <Item id="NCHDZS三卖" img="NCHDZS3Sell.jpg" /> 
+  
+  <Item id="NCHBZS类盘背买点" img="NCHBZS_LPBbuy.jpg" />
+  <Item id="NCHBZS类盘背卖点" img="NCHBZS_LPBsell.jpg" />
+
+  <Item id="NCHBZS盘背买点" img="NCHBZS_PBbuy.jpg" />
+  <Item id="NCHBZS盘背卖点" img="NCHBZS_PBsell.jpg" />
+  
+  <Item id="NCHDZS盘背买点" img="NCHDZS_PBbuy.jpg" />
+  <Item id="NCHDZS盘背卖点" img="NCHDZS_PBsell.jpg" />
+  
+  <Item id="NCHDZS类盘背买点" img="NCHDZS_LPBbuy.jpg" />
+  <Item id="NCHDZS类盘背卖点" img="NCHDZS_LPBsell.jpg" />
+ 
+  <Item id="NCHBZS区间套一买" img="NCHBZS_QJT1Buy.jpg" />
+  <Item id="NCHBZS区间套一卖" img="NCHBZS_QJT1Sell.jpg" />
+  
+  <Item id="NCHDZS区间套一买" img="NCHDZS_QJT1Buy.jpg" />
+  <Item id="NCHDZS区间套一卖" img="NCHDZS_QJT1Sell.jpg" />
+
+  <Item id="中枢上移统计" img="ZSSYTJ.jpg" />
+  <Item id="中枢下移统计" img="ZSXYTJ.jpg" />
+  <Item id="段中枢统计" img="DZSTJ.jpg" />
+
+  <Item id="向上笔选股" img="XSBXG.jpg" />
+  <Item id="向下笔选股" img="XXBXG.jpg" />
+
+  <Item id="WNMR_笔" img="WNMR_Bi.jpg" />
+  <Item id="WNMR_走势类型" img="WNMR_ZSLX.jpg" />
+  <Item id="WNMR_线段" img="WNMR_XD.jpg" />
+
+  <Item id="底分型抬高" img="DiFXTG.jpg" />
+  <Item id="底分型选股" img="DiFXXG.jpg" />
+  <Item id="顶分型降低" img="DingFXJD.jpg" />
+  <Item id="顶分型选股" img="DingFXXG.jpg" />
+
+  <Item id="中继底分型个数" img="ZJDiFXGS.jpg" />
+  <Item id="中继顶分型个数" img="ZJDingFXGS.jpg" />
+
+  <Item id="多级联立B1B2买入" img="MultiB1B2Buy.jpg" />
+  <Item id="多级联立S1S2卖出" img="MultiS1S2Sell.jpg" />
+  <Item id="多级联立底点" img="MultiDi.jpg" />
+  <Item id="多级联立顶点" img="MultiDing.jpg" />
+  <Item id="多级联立中枢统计" img="MultiZSTJ.jpg" />
+
+</CONFIG>

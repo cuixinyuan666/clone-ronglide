@@ -1,0 +1,1628 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CONFIG_V1>
+	<Category N="缠论函数">
+		<Func F="CHBI" N="缠论笔"  P="3">
+		<Desc><![CDATA[
+确定笔的顶分型或底分型.
+用法:
+ CHBI(H,L,P),P为可调整参数，P=11按老笔划分,P=12按新笔划分
+ P=51按分型笔划分（高级版以上支持此函数）
+ 返回值=-1时为底分型,返回值=1时为顶分型。
+例如:
+ VAR1:=CHBI(H,L,P);
+ DRAWLINE(VAR1 =-1, L, VAR1 =1, H, 0) COLORRED, LINETHICK1;
+ DRAWLINE(VAR1 =1, H, VAR1 =-1, L, 0) COLORGREEN, LINETHICK1;
+]]></Desc>
+		</Func>
+		<Func F="CHBIS" N="缠论笔状态"  P="3">
+		<Desc><![CDATA[
+确定笔的顶分型或底分型.
+用法:
+ CHBIS(H,L,P),P为可调整参数，P=11按老笔划分,P=12按新笔划分
+ P=51按分型笔划分（高级版以上支持此函数）
+ 返回值=-1时为底分型,返回值=1时为顶分型.
+ 返回值=2时为向上笔,返回值=3时为向下笔.
+ 返回值=0时为分型构造.
+例如:
+ VAR2:=CHBIS(H,L,P);
+ VAR3:10;
+ STICKLINE(VAR2=1,8,12,4,0),COLORRED;
+ STICKLINE(VAR2=-1,8,12,4,0),COLORYELLOW;
+ STICKLINE(VAR2=2,9,11,4,0),COLORFF00FF;
+ STICKLINE(VAR2=3,9,11,4,0),COLORGREEN;
+ STICKLINE(VAR2=0,9,11,4,0),COLORWHITE;
+]]></Desc>
+		</Func>	
+		<Func F="FXBI" N="分型笔"  P="">
+		<Desc><![CDATA[
+确定分型笔的顶分型或底分型.
+用法:
+ FXBI(H,L,51)返回-1为底分型,返回1为顶分型.
+例如:
+ VAR1:=FXBI(H,L,51);
+ DRAWLINE(VAR1 =-1, L, VAR1 =1, H, 0) COLORRED, LINETHICK1;
+ DRAWLINE(VAR1 =1, H, VAR1 =-1, L, 0) COLORGREEN, LINETHICK1;
+]]></Desc>
+		</Func>
+		<Func F="CHDUAN" N="缠论线段"  P="0">
+		<Desc><![CDATA[
+确定线段特征序列的顶分型或底分型.
+用法:
+ CHDUAN;返回-1为特征序列底分型,返回1为特征序列顶分型.
+ 在调用CHDUAN之前必须调用CHBI函数.参数P说明见函数CHBI.
+例如:
+ VAR1:=CHBI(H,L,P);
+ VAR2:=CHDUAN;
+ DRAWLINE(VAR2 =-1, L, VAR2 =1, H, 0) COLORBLUE, LINETHICK2;
+ DRAWLINE(VAR2 =1, H, VAR2 =-1, L, 0) COLORBLUE, LINETHICK2;
+]]></Desc>
+		</Func>
+		<Func F="BIZHONGSHU" N="笔中枢"  P="0">
+		<Desc><![CDATA[
+确定中枢的起点和结束位置.
+用法:
+ BIZHONGSHU;返回1为上涨中枢起点,返回2为上涨中枢结束位置
+ 返回3为下跌中枢起点,返回4为下跌中枢结束位置.
+ 在调用BIZHONGSHU之前必须调用CHBI函数.参数P说明见函数CHBI.
+例如:
+ VAR1:=CHBI(H,L,P);
+ VAR4:=BIZHONGSHU;
+ ZSG:=BIZHONGSHUG;{中枢高点}
+ ZSD:=BIZHONGSHUD;{中枢低点}
+ DRAWTRANSRECT(VAR4=1 AND ZSG>ZSD,ZSD,VAR4=2 AND ZSG>ZSD,ZSG,96),COLORRED;
+ DRAWTRANSRECT(VAR4=3 AND ZSG >ZSD,ZSD,VAR4=4 AND ZSG>ZSD,ZSG,96),COLORGREEN;
+]]></Desc>
+		</Func>	
+		<Func F="BIZHONGSHUG" N="笔中枢高点"  P="0">
+		<Desc><![CDATA[
+确定笔中枢的高点.
+用法:
+ BIZHONGSHUG;返回值为笔中枢的高点.
+ 与BIZHONGSHU一起使用.
+例如:
+ VAR1:=CHBI(H,L,P);
+ VAR4:=BIZHONGSHU;
+ ZSG:=BIZHONGSHUG;{中枢高点}
+ ZSD:=BIZHONGSHUD;{中枢低点}
+ DRAWTRANSRECT(VAR4=1 AND ZSG>ZSD,ZSD,VAR4=2 AND ZSG>ZSD,ZSG,96),COLORRED;
+ DRAWTRANSRECT(VAR4=3 AND ZSG >ZSD,ZSD,VAR4=4 AND ZSG>ZSD,ZSG,96),COLORGREEN;
+]]></Desc>
+		</Func>		
+		<Func F="BIZHONGSHUD" N="笔中枢低点"  P="0">
+		<Desc><![CDATA[
+确定笔中枢的低点.
+用法:
+ BIZHONGSHUD;返回值为笔中枢的低点.
+ 与BIZHONGSHU一起使用.
+例如:
+ VAR1:=CHBI(H,L,P);{参考CHBI的使用}
+ VAR4:=BIZHONGSHU;
+ ZSG:=BIZHONGSHUG;{中枢高点}
+ ZSD:=BIZHONGSHUD;{中枢低点}
+ DRAWTRANSRECT(VAR4=1 AND ZSG>ZSD,ZSD,VAR4=2 AND ZSG>ZSD,ZSG,96),COLORRED;
+ DRAWTRANSRECT(VAR4=3 AND ZSG >ZSD,ZSD,VAR4=4 AND ZSG>ZSD,ZSG,96),COLORGREEN;
+]]></Desc>
+		</Func>				
+		<Func F="BIMMD" N="笔中枢买卖点"  P="1">
+		<Desc><![CDATA[
+确定笔中枢的第一第二类买卖点.
+用法:
+ BIMMD;返回值=-1为一卖,返回值=1为一买.
+ 返回值=-2为二卖,返回值=2为二买.
+ 必须用在BIZHONGSHU后面.
+例如:
+ VAR1:=CHBI(H,L,P);{参考CHBI的使用}
+ VAR4:=BIZHONGSHU;
+ ZSG:=BIZHONGSHUG;{中枢高点}
+ ZSD:=BIZHONGSHUD;{中枢低点}
+ DRAWTRANSRECT(VAR4=1 AND ZSG>ZSD,ZSD,VAR4=2 AND ZSG>ZSD,ZSG,96),COLORRED;
+ DRAWTRANSRECT(VAR4=3 AND ZSG >ZSD,ZSD,VAR4=4 AND ZSG>ZSD,ZSG,96),COLORGREEN;
+ VAR5:=BIMMD(C);{参数为收盘价}
+ DRAWTEXT(VAR5=-1 ,HIGH,'一卖'),COLORGREEN,LINETHICK1;
+ DRAWTEXT(VAR5=1 ,LOW,'一买'),COLORRED,LINETHICK1;
+ DRAWTEXT(VAR5=-2,HIGH,'二卖'),COLORGREEN,LINETHICK1;
+ DRAWTEXT(VAR5=2,LOW,'二买'),COLORRED,LINETHICK1;
+ ]]></Desc>
+		</Func>		
+		<Func F="BISMMD" N="笔中枢第三类买卖点"  P="0">
+		<Desc><![CDATA[
+确定笔中枢的第三类买卖点.
+用法:
+ BIMMD;返回值=-1为三卖,返回值=1为三买.
+ 必须用在BIZHONGSHU后面.
+例如:
+ VAR1:=CHBI(H,L,P);{参考CHBI的使用}
+ VAR4:=BIZHONGSHU;
+ ZSG:=BIZHONGSHUG;{中枢高点}
+ ZSD:=BIZHONGSHUD;{中枢低点}
+ DRAWTRANSRECT(VAR4=1 AND ZSG>ZSD,ZSD,VAR4=2 AND ZSG>ZSD,ZSG,96),COLORRED;
+ DRAWTRANSRECT(VAR4=3 AND ZSG >ZSD,ZSD,VAR4=4 AND ZSG>ZSD,ZSG,96),COLORGREEN;
+ VAR5:=BIMMD(C);{参数为收盘价}
+ VAR6:=BISMMD;{第三类买卖点}
+ DRAWTEXT(VAR6=-1,HIGH,'三卖'),COLORGREEN,LINETHICK1;
+ DRAWTEXT(VAR6=1 ,LOW,'三买'),COLORRED,LINETHICK1;
+ ]]></Desc>
+		</Func>				
+		<Func F="ZOUSHIBI" N="走势笔(走势类型)"  P="4">
+		<Desc><![CDATA[
+确定走势笔起点和结束点.
+用法:
+ ZOUSHIBI(C,H,L,P);返回值=-1为走势笔低点,返回值=1为走势笔高.
+ P=1为次级别走势类型,
+ P=2为本级别走势类型,
+ P=3为高级别走势类型.
+例如:
+ VAR1:=ZOUSHIBI(C,H,L,1);
+ DRAWLINE(VAR1=1,H,VAR1=-1,L,0),COLORYELLOW,LINETHICK1;
+ DRAWLINE(VAR1=-1,L,VAR1=1,H,0),COLORYELLOW,LINETHICK1;
+ ]]></Desc>
+		</Func>						
+		<Func F="ZOUSHIZHONGSHU" N="走势中枢"  P="4">
+		<Desc><![CDATA[
+确定走势中枢的起点和结束点.
+用法:
+ ZOUSHIZHONGSHU(C,H,L,P);
+ 返回值=1为上涨中枢起点,返回值=2为上涨中枢结束位置.
+ 返回值=3为下跌中枢起点,返回值=4为下跌中枢结束位置.
+ P=1为次级别走势中枢,
+ P=2为本级别走势中枢,
+ P=3为高级别走势中枢.
+例如:
+ VAR1:=ZOUSHIBI(C,H,L,1);
+ DRAWLINE(VAR1=1,H,VAR1=-1,L,0),COLORYELLOW,LINETHICK1;
+ DRAWLINE(VAR1=-1,L,VAR1=1,H,0),COLORYELLOW,LINETHICK1;
+ VAR4:=ZOUSHIZHONGSHU(C,H,L,1);
+ ZSG:=BIZHONGSHUG;{与笔中枢通用,中枢高点}
+ ZSD:=BIZHONGSHUD;{与笔中枢通用,中枢低点}
+ DRAWTRANSRECT(VAR4=1 AND ZSG>ZSD,ZSD,VAR4=2 AND ZSG>ZSD,ZSG,96),COLORRED;
+ DRAWTRANSRECT(VAR4=3 AND ZSG >ZSD,ZSD,VAR4=4 AND ZSG>ZSD,ZSG,56),COLORGREEN;
+ ]]></Desc>
+		</Func>		
+	<Func F="ZOUSHIMMD" N="走势买卖点"  P="2">
+		<Desc><![CDATA[
+确定走势笔起点和结束点.
+用法:
+ ZOUSHIMMD(C,P);
+ 返回值=-1为走势高点,返回值=1为走势低点.
+ 返回值=-2为卖点1,返回值=2为买点1.
+ 返回值=-3为卖点2,返回值=3为买点2. 
+ P=1为次级别走势买卖点,
+ P=2为本级别走势买卖点,
+ P=3为高级别走势买卖点.
+例如:
+ VAR1:=ZOUSHIBI(C,H,L,1);
+ DRAWLINE(VAR1=1,H,VAR1=-1,L,0),COLORYELLOW,LINETHICK1;
+ DRAWLINE(VAR1=-1,L,VAR1=1,H,0),COLORYELLOW,LINETHICK1;
+ VAR5:=ZOUSHIMMD(CLOSE,1);
+ DRAWTEXT(VAR5=-1,HIGH,STRCAT('顶: ',VAR2STR(H,2))),COLORYELLOW;
+ DRAWTEXT(VAR5=1,LOW,STRCAT('底: ',VAR2STR(L,2))),COLORYELLOW;
+ DRAWTEXT(VAR5=-2 ,HIGH,STRCAT('S1: ',VAR2STR(C,2))),COLORYELLOW;
+ DRAWTEXT(VAR5=2  ,LOW,STRCAT('B1: ',VAR2STR(C,2))),COLORYELLOW;
+ DRAWTEXT(VAR5=-3,HIGH,STRCAT('S2: ',VAR2STR(C,2))),COLORYELLOW;
+ DRAWTEXT(VAR5=3,LOW,STRCAT('B2: ',VAR2STR(C,2))),COLORYELLOW;
+ ]]></Desc>
+		</Func>			
+		<Func F="CHDLM" N="缠论动力买卖"  P="2">
+		<Desc><![CDATA[
+缠论动力及顶底
+用法:
+ CHDLM(C,P);返回值=-1为走势笔低点,返回值=1为走势笔高.
+ P=1,返回值为缠论动力,
+ P=2,返回值=1为底点,返回值=-1为高点；
+ P=3,返回值=1为买点,返回值=-1为卖点.
+例如:
+ CHDL:CHDLM(C,1),COLOR5454FF;
+ CHDD:=CHDLM(C,2);
+ CHBS:=CHDLM(C,3);
+ DRAWICON(CHDD=1,9,40);
+ DRAWICON(CHDD=-1,65,4);
+ DRAWICON(CHBS=1,17,1);
+ DRAWICON(CHBS=-1,57,2);
+ ]]></Desc>
+		</Func>								
+		<Func F="MACDNUM" N="MACD参数"  P="1">
+		<Desc><![CDATA[
+确定MACD参数
+用法:
+ MACDNUM(P);用于三级别MACD参数调用
+ P=1,返回值LONG数值,
+ P=2,返回值SHORT数值；
+ P=3,返回MID数值.
+例如:
+ DIF:EMA(CLOSE,MACDNUM(1))-EMA(CLOSE,MACDNUM(2));
+ DEA:EMA(DIF,MACDNUM(3));
+ MACD:(DIF-DEA)*2,COLORSTICK;
+ ]]></Desc>
+		</Func>	
+		<Func F="CHBINUM" N="BI中K线的根数"  P="0">
+		<Desc><![CDATA[
+确定笔中K线的根数
+用法:
+ CHBINUM;返回BI中K线的根数
+例如:
+ VAR2:=CHBI(H,L,P);{处理笔关系}
+ AA:=CHBIKNUM;
+ DRAWLINE(VAR2=1,H,VAR2=-1,L,0),COLORGREEN;
+ DRAWLINE(VAR2=-1,L,VAR2=1,H,0),COLORRED;
+ DRAWTEXT(VAR2=1,H,VAR2STR(AA,2)),COLORWHITE;
+ DRAWTEXT(VAR2=-1,L,VAR2STR(AA,2)),COLORWHITE;
+ ]]></Desc>														
+		</Func>
+		<Func F="DZHONGSHU" N="段中枢"  P="0">
+		<Desc><![CDATA[
+确定段中枢的起点和结束位置.
+用法:
+ DZHONGSHU;返回1为上涨中枢起点,返回2为上涨中枢结束位置
+ 返回3为下跌中枢起点,返回4为下跌中枢结束位置.
+ 在调用DZHONGSHU之前必须调用CHDUAN函数.
+例如:
+ VAR1:=CHBI(H,L,P);
+ VAR2:=CHDUAN;
+ VAR4:=DZHONGSHU;
+ ZSG:=DZHONGSHUG;{中枢高点}
+ ZSD:=DZHONGSHUD;{中枢低点}
+ DRAWTRANSRECT(VAR4=1 AND ZSG>ZSD,ZSD,VAR4=2 AND ZSG>ZSD,ZSG,96),COLORBLUE;
+ DRAWTRANSRECT(VAR4=3 AND ZSG >ZSD,ZSD,VAR4=4 AND ZSG>ZSD,ZSG,96),COLORBLUE;
+]]></Desc>
+		</Func>	
+		<Func F="DZHONGSHUG" N="段中枢高点"  P="0">
+		<Desc><![CDATA[
+确定段中枢的高点.
+用法:
+ DZHONGSHUG;返回值为段中枢的高点.
+ 与DZHONGSHU一起使用.
+例如:
+ VAR1:=CHBI(H,L,P);
+ VAR2:=CHDUAN;
+ VAR4:=DZHONGSHU;
+ ZSG:=DZHONGSHUG;{中枢高点}
+ ZSD:=DZHONGSHUD;{中枢低点}
+ DRAWTRANSRECT(VAR4=1 AND ZSG>ZSD,ZSD,VAR4=2 AND ZSG>ZSD,ZSG,96),COLORBLUE;
+ DRAWTRANSRECT(VAR4=3 AND ZSG >ZSD,ZSD,VAR4=4 AND ZSG>ZSD,ZSG,96),COLORBLUE;
+]]></Desc>
+		</Func>		
+		<Func F="DZHONGSHUD" N="段中枢低点"  P="0">
+		<Desc><![CDATA[
+确定段中枢的低点.
+用法:
+ DZHONGSHUD;返回值为段中枢的低点.
+ 与DZHONGSHU一起使用.
+例如:
+ VAR1:=CHBI(H,L,P);
+ VAR2:=CHDUAN;
+ VAR4:=DZHONGSHU;
+ ZSG:=DZHONGSHUG;{中枢高点}
+ ZSD:=DZHONGSHUD;{中枢低点}
+ DRAWTRANSRECT(VAR4=1 AND ZSG>ZSD,ZSD,VAR4=2 AND ZSG>ZSD,ZSG,96),COLORBLUE;
+ DRAWTRANSRECT(VAR4=3 AND ZSG >ZSD,ZSD,VAR4=4 AND ZSG>ZSD,ZSG,96),COLORBLUE;
+]]></Desc>
+		</Func>				
+		<Func F="ZHONGSHUTJ" N="中枢统计"  P="0">
+		<Desc><![CDATA[
+确定连续下跌或上涨笔中枢的个数.
+用法:
+ ZHONGSHUTJ;返回值为连续笔中枢的个数.
+ 正数值为连续上涨中枢的个数,
+ 负数值为连续下跌中枢的个数(取绝对值).
+例如:
+ VAR1:=CHBI(H,L,P);
+ VAR2:=BIZHONGSHU ;
+ VAR3:=ZHONGSHUTJ;
+ SELECT(VAR3 =-M);{具体见条件选股中枢统计}
+]]></Desc>
+		</Func>				
+		<Func F="CHBIMACDS" N="笔MACD面积"  P="2">
+		<Desc><![CDATA[
+确定笔的MACD面积.
+用法:
+ CHBIMACDS(C,P);返回值为笔的MACD面积.
+ P的选择同CHBI,且该函数需在CHBI后面调用.
+例如:
+ VAR1:=CHBI(H,L,P);
+ MACDS:CHBIMACDS(C,P);
+ STICKLINE(VAR1=-1,0,MACDS,1,0),COLORGREEN,LINETHICK3;
+ STICKLINE(VAR1=1,0,MACDS,1,0),COLORRED,LINETHICK3;
+]]></Desc>
+		</Func>					
+		<Func F="CHDUANMACDS" N="段MACD面积"  P="2">
+		<Desc><![CDATA[
+确定段的MACD面积.
+用法:
+ CHDUANMACDS(C,P);返回值为段的MACD面积.
+ P的选择同CHBI,且该函数需在CHDUAN后面调用.
+例如:
+ VAR2:=CHBI(H,L,P);
+ VAR3:=CHDUAN;
+ DMACDS:CHDUANMACDS(CLOSE,P);
+ STICKLINE(VAR3=-1,0,DMACDS,1,0),COLORGREEN,LINETHICK3;
+ STICKLINE(VAR3=1,0,DMACDS,1,0),COLORRED,LINETHICK3;
+]]></Desc>
+		</Func>						
+		<Func F="DUANMMD" N="线段中枢买卖点"  P="1">
+		<Desc><![CDATA[
+确定笔中枢的第一第二类买卖点.
+用法:
+ DUANMMD(C);返回值=-1为一卖,返回值=1为一买.
+ 返回值=-2为二卖,返回值=2为二买.
+ 必须用在DUANZHONGSHU后面.
+例如:
+ 使用方法详见指标CHDZS
+ ]]></Desc>
+		</Func>				
+		<Func F="DUANSMMD" N="线段中枢买卖点"  P="0">
+		<Desc><![CDATA[
+确定笔中枢的第三类买卖点.
+用法:
+ DUANSMMD;返回值=-1为三卖,返回值=1为三买.
+ 必须用在DUANZHONGSHU后面.
+例如:
+ 使用方法详见指标CHDZS
+ ]]></Desc>
+		</Func>			
+		<Func F="DUANTZXL" N="线段特征序列"  P="0">
+		<Desc><![CDATA[
+确定笔中枢的第三类买卖点.
+用法:
+ DUANTZXL;
+ 返回值=2为特征序列底分型第三元素笔高点,
+ 返回值=1为特征序列底分型第三元素笔低点,
+ 返回值=3为特征序列顶分型第三元素笔低点,
+ 返回值=4为特征序列顶分型第三元素笔高点,
+例如:
+ V1:=CHBI(H,L,P);
+ DRAWLINE(V1 =-1, L, V1 =1, H, 0) COLORRED, LINETHICK1;
+ DRAWLINE(V1 =1, H, V1 =-1, L, 0) COLORGREEN, LINETHICK1;
+ V2:=CHDUAN;
+ DRAWLINE(V2 =-1, L, V2 =1, H, 0) COLORBLUE, LINETHICK1;
+ DRAWLINE(V2 =1, H, V2 =-1, L, 0) COLORBLUE, LINETHICK1;
+ VAR3:=DUANTZXL;
+ DRAWLINE(VAR3=2,H,VAR3=1,L,0),COLORYELLOW,LINETHICK2;
+ DRAWLINE(VAR3=3,L,VAR3=4,H,0),COLORWHITE,LINETHICK2;
+ ]]></Desc>
+		</Func>															
+		<Func F="CHZSDG" N="走势分解中枢递归"  P="0">
+		<Desc><![CDATA[
+确定走势分解中枢递归.
+用法:
+ CHZSDG(P);P可以取笔,线段,或者递归完的数值.
+例如:
+ VAR1:=CHBI(H,L,P);
+ DRAWLINE(VAR1 =-1, L, VAR1 =1, H, 0) COLORRED, LINETHICK1;
+ DRAWLINE(VAR1 =1, H, VAR1 =-1, L, 0) COLORGREEN, LINETHICK1;
+ VAR2:=CHDUAN;
+ DRAWLINE(VAR2=1,H,VAR2=-1,L,0),COLORBLUE;
+ DRAWLINE(VAR2=-1,L,VAR2=1,H,0),COLORBLUE;
+ VAR3:=CHZSDG(VAR2);{参数可以用笔或线段结果}
+ DRAWLINE(VAR3=1,H,VAR3=-1,L,0),COLORRED,LINETHICK2;
+ DRAWLINE(VAR3=-1,L,VAR3=1,H,0),COLORRED,LINETHICK2;
+ VAR5:=CHZSDG(VAR3);{参数可以用上次级别递归结果}
+ DRAWLINE(VAR5=1,H,VAR5=-1,L,0),COLORWHITE,LINETHICK2;
+ DRAWLINE(VAR5=-1,L,VAR5=1,H,0),COLORWHITE,LINETHICK2; ]]></Desc>
+		</Func>		
+		<Func F="CHNZSQJ" N="走势分解中枢递归"  P="0">
+		<Desc><![CDATA[
+确定走势分解中枢开始和结束位置.
+用法:
+ CHNZSQJ;
+ 返回数值=1为上涨中枢起点,返回数值=2为上涨中枢结束位置,
+ 返回数值=3为下跌中枢起点,返回数值=4为下跌中枢结束位置,
+例如:
+ VAR1:=CHBI(H,L,P);
+ DRAWLINE(VAR1 =-1, L, VAR1 =1, H, 0) COLORRED, LINETHICK1;
+ DRAWLINE(VAR1 =1, H, VAR1 =-1, L, 0) COLORGREEN, LINETHICK1;
+ VAR2:=CHDUAN;
+ DRAWLINE(VAR2=1,H,VAR2=-1,L,0),COLORBLUE;
+ DRAWLINE(VAR2=-1,L,VAR2=1,H,0),COLORBLUE;
+ VAR3:=CHZSDG(VAR2);
+ DRAWLINE(VAR3=1,H,VAR3=-1,L,0),COLORRED,LINETHICK2;
+ DRAWLINE(VAR3=-1,L,VAR3=1,H,0),COLORRED,LINETHICK2;
+ VAR4:=CHNZSQJ;
+ ZSG:=BIZHONGSHUG;
+ ZSD:=BIZHONGSHUD;
+ DRAWTRANSRECT(VAR4=1 AND ZSG>ZSD ,ZSD,VAR4=2 AND ZSG>ZSD ,ZSG,96),COLORRED;
+ DRAWTRANSRECT(VAR4=3 AND ZSG >ZSD ,ZSD,VAR4=4 AND ZSG>ZSD ,ZSG,96),COLORGREEN;
+ ]]></Desc>
+		</Func>			
+		<Func F="WNMRNEW" N="无脑买入"  P="4">
+		<Desc><![CDATA[
+确定无脑买入的位置.
+用法:
+ WNMRNEW(P1,P2,H,L);
+例如:
+ 详见公式WNMR
+ ]]></Desc>
+		</Func>	
+		<Func F="WNMRPRINEW" N="无脑买入价格"  P="4">
+		<Desc><![CDATA[
+确定无脑买入的位置.
+用法:
+ WNMRPRINEW;
+例如:
+ 详见公式WNMR
+ ]]></Desc>
+		</Func>																																																															
+		<Func F="YGJ" N="一根筋"  P="2">
+		<Desc><![CDATA[
+确定一根筋数值.
+用法:
+ YGJ(C,P);
+ P默认为35.
+例如:
+ 一根筋:YGJ(C,P),COLORGREEN,LINETHICK2;
+IF(一根筋>=REF(一根筋,1),一根筋,DRAWNULL),LINETHICK3,COLORRED;
+]]></Desc>
+		</Func>
+		<Func F="BDTD" N="一根筋"  P="3">
+		<Desc><![CDATA[
+确定一根筋数值.
+用法:
+ BDTD(H,L,P);
+ P=1返回上轨数值;
+ P=2返回中轨数值;
+ P=3返回下轨数值
+ P默认为35.
+例如:
+上轨:BDTD(H,L,1),COLORGREEN,DOTLINE;
+中轨:BDTD(H,L,2),COLORMAGENTA,DOTLINE;
+下轨:BDTD(H,L,3),COLORCYAN,DOTLINE;
+]]></Desc>
+		</Func>		
+		</Category>
+	<Category N="逻辑函数">
+	<Func F="CROSS" N="上穿"  P="2">
+	<Desc><![CDATA[
+两条线交叉.
+用法:
+ CROSS(A,B)表示当A从下方向上穿过B时返回1,否则返回0
+例如:
+ CROSS(MA(CLOSE,5),MA(CLOSE,10))表示5日均线与10日均线交金叉
+ ]]></Desc>
+	</Func>
+	<Func F="LONGCROSS" N="持续周期后上穿"  P="3">
+	<Desc><![CDATA[
+两条线维持一定周期后交叉.
+ 用法:LONGCROSS(A,B,N)表示A在N周期内都小于B,本周期从下方向上穿过B时返回1,否则返回0
+ ]]></Desc>
+	</Func>
+	<Func F="UPNDAY" N="连涨"  P="2">
+	<Desc><![CDATA[
+返回是否连涨周期数.
+用法:
+ UPNDAY(CLOSE,M)
+ 表示连涨M个周期,M为常量
+ ]]></Desc>
+	</Func>
+	<Func F="DOWNNDAY" N="连跌"  P="2">
+	<Desc><![CDATA[
+返回是否连跌周期.
+用法:
+ DOWNNDAY(CLOSE,M)
+ 表示连跌M个周期,M为常量
+ ]]></Desc>
+	</Func>
+	<Func F="NDAY" N="连大"  P="3">
+	<Desc><![CDATA[
+返回是否持续存在X>Y
+用法:
+ NDAY(CLOSE,OPEN,3)
+ 表示连续3日收阳线
+ ]]></Desc>
+	</Func>
+	<Func F="EXIST" N="存在"  P="2">
+	<Desc><![CDATA[
+是否存在.
+例如:
+ EXIST(CLOSE>OPEN,10) 
+ 表示10日内存在着阳线
+ ]]></Desc>
+	</Func>
+	<Func F="EVERY" N="一直存在"  P="2">
+	<Desc><![CDATA[
+一直存在.
+例如:
+ EVERY(CLOSE>OPEN,N) 
+ 表示N日内一直阳线(N应大于0,小于总周期数,N支持变量)
+ ]]></Desc>
+	</Func>
+	<Func F="LAST" N="持续存在"  P="3">
+	<Desc><![CDATA[
+LAST(X,A,B):持续存在.
+例如:
+ LAST(CLOSE>OPEN,10,5) 
+ 表示从前10日到前5日内一直阳线
+ 若A为0,表示从第一天开始,B为0,表示到最后日止
+ ]]></Desc>
+	</Func>
+	</Category>
+	<Category N="算术函数">
+		<Func F="MAX" N="较大值"  P="2">
+		<Desc><![CDATA[
+求最大值.
+用法:
+ MAX(A,B)返回A和B中的较大值
+例如:
+ MAX(CLOSE-OPEN,0)表示若收盘价大于开盘价返回它们的差值,否则返回0
+]]></Desc>
+		</Func>
+		<Func F="MIN" N="较小值"  P="2">
+		<Desc><![CDATA[
+求最小值.
+用法:
+ MIN(A,B)返回A和B中的较小值
+例如:
+ MIN(CLOSE,OPEN)返回开盘价和收盘价中的较小值
+]]></Desc>
+		</Func>
+		<Func F="NOT" N="逻辑非"  P="1">
+		<Desc><![CDATA[
+求逻辑非.
+用法:
+ NOT(X)返回非X,即当X=0时返回1,否则返回0
+例如:
+ NOT(ISUP)表示平盘或收阴
+]]></Desc>
+		</Func>	
+			<Func F="IF" N="条件判断"  P="3">
+		<Desc><![CDATA[
+根据条件求不同的值.
+用法:
+ IF(X,A,B)若X不为0则返回A,否则返回B
+例如:
+ IF(CLOSE>OPEN,HIGH,LOW)表示该周期收阳则返回最高值,否则返回最低值
+]]></Desc>
+		</Func>	
+		<Func F="IFF" N="条件判断"  P="3">
+		<Desc><![CDATA[
+用法同IF一样
+]]></Desc>
+		</Func>
+		<Func F="IFN" N="条件反判断"  P="3">
+		<Desc><![CDATA[
+根据条件求不同的值,同IF判断相反.
+用法:
+ IFN(X,A,B)若X不为0则返回B,否则返回A
+例如:
+ IFN(CLOSE>OPEN,HIGH,LOW)表示该周期收阴则返回最高值,否则返回最低值
+]]></Desc>
+		</Func>
+		</Category>
+		<Category N="数学函数">
+		<Func F="ABS" N="绝对值"  P="1">
+		<Desc><![CDATA[
+求绝对值.
+用法:
+ ABS(X)返回X的绝对值
+例如:
+ ABS(-34)返回34
+]]></Desc>
+		</Func>
+		<Func F="MOD" N="模"  P="2">
+		<Desc><![CDATA[
+取模.
+用法:
+ MOD(M,N),返回M关于N的模(M除以N的余数)
+例如:
+ MOD(5,3)返回2
+]]></Desc>
+		</Func>
+		<Func F="LOG" N="对数"  P="1">
+		<Desc><![CDATA[
+求10为底的对数.
+用法:
+ LOG(X)取得X的对数
+例如:
+ LOG(100)等于2
+]]></Desc>
+		</Func>	
+		<Func F="LN" N="自然对数"  P="1">
+		<Desc><![CDATA[
+求自然对数.
+用法:
+ LN(X)以e为底的对数
+例如:
+ LN(CLOSE)求收盘价的对数
+]]></Desc>
+		</Func>
+		<Func F="POW" N="乘幂"  P="2">
+		<Desc><![CDATA[
+乘幂.
+用法:
+ POW(A,B)返回A的B次幂
+例如:
+ POW(CLOSE,3)求得收盘价的3次方
+]]></Desc>
+		</Func>
+		<Func F="EXP" N="指数"  P="1">
+		<Desc><![CDATA[
+指数.
+用法:
+ EXP(X)为e的X次幂
+例如:
+ EXP(CLOSE)返回e的CLOSE次幂
+]]></Desc>
+		</Func>
+		<Func F="SQRT" N="开方"  P="1">
+		<Desc><![CDATA[
+开平方.
+用法:
+ SQRT(X)为X的平方根
+例如:
+ SQRT(CLOSE)收盘价的平方根
+]]></Desc>
+		</Func>
+		<Func F="SIN" N="正弦"  P="1">
+		<Desc><![CDATA[
+正弦值.
+用法:
+ SIN(X)返回X的正弦值
+]]></Desc>
+		</Func>
+		<Func F="COS" N="余弦"  P="1">
+		<Desc><![CDATA[
+余弦值.
+用法:
+ COS(X)返回X的余弦值
+]]></Desc>
+		</Func>
+		<Func F="TAN" N="正切"  P="1">
+		<Desc><![CDATA[
+正切值.
+用法:
+ TAN(X)返回X的正切值
+]]></Desc>
+		</Func>
+		<Func F="ASIN" N="反正弦"  P="1">
+		<Desc><![CDATA[
+反正弦值.
+用法:
+ ASIN(X)返回X的反正弦值
+]]></Desc>
+		</Func>
+		<Func F="ACOS" N="反余弦"  P="1">
+		<Desc><![CDATA[
+反余弦值.
+用法:
+ ACOS(X)返回X的反余弦值
+]]></Desc>
+		</Func>
+		<Func F="ATAN" N="反正切"  P="1">
+		<Desc><![CDATA[
+反正切值.
+用法:
+ ATAN(X)返回X的反正切值
+]]></Desc>
+		</Func>
+		<Func F="CEILING" N="向上舍入"  P="1">
+		<Desc><![CDATA[
+向上舍入.
+用法:
+ CEILING(A)返回沿A数值增大方向最接近的整数
+例如:
+ CEILING(12.3)求得13,CEILING(-3.5)求得-3
+]]></Desc>
+		</Func>
+		<Func F="FLOOR" N="向下舍入"  P="1">
+		<Desc><![CDATA[
+向下舍入.
+用法:
+ FLOOR(A)返回沿A数值减小方向最接近的整数
+例如:
+ FLOOR(12.3)求得12,FLOOR(-3.5)求得-4
+]]></Desc>
+		</Func>
+		<Func F="INTPART" N="整数部分"  P="1">
+		<Desc><![CDATA[
+取整.
+用法:
+ INTPART(A)返回沿A绝对值减小方向最接近的整数
+例如:
+ INTPART(12.3)求得12,INTPART(-3.5)求得-3
+]]></Desc>
+		</Func>
+		<Func F="BETWEEN" N="介于"  P="3">
+		<Desc><![CDATA[
+介于.
+用法:
+ BETWEEN(A,B,C)表示A处于B和C之间时返回1,B<A<C或C<A<B,否则返回0
+例如:
+ BETWEEN(CLOSE,MA(CLOSE,10),MA(CLOSE,5))表示收盘价介于5日均线和10日均线之间
+]]></Desc>
+		</Func>
+		</Category>
+		<Category N="板块字符">
+		<Func F="STRCAT" N="字符串相加"  P="2">
+		<Desc><![CDATA[
+STRCAT(A,B):将两个字符串A,B(非序列化)相加成一个字符串C.
+用法:
+ STRCAT('多头','开仓')将两个字符串'多头','开仓'相加成一个字符串'多头开仓'
+]]></Desc>
+		</Func>
+		<Func F="VAR2STR" N="取值转为字符串（序列）"  P="2">
+		<Desc><![CDATA[
+VAR2STR(A,N):取A的每一个值转为字符串,小数位数N.
+用法:
+ VAR2STR(C,3)表示取收盘价,以3位小数转为字符串
+]]></Desc>
+		</Func>
+		</Category>
+		<Category N="引用函数">
+		<Func	 F="BARSLASTCOUNT(X)" N="统计连续满足条件的周期数"  P="OPEN">
+		<Desc><![CDATA[统计连续满足条件的周期数.
+用法:
+ BARSLASTCOUNT(X),统计连续满足X条件的周期数.
+例如:
+ BARSLASTCOUNT(CLOSE>OPEN)表示统计连续收阳的周期数
+]]></Desc>
+		</Func>
+		
+				<Func	 F="DRAWNULL(X)" N="无效数"  P="OPEN">
+		<Desc><![CDATA[返回无效数.
+用法:
+ DRAWNULL
+例如:
+ IF(CLOSE>REF(CLOSE,1),CLOSE,DRAWNULL)表示下跌时不画线
+]]></Desc>
+		</Func>
+				<Func	 F="BACKSET(X)" N="向前赋值"  P="OPEN">
+		<Desc><![CDATA[属于未来函数,将当前位置到若干周期前的数据设为1.
+用法:
+ BACKSET(X,N),若X非0,则将当前位置到N周期前的数值设为1.
+ 例如:
+ BACKSET(CLOSE>OPEN,2)若收阳则将该周期及前一周期数值设为1,否则为0
+]]></Desc>
+		</Func>
+				<Func	 F="BARSCOUNT(X)" N="有效数据周期数"  P="OPEN">
+		<Desc><![CDATA[求总的周期数.
+用法:
+ BARSCOUNT(X)第一个有效数据到当前的天数
+例如:BARSCOUNT(CLOSE)对于日线数据取得上市以来总交易日数
+]]></Desc>
+		</Func>
+				<Func	 F="CURRBARSCOUNT(X)" N="到最后交易日的周期数"  P="OPEN">
+		<Desc><![CDATA[求到最后交易日的周期数.
+用法:
+ CURRBARSCOUNT 求到最后交易日的周期数
+
+]]></Desc>
+		</Func>
+				<Func	 F="TOTALBARSCOUNT(X)" N="总的周期数"  P="OPEN">
+		<Desc><![CDATA[求总的周期数.
+用法:
+ TOTALBARSCOUNT 求总的周期数
+]]></Desc>
+		</Func>
+				<Func	 F="BARSLAST(X)" N="上一次条件成立到当前的周期数"  P="OPEN">
+		<Desc><![CDATA[上一次条件成立到当前的周期数.
+用法:
+ BARSLAST(X):上一次X不为0到现在的天数
+例如:
+ BARSLAST(CLOSE/REF(CLOSE,1)>=1.1)表示上一个涨停板到当前的周期数
+]]></Desc>
+		</Func>
+				<Func	 F="BARSNEXT(X)" N="下一次条件成立到当前的周期数"  P="OPEN">
+		<Desc><![CDATA[属于未来函数,下一次条件成立到当前的周期数.
+用法:
+ BARSNEXT(X):下一次X不为0到现在的天数
+例如:
+ BARSNEXT(CLOSE/REF(CLOSE,1)>=1.1)表示下一个涨停板到当前的周期数
+]]></Desc>
+		</Func>
+						<Func	 F="BARSLASTCOUNT(X)" N="统计连续满足条件的周期数"  P="OPEN">
+		<Desc><![CDATA[统计连续满足条件的周期数.
+用法:
+ BARSLASTCOUNT(X),统计连续满足X条件的周期数.
+例如:
+ BARSLASTCOUNT(CLOSE>OPEN)表示统计连续收阳的周期数
+]]></Desc>
+		</Func>
+						<Func	 F="BARSSINCE(X)" N="第一个条件成立到当前的周期数"  P="OPEN">
+		<Desc><![CDATA[第一个条件成立到当前的周期数.
+用法:
+ BARSSINCE(X):第一次X不为0到现在的天数
+例如:
+ BARSSINCE(HIGH>10)表示股价超过10元时到当前的周期数
+]]></Desc>
+		</Func>
+						<Func	 F="BARSSINCEN(X)" N="N周期内第一个条件成立到当前的周期数"  P="OPEN">
+		<Desc><![CDATA[N周期内第一个条件成立到当前的周期数.
+用法:
+ BARSSINCEN(X,N):N周期内第一次X不为0到现在的天数,N为常量
+例如:
+ BARSSINCEN(HIGH>10,10)表示10个周期内股价超过10元时到当前的周期数
+]]></Desc>
+		</Func>
+						<Func	 F="COUNT(X)" N="统计满足条件的周期数"  P="OPEN">
+		<Desc><![CDATA[统计满足条件的周期数.
+用法:
+ COUNT(X,N),统计N周期中满足X条件的周期数,若N<0则从第一个有效值开始.
+例如:
+ COUNT(CLOSE>OPEN,20)表示统计20周期内收阳的周期数
+]]></Desc>
+		</Func>
+						<Func	 F="HHV(X)" N="最高值"  P="OPEN">
+		<Desc><![CDATA[求最高值.
+用法:
+ HHV(X,N),求N周期内X最高值,N=0则从第一个有效值开始.
+例如:
+ HHV(HIGH,30)表示求30日最高价
+]]></Desc>
+		</Func>
+						<Func	 F="HHVBARS(X)" N="求上一高点到当前的周期数"  P="OPEN">
+		<Desc><![CDATA[求上一高点到当前的周期数.
+用法:
+ HHVBARS(X,N):求N周期内X最高值到当前周期数,N=0表示从第一个有效值开始统计
+例如:
+ HHVBARS(HIGH,0)求得历史新高到到当前的周期数
+]]></Desc>
+		</Func>
+						<Func	 F="HOD(X)" N="求高值名次"  P="OPEN">
+		<Desc><![CDATA[求高值名次.
+用法:
+ HOD(X,N):求当前X数据是N周期内的第几个高值,N=0则从第一个有效值开始.
+例如:
+ HOD(HIGH,20)返回是20日的第几个高价
+]]></Desc>
+		</Func>
+						<Func	 F="LLV(X)" N="最低值"  P="OPEN">
+		<Desc><![CDATA[求最低值.
+用法:
+ LLV(X,N),求N周期内X最低值,N=0则从第一个有效值开始.
+例如:
+ LLV(LOW,0)表示求历史最低价
+]]></Desc>
+		</Func>
+						<Func	 F="LLVBARS(X)" N="求上一低点到当前的周期数"  P="OPEN">
+		<Desc><![CDATA[求上一低点到当前的周期数.
+用法:
+ LLVBARS(X,N):求N周期内X最低值到当前周期数,N=0表示从第一个有效值开始统计
+例如:
+ LLVBARS(HIGH,20)求得20日最低点到当前的周期数
+]]></Desc>
+		</Func>
+								<Func	 F="LOD(X)" N="求低值名次"  P="OPEN">
+		<Desc><![CDATA[求低值名次.
+用法:
+ LOD(X,N):求当前X数据是N周期内的第几个低值,N=0则从第一个有效值开始.
+例如:
+ LOD(LOW,20)返回是20日的第几个低价
+]]></Desc>
+		</Func>
+								<Func	 F="REVERSE(X)" N="求相反数"  P="OPEN">
+		<Desc><![CDATA[求相反数.
+用法:
+ REVERSE(X)返回-X.
+例如:
+ REVERSE(CLOSE)返回-CLOSE
+]]></Desc>
+		</Func>
+								<Func	 F="REF(X)" N="向前引用"  P="OPEN">
+		<Desc><![CDATA[引用若干周期前的数据(平滑处理).
+用法:
+ REF(X,A),引用A周期前的X值.A可以是变量.
+平滑处理:当引用不到数据时进行的操作.此函数中,平滑时使用上一个周期的引用值.
+例如:
+ REF(CLOSE,BARSCOUNT(C)-1)表示第二根K线的收盘价.
+]]></Desc>
+		</Func>
+								<Func	 F="REFX(X)" N="向后引用"  P="OPEN">
+		<Desc><![CDATA[属于未来函数,引用若干周期后的数据(平滑处理).
+用法:
+ REFX(X,A),引用A周期后的X值.A可以是变量.
+平滑处理:当引用不到数据时进行的操作.此函数中,平滑时使用上一个周期的引用值.
+例如:
+ TT:=IF(C>O,1,2);
+ REFX(CLOSE,TT);表示阳线引用下一周期的收盘价,阴线引用日后第二周期的收盘价.
+]]></Desc>
+		</Func>
+				<Func	 F="REFDATE(X)" N="引用指定日期的数据"  P="OPEN">
+		<Desc><![CDATA[指标引用.
+用法:CALCSTOCKINDEX(品种代码,指标名称,指标线),返回该指标相应输出的计算值.
+例如:
+ CALCSTOCKINDEX('SH600000','KDJ',3)表示上证600000的KDJ指标第3个输出即J之值,第一个参数可在前面加SZ(深市),SH(沪市),或市场_,,
+CALCSTOCKINDEX('47_IFL0','MACD',2)表示IFL0品种的MACD指标第2个输出值.
+
+注意:引用品种的对应周期的数据必须要先下载到本地
+]]></Desc>
+		</Func>
+				<Func	 F="BARSNEXT(X)" N="下一次条件成立到当前的周期数"  P="OPEN">
+		<Desc><![CDATA[属于未来函数,下一次条件成立到当前的周期数.
+用法:
+ BARSNEXT(X):下一次X不为0到现在的天数
+例如:
+ BARSNEXT(CLOSE/REF(CLOSE,1)>=1.1)表示下一个涨停板到当前的周期数
+]]></Desc>
+		</Func>
+						<Func	 F="SUM(X)" N="求和"  P="OPEN">
+		<Desc><![CDATA[求总和.
+用法:
+ SUM(X,N),统计N周期中X的总和,N=0则从第一个有效值开始.
+例如:
+ SUM(VOL,0)表示统计从上市第一天以来的成交量总和
+]]></Desc>
+		</Func>
+						<Func	 F="MULAR(X)" N="求累乘"  P="OPEN">
+		<Desc><![CDATA[求累乘.
+用法:
+ MULAR(X,N),统计N周期中X的乘积.N=0则从第一个有效值开始.
+例如:
+ MULAR(C/REF(C,1),0)表示统计从上市第一天以来的复利
+]]></Desc>
+		</Func>
+						<Func	 F="FILTER(X)" N="过滤连续出现的信号"  P="OPEN">
+		<Desc><![CDATA[过滤连续出现的信号.
+用法:FILTER(X,N):X满足条件后,将其后N周期内的数据置为0,N为常量.
+例如:
+ FILTER(CLOSE>OPEN,5)查找阳线,5天内再次出现的阳线不被记录在内
+]]></Desc>
+		</Func>
+						<Func	 F="FILTERX(X)" N="反向过滤连续出现的信号"  P="OPEN">
+		<Desc><![CDATA[反向过滤连续出现的信号.
+用法:FILTERX(X,N):X满足条件后,将其前N周期内的数据置为0,N为常量.
+例如:
+ FILTERX(CLOSE>OPEN,5)查找阳线,前5天内出现过的阳线不被记录在内
+]]></Desc>
+		</Func>
+						<Func	 F="TFILT(X)" N="区间过滤"  P="OPEN">
+		<Desc><![CDATA[对指定时间段的数据进行过滤,该时间段以外的数据无效.
+用法:
+ TFILT(X,D1,M1,D2,M2)
+例如:
+ TFILT(CLOSE,1040101,1025,1040101,1345)表示在2004年1月1日的10:25到2004年1月1日的13:45的收盘价是有效的.
+周期以日为基本单位的,分时为0有效.
+]]></Desc>
+		</Func>
+						<Func	 F="TFILTER(X)" N="过滤连续出现的信号"  P="OPEN">
+		<Desc><![CDATA[过滤连续出现的信号.
+用法:TFILTER(买入条件,卖出条件,N);过滤掉买入(卖出)信号发出后,下一个反向信号发出前的所有买入(卖出)信号.
+
+N=1表示仅对买入信号过滤;
+N=2表示仅对卖出信号过滤;
+N=0表示对买入和卖出信号都过滤,返回1,2表示买入或卖出条件成立;
+同一K线上只能有一个信号;
+
+例如:
+ENTERLONG:TFILTER(买入,卖出,1);
+EXITLONG:TFILTER(买入,卖出,2);
+]]></Desc>
+		</Func>
+						<Func	 F="TTFILTER(X)" N="按照开平配对等原则过滤不合理的信号"  P="OPEN">
+		<Desc><![CDATA[按照开平配对等原则过滤不合理的信号.
+用法:TTFILTER(买入开仓,卖出平仓,卖出开仓,买入平仓,N);
+
+主要规则有:
+1.连续的同方向指令只有第一个有效,其他的将被过滤;
+2.交易信号必须配对出现(比如前面已经有了买开指令,则后面只允许出现卖平指令,其他的指令都被过滤掉);
+
+N=1表示仅对买入开仓信号过滤;
+N=2表示仅对卖出平仓信号过滤;
+N=3表示仅对卖出开仓信号过滤;
+N=4表示仅对买入平仓信号过滤;
+N=0表示都过滤,返回1,2,3,4分别表示对应的条件成立;
+同一K线上只能有一个信号;
+
+例如:
+ENTERLONG:TTFILTER(买入开仓,卖出平仓,卖出开仓,买入平仓,1);
+EXITLONG:TTFILTER(买入开仓,卖出平仓,卖出开仓,买入平仓,2);
+ENTERSHORT:TTFILTER(买入开仓,卖出平仓,卖出开仓,买入平仓,3);
+EXITSHORT:TTFILTER(买入开仓,卖出平仓,卖出开仓,买入平仓,4);
+]]></Desc>
+		</Func>
+								<Func	 F="TR(X)" N="求真实波幅"  P="OPEN">
+		<Desc><![CDATA[求真实波幅.
+用法:
+ TR,求真实波幅.
+ 例如:ATR:=MA(TR,10);
+ 表示求真实波幅的10周期均值
+
+]]></Desc>
+		</Func>
+								<Func	 F="SUMBARS(X)" N="向前累加到指定值到现在的周期数"  P="OPEN">
+		<Desc><![CDATA[向前累加到指定值到现在的周期数.
+用法:
+ SUMBARS(X,A):将X向前累加直到大于等于A,返回这个区间的周期数
+ 例如:SUMBARS(VOL,CAPITAL)求完全换手到现在的周期数
+]]></Desc>
+		</Func>
+				<Func	 F="SLOPE(X)" N="线性回归斜率"  P="OPEN">
+		<Desc><![CDATA[SLOPE(X,N) 返回线性回归斜率
+]]></Desc>
+		</Func>
+				<Func	 F="SAR(X)" N="抛物转向"  P="OPEN">
+		<Desc><![CDATA[抛物转向.
+用法:
+ SAR(N,S,M),N为计算周期,S为步长,M为极值
+例如:
+ SAR(10,2,20)表示计算10日抛物转向,步长为2%,极限值为20%
+]]></Desc>
+		</Func>
+				<Func	 F="RANGE(X)" N="A在B和C范围之间"  P="OPEN">
+		<Desc><![CDATA[RANGE(A,B,C):A在B和C范围之间,B<A<C.
+用法:
+ RANGE(A,B,C)表示A大于B同时小于C时返回1,否则返回0
+]]></Desc>
+		</Func>
+
+
+      
+<Func F="TOPRANGE" N="当前值是近多少周期内的最大值"  P="OPEN">
+<Desc>
+<![CDATA[当前值是近多少周期内的最大值.
+用法:
+ TOPRANGE(X):X是近多少周期内X的最大值
+例如:
+ TOPRANGE(HIGH)表示当前最高价是近多少周期内最高价的最大值
+]]>
+</Desc>
+</Func>
+
+<Func F="LOWRANGE" N="当前值是近多少周期内的最小值"  P="OPEN">
+<Desc>
+<![CDATA[当前值是近多少周期内的最小值.
+用法:
+ LOWRANGE(X):X是近多少周期内X的最小值
+例如:
+ LOWRANGE(LOW)表示当前最低价是近多少周期内最低价的最小值
+]]>
+</Desc>
+</Func>      
+      
+      
+      
+		<Func F="BARSLAST" N="上一次条件成立到当前的周期数"  P="OPEN">
+		<Desc><![CDATA[上一次条件成立到当前的周期数.
+用法:
+ BARSLAST(X):上一次X不为0到现在的天数
+例如:
+ BARSLAST(CLOSE/REF(CLOSE,1)>=1.1)表示上一个涨停板到当前的周期数
+]]></Desc>
+		</Func>
+		<Func F="ISLASTBAR" N="判断是否为最后一个周期"  P="OPEN">
+		<Desc><![CDATA[判断是否为最后一个周期.
+用法:
+ ISLASTBAR 判断是否为最后一个周期
+]]></Desc>
+		</Func>
+		<Func F="DRAWNULL" N="返回无效数"  P="OPEN">
+		<Desc><![CDATA[返回无效数.
+用法:
+ DRAWNULL
+例如:
+ IF(CLOSE>REF(CLOSE,1),CLOSE,DRAWNULL)表示下跌时不画线
+]]></Desc>
+		</Func>
+
+		<Func F="RANGE" N="介于范围之间"  P="OPEN">
+		<Desc><![CDATA[RANGE(A,B,C):A在B和C范围之间,B<A<C.
+用法:
+ RANGE(A,B,C)表示A大于B同时小于C时返回1,否则返回0
+]]></Desc>
+		</Func>
+		<Func F="TFILTER" N="过滤连续出现的信号"  P="OPEN">
+		<Desc><![CDATA[过滤连续出现的信号.
+用法:TFILTER(买入条件,卖出条件,N);过滤掉买入(卖出)信号发出后,下一个反向信号发出前的所有买入(卖出)信号.
+N=1表示仅对买入信号过滤;
+N=2表示仅对卖出信号过滤;
+N=0表示对买入和卖出信号都过滤,返回1,2表示买入或卖出条件成立;
+同一K线上只能有一个信号;
+例如:
+ENTERLONG:TFILTER(买入,卖出,1);
+EXITLONG:TFILTER(买入,卖出,2);
+]]></Desc>
+		<Func F=" BARSTATUS " N="数据位置信息"  P="OPEN">
+		<Desc><![CDATA[BARSTATUS返回数据位置信息,1表示第一根K线,2表示最后一个数据,0表示中间位置.
+例如:
+ BARSTATUS=2表示当天是该数据的最后一个周期.
+]]></Desc>
+		</Func>
+		<Func F=" BARSNEXT " N="下一次条件成立到当前的周期数"  P="OPEN">
+		<Desc><![CDATA[属于未来函数,下一次条件成立到当前的周期数.
+用法:
+ BARSNEXT(X):下一次X不为0到现在的天数
+例如:
+ BARSNEXT(CLOSE/REF(CLOSE,1)>=1.1)表示下一个涨停板到当前的周期数
+]]></Desc>
+
+		</Func>
+		<Func F=" BARSSINCEN " N="N周期内第一个条件成立到当前的周期数"  P="OPEN">
+		<Desc><![CDATA[N周期内第一个条件成立到当前的周期数.
+用法:
+ BARSSINCEN(X,N):N周期内第一次X不为0到现在的天数,N为常量
+例如:
+ BARSSINCEN(HIGH>10,10)表示10个周期内股价超过10元时到当前的周期数
+]]></Desc>
+
+		</Func>
+		<Func F=" HOD " N="求高值名次."  P="OPEN">
+		<Desc><![CDATA[求高值名次.
+用法:
+ HOD(X,N):求当前X数据是N周期内的第几个高值,N=0则从第一个有效值开始.
+例如:
+ HOD(HIGH,20)返回是20日的第几个高价
+]]></Desc>
+
+		</Func>
+		<Func F=" LOD " N="求低值名次."  P="OPEN">
+		<Desc><![CDATA[求低值名次.
+用法:
+ LOD(X,N):求当前X数据是N周期内的第几个低值,N=0则从第一个有效值开始.
+例如:
+ LOD(LOW,20)返回是20日的第几个低价
+]]></Desc>
+		</Func>
+		<Func F=" REFX " N="属于未来函数,引用若干周期后的数据(平滑处理)."  P="OPEN">
+		<Desc><![CDATA[属于未来函数,引用若干周期后的数据(平滑处理).
+用法:
+ REFX(X,A),引用A周期后的X值.A可以是变量.
+平滑处理:当引用不到数据时进行的操作.此函数中,平滑时使用上一个周期的引用值.
+例如:
+ TT:=IF(C>O,1,2);
+ REFX(CLOSE,TT);表示阳线引用下一周期的收盘价,阴线引用日后第二周期的收盘价.
+]]></Desc>
+
+		</Func>
+		<Func F=" REFV " N="引用若干周期前的数据(未作平滑处理). "  P="OPEN">
+		<Desc><![CDATA[引用若干周期前的数据(未作平滑处理).
+用法:
+ REFV(X,A),引用A周期前的X值.A可以是变量.
+平滑处理:当引用不到数据时进行的操作.
+例如:
+ REFV(CLOSE,BARSCOUNT(C)-1)表示第二根K线的收盘价.
+]]></Desc>
+
+		</Func>
+		<Func F=" REFXV " N="属于未来函数,引用若干周期后的数据(未作平滑处理)."  P="OPEN">
+		<Desc><![CDATA[属于未来函数,引用若干周期后的数据(未作平滑处理).
+用法:
+ REFXV(X,A),引用A周期后的X值.A可以是变量.
+平滑处理:当引用不到数据时进行的操作.
+例如:
+ REFXV(CLOSE,1)表示下一周期的收盘价,在日线上就是明天收盘价
+]]></Desc>
+		</Func>	
+		</Func>
+		</Category>
+		<Category N="指数函数">
+		<Func F="INDEXADV" N="大盘的上涨家数"  P="OPEN">
+		<Desc><![CDATA[INDEXADV  返回对应的上涨家数,分别是上证指数,深证成指,中小板指和创业板指
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+<Func F="NOTEXT" N="不显示输出线数据"  P="OPEN">
+		<Desc><![CDATA[输出线名称前带有NOTEXT字样时,不显示输出线数据
+]]></Desc>
+		</Func>
+								
+		<Func F="INDEXA" N="大盘的成交额"  P="OPEN">
+		<Desc><![CDATA[INDEXA    返回对应的大盘成交额,分别是上证指数,深证成指,中小板指和创业板指,港股为恒生指数,国内期货为对应的L9指数品种(持仓量)
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		</Func>
+	
+		<Func F="INDEXDEC" N="大盘的下跌家数"  P="OPEN">
+		<Desc><![CDATA[INDEXDEC  返回对应的下跌家数,分别是上证指数,深证成指,中小板指和创业板指
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		<Func F="INDEXO " N="大盘的开盘价"  P="OPEN">
+		<Desc><![CDATA[INDEXO    返回对应的大盘开盘价,分别是上证指数,深证成指,中小板指和创业板指,港股为恒生指数,国内期货为对应的L9指数品种
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		<Func F="INDEXV " N="大盘成交量"  P="OPEN">
+		<Desc><![CDATA[INDEXV    返回对应的大盘成交量,分别是上证指数,深证成指,中小板指和创业板指,港股为恒生指数,国内期货为对应的L9指数品种
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		</Category>
+				<Category N="行情函数">
+		<Func F="PERIOD " N="周期类型"  P="0">
+		<Desc><![CDATA[取得周期类型.
+结果从0到9,依次分别是1/5/15/30/60分钟,日/周/月,多分钟线,多日线，季/年
+]]></Desc>
+		</Func>
+		<Func F="OPEN " N="开盘价"  P="0">
+		<Desc><![CDATA[返回该周期开盘价.
+用法:
+ OPEN
+]]></Desc>
+		</Func>
+		<Func F="O " N="开盘价" P="0">
+		<Desc><![CDATA[返回该周期开盘价.
+用法:
+ 同OPEN
+]]></Desc>
+		</Func>
+		<Func F="HIGH " N="最高价"  P="0">
+		<Desc><![CDATA[返回该周期最高价.
+用法:
+ HIGH
+]]></Desc>
+		</Func>
+		<Func F="H " N="最高价"  P="0">
+		<Desc><![CDATA[返回该周期最高价.
+用法:
+ 同HIGH
+]]></Desc>		
+		</Func>
+		<Func F="LOW " N="最低价"  P="0">
+		<Desc><![CDATA[返回该周期最低价.
+用法:
+ LOW
+]]></Desc>	
+		</Func>
+		<Func F="L " N="最低价"  P="0">
+		<Desc><![CDATA[返回该周期最低价.
+用法:
+ 同LOW
+]]></Desc>	
+		</Func>
+		<Func F="CLOSE " N="收盘价"  P="0">
+		<Desc><![CDATA[返回该周期收盘价.
+用法:
+ CLOSE
+]]></Desc>		
+		</Func>
+		<Func F="C " N="收盘价"  P="0">
+		<Desc><![CDATA[返回该周期收盘价.
+用法:
+ CLOSE
+]]></Desc>		
+		</Func>
+		<Func F="VOL " N="成交量"  P="0">
+		<Desc><![CDATA[返回该周期成交量.
+用法:
+ VOL
+]]></Desc>		
+		</Func>
+		<Func F="V " N="成交量"  P="0">
+		<Desc><![CDATA[返回该周期成交量.
+用法:
+ 同VOL
+]]></Desc>		
+		</Func>			
+		<Func F="VOLINSTK " N="持仓量"  P="OPEN">
+		<Desc><![CDATA[返回该周期持仓量,对于期货和期权有意义.
+用法:
+ VOLINSTK
+]]></Desc>
+		</Func>
+		<Func F="QHJSJ " N="结算价"  P="OPEN">
+		<Desc><![CDATA[返回该周期结算价,对于期货和期权有意义.
+用法:
+ QHJSJ
+]]></Desc>
+		</Func>
+				<Func F="AMOUNT " N="成交额"  P="0">
+		<Desc><![CDATA[返回该周期成交额.期货和期权无成交金额
+用法:
+ AMOUNT
+]]></Desc>
+		</Func>		<Func F="ADVANCE " N="上涨家数"  P="0">
+		<Desc><![CDATA[返回该周期上涨家数.
+用法:
+ ADVANCE(本函数仅对沪深指数有效)
+]]></Desc>
+		</Func>		<Func F="DECLINE " N="下跌家数"  P="0">
+		<Desc><![CDATA[返回该周期下跌家数.
+用法:
+ DECLINE(本函数仅对沪深指数有效)
+]]></Desc>
+		</Func>		<Func F="DLDING " N="动力顶家数"  P="0">
+		
+		</Func>		<Func F="DLDI " N="动力底家数"  P="0">
+		
+		</Func>		<Func F="DLZS " N="动力总家数"  P="0">
+		
+		</Func>		<Func F="DINGBL " N="动力顶背离家数"  P="0">
+
+		</Func>		<Func F="DIBL " N="动力底背离家数"  P="0">
+		
+		</Func>		<Func F="BLZS " N="动力背离总家数"  P="0">
+
+		</Func>		<Func F="ISLASTBAR " N="是否最后一个周期"  P="0">
+		<Desc><![CDATA[判断是否为最后一个周期.
+用法:
+ ISLASTBAR 判断是否为最后一个周期
+]]></Desc>
+		</Func>		<Func F="CAPITAL " N="当前流通股本（手）"  P="0">
+		<Desc><![CDATA[CAPITAL  当前流通股本
+]]></Desc>		
+		</Func>		<Func F="DYNAINFO " N="动态行情"  P="0">
+
+		</Func>		<Func F="WINNER " N="获利盘比例"  P="0">
+		<Desc><![CDATA[获利盘比例.
+用法:
+ WINNER(CLOSE),表示以当前收市价卖出的获利盘比例,例如返回0.1表示10%获利盘;WINNER(10.5)表示10.5元价格的获利盘比例
+该函数仅对日线分析周期有效
+]]></Desc>
+		</Func>	
+		<Func F="ZIG " N="之字转向"  P="2">
+		<Desc><![CDATA[属于未来函数,之字转向.
+用法:
+ ZIG(K,N),当价格变化量超过N%时转向,K表示0:开盘价,1:最高价,2:最低价,3:收盘价,其余:数组信息
+例如:
+ ZIG(3,5)表示收盘价的5%的ZIG转向
+]]></Desc>
+		</Func>
+		<Func F="TROUGHBARS " N="波谷位置"  P="3">
+		<Desc><![CDATA[属于未来函数,前M个ZIG转向波谷到当前距离.
+用法:
+ TROUGHBARS(K,N,M)表示之字转向ZIG(K,N)的前M个波谷到当前的周期数,M必须大于等于1
+例如:
+ TROUGHBARS(2,5,2)表示%5最低价ZIG转向的前2个波谷到当前的周期数
+]]></Desc>
+		</Func>
+		<Func F="TROUGH " N="波谷值"  P="3">
+		<Desc><![CDATA[属于未来函数,前M个ZIG转向波谷值.
+用法:
+ TROUGH(K,N,M)表示之字转向ZIG(K,N)的前M个波谷的数值,M必须大于等于1
+例如:
+ TROUGH(2,5,2)表示%5最低价ZIG转向的前2个波谷的数值
+]]></Desc>
+		</Func>
+		<Func F="PEAKBARS " N="波峰位置"  P="3">
+		<Desc><![CDATA[属于未来函数,前M个ZIG转向波峰到当前距离.
+用法:
+ PEAKBARS(K,N,M)表示之字转向ZIG(K,N)的前M个波峰到当前的周期数,M必须大于等于1
+例如:
+ PEAKBARS(0,5,1)表示%5开盘价ZIG转向的上一个波峰到当前的周期数
+]]></Desc>
+		</Func>
+		<Func F="PEAK " N="波峰值"  P="3">
+		<Desc><![CDATA[属于未来函数,前M个ZIG转向波峰值.
+用法:
+ PEAK(K,N,M)表示之字转向ZIG(K,N)的前M个波峰的数值,M必须大于等于1
+例如:
+ PEAK(1,5,1)表示%5最高价ZIG转向的上一个波峰的数值
+]]></Desc>
+		</Func>	
+		</Category>
+				<Category N="时间函数">
+		<Func F="DATE" N="日期"  P="0">
+		<Desc><![CDATA[取得该周期从1900以来的的年月日.
+用法:
+ DATE
+ 例如函数返回20010101表示2001年1月1日
+]]></Desc>
+		</Func>
+		<Func F="TIME" N="时间"  P="0"></Func>
+		<Desc><![CDATA[取得该周期的时分,适用于日线以下周期
+用法: 
+ TIME
+ 函数返回有效值范围为(0000-2359)
+]]></Desc>
+		<Func F="YEAR" N="年份"  P="0"></Func>
+		<Desc><![CDATA[取得该周期的年份.
+用法:
+ YEAR
+注:YEAR关键字也可用于跨周期年线引用
+用法:
+ DATE
+ 例如函数返回1000101,表示2000年1月1日,DATE+19000000后才是真正的日期值
+]]></Desc>
+		<Func F="MONTH" N="月份"  P="0"></Func>
+		<Desc><![CDATA[取得该周期的月份.
+用法:
+ MONTH
+ 函数返回有效值范围为(1-12)
+
+注:MONTH关键字也可用于跨周期月线引用
+]]></Desc>
+		<Func F="DAY" N="日"  P="0"></Func>
+		<Desc><![CDATA[取得该周期的日期.
+用法:
+ DAY
+ 函数返回有效值范围为(1-31)
+注:DAY关键字也可用于跨周期日线引用
+]]></Desc>
+		<Func F="HOUR" N="小时"  P="0"></Func>
+		<Desc><![CDATA[取得该周期的小时数.
+用法:
+ HOUR
+ 函数返回有效值范围为(0-23),对于日线及更长的分析周期值为0
+]]></Desc>
+		<Func F="MINUTE" N="分钟"  P="0"></Func>
+		<Desc><![CDATA[取得该周期的分钟数.
+用法:
+ MINUTE
+ 函数返回有效值范围为(0-59),对于日线及更长的分析周期值为0
+]]></Desc>
+		<Func F="SECOND" N=""  P="0"></Func>
+		</Category>
+				<Category N="绘图函数">
+		<Func F="STICKLINE" N="柱图"  P="5">
+		<Desc><![CDATA[STICKLINE(CLOSE>OPEN,CLOSE,OPEN,0.8,1)表示画K线中阳线的空心柱体部分.
+]]></Desc>
+		</Func>
+		<Func F="DRAWTEXT" N="在图形上显示文字"  P="3">
+		<Desc><![CDATA[DRAWTEXT(CLOSE/OPEN>1.08,LOW,'大阳线')表示当日实体阳线大于8%时在最低价位置显示'大阳线'字样.
+]]></Desc>
+		</Func>
+		<Func F="DRAWICON" N="在图形上绘制小图标"  P="3">
+		<Desc><![CDATA[ DRAWICON(CLOSE>OPEN,LOW,1)表示当收阳时在最低价位置画1号图标.
+]]></Desc>
+		</Func>		
+		<Func F="PLOYLINE" N="拆线"  P="">
+		<Desc><![CDATA[PLOYLINE(HIGH>=HHV(HIGH,20),HIGH)表示在创20天新高点之间画折线.
+]]></Desc>
+		</Func>		
+		<Func F="DRAWLINE" N="画直线"  P="5">
+		<Desc><![CDATA[ DRAWLINE(HIGH>=HHV(HIGH,20),HIGH,LOW<=LLV(LOW,20),LOW,1)表示在创20天新高与创20天新低之间画直线并且向右延长.
+]]></Desc>
+		</Func>		
+		<Func F="DRAWKLINE" N="画K线"  P="4">
+		<Desc><![CDATA[用法:以HIGH为最高价,OPEN为开盘价,LOW为最低,CLOSE收盘画K线
+]]></Desc>
+		</Func>	
+				<Func F="DRAWTRANSRECT" N="画透明矩形"  P="5">
+		</Func>	
+		</Category>		
+		
+
+				<Category N="绘均线数">
+		<Func F="MA" N="移动平均"  P="2">
+		<Desc><![CDATA[返回简单移动平均
+用法:
+ MA(X,N):X的N日简单移动平均,算法(X1+X2+X3+...+Xn)/N,N支持变量
+]]></Desc>
+		</Func>
+		<Func F="SMA" N="移动平均"  P="2">
+		<Desc><![CDATA[返回移动平均
+用法:
+ SMA(X,N,M):X的N日移动平均,M为权重,如Y=(X*M+Y'*(N-M))/N
+]]></Desc>
+		</Func>
+		<Func F="TMA" N="移动平均"  P="2">
+		<Desc><![CDATA[ 返回移动平均
+用法:
+ TMA(X,A,B),A和B必须小于1,算法	Y=(A*Y'+B*X),其中Y'表示上一周期Y值.初值为X
+]]></Desc>
+		</Func>		
+		<Func F="DMA" N="动态移动平均"  P="2">
+		<Desc><![CDATA[求动态移动平均
+用法:
+ DMA(X,A),求X的动态移动平均.
+算法:Y=A*X+(1-A)*Y',其中Y'表示上一周期Y值,A必须大于0且小于1.A支持变量.
+例如:
+ DMA(CLOSE,VOL/CAPITAL)表示求以换手率作平滑因子的平均价
+]]></Desc>
+		</Func>		
+		<Func F="EMA" N="指数移动平均"  P="2">
+		<Desc><![CDATA[返回指数移动平均
+用法:
+ EMA(X,N):X的N日指数移动平均.算法:Y=(X*2+Y'*(N-1))/(N+1)
+ EMA(X,N)相当于SMA(X,N+1,2),N支持变量
+]]></Desc>
+		</Func>		
+		<Func F="MEMA" N="平滑移动平均"  P="2">
+		<Desc><![CDATA[返回平滑移动平均
+用法:
+ MEMA(X,N):X的N日平滑移动平均,如Y=(X+Y'*(N-1))/N
+ MEMA(X,N)相当于SMA(X,N,1)
+]]></Desc>
+		</Func>	
+		<Func F="EXPMA" N="指数移动平均"  P="2">
+		<Desc><![CDATA[与EMA的用法一致
+]]></Desc>
+		</Func>	
+		<Func F="EXPMEMA" N="指数平滑移动平均"  P="2">
+		<Desc><![CDATA[返回指数平滑移动平均
+用法:
+ EXPMEMA(X,N):X的N日指数平滑移动平均
+ EXPMEMA同EMA(EXPMA)的差别在于他的起始值为一平滑值
+]]></Desc>
+		</Func>	
+		<Func F="WMA" N="加权移动平均"  P="2">
+		<Desc><![CDATA[返回加权移动平均
+用法:
+ WMA(X,N):X的N日加权移动平均.算法:Yn=(1*X1+2*X2+...+n*Xn)/(1+2+...+n)
+]]></Desc>
+		</Func>	
+		<Func F="AMA" N="自适应均线"  P="2">
+		<Desc><![CDATA[求自适应均线值.
+用法:
+ AMA(X,A),A为自适应系数,必须小于1.
+算法:
+ Y=Y'+A*(X-Y').初值为X
+]]></Desc>
+		</Func>	
+		<Func F="AVEDEV" N="平均绝对偏差"  P="2">
+		<Desc><![CDATA[AVEDEV(X,N) 返回平均绝对偏差
+]]></Desc>
+		</Func>	
+		<Func F="STD" N="估算标准差"  P="2">
+		<Desc><![CDATA[STD(X,N) 返回估算标准差
+]]></Desc>
+		</Func>	
+		<Func F="STDP" N="总体标准差"  P="2">
+		<Desc><![CDATA[STDP(X,N) 返回总体标准差
+]]></Desc>
+		</Func>
+		<Func F="VAR" N="估算样本方差"  P="2">
+		<Desc><![CDATA[VAR(X,N) 返回估算样本方差
+]]></Desc>
+		</Func>		
+		<Func F="VARP" N="总体样本方差"  P="2">
+		<Desc><![CDATA[VARP(X,N) 返回总体样本方差
+]]></Desc>
+		</Func>
+		<Func F="QSQD" N="估算标准差"  P="2"></Func>
+		</Category>		
+
+
+
+				<Category N="大盘函数">
+		<Func F="INDEXA" N="大盘的成交额"  P="0">
+		<Desc><![CDATA[INDEXA    返回对应的大盘成交额
+分别是上证指数,深证成指,中小板指和创业板指,港股为恒生指数,国内期货为对应的L9指数品种(持仓量)
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		<Func F="INDEXADV" N="大盘的上涨家数"  P="0">
+		<Desc><![CDATA[INDEXADV  返回对应的上涨家数
+分别是上证指数,深证成指,中小板指和创业板指
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		<Func F="INDEXDEC" N="大盘的下跌家数"  P="0">
+		<Desc><![CDATA[INDEXDEC  返回对应的下跌家数
+分别是上证指数,深证成指,中小板指和创业板指
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		<Func F="INDEXC" N="大盘的收盘价"  P="0">
+		<Desc><![CDATA[INDEXC    返回对应的大盘收盘价
+分别是上证指数,深证成指,中小板指和创业板指,港股为恒生指数,国内期货为对应的L9指数品种
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		<Func F="INDEXH" N="大盘的最高价"  P="0">
+		<Desc><![CDATA[INDEXH    返回对应的大盘最高价
+分别是上证指数,深证成指,中小板指和创业板指,港股为恒生指数,国内期货为对应的L9指数品种
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		<Func F="INDEXL" N="大盘的最低价"  P="0">
+		<Desc><![CDATA[INDEXL    返回对应的大盘最低价
+分别是上证指数,深证成指,中小板指和创业板指,港股为恒生指数,国内期货为对应的L9指数品种
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		<Func F="INDEXO" N="大盘的开盘价"  P="0">
+		<Desc><![CDATA[INDEXO    返回对应的大盘开盘价
+分别是上证指数,深证成指,中小板指和创业板指,港股为恒生指数,国内期货为对应的L9指数品种
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		<Func F="INDEXV" N="大盘的成交量"  P="0">
+		<Desc><![CDATA[INDEXV    返回对应的大盘成交量
+分别是上证指数,深证成指,中小板指和创业板指,港股为恒生指数,国内期货为对应的L9指数品种
+(对应指数的数据必须要先下载到本地)
+]]></Desc>
+		</Func>
+		<Func F="INDEXDLDING" N="返回大盘动力顶家数"  P="0"></Func>
+		<Func F="INDEXDLDI" N="返回大盘动力底家数"  P="0"></Func>
+		<Func F="INDEXDLZS" N="返回大盘动力总家数"  P="0"></Func>
+		<Func F="INDEXDINGBL" N="返回大盘动力顶背离家数"  P="0"></Func>
+		<Func F="INDEXDIBL" N="返回大盘动力底背离家数"  P="0"></Func>
+		<Func F="INDEXBLZS" N="返回大盘动力背离总家数"  P="0"></Func>												
+		</Category>		
+				<Category N="颜色函数">
+		<Func F="COLORBLACK" N="画黑色" P="(0,0,0)">			</Func>
+		<Func F="COLORBLUE" N="画蓝色"  P="(0,0,255)">			</Func>						
+		<Func F="COLORGREEN" N="画绿色" P="(0,255,0)">			</Func>	
+		<Func F="COLORCYAN" N="画青色"  P="(0,255,255)">		</Func>	
+		<Func F="COLORRED" N="画红色"  P="(255,0,0)">			</Func>	
+		<Func F="COLORMAGENTA" N="画洋红色"  P="(255,0,255)">	</Func>	
+		<Func F="COLORBROWN" N="画棕色"  P="(0,0,0)">			</Func>	
+		<Func F="COLORLIGRAY" N="画淡灰色"  P="(192,192,192)">	</Func>	
+		<Func F="COLORGRAY" N="画深灰色"  P="(128,128,128)">	</Func>	
+		<Func F="COLORLIBLUE" N="画淡蓝色"  P="(0,192,192)">	</Func>	
+		<Func F="COLORLIGREEN" N="画淡绿色"  P="(64,192,64)">	</Func>	
+		<Func F="COLORLICYAN" N="画淡青色"  P="(0,192,192)">	</Func>	
+		<Func F="COLORLIRED" N="画淡红色"  P="(255,128,128)">	</Func>	
+		<Func F="COLORLIMAGENTA" N="画淡洋红色"  P="(255,0,128)"></Func>	
+		<Func F="COLORYELLOW" N="画黄色"  P="(255,255,0)">		</Func>	
+		<Func F="COLORWHITE" N="画白色"  P="(255,255,255)">		</Func>	
+		</Category>
+</CONFIG_V1>

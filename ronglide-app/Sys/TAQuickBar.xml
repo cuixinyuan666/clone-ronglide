@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<QBar Cmd="9" Name="关联报价" Group="6" />
+<QBar Cmd="10" Name="资金流向" Group="1" />
+<QBar Cmd="1" Name="窗口" Group="1" />
+<QBar Cmd="2" Name="周期" Group="2" />
+<QBar Cmd="3" Name="模板" Group="3" />
+<QBar Cmd="11" Name="龙系" Group="3" />
+<QBar Cmd="4" Name="指标" Group="3" />
+<QBar Cmd="5" Name="设置" Group="5" />
+<QBar Cmd="1001" Name="MA" Group="5" />
+<QBar Cmd="1002" Name="VOL" Group="5" />
+<QBar Cmd="1003" Name="MACD" Group="5" />
+<QBar Cmd="1004" Name="CHDL" Group="5" />
+<QBar Cmd="1005" Name="KDJ" Group="5" />
+<QBar Cmd="1006" Name="RLD市场多空" Group="5" />
+<QBar Cmd="1007" Name="指数顶部" Group="5" />
+<QBar Cmd="1008" Name="指数底部" Group="5" />
+<QBar Cmd="1009" Name="区间线" Group="5" />
+<QBar Cmd="1010" Name="NMACD面积" Group="5" />
+<QBar Cmd="1011" Name="NMACD段面积" Group="5" />
+<QBar Cmd="1012" Name="MACD2" Group="5" />
+<QBar Cmd="1013" Name="MACD3" Group="5" />
+<QBar Cmd="1014" Name="主力操盘" Group="5" />
+<QBar Cmd="1015" Name="多空对比" Group="5" />
+<QBar Cmd="1016" Name="动能轨迹" Group="5" />

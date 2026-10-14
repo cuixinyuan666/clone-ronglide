@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="GBK" standalone="yes"?>
+<CONFIG>
+	<SEC secid="273">
+		<TIME pre_open="90000" open="93000" close="160000" close_market="163000" />
+		<SECTION_TIME1 open="93000" close="120000" />
+		<SECTION_TIME2 open="130000" close="160000" />
+		<AUCTION_PREOPEN begin="91500" end="92500" />
+		<AUCTION_PRECLOSE begin="145700" end="150000" />
+	</SEC>
+</CONFIG>

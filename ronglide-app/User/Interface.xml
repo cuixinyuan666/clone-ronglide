@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CONFIG>
+	<ColorScheme N="BLACK"/>
+	<DiaryAutoSave V="0"/>
+	<MultiSymbolNum V="2"/>
+	<MinMultiSymbolNum V="2"/>
+	<MultiCycleNum V="1"/>
+	<AutoCloseMarket V="1"/>
+	<MMSymbolSync V="0"/>
+	<F10Mode V="0"/>
+	<Backup Prompt="0"/>
+	<SelfBlock AddFront="0"/>
+	<Browser UseChrome="true"/>
+	<Login AutoLogin="false"/>
+	<StudyReview>
+		<histype>0</histype>
+		<divmode>0</divmode>
+		<start_date>0</start_date>
+		<end_date>0</end_date>
+		<days>0</days>
+		<fund>0</fund>
+		<rate>0</rate>
+		<futures_mode>0</futures_mode>
+		<code/>
+		<svcid>0</svcid>
+		<study/>
+	</StudyReview>
+	<MultiStudyReview>
+		<histype>0</histype>
+		<divmode>0</divmode>
+		<start_date>0</start_date>
+		<end_date>0</end_date>
+		<days>0</days>
+		<fund>0</fund>
+		<rate>0</rate>
+		<futures_mode>0</futures_mode>
+		<folder/>
+		<SimulatedBy1Min>0</SimulatedBy1Min>
+		<Study/>
+		<Symbol/>
+	</MultiStudyReview>
+	<StudySelSymbol>
+		<NoST>0</NoST>
+		<DrvmodeBackward>1</DrvmodeBackward>
+		<NoSuspension>0</NoSuspension>
+		<ItemData/>
+	</StudySelSymbol>
+	<YunSelSymbol>
+		<ItemData/>
+	</YunSelSymbol>
+	<YunFilter>
+		<ItemData/>
+	</YunFilter>
+	<MultiSymbol>
+		<Study/>
+	</MultiSymbol>
+	<MultiCycle>
+		<HisType/>
+		<Study/>
+	</MultiCycle>
+</CONFIG>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CONFIG>
+	<STUDY NAME="CHBZS">
+		<SCHEME NAME="不显示买卖点" SHORTCUT="0">
+			<HIDE I="6"/>
+			<HIDE I="7"/>
+			<HIDE I="8"/>
+			<HIDE I="9"/>
+			<HIDE I="10"/>
+			<HIDE I="11"/>
+		</SCHEME>
+		<SCHEME NAME="不显示中枢及买卖点" SHORTCUT="0">
+			<HIDE I="2"/>
+			<HIDE I="3"/>
+			<HIDE I="4"/>
+			<HIDE I="5"/>
+			<HIDE I="6"/>
+			<HIDE I="7"/>
+			<HIDE I="8"/>
+			<HIDE I="9"/>
+			<HIDE I="10"/>
+			<HIDE I="11"/>
+		</SCHEME>
+	</STUDY>
+	<STUDY NAME="CHDZS">
+		<SCHEME NAME="不显示买卖点" SHORTCUT="0">
+			<HIDE I="8"/>
+			<HIDE I="9"/>
+			<HIDE I="10"/>
+			<HIDE I="11"/>
+			<HIDE I="12"/>
+			<HIDE I="13"/>
+		</SCHEME>
+		<SCHEME NAME="不显示中枢" SHORTCUT="0">
+			<HIDE I="4"/>
+			<HIDE I="5"/>
+			<HIDE I="6"/>
+			<HIDE I="7"/>
+		</SCHEME>
+		<SCHEME NAME="不显示中枢和买卖点" SHORTCUT="0">
+			<HIDE I="4"/>
+			<HIDE I="5"/>
+			<HIDE I="6"/>
+			<HIDE I="7"/>
+			<HIDE I="8"/>
+			<HIDE I="9"/>
+			<HIDE I="10"/>
+			<HIDE I="11"/>
+			<HIDE I="12"/>
+			<HIDE I="13"/>
+		</SCHEME>
+	</STUDY>
+	<STUDY NAME="CHFB">
+		<SCHEME NAME="不显示顶底及数值" SHORTCUT="0">
+			<HIDE I="2"/>
+			<HIDE I="3"/>
+		</SCHEME>
+	</STUDY>
+	<STUDY NAME="FBFD">
+		<SCHEME NAME="不显示线段结束数值" SHORTCUT="0">
+			<HIDE I="4"/>
+			<HIDE I="5"/>
+		</SCHEME>
+	</STUDY>
+	<STUDY NAME="走势递归">
+		<SCHEME NAME="不显示高级别走势" SHORTCUT="0">
+			<HIDE I="24"/>
+			<HIDE I="25"/>
+		</SCHEME>
+		<SCHEME NAME="不显示高级别中枢和走势" SHORTCUT="0">
+			<HIDE I="15"/>
+			<HIDE I="16"/>
+			<HIDE I="24"/>
+			<HIDE I="25"/>
+		</SCHEME>
+		<SCHEME NAME="不显示本级别买卖点和高级别中枢" SHORTCUT="0">
+			<HIDE I="15"/>
+			<HIDE I="16"/>
+			<HIDE I="17"/>
+			<HIDE I="18"/>
+			<HIDE I="19"/>
+			<HIDE I="20"/>
+			<HIDE I="21"/>
+			<HIDE I="22"/>
+			<HIDE I="23"/>
+			<HIDE I="24"/>
+			<HIDE I="25"/>
+		</SCHEME>
+		<SCHEME NAME="只显示次级别走势及买卖点" SHORTCUT="0">
+			<HIDE I="13"/>
+			<HIDE I="14"/>
+			<HIDE I="15"/>
+			<HIDE I="16"/>
+			<HIDE I="17"/>
+			<HIDE I="18"/>
+			<HIDE I="19"/>
+			<HIDE I="20"/>
+			<HIDE I="21"/>
+			<HIDE I="22"/>
+			<HIDE I="23"/>
+			<HIDE I="24"/>
+			<HIDE I="25"/>
+		</SCHEME>
+	</STUDY>
+	<STUDY NAME="走势分解_线段">
+		<SCHEME NAME="不显示中枢" SHORTCUT="0">
+			<HIDE I="6"/>
+			<HIDE I="7"/>
+		</SCHEME>
+		<SCHEME NAME="不显示中枢及高级别" SHORTCUT="0">
+			<HIDE I="6"/>
+			<HIDE I="7"/>
+			<HIDE I="8"/>
+			<HIDE I="9"/>
+		</SCHEME>
+	</STUDY>
+</CONFIG>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CONFIG>
+  <Item ID="BZSYB1">
+    <Val N="向上笔" V="-10" />
+    <Val N="顶形成" V="3" />
+    <Val N="底形成" V="-3" />
+    <Val N="向下笔" V="10" />
+  </Item>
+
+  <Item ID="BZSYB2">
+    <Val N="向上笔2" V="-10" />
+    <Val N="顶形成2" V="3" />
+    <Val N="底形成2" V="-3" />
+    <Val N="向下笔2" V="10" />
+  </Item>
+
+</CONFIG>

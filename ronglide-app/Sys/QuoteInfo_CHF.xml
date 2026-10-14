@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<QUOTEINFO_V1 Height="18" Ft="18" >
+	<ROW Height="24" >
+		<CELL Ty="1" I="2" W="80" Agn="2" Ft="5" />
+    <CELL Ty="1" I="3" Ft="5" ShowMark="1"  MarkFt="16"/>
+  </ROW>
+	<ROW Height="1" Sep="1" />
+	<ROW Height="28">
+		<CELL Ty="1" Txt="卖一" />
+		<CELL Ty="1" I="112" Agn="2" Ft="21" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="132" Agn="2" Ft="21" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="买一" />
+		<CELL Ty="1" I="111" Agn="2" Ft="21" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="131" Agn="2" Ft="21" />
+	</ROW>
+	<ROW Height="1" Sep="1" />
+	<ROW>
+		<CELL Ty="1" Txt="现价" />
+		<CELL Ty="1" I="103" Agn="2" />
+		<CELL Ty="1" Txt="今开" />
+		<CELL Ty="1" I="104" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="涨跌" />
+		<CELL Ty="1" I="201" Agn="2" />
+		<CELL Ty="1" Txt="最高" />
+		<CELL Ty="1" I="107" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="涨幅" />
+		<CELL Ty="1" I="202" Agn="2" />
+		<CELL Ty="1" Txt="最低" />
+		<CELL Ty="1" I="108" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="结算" />
+		<CELL Ty="1" I="321" Agn="2" />
+		<CELL Ty="1" Txt="昨结" />
+		<CELL Ty="1" I="320" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="现量" />
+		<CELL Ty="1" I="213" Agn="2" />
+		<CELL Ty="1" Txt="总量" />
+		<CELL Ty="1" I="211" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="持仓" />
+		<CELL Ty="1" I="323" Agn="2" />
+		<CELL Ty="1" Txt="仓差" />
+		<CELL Ty="1" I="324" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="涨停" />
+		<CELL Ty="1" I="191" Agn="2" />
+		<CELL Ty="1" Txt="跌停" />
+		<CELL Ty="1" I="192" Agn="2" />
+	</ROW>
+	<ROW Height="1" Sep="1" />
+	<ROW>
+		<CELL Ty="1" Txt="开仓" />
+		<CELL Ty="1" I="338" Agn="2" />
+		<CELL Ty="1" Txt="平仓" />
+		<CELL Ty="1" I="339" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="外盘" />
+		<CELL Ty="1" I="241" Agn="2" />
+		<CELL Ty="1" Txt="内盘" />
+		<CELL Ty="1" I="240" Agn="2" />
+	</ROW>
+	<ROW Height="1" Sep="1" />
+</QUOTEINFO_V1>

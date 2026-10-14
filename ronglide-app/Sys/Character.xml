@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CHARACTER_V1>
+	<CH W="榕" S="r" />
+	<CH W="圳" S="z" />
+	<CH W="甬" S="y" />
+	<CH W="钛" S="t" />
+	<CH W="漯" S="l" />
+	<CH W="鑫" S="x" />
+	<CH W="钰" S="y" />
+	<CH W="岷" S="m" />
+	<CH W="兖" S="y" />
+	<CH W="晟" S="s" />
+	<CH W="琪" S="q" />
+	<CH W="癀" S="h" />
+	<CH W="岘" S="x" />
+	<CH W="孚" S="f" />
+	<CH W="宸" S="c" />
+	<CH W="沱" S="t" />
+	<CH W="昊" S="h" />
+	<CH W="钼" S="m" />
+	<CH W="泸" S="l" />
+	<CH W="芙" S="f" />
+	<CH W="琦" S="q" />
+	<CH W="莞" S="w" />
+	<CH W="钽" S="t" />
+	<CH W="晖" S="h" />
+	<CH W="鹭" S="l" />
+	<CH W="獐" S="z" />
+	<CH W="锝" S="d" />
+	<CH W="螳" S="t" />
+	<CH W="螂" S="l" />
+	<CH W="浔" S="x" />
+	<CH W="锆" S="g" />
+	<CH W="怡" S="y" />
+	<CH W="濮" S="p" />
+	<CH W="琚" S="j" />
+	<CH W="柘" S="t" />
+	<CH W="榈" S="l" />
+	<CH W="禧" S="x" />
+	<CH W="锂" S="l" />
+	<CH W="荃" S="q" />
+	
+	<PY W="重" S="c,z" />
+	<PY W="藏" S="c,z" />
+	<PY W="行" S="h,x" />
+	<PY W="阿" S="a,e" />
+	<PY W="厦" S="s,x" />
+	<PY W="乐" S="l,y" />
+	<PY W="调" S="t,d" />
+</CHARACTER_V1>

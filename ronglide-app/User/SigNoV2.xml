@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SIGNO_V1>
+	<ITEMS>
+		<ITEM SIGID="1" SIGNAL="2" S="分型笔" N="顶形成" C="1"/>
+		<ITEM SIGID="1" SIGNAL="32770" S="分型笔" N="底形成" C="1"/>
+		<ITEM SIGID="1" SIGNAL="3" S="分型笔" N="强势顶形成" C="1"/>
+		<ITEM SIGID="1" SIGNAL="32771" S="分型笔" N="强势底形成" C="1"/>
+		<ITEM SIGID="2" SIGNAL="2" S="笔" N="顶形成" C="1"/>
+		<ITEM SIGID="2" SIGNAL="32770" S="笔" N="底形成" C="1"/>
+		<ITEM SIGID="2" SIGNAL="3" S="笔" N="强势顶形成" C="1"/>
+		<ITEM SIGID="2" SIGNAL="32771" S="笔" N="强势底形成" C="1"/>
+		<ITEM SIGID="3" SIGNAL="1" S="动力" N="顶" C="1"/>
+		<ITEM SIGID="3" SIGNAL="32769" S="动力" N="底" C="1"/>
+		<ITEM SIGID="3" SIGNAL="4" S="动力" N="顶背离" C="1"/>
+		<ITEM SIGID="3" SIGNAL="32772" S="动力" N="底背离" C="1"/>
+		<ITEM SIGID="5" SIGNAL="6" S="一根筋" N="绿变红" C="1"/>
+		<ITEM SIGID="5" SIGNAL="32774" S="一根筋" N="红变绿" C="1"/>
+		<ITEM SIGID="6" SIGNAL="2" S="分型段" N="顶形成" C="1"/>
+		<ITEM SIGID="6" SIGNAL="32770" S="分型段" N="底形成" C="1"/>
+		<ITEM SIGID="7" SIGNAL="32775" S="笔中枢" N="下盘整" C="1"/>
+		<ITEM SIGID="7" SIGNAL="7" S="笔中枢" N="上盘整" C="1"/>
+		<ITEM SIGID="7" SIGNAL="8" S="笔中枢" N="一卖" C="1"/>
+		<ITEM SIGID="7" SIGNAL="32776" S="笔中枢" N="一买" C="1"/>
+		<ITEM SIGID="7" SIGNAL="9" S="笔中枢" N="二卖" C="1"/>
+		<ITEM SIGID="7" SIGNAL="32777" S="笔中枢" N="二买" C="1"/>
+		<ITEM SIGID="7" SIGNAL="10" S="笔中枢" N="三卖" C="1"/>
+		<ITEM SIGID="7" SIGNAL="32778" S="笔中枢" N="三买" C="1"/>
+		<ITEM SIGID="8" SIGNAL="32775" S="分型笔中枢" N="下盘整" C="1"/>
+		<ITEM SIGID="8" SIGNAL="7" S="分型笔中枢" N="上盘整" C="1"/>
+		<ITEM SIGID="8" SIGNAL="8" S="分型笔中枢" N="一卖" C="1"/>
+		<ITEM SIGID="8" SIGNAL="32776" S="分型笔中枢" N="一买" C="1"/>
+		<ITEM SIGID="8" SIGNAL="9" S="分型笔中枢" N="二卖" C="1"/>
+		<ITEM SIGID="8" SIGNAL="32777" S="分型笔中枢" N="二买" C="1"/>
+		<ITEM SIGID="8" SIGNAL="10" S="分型笔中枢" N="三卖" C="1"/>
+		<ITEM SIGID="8" SIGNAL="32778" S="分型笔中枢" N="三买" C="1"/>
+	</ITEMS>
+	<HIS_TYPE>
+		<HIS_T H="1" C="1"/>
+		<HIS_T H="2" C="1"/>
+		<HIS_T H="3" C="1"/>
+		<HIS_T H="4" C="1"/>
+		<HIS_T H="5" C="1"/>
+		<HIS_T H="101" C="1"/>
+		<HIS_T H="102" C="1"/>
+	</HIS_TYPE>
+	<SECTIONS/>
+	<SYMBOLS/>
+</SIGNO_V1>

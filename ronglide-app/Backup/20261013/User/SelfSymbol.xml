@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config_V1>
+	<CATEGORY N="自选股">
+		<BLK N="自选股"/>
+		<BLK N="自选股1"/>
+		<BLK N="自选股2"/>
+		<BLK N="自选股3"/>
+		<BLK N="自选股4"/>
+		<BLK N="自选股5"/>
+		<BLK N="自选股6"/>
+		<BLK N="自选股7"/>
+		<BLK N="自选股8"/>
+		<BLK N="自选股9"/>
+		<BLK N="自选股10"/>
+	</CATEGORY>
+</Config_V1>

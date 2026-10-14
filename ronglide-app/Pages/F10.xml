@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PAGE>
+	<SPLITTER Rows="1" Cols="1" Rect="0,1476,0,710" RowH="710" ColW="1476">
+		<GRID Row="0" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="44">
+			<VIEW/>
+		</GRID>
+	</SPLITTER>
+</PAGE>

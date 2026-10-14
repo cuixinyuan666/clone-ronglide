@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PAGE>
+	<SPLITTER Rows="2" Cols="2" Rect="0,1290,0,618" RowH="309,309" ColW="645,645">
+		<GRID Row="0" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="7">
+			<VIEW ViewType="7" HisType="2" DivMode="1">
+				<Windows Count="2">
+					<Win Higth="4" DefStudy="NCHFB" DefStudy1="NCHBZS"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="MACD"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="主力操盘"/>
+					<Win Higth="1" Study="多空对比"/>
+					<Win Higth="1" Study="动能轨迹"/>
+					<Win Higth="1" Study="MACD1"/>
+					<Win Higth="1" Study="MACD2"/>
+					<Win Higth="1" Study="MACD3"/>
+					<Win Higth="1" Study="KDJ"/>
+					<Win Higth="1" Study="KDJ"/>
+				</Windows>
+			</VIEW>
+		</GRID>
+		<GRID Row="0" Col="1" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="7">
+			<VIEW ViewType="7" HisType="3" DivMode="1">
+				<Windows Count="2">
+					<Win Higth="4" DefStudy="NCHFB" DefStudy1="NCHBZS"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="MACD"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="主力操盘"/>
+					<Win Higth="1" Study="多空对比"/>
+					<Win Higth="1" Study="动能轨迹"/>
+					<Win Higth="1" Study="MACD1"/>
+					<Win Higth="1" Study="MACD2"/>
+					<Win Higth="1" Study="MACD3"/>
+					<Win Higth="1" Study="KDJ"/>
+					<Win Higth="1" Study="KDJ"/>
+				</Windows>
+			</VIEW>
+		</GRID>
+		<GRID Row="1" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="7">
+			<VIEW ViewType="7" HisType="4" DivMode="1">
+				<Windows Count="2">
+					<Win Higth="4" DefStudy="NCHFB" DefStudy1="NCHBZS"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="多空对比"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="主力操盘"/>
+					<Win Higth="1" Study="多空对比"/>
+					<Win Higth="1" Study="动能轨迹"/>
+					<Win Higth="1" Study="MACD1"/>
+					<Win Higth="1" Study="MACD2"/>
+					<Win Higth="1" Study="MACD3"/>
+					<Win Higth="1" Study="KDJ"/>
+					<Win Higth="1" Study="KDJ"/>
+				</Windows>
+			</VIEW>
+		</GRID>
+		<GRID Row="1" Col="1" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="7">
+			<VIEW ViewType="7" HisType="5" DivMode="1">
+				<Windows Count="2">
+					<Win Higth="4" DefStudy="NCHFB" DefStudy1="NCHBZS"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="MACD"/>
+					<Win Higth="1" Study="CHDL"/>
+					<Win Higth="1" Study="主力操盘"/>
+					<Win Higth="1" Study="多空对比"/>
+					<Win Higth="1" Study="动能轨迹"/>
+					<Win Higth="1" Study="MACD1"/>
+					<Win Higth="1" Study="MACD2"/>
+					<Win Higth="1" Study="MACD3"/>
+					<Win Higth="1" Study="KDJ"/>
+					<Win Higth="1" Study="KDJ"/>
+				</Windows>
+			</VIEW>
+		</GRID>
+	</SPLITTER>
+</PAGE>

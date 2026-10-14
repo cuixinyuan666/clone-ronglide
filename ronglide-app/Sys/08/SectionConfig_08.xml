@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="GBK" standalone="yes"?>
+<CONFIG>
+	<SECTION id="1" pre_open="92500" open="93000" close="150000" close_market="153000" >
+		<SECTION_TIME1 open="93000" close="113000" />
+		<SECTION_TIME2 open="130000" close="150000" />
+	</SECTION>
+	<SECTION id="2" pre_open="91000" open="91500" close="150000" close_market="153000">
+		<SECTION_TIME1 open="91500" close="113000" />
+		<SECTION_TIME2 open="130000" close="151500" />
+	</SECTION>
+</CONFIG>

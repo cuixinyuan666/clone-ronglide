@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PAGE>
+	<SPLITTER Rows="1" Cols="1" Rect="0,1290,22,618" RowH="596" ColW="1290">
+		<GRID Row="0" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="37">
+			<VIEW ViewType="37" HRatio="0.6">
+				<MatrixListView ViewType="36" GroupID="0" HisType="101" DivMode="0" Cols="48" Study="笔状态含中继（含均线强弱）"/>
+				<MemberListView ViewType="36" GroupID="0" HisType="101" DivMode="0" Cols="48" Study="笔状态含中继（含均线强弱）"/>
+			</VIEW>
+		</GRID>
+	</SPLITTER>
+</PAGE>

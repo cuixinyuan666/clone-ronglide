@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CONFIG_V1>
+  <Company name="北京融立德文化传媒有限公司" sname="融立德" phone="400-1610-178" />
+  <Partner name="北大博雅缠论研究院" sname="北大博雅" phone="" />
+  <AdviseTip txt="非投资咨询类软件，不提供投资咨询服务" />
+  <Login register="1" forgetpwd="1"/>
+  <Caption MX="33" menuLM="180" toolbarLM="0" capLM="116" capBM="7" show="0" />
+  <MainCtrlBar>
+    <Item id="5410" name="自选" tip="我的自选股" img1="zxg_page_01.png" img2="zxg_page_02.png" />
+    <Item id="4401" name="报价" tip="分类报价" img1="flbj_page_01.png" img2="flbj_page_02.png" />
+    <Item id="4402" name="分时" tip="分时图" img1="fs_page_01.png" img2="fs_page_02.png" />
+    <Item id="4403" name="技术" tip="技术分析" img1="ta_page_01.png" img2="ta_page_02.png" />
+    <Item id="1123" name="F10" tip="F10资料" img1="F10_page_01.png" img2="F10_page_02.png" />
+    <Item id="4419" name="排名" tip="综合排名" img1="zhpm_page_01.png" img2="zhpm_page_02.png" />
+    <Item id="4423" name="期货" tip="期货分类报价" img1="qhbj_page_01.png" img2="qhbj_page_02.png" />
+    <Item id="4433" name="云笔" tip="云笔列表" img1="yb_page_01.png" img2="yb_page_02.png" />
+    <Item id="5409" name="版面" tip="我的版面" img1="zdybm_page_01.png" img2="zdybm_page_02.png" />
+    <Item id="4436" name="0508" tip="0508历史数据" img1="0508_page_01.png" img2="0508_page_02.png" />
+    <Item id="4438" name="直播" tip="直播室" img1="web_video_01.png" img2="web_video_02.png" />
+  </MainCtrlBar>
+   <MainCtrlBar2>
+    <Item id="5410" name="自选" tip="我的自选股" img1="zxg_page_01.png" img2="zxg_page_02.png" />
+    <Item id="4401" name="报价" tip="分类报价" img1="flbj_page_01.png" img2="flbj_page_02.png" />
+     <Item id="4402" name="分时" tip="分时图" img1="fs_page_01.png" img2="fs_page_02.png" />
+     <Item id="4403" name="技术" tip="技术分析" img1="ta_page_01.png" img2="ta_page_02.png" />
+     <Item id="1123" name="F10" tip="F10资料" img1="F10_page_01.png" img2="F10_page_02.png" />
+     <Item id="4419" name="排名" tip="综合排名" img1="zhpm_page_01.png" img2="zhpm_page_02.png" />
+     <Item id="4423" name="期货" tip="期货分类报价" img1="qhbj_page_01.png" img2="qhbj_page_02.png" />
+    <Item id="4433" name="云笔" tip="云笔列表" img1="yb_page_01.png" img2="yb_page_02.png" />
+  </MainCtrlBar2>
+   <MainToolBar>
+    <Item id="4421" name="分笔" tip="分笔" img="" />
+    <Item id="4410" name="分段" tip="分笔分段" img="" />
+    <Item id="4414" name="动力共振" tip="动力共振" img="" />
+    <Item id="0" name="0" tip="0" img="" />
+    <Item id="4411" name="笔中枢" tip="笔中枢" img="" />
+    <Item id="4412" name="段中枢" tip="段中枢" img="" />
+    <Item id="4417" name="个股矩阵" tip="个股矩阵" img="" />
+    <Item id="4418" name="3级别MACD" tip="3级别MACD" img="" />
+    <Item id="0" name="0" tip="0" img="" />
+    <Item id="4427" name="多级联立" tip="多级联立" img="" />
+    <Item id="4425" name="多股矩阵" tip="多股矩阵" img="" />
+    <Item id="4429" name="一根筋" tip="一根筋" img="" />
+     <Item id="4441" name="磨刀系统" tip="磨刀系统" img="" />
+    <Item id="0" name="0" tip="0" img="" />
+    <Item id="4432" name="走势分解笔" tip="走势分解笔" img="" />
+    <Item id="4415" name="走势分解线段" tip="走势分解线段" img="" />
+    <Item id="4437" name="多周期矩阵" tip="多周期矩阵" img="" />
+    <Item id="0" name="0" tip="0" img="" />
+    <Item id="4445" name="龙系战法" tip="龙系战法" img="" />
+  </MainToolBar>
+  <MainQuickBar>
+  	<Item id="1020" name="交易" tip="委托交易" />
+    <Item id="1007" name="购买" tip="线上购买" />
+    <Item id="1009" name="融学堂" tip="融学堂" />
+    <Item id="4439" name="实战学堂" tip="实战学堂" />
+  </MainQuickBar>
+  <ColorScheme>
+    <Item id="BLACK" name="黑色" />
+    <Item id="WHITE" name="白色" />
+    <Item id="REDBLACK" name="红黑" />
+    <Item id="REDWHITE" name="红白" />
+  </ColorScheme>
+</CONFIG_V1>

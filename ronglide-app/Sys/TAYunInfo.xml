@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CONFIG_V1>
+	<TAYUNINFO>
+		<ROW Height="24" >
+			<CELL Ty="1" I="2" W="80" Agn="2" Ft="5" />
+			<CELL Ty="1" I="3" Ft="5" />
+		</ROW>
+		<ROW Height="1" Sep="1" />
+		<ROW>
+			<CELL Ty="1" Txt="周期" />
+			<CELL Ty="1" Txt="笔" Agn="2" />
+			<CELL Ty="1" Txt="分型笔" Agn="2" />
+			<CELL Ty="1" Txt="笔走势" Agn="2" />
+			<CELL Ty="1" Txt="型走势" Agn="2" />
+			<CELL Ty="1" Txt="动力" Agn="2" />
+		</ROW>
+		<ROW>
+			<CELL Ty="1" Txt="5分" />
+			<CELL Ty="1" T="2" II="6002" IH="2" Agn="2" />
+			<CELL Ty="1" T="2" II="6000" IH="2" Agn="2" />
+			<CELL Ty="1" T="2" II="6008" IH="2" Agn="2" />
+			<CELL Ty="1" T="2" II="6009" IH="2" Agn="2" />
+			<CELL Ty="1" T="2" II="6004" IH="2" Agn="2" />
+		</ROW>
+		<ROW>
+			<CELL Ty="1" Txt="15分" />
+			<CELL Ty="1" T="2" II="6002" IH="3" Agn="2" />
+			<CELL Ty="1" T="2" II="6000" IH="3" Agn="2" />
+			<CELL Ty="1" T="2" II="6008" IH="3" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="3" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="3" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="30分" />
+      <CELL Ty="1" T="2" II="6002" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="4" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="60分" />
+      <CELL Ty="1" T="2" II="6002" IH="5" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="5" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="5" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="5" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="日" />
+      <CELL Ty="1" T="2" II="6002" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="101" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="周" />
+      <CELL Ty="1" T="2" II="6002" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="102" Agn="2" />
+    </ROW>
+    <ROW Height="1" Sep="1" />
+    <ROW>
+      <CELL Ty="1" Txt="RLD市场多空" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="5分" W="30"/>
+      <CELL Ty="2" T="2" II="7026" IH="2"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="15分" W="30" />
+      <CELL Ty="2" T="2" II="7026" IH="3"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="30分" W="30" />
+      <CELL Ty="2" T="2" II="7026" IH="4"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="60分" W="30" />
+      <CELL Ty="2" T="2" II="7026" IH="5"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="日" W="30" />
+      <CELL Ty="2" T="2" II="7026" IH="101"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="周" W="30" />
+      <CELL Ty="2" T="2" II="7026" IH="102"/>
+    </ROW>
+    <ROW Height="1" Sep="1" />
+    <ROW>
+      <CELL Ty="1" Txt="市场动力" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="5分" W="30"/>
+      <CELL Ty="3" T="2" II="7027" IH="2"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="15分" W="30" />
+      <CELL Ty="3" T="2" II="7027" IH="3"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="30分" W="30" />
+      <CELL Ty="3" T="2" II="7027" IH="4"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="60分" W="30" />
+      <CELL Ty="3" T="2" II="7027" IH="5"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="日" W="30" />
+      <CELL Ty="3" T="2" II="7027" IH="101"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="周" W="30" />
+      <CELL Ty="3" T="2" II="7027" IH="102"/>
+    </ROW>
+    <ROW Height="1" Sep="1" />
+  </TAYUNINFO>
+  <TAYUNINFO_I>
+    <ROW Height="24" >
+      <CELL Ty="1" I="2" W="80" Agn="2" Ft="5" />
+      <CELL Ty="1" I="3" Ft="5" />
+    </ROW>
+    <ROW Height="1" Sep="1" />
+    <ROW>
+      <CELL Ty="1" Txt="周期" />
+      <CELL Ty="1" Txt="笔" Agn="2" />
+      <CELL Ty="1" Txt="分型笔" Agn="2" />
+      <CELL Ty="1" Txt="笔走势" Agn="2" />
+      <CELL Ty="1" Txt="型走势" Agn="2" />
+      <CELL Ty="1" Txt="动力" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="5分" />
+      <CELL Ty="1" T="2" II="6002" IH="2" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="2" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="2" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="2" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="2" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="15分" />
+      <CELL Ty="1" T="2" II="6002" IH="3" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="3" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="3" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="3" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="3" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="30分" />
+      <CELL Ty="1" T="2" II="6002" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="4" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="60分" />
+      <CELL Ty="1" T="2" II="6002" IH="5" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="5" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="5" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="5" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="日" />
+      <CELL Ty="1" T="2" II="6002" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="101" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="周" />
+      <CELL Ty="1" T="2" II="6002" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="102" Agn="2" />
+    </ROW>
+    <ROW Height="1" Sep="1" />
+    <ROW>
+      <CELL Ty="1" Txt="RLD市场多空" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="5分" W="30"/>
+      <CELL Ty="2" T="2" II="7026" IH="2"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="15分" W="30" />
+      <CELL Ty="2" T="2" II="7026" IH="3"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="30分" W="30" />
+      <CELL Ty="2" T="2" II="7026" IH="4"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="60分" W="30" />
+      <CELL Ty="2" T="2" II="7026" IH="5"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="日" W="30" />
+      <CELL Ty="2" T="2" II="7026" IH="101"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="周" W="30" />
+      <CELL Ty="2" T="2" II="7026" IH="102"/>
+    </ROW>
+    <ROW Height="1" Sep="1" />
+    <ROW>
+      <CELL Ty="1" Txt="市场动力" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="5分" W="30"/>
+      <CELL Ty="3" T="2" II="7027" IH="2"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="15分" W="30" />
+      <CELL Ty="3" T="2" II="7027" IH="3"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="30分" W="30" />
+      <CELL Ty="3" T="2" II="7027" IH="4"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="60分" W="30" />
+      <CELL Ty="3" T="2" II="7027" IH="5"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="日" W="30" />
+      <CELL Ty="3" T="2" II="7027" IH="101"/>
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="周" W="30" />
+      <CELL Ty="3" T="2" II="7027" IH="102"/>
+    </ROW>
+    <ROW Height="1" Sep="1" />
+  </TAYUNINFO_I>
+  <TAYUNINFO_CHF>
+    <ROW Height="24" >
+      <CELL Ty="1" I="2" W="80" Agn="2" Ft="5" />
+      <CELL Ty="1" I="3" Ft="5" />
+    </ROW>
+    <ROW Height="1" Sep="1" />
+    <ROW>
+      <CELL Ty="1" Txt="周期" />
+      <CELL Ty="1" Txt="笔" Agn="2" />
+      <CELL Ty="1" Txt="分型笔" Agn="2" />
+      <CELL Ty="1" Txt="笔走势" Agn="2" />
+      <CELL Ty="1" Txt="型走势" Agn="2" />
+      <CELL Ty="1" Txt="动力" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="5分" />
+      <CELL Ty="1" T="2" II="6002" IH="2" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="2" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="2" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="2" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="2" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="15分" />
+      <CELL Ty="1" T="2" II="6002" IH="3" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="3" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="3" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="3" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="3" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="30分" />
+      <CELL Ty="1" T="2" II="6002" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="4" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="4" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="60分" />
+      <CELL Ty="1" T="2" II="6002" IH="5" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="5" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="5" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="5" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="日" />
+      <CELL Ty="1" T="2" II="6002" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="101" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="101" Agn="2" />
+    </ROW>
+    <ROW>
+      <CELL Ty="1" Txt="周" />
+      <CELL Ty="1" T="2" II="6002" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6000" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6008" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6009" IH="102" Agn="2" />
+      <CELL Ty="1" T="2" II="6004" IH="102" Agn="2" />
+		</ROW>
+		<ROW Height="1" Sep="1" />
+	</TAYUNINFO_CHF>
+</CONFIG_V1>

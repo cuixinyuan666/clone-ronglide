@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config_V1>
+	<CATEGORY N="置顶商品">
+		<BLK N="1214">
+			<M S="1" C="399001"/>
+			<M S="2" C="000001"/>
+		</BLK>
+	</CATEGORY>
+</Config_V1>

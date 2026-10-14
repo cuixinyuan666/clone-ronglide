@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<QUOTEINFO_V1 Height="18" Ft="18" >
+	<ROW Height="24" >
+		<CELL Ty="1" I="2" W="80" Agn="2" Ft="5" />
+		<CELL Ty="1" I="3" Ft="5" ShowMark="1"  MarkFt="16"/>
+	</ROW>
+	<ROW Height="1" Sep="1" />
+	<ROW>
+		<CELL Ty="1" Txt="委比" />
+		<CELL Ty="1" I="250" Agn="2" />
+		<CELL Ty="1" Txt="委差" />
+		<CELL Ty="1" I="252" Agn="2" />
+	</ROW>
+	<ROW Height="1" Sep="1" />
+	<ROW>
+		<CELL Ty="1" Txt="卖五" />
+		<CELL Ty="1" I="120" Agn="2" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="140" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="卖四" />
+		<CELL Ty="1" I="118" Agn="2" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="138" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="卖三" />
+		<CELL Ty="1" I="116" Agn="2" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="136" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="卖二" />
+		<CELL Ty="1" I="114" Agn="2" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="134" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="卖一" />
+		<CELL Ty="1" I="112" Agn="2" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="132" Agn="2" />
+	</ROW>
+	<ROW Height="1" Sep="1" />
+	<ROW>
+		<CELL Ty="1" Txt="买一" />
+		<CELL Ty="1" I="111" Agn="2" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="131" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="买二" />
+		<CELL Ty="1" I="113" Agn="2" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="133" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="买三" />
+		<CELL Ty="1" I="115" Agn="2" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="135" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="买四" />
+		<CELL Ty="1" I="117" Agn="2" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="137" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="买五" />
+		<CELL Ty="1" I="119" Agn="2" />
+		<CELL Ty="1" Txt="" />
+		<CELL Ty="1" I="139" Agn="2" />
+	</ROW>
+	<ROW Height="1" Sep="1" />
+	<ROW>
+		<CELL Ty="1" Txt="现价" />
+		<CELL Ty="1" I="103" Agn="2" />
+		<CELL Ty="1" Txt="今开" />
+		<CELL Ty="1" I="104" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="涨停" />
+		<CELL Ty="1" I="191" Agn="2" />
+		<CELL Ty="1" Txt="跌停" />
+		<CELL Ty="1" I="192" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="涨跌" />
+		<CELL Ty="1" I="201" Agn="2" />
+		<CELL Ty="1" Txt="最高" />
+		<CELL Ty="1" I="107" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="涨幅" />
+		<CELL Ty="1" I="202" Agn="2" />
+		<CELL Ty="1" Txt="最低" />
+		<CELL Ty="1" I="108" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="量比" />
+		<CELL Ty="1" I="251" Agn="2" />
+		<CELL Ty="1" Txt="总量" />
+		<CELL Ty="1" I="211" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="外盘" />
+		<CELL Ty="1" I="241" Agn="2" />
+		<CELL Ty="1" Txt="内盘" />
+		<CELL Ty="1" I="240" Agn="2" />
+	</ROW>
+	<ROW Height="1" Sep="1" />
+	<ROW>
+		<CELL Ty="1" Txt="换手" />
+		<CELL Ty="1" I="203" Agn="2" />
+		<CELL Ty="1" Txt="股本" />
+		<CELL Ty="1" I="259" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="净资" />
+		<CELL Ty="1" I="276" Agn="2" />
+		<CELL Ty="1" Txt="流通" />
+		<CELL Ty="1" I="257" Agn="2" />
+	</ROW>
+	<ROW>
+		<CELL Ty="1" Txt="收益" />
+		<CELL Ty="1" I="265" Agn="2" />
+		<CELL Ty="1" Txt="PE(动)" />
+		<CELL Ty="1" I="253" Agn="2" />
+	</ROW>
+	<ROW Height="1" Sep="1" />
+</QUOTEINFO_V1>

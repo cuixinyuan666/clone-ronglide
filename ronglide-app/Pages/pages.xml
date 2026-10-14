@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PAGES>
+	<PAGE Name="分类报价" ShortcutKey="" FilePath="分类报价.xml" IsSys="1" KeyChangeSymbol="0" Cmd="4401"/>
+	<PAGE Name="分时图" ShortcutKey="" FilePath="分时图.xml" IsSys="1" Cmd="4402"/>
+	<PAGE Name="技术分析" ShortcutKey="" FilePath="技术分析.xml" IsSys="1" Cmd="4403"/>
+	<PAGE Name="分时多股同列" ShortcutKey="" FilePath="分时多股同列.xml" IsSys="1" Cmd="4404"/>
+	<PAGE Name="技术分析多股同列" ShortcutKey="" FilePath="技术分析多股同列.xml" IsSys="1" Cmd="4405"/>
+	<PAGE Name="技术分析多周期同列" ShortcutKey="" FilePath="技术分析多周期同列.xml" IsSys="1" Cmd="4406"/>
+	<PAGE Name="分时成交明细" ShortcutKey="" FilePath="分时成交明细.xml" IsSys="1" Cmd="4407"/>
+	<PAGE Name="分价表" ShortcutKey="" FilePath="分价表.xml" IsSys="1" Cmd="4408"/>
+	<PAGE Name="自选股" ShortcutKey="" FilePath="自选股.xml" IsSys="1" KeyChangeSymbol="0" Cmd="4409"/>
+	<PAGE Name="动力共振" ShortcutKey="" FilePath="动力共振.xml" IsSys="1" Cmd="4414"/>
+	<PAGE Name="个股矩阵" ShortcutKey="" FilePath="个股矩阵.xml" IsSys="1" Cmd="4417"/>
+	<PAGE Name="F10资料(Web)" ShortcutKey="" FilePath="WebF10.xml" IsSys="1" Cmd="4416"/>
+	<PAGE Name="综合排名" ShortcutKey="" FilePath="综合排名.xml" IsSys="1" KeyChangeSymbol="0" Cmd="4419"/>
+	<PAGE Name="期货分类报价" ShortcutKey="" FilePath="期货分类报价.xml" IsSys="1" KeyChangeSymbol="0" Cmd="4423"/>
+	<PAGE Name="周期联动" ShortcutKey="" FilePath="周期联动.xml" IsSys="1" KeyChangeSymbol="0" Cmd="4424"/>
+	<PAGE Name="多股矩阵" ShortcutKey="" FilePath="多股矩阵.xml" IsSys="1" KeyChangeSymbol="0" Cmd="4425"/>
+	<PAGE Name="星空图" ShortcutKey="" FilePath="热点星空图.xml" IsSys="1" KeyChangeSymbol="0" Cmd="4422"/>
+	<PAGE Name="K线训练" ShortcutKey="" FilePath="K线训练.xml" IsSys="1" KeyChangeSymbol="0" Cmd="4426"/>
+	<PAGE Name="云笔" ShortcutKey="" FilePath="云笔.xml" IsSys="1" KeyChangeSymbol="0" Cmd="4433"/>
+	<PAGE Name="回归评测" ShortcutKey="" FilePath="回归评测.xml" IsSys="1" KeyChangeSymbol="0" Cmd="4434"/>
+	<PAGE Name="F10" ShortcutKey="" FilePath="F10.xml" IsSys="1" KeyChangeSymbol="1" Cmd="4435"/>
+  <PAGE Name="0508历史数据" ShortcutKey="" FilePath="0508历史数据.xml" IsSys="1" KeyChangeSymbol="1" Cmd="4436"/>
+	<PAGE Name="多周期矩阵" ShortcutKey="" FilePath="多周期矩阵.xml" IsSys="1" KeyChangeSymbol="0" Cmd="4437"/>
+  <PAGE Name="直播" ShortcutKey="" FilePath="LiveWeb.xml" IsSys="1" Cmd="4438"/>
+  <PAGE Name="实战学堂" ShortcutKey="" FilePath="实战学堂.xml" IsSys="1" Cmd="4439"/>
+  <PAGE Name="磨刀盯盘" ShortcutKey="" FilePath="MODAODP.xml" IsSys="1" Cmd="4442" />
+  <PAGE Name="磨刀复盘" ShortcutKey="" FilePath="MODAOJZ.xml" IsSys="1" Cmd="4440"/>
+  <PAGE Name="磨刀选股" ShortcutKey="" FilePath="MODAOXG.xml" IsSys="1" Cmd="4444" />
+  <PAGE Name="磨刀控盘" ShortcutKey="" FilePath="MODAOKP.xml" IsSys="1" Cmd="4443" />
+  <PAGEGROUP Name="磨刀课堂" ShortcutKey="" FilePath="MODAOKT.xml" IsSys="1" Cmd="4441"/>
+</PAGES>

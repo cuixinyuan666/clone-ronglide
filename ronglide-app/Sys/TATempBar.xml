@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<QBar Cmd="9" Name="关联报价" Group="6" />
+<QBar Cmd="1" Name="窗口" Group="1" />
+<QBar Cmd="2" Name="周期" Group="2" />
+<QBar Cmd="11" Name="龙系" Group="3" />
+<QBar Cmd="4" Name="指标" Group="3" />
+<QBar Cmd="3" Name="模板" Group="3" />
+<QBar Cmd="5" Name="管理" Group="5" />
+<QBar Cmd="7" Name="另存为" Group="7" />

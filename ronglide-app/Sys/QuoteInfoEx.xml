@@ -1,0 +1,77 @@
+﻿<QUOTEINFO_V1 Height="18" Ft="18" >
+  <ROW>
+    <CELL Ty="1" Txt="RLD行业" />
+    <CELL Ty="1" I="40001" Agn="2" />
+  </ROW>
+
+ 
+  <ROW>
+    <CELL Ty="1" Txt="流通市值" />
+    <CELL Ty="1" I="1123" Agn="2" />
+  </ROW>
+  
+ 
+  <ROW Height="1" Sep="1" />
+
+  <ROW>
+    <CELL Ty="1" Txt="人均市值" />
+    <CELL Ty="1" I="1129" Agn="2" />
+  </ROW>
+  
+  <ROW>
+    <CELL Ty="1" Txt="人均持股" />
+    <CELL Ty="1" I="1130" Agn="2" />
+  </ROW>
+
+  <ROW>
+    <CELL Ty="1" Txt="总资产" />
+    <CELL Ty="1" I="258" Agn="2" />
+  </ROW>
+
+  <ROW>
+    <CELL Ty="1" Txt="资本公积金" />
+    <CELL Ty="1" I="315" Agn="2" />
+  </ROW>
+  
+  <ROW>
+    <CELL Ty="1" Txt="市盈(TTM)" />
+    <CELL Ty="1" I="344" Agn="2" />
+  </ROW>
+  
+  <ROW>
+    <CELL Ty="1" Txt="市盈(静)" />
+    <CELL Ty="1" I="343" Agn="2" />
+  </ROW>
+
+  <ROW>
+			<CELL Ty="1" Txt="扣非净利润" />
+			<CELL Ty="1" I="275" Agn="2" />
+	</ROW>
+  
+ 
+	<ROW>
+			<CELL Ty="1" Txt="员工人数" />
+			<CELL Ty="1" I="342" Agn="2" />
+	</ROW>
+  
+	<ROW>
+			<CELL Ty="1" Txt="营业利润" />
+			<CELL Ty="1" I="348" Agn="2" />
+	</ROW>
+  
+	<ROW>
+			<CELL Ty="1" Txt="市现率" />
+			<CELL Ty="1" I="347" Agn="2" />
+	</ROW>
+  
+  <ROW>
+    <CELL Ty="1" Txt="市销率" />
+    <CELL Ty="1" I="346" Agn="2" />
+  </ROW>
+  
+  <ROW>
+    <CELL Ty="1" Txt="股息率" />
+    <CELL Ty="1" I="345" Agn="2" />
+  </ROW>
+
+</QUOTEINFO_V1>

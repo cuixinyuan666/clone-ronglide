@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<QBar Cmd="9" Name="关联报价" Group="6" />
+<QBar Cmd="10" Name="资金流向" Group="1" />
+<QBar Cmd="1" Name="窗口" Group="1" />
+<QBar Cmd="2" Name="周期" Group="2" />
+<QBar Cmd="3" Name="模板" Group="3" />
+<QBar Cmd="4" Name="指标" Group="3" />
+<QBar Cmd="11" Name="龙系" Group="3" />
+<QBar Cmd="1017" Name="困龙得水A" Group="6" />
+<QBar Cmd="1018" Name="困龙得水B" Group="6" />
+<QBar Cmd="1019" Name="蛟龙出海A" Group="6" />
+<QBar Cmd="1020" Name="蛟龙出海B" Group="6" />
+<QBar Cmd="1021" Name="盘龙再起A" Group="6" />
+<QBar Cmd="1022" Name="盘龙再起B" Group="6" />

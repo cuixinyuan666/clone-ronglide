@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PAGE>
+	<SPLITTER Rows="1" Cols="2" Rect="0,1476,0,710" RowH="710" ColW="406,1070">
+		<GRID Row="0" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="53">
+			<VIEW ViewType="53" GroupID="0" WorkMode="0" DefaultActive="0">
+				<VIEW ViewType="3" GroupID="0" WorkMode="0" DefaultActive="0"/>
+			</VIEW>
+		</GRID>
+		<GRID Row="0" Col="1" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="0">
+			<SPLITTER Rows="2" Cols="1" Rect="406,1476,0,710" RowH="321,389" ColW="1070">
+				<GRID Row="0" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="7">
+					<VIEW ViewType="7" GroupID="0" WorkMode="0" DefaultActive="0" HisType="101" DivMode="1" AxisType="0" Linkage="0" QuickBarPage="0">
+						<Taggings ShowLine="1"/>
+						<Windows Count="2">
+							<Win Higth="2.5" Study="NCHBZS"/>
+							<Win Higth="1" Study="VOL"/>
+							<Win Higth="1" Study="MACD"/>
+							<Win Higth="1" Study="CHDL"/>
+							<Win Higth="1" Study="主力操盘"/>
+							<Win Higth="1" Study="多空对比"/>
+							<Win Higth="1" Study="动能轨迹"/>
+							<Win Higth="1" Study="MACD1"/>
+							<Win Higth="1" Study="MACD2"/>
+							<Win Higth="1" Study="MACD3"/>
+							<Win Higth="1" Study="KDJ"/>
+							<Win Higth="1" Study="KDJ"/>
+						</Windows>
+					</VIEW>
+				</GRID>
+				<GRID Row="1" Col="0" MinW="20" MinH="20" FixW="0" FixH="0" ViewType="51">
+					<VIEW ViewType="51" GroupID="0" WorkMode="1" DefaultActive="0"/>
+				</GRID>
+			</SPLITTER>
+		</GRID>
+	</SPLITTER>
+</PAGE>

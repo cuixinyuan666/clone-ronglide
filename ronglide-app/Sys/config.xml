@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="GBK" standalone="yes"?>
+<CONFIG>
+	<LISTENER ip="127.0.0.1" port="11002" />
+	<DP ip="192.168.1.11" port="10001" />
+</CONFIG>
