@@ -131,7 +131,7 @@ typedef struct Bar28 {          /* 0x28 字节，POD，经 rep movsd 整体拷�
     int32_t idx08;              /* +0x08  ★ 0 基索引 → W->m[0] 的下标 */
     float   low;                /* +0x0C  = 级别对象 +0x0C */
     float   high;               /* +0x10  = 级别对象 +0x10 */
-    uint8_t _pad[0x28 - 0x14];  /* +0x14 .. 语义未定 */
+    uint8_t _pad[0x28 - 0x14];  /* +0x14..+0x27  引擎不读取（第十二批实测） */
 } Bar28;
 
 /* 迭代器窗口：9 个受检迭代器，指向 W->m[4] 中连续 9 个 bar
