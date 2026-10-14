@@ -9,6 +9,7 @@
  */
 
 #include <stdint.h>
+#include <stdlib.h>
 #include <string.h>
 
 /* ============================================================
@@ -62,6 +63,59 @@ enum {
 };
 
 /* ============================================================
+ * 1c. 容器与迭代器（第六批还原）
+ *     级别对象存放在 MSVC 安全 STL 的 std::vector<LevelObj> 中
+ * ============================================================ */
+
+/* std::vector<LevelObj> —— 16 字节
+ * 证据: sub_1003f0d0 用 [ebx+4]/[ebx+8]；
+ *       sub_1006a4e0 写 [edi+4]/[edi+8]/[edi+0Ch] */
+typedef struct VectorLevelObj {
+    void*      _Myproxy;   /* +0x00  _Container_proxy*（分配器代理） */
+    LevelObj*  _Myfirst;   /* +0x04  首元素指针 */
+    LevelObj*  _Mylast;    /* +0x08  末元素后一位置（迭代终点） */
+    LevelObj*  _Myend;     /* +0x0C  已分配容量末尾 */
+} VectorLevelObj;
+
+/* MSVC 受检迭代器 _Vector_iterator<LevelObj> —— 8 字节
+ * 普通 STL 迭代器仅 4 字节，多出的 _Mycont 用于越界校验 */
+typedef struct CheckedIter {
+    VectorLevelObj* _Mycont;   /* +0x00  所属容器 */
+    LevelObj*       _Myptr;    /* +0x04  当前元素 */
+} CheckedIter;
+
+/* sub_1003f0d0(vec[ebx], out[esi], n[栈]) -> out = vec.begin() + n
+ * n 原样使用，无 ±1 调整；越界则夹到 end */
+CheckedIter* vec_begin_plus_n(VectorLevelObj* v, CheckedIter* out, int n)
+{
+    out->_Mycont = v;
+    out->_Myptr  = v->_Myfirst;
+    for (int i = 0; ; i++) {
+        if (out->_Myptr == v->_Mylast) break;   /* 到末尾 */
+        if (i == n)                    break;   /* 推进 n 次 */
+        out->_Myptr += 1;                       /* +0xA0 字节 */
+    }
+    return out;
+}
+
+/* sub_1003d720(it[esi], out[edi]) —— 后置自增 it++
+ * sub_1003d750 完全对称，步进 -0xA0，边界改查 _Myfirst */
+CheckedIter* iter_postinc(CheckedIter* it, CheckedIter* out)
+{
+    *out = *it;                             /* 后置：先拷贝旧值 */
+    it->_Myptr += 1;                        /* +0xA0 */
+    return out;
+}
+
+/* sub_1003f150(src[ecx]) -> vector<LevelObj>（按值，深拷贝快照）
+ *   转调 sub_1006a4e0 = vector 拷贝构造：
+ *     1) count = (src->_Mylast - src->_Myfirst) / 0xA0
+ *     2) _Allocate(count)      → 堆分配 count*160
+ *     3) _Uninitialized_copy   → 逐元素拷贝（rep movsd ×0x28）
+ *   调用方用完必须 operator delete(snapshot._Myfirst)（0x1006b320） */
+VectorLevelObj VectorCopy(VectorLevelObj* src);
+
+/* ============================================================
  * 2. WNMRNEW 封装层  —— sub_1003a7c0
  *    int __thiscall(void* this, int count, double* out, void* ctx)
  * ============================================================ */
@@ -90,14 +144,19 @@ int WNMRNEW(void* this_obj, int count, double* out, void* ctx)
     MarkSignalFlag(list, count, temp);   /* sub_10060aa0 */
     MergeByFlag(list);                   /* sub_100616b0 */
     MainEngine(list);                    /* sub_10056190 */
-    LevelObj* it = GetFirst(list);       /* sub_1003f150 */
 
-    /* 2.4 提取状态码 +0x90 写入 out[] */
-    for (LevelObj* o = it; o != GetEnd(list); o += 1 /*0xA0*/) {
-        int k = o->index - 1;
-        out[k] = (double)o->status;      /* ★ 状态码 → VAR5 */
+    /* 2.4 生成容器快照（第六批更正：sub_1003f150 是深拷贝，非"取首元素"）
+     *     std::vector<LevelObj> snapshot = *list;   ← 触发堆分配 O(n)
+     *     sub_1003f150(src) 转调 sub_1006a4e0 = vector 拷贝构造
+     *     遍历 snapshot._Myfirst .. snapshot._Mylast                  */
+    VectorLevelObj snapshot = VectorCopy(list);   /* sub_1003f150 / sub_1006a4e0 */
+
+    for (LevelObj* o = snapshot._Myfirst; o != snapshot._Mylast; ++o) {
+        int k = o->index - 1;            /* +0x00 为 1 基 → 减 1 */
+        out[k] = (double)o->status;      /* ★ 状态码 +0x90 → VAR5 */
     }
 
+    OperatorDelete(snapshot._Myfirst);   /* 0x1006b320：释放快照 */
     free(temp);
     return 1;
 }
@@ -230,7 +289,7 @@ void MainEngine(LevelObj* list)
 
 /* ============================================================
  * 6. WNMRPRINEW  —— sub_1003a960
- *    int __stdcall(objList /*eax*/, ctx /*edx*/, count /*ecx*/, out /*[esp+34h]*/)
+ *    int __stdcall(objList[eax], ctx[edx], count[ecx], out[[esp+34h]])
  *    注意: ret 4 (只有 1 个栈参数)
  * ============================================================ */
 
@@ -245,12 +304,15 @@ int WNMRPRINEW(LevelObj* objList, void* ctx, int count, double* out)
     if (!Authorize(ctx, 0xEA63))
         return -1;
 
-    LevelObj* first = GetFirst(objList);
+    /* 同样先取快照（sub_1003f150），遍历后释放 */
+    VectorLevelObj snapshot = VectorCopy(objList);      /* sub_1003f150 */
 
-    for (LevelObj* o = first; o != end(objList); o++) {
+    for (LevelObj* o = snapshot._Myfirst; o != snapshot._Mylast; ++o) {
         int k = o->index - 1;
         out[k] = (double)o->price;       /* ★ +0x94 → VAR6 */
     }
+
+    OperatorDelete(snapshot._Myfirst);   /* 0x1006b320 */
     return 1;
 }
 

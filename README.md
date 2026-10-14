@@ -38,6 +38,32 @@
 | `+0x94` | float | **该点实际价格** |
 | `+0x98` | int | 特殊标志 |
 
+### 2b. 容器与迭代器模型（第六批）
+
+级别对象存放在 **MSVC 安全 STL 的 `std::vector<LevelObj>`** 中：
+
+```c
+typedef struct VectorLevelObj {   /* 16 字节 */
+    void*     _Myproxy;   /* +0x00  分配器代理 */
+    LevelObj* _Myfirst;   /* +0x04  首元素 */
+    LevelObj* _Mylast;    /* +0x08  末元素后一位置（迭代终点） */
+    LevelObj* _Myend;     /* +0x0C  容量末尾 */
+} VectorLevelObj;
+
+typedef struct CheckedIter {      /* 8 字节（受检迭代器） */
+    VectorLevelObj* _Mycont;  /* +0x00  所属容器（越界校验用） */
+    LevelObj*       _Myptr;   /* +0x04  当前元素 */
+} CheckedIter;
+```
+
+- `sub_1003f0d0(vec, out, n)` = **`vec.begin() + n`**（n 原样使用，无 ±1 调整）
+- `sub_1003d720` = **`it++`**（`_Myptr += 0xA0`）；`sub_1003d750` = **`it--`**（`-= 0xA0`）
+- `sub_1003f150` = **按值深拷贝容器（快照）**，非"取首元素"
+- 安全 STL 指纹：`_invalid_parameter_noinfo`（`ds:[1006F194h]`）
+
+> `sizeof(LevelObj) = 0xA0` 由**四条独立途径**互证：魔数 `÷160`、步进立即数 `0xA0`、
+> `rep movsd` 计数 `0x28`、分配 `count×160`。
+
 ### 3. 状态码矩阵（`+0x90`）—— 共 **24 处**写入点 = 4 组算法实例
 
 | 码 | 价格源 | 语义 | 实例①地址 |
@@ -87,6 +113,7 @@
 | [docs/03-主引擎-sub_10056190.md](docs/03-主引擎-sub_10056190.md) | 状态码矩阵、触发条件、极值子函数 |
 | [docs/04-字段来源闭环-ChBi.md](docs/04-字段来源闭环-ChBi.md) | `+0x0C/+0x10` 来源追溯、邻近索引关系 |
 | [docs/05-控制流完整还原.md](docs/05-控制流完整还原.md) | **4 组算法实例化、x87 三掩码全解、比较操作数语义表** |
+| [docs/06-迭代器与容器.md](docs/06-迭代器与容器.md) | **`std::vector` 容器模型、受检迭代器、`begin()+n`、快照语义** |
 | [pseudocode/wnmr.c](pseudocode/wnmr.c) | 合并后的可读伪码 |
 
 ## 关键地址速查
@@ -100,8 +127,11 @@
 | 信号打标 | `sub_10060aa0` @ `0x10060aa0` |
 | 极值搜索(argmax) | `sub_10056010` @ `0x10056010` |
 | 极值搜索(argmin) | `sub_100560d0` @ `0x100560d0` |
-| 迭代器构造 | `sub_1003F0D0`（调用 54 次） |
-| 迭代器 `++` | `sub_1003D720` |
+| `vec.begin() + n` | `sub_1003f0d0` @ `0x1003f0d0`（调用 54 次，`ret 4`） |
+| 迭代器后置自增 `it++` | `sub_1003d720` @ `0x1003d720` |
+| 迭代器后置自减 `it--` | `sub_1003d750` @ `0x1003d750` |
+| 容器快照（深拷贝） | `sub_1003f150` @ `0x1003f150` |
+| `vector` 拷贝构造 | `sub_1006a4e0` @ `0x1006a4e0` |
 | `CHBI` 入口 | `0x1000f580` (`CalcProc_ChBi`) |
 | 方向标注 | `sub_1003ef00` @ `0x1003ef00` |
 | 分型标志写入 | `0x10056710`(=-1底) / `0x10056760`(=+1顶) |
