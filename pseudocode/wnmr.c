@@ -115,6 +115,9 @@ CheckedIter* iter_postinc(CheckedIter* it, CheckedIter* out)
  *   调用方用完必须 operator delete(snapshot._Myfirst)（0x1006b320） */
 VectorLevelObj VectorCopy(VectorLevelObj* src);
 
+/* 0x1006a720 — vector<Bar28>::push_back（简化声明） */
+void vec_push_back(VectorMember* vec, const Bar28* src);
+
 /* ============================================================
  * 1d. 输入 bar（0x28 字节）与「迭代器窗口」（第十/十一批还原）
  *
@@ -176,7 +179,7 @@ int WNMRNEW(void* this_obj, int count, double* out, void* ctx)
     if (count <= 0 || ctx == NULL)
         return -1;
 
-    LevelObj* list = *(LevelObj**)this_obj;
+    AnalyzerCtx* W = (AnalyzerCtx*)this_obj;
 
     /* 2.1 双缓冲初始化: out 清零并镜像到临时 float 数组 */
     float* temp = (float*)malloc(count * sizeof(float));
@@ -192,15 +195,16 @@ int WNMRNEW(void* this_obj, int count, double* out, void* ctx)
     }
 
     /* 2.3 三级流水线 */
-    MarkSignalFlag(list, count, temp);   /* sub_10060aa0 */
-    MergeByFlag(list);                   /* sub_100616b0 */
-    MainEngine(list);                    /* sub_10056190 */
+    MarkSignalFlag((VectorLevelObj*)&W->m[0], temp, count);  /* sub_10060aa0 */
+    MergeByFlag(W);                                           /* sub_100616b0 */
+    MainEngine((LevelObj*)W);                                 /* sub_10056190
+                                                                 * 注：伪代码简化，实际引擎参数为 W */
 
     /* 2.4 生成容器快照（第六批更正：sub_1003f150 是深拷贝，非"取首元素"）
      *     std::vector<LevelObj> snapshot = *list;   ← 触发堆分配 O(n)
      *     sub_1003f150(src) 转调 sub_1006a4e0 = vector 拷贝构造
      *     遍历 snapshot._Myfirst .. snapshot._Mylast                  */
-    VectorLevelObj snapshot = VectorCopy(list);   /* sub_1003f150 / sub_1006a4e0 */
+    VectorLevelObj snapshot = VectorCopy((VectorLevelObj*)&W->m[0]);   /* sub_1003f150 / sub_1006a4e0 */
 
     for (LevelObj* o = snapshot._Myfirst; o != snapshot._Mylast; ++o) {
         int k = o->index - 1;            /* +0x00 为 1 基 → 减 1 */
@@ -215,33 +219,71 @@ int WNMRNEW(void* this_obj, int count, double* out, void* ctx)
 /* ============================================================
  * 3. 信号打标  —— sub_10060aa0
  *    依据分型序列 arr[] 设置 obj->signal_flag
+ *    ★ 第十三批修正：直接映射，无"连续同向"判断；
+ *      -1.0f 映射为 -1，不是"不打标"
  * ============================================================ */
 
-void MarkSignalFlag(LevelObj* list, int n, float* arr)
+void MarkSignalFlag(VectorLevelObj* Wm0, float* arr, int n)
 {
     /* 3.1 清零所有 signal_flag */
-    for (LevelObj* o = list; o != end(list); o++)
+    for (LevelObj* o = Wm0->_Myfirst; o != Wm0->_Mylast; ++o)
         o->signal_flag = 0;
 
-    /* 3.2 逐元素判定 */
+    /* 3.2 按分型序列直接映射（1.0f→1, -1.0f→-1, 其余跳过） */
     for (int i = 0; i < n; i++) {
-        float v = arr[i];
+        if (arr[i] != 1.0f && arr[i] != -1.0f)
+            continue;                       /* 非分型点 → 跳过 */
 
-        if (v == 1.0f) {                 /* fld1 / fcomp */
-            /* 回查 index == i-1 的级别对象 */
-            for (LevelObj* o = list; o != end(list); o++) {
-                if (o->index == i - 1) {
-                    if (arr[o->index] == 1.0f)
-                        o->signal_flag =  1;   /* 连续同向 → +1 */
-                    else
-                        o->signal_flag = -1;
-                    break;
-                }
+        /* 查找 index == i+1 的级别对象 */
+        for (LevelObj* o = Wm0->_Myfirst; o != Wm0->_Mylast; ++o) {
+            if (o->index == i + 1) {
+                o->signal_flag = (arr[i] == 1.0f) ? 1 : -1;
+                break;
             }
         }
-        else if (v == -1.0f) {           /* 常量 0x1006FC50 = -1.0 */
-            /* 不打标 */
+    }
+}
+
+/* ============================================================
+ * 3b. 按标志合并 —— sub_100616b0 (MergeByFlag)
+ *     将 signal_flag 相反的相邻级别对象合并为 bar，存入 W->m[4]
+ *     ★ 第十三批新增
+ * ============================================================ */
+
+void MergeByFlag(AnalyzerCtx* W)
+{
+    VectorMember* m4 = &W->m[4];
+    VectorMember* m0 = &W->m[0];
+
+    /* 1. 清空 bar vector */
+    if (m4->_Myfirst && m4->_Mylast > m4->_Myfirst)
+        m4->_Mylast = m4->_Myfirst;
+
+    int n = (int)((m0->_Mylast - m0->_Myfirst) / 0xA0);
+    if (n <= 2) return;
+
+    LevelObj* prev = (LevelObj*)m0->_Myfirst + 1;
+    LevelObj* curr = (LevelObj*)m0->_Myfirst + 2;
+
+    for (int i = 2; i < n; i++) {
+        Bar28 bar = {0};
+
+        /* 路径 A：底接顶 (curr=1, prev=-1) */
+        if (curr->signal_flag == 1 && prev->signal_flag == -1) {
+            bar.low  = curr->low;    /* 当前低点 */
+            bar.high = prev->high;   /* 前高点 */
+            /* idx00/idx08 等字段由构造侧填充 */
+            vec_push_back(m4, &bar); /* 0x1006a720 */
         }
+        /* 路径 B：顶接底 (curr=-1, prev=1) */
+        else if (curr->signal_flag == -1 && prev->signal_flag == 1) {
+            bar.low  = prev->low;    /* 前低点 */
+            bar.high = curr->high;   /* 当前高点 */
+            vec_push_back(m4, &bar);
+        }
+
+        prev = curr;
+        curr += 1;   /* +0xA0 */
     }
 }
 
