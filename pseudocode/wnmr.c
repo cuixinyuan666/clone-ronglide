@@ -116,6 +116,57 @@ CheckedIter* iter_postinc(CheckedIter* it, CheckedIter* out)
 VectorLevelObj VectorCopy(VectorLevelObj* src);
 
 /* ============================================================
+ * 1d. 输入 bar（0x28 字节）与「迭代器窗口」（第十/十一批还原）
+ *
+ *  容器 = 上下文类 W（含 8 个 16 字节内嵌 vector 记录）：
+ *    W->m[0]  记录 +0x00，数据 +0x04/+0x08  →  vector<0xA0>  级别对象
+ *    W->m[4]  记录 +0x40，数据 +0x44/+0x48  →  vector<0x28>  输入 bar
+ *    W->m[5]  记录 +0x50，数据 +0x54/+0x58  →  vector<0x28>
+ *  sub_10056190 的参数就是 W。
+ * ============================================================ */
+
+typedef struct Bar28 {          /* 0x28 字节，POD，经 rep movsd 整体拷贝 */
+    int32_t idx00;              /* +0x00  ★ 1 基序号（= 计数器 + 1） */
+    int32_t f04;                /* +0x04  另一索引 */
+    int32_t idx08;              /* +0x08  ★ 0 基索引 → W->m[0] 的下标 */
+    float   low;                /* +0x0C  = 级别对象 +0x0C */
+    float   high;               /* +0x10  = 级别对象 +0x10 */
+    uint8_t _pad[0x28 - 0x14];  /* +0x14 .. 语义未定 */
+} Bar28;
+
+/* 迭代器窗口：9 个受检迭代器，指向 W->m[4] 中连续 9 个 bar
+ * 证据：0x100567ae..0x10056804（lea ebx,[esp+0x18] + add ebx,8 + add esi,0x28）
+ *      窗口从 W->m[4]._Myfirst + 0x28 起（跳过 bar[0]） */
+#define BLOCK_N 9
+static void build_block(CheckedIter* block /* = &frame[0x18] */,
+                        VectorMember* m4   /* = &W->m[4] */)
+{
+    Bar28* p = (Bar28*)m4->_Myfirst + 1;        /* 跳过 bar[0] */
+    int    i = 0;
+    while (p != (Bar28*)m4->_Mylast && i != BLOCK_N - 1) {
+        block[i]._Mycont = m4;
+        block[i]._Myptr  = (LevelObj*)p;
+        p += 1;                                  /* +0x28 */
+        i += 1;
+        /* block += 1;  (+8) */
+    }
+}
+
+/* ============================================================
+ * 1e. 索引基数定论（第十一批）
+ * ============================================================
+ *  构造侧（sub_1003e410 等，栈上临时 bar 基址 [esp+0x38]）：
+ *    temp+0x00 = [esp+0x10] + 1        →  1, 2, 3, ...      【1 基】
+ *    temp+0x08 = [esp+0x14]            →  0 基下标
+ *        空 vector   → 0
+ *        正常路径    → i-1（i 为 begin()+i 的 0 基元素下标）
+ *        无前驱      → N（元素个数，哨兵）
+ *  消费侧（sub_1003f0d0）：result = W->m[0].begin() + n，n 原样使用
+ *
+ *  ∴ +0x00 为 1 基，+0x08 为 0 基 —— 两侧基数一致，无 off-by-one。
+ */
+
+/* ============================================================
  * 2. WNMRNEW 封装层  —— sub_1003a7c0
  *    int __thiscall(void* this, int count, double* out, void* ctx)
  * ============================================================ */
