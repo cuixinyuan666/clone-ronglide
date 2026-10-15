@@ -164,9 +164,12 @@ def main():
 
     text = "\n".join(lines)
     print(text)
-    out = os.path.join(REPO, "docs", "19-逆向进度看板.md")
-    open(out, "w", encoding="utf-8").write(text + "\n")
-    print("\n[written] " + out)
+    if "--write" in sys.argv:
+        out = os.path.join(REPO, "docs", "19-逆向进度看板.md")
+        open(out, "w", encoding="utf-8").write(text + "\n")
+        print("\n[written] " + out)
+    else:
+        print("\n[提示] 未写文件；如需刷新看板请加 --write")
     return 0 if not problems else 1
 
 
