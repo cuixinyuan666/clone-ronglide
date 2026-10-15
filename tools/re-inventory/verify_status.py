@@ -104,20 +104,32 @@ def main():
                 problems.append("缺少证据: " + a)
         lines.append("\n> 下一步: %s\n" % t["next"])
 
-    # ② git 状态
+    # ② git 状态（区分「本任务范围」与「外部/并行会话改动」）
     lines.append("\n## 二、仓库与推送状态\n")
     status, _ = sh(["git", "status", "--porcelain"])
     branch, _ = sh(["git", "rev-parse", "--abbrev-ref", "HEAD"])
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    clean = status == ""
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-",
+                "tools/re-inventory", "pseudocode/chduan", "pseudocode/chbi")
+    tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]
+    untracked = [l for l in status.splitlines() if l.startswith("??")]
+    mine = [l for l in tracked_mod if any(s in l for s in MY_SCOPE)]
+    foreign = [l for l in tracked_mod if l not in mine]
+    clean = len(mine) == 0
     pushed = local == remote
-    lines.append("- 工作树: %s %s" % (ok(clean), "干净" if clean else "有未提交改动"))
+    lines.append("- 本任务范围改动: %s %s" % (ok(clean), "无" if clean else "有"))
+    for m in mine:
+        lines.append("    - ⚠️ %s" % m)
+    lines.append("- 外部/并行改动(不参与判定): %d 个" % len(foreign))
+    for m in foreign[:8]:
+        lines.append("    - ℹ️ %s" % m)
+    lines.append("- 未跟踪文件: %d 个（仅供参考）" % len(untracked))
     lines.append("- 本地/远端: %s %s vs origin/%s %s" % (ok(pushed), local[:8], branch, remote[:8]))
     lines.append("\n最近提交:\n```\n%s\n```\n" % log)
     if not clean:
-        problems.append("工作树不干净")
+        problems.append("本任务范围有未提交改动")
     if not pushed:
         problems.append("本地提交未推送")
 
