@@ -1,0 +1,39 @@
+1001c940  push     ecx
+1001c941  push     esi
+1001c942  push     edi
+1001c943  lea      ecx, [esp + 8]
+1001c947  mov      esi, eax
+1001c949  call     0x1001d9f0
+1001c94e  mov      edx, dword ptr [eax]
+1001c950  mov      ecx, dword ptr [esi]
+1001c952  mov      dword ptr [esi], edx
+1001c954  mov      dword ptr [eax], ecx
+1001c956  mov      eax, dword ptr [esp + 4]
+1001c95a  test     eax, eax
+1001c95c  je       0x1001c98a
+1001c95e  mov      esi, eax
+1001c960  add      eax, 4
+1001c963  or       ecx, 0xffffffff
+1001c966  lock xadd dword ptr [eax], ecx
+1001c96a  jne      0x1001c98a
+1001c96c  mov      edx, dword ptr [esi]
+1001c96e  mov      eax, dword ptr [edx + 4]
+1001c971  mov      ecx, esi
+1001c973  call     eax
+1001c975  lea      ecx, [esi + 8]
+1001c978  or       edx, 0xffffffff
+1001c97b  lock xadd dword ptr [ecx], edx
+1001c97f  jne      0x1001c98a
+1001c981  mov      eax, dword ptr [esi]
+1001c983  mov      edx, dword ptr [eax + 8]
+1001c986  mov      ecx, esi
+1001c988  call     edx
+1001c98a  mov      eax, dword ptr [esp + 0xc]
+1001c98e  push     edi
+1001c98f  push     edi
+1001c990  push     eax
+1001c991  call     0x1001e780
+1001c996  add      esp, 0xc
+1001c999  pop      esi
+1001c99a  pop      ecx
+1001c99b  ret      
