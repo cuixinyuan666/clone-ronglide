@@ -1,0 +1,106 @@
+=== Indicators (4 found) ===
+[Windows path] d:\RLD\pro\RNF_X\release\TAFLib.pdb
+[IPv4 address] 1.0.0.1
+[Windows path] 8&8-8:89:K:\:
+[Windows path] :$:,:4:<:D:L:T:\:d:l:t:|:
+=== Printable Strings (3306 total) ===
+0x0000004d: !This program cannot be run in DOS mode.
+0x000000e7: zRichtz
+0x000001f8: .text
+0x0000021f: `.rdata
+0x00000247: @.data
+0x00000270: .rsrc
+0x00000297: @.reloc
+0x0000148d: PSUVW
+0x00001590: Y_^][
+0x00001fad: PQSUVW
+0x000021e7: Y_^][
+0x00002691: 9D$ r
+0x000027cb: t$PRj
+0x000027db: D$`PV
+0x00002822: T$Th 
+0x00002bee: L$<f;H(u?
+0x00003576: D$$;G 
+0x00003624: L$<f;H(u 
+0x00003665: L$HPQ
+0x0000543f: D$HSVW
+0x000055af: D$(SVW
+0x000056ff: D$(SVW
+0x00005d47: L$ vq
+0x000069cf: D$@SVW
+0x00007042: D$ PQW
+0x00007278: T$ RPQ
+0x000075b4: |$0;M
+0x00007758: T$ RPQ
+0x00007988: T$ RPQ
+0x00007cc4: |$0;M
+0x00007e68: T$ RPQ
+0x0000870d: D$(PWj
+0x000089fd: D$(PWj
+0x00008ff6: S$f;Q(u
+0x00009003: L$$PQWS
+0x00009018: D$$RPWS
+0x000092fb: \$P+]
+0x000096c2: L$DQR
+0x0000ac00: L$0SU
+0x0000b030: L$0SU
+0x0000b7aa: D$$tK
+0x0000b8be: \$ ;}
+0x0000d039: D$$}$
+0x0000d0c7: \$8;\$$|O
+0x0000df50: ;L$ sP
+0x0000e587: D$0;T$
+0x0000eed9: D$(SVW
+0x0000efbb: ;D$0w
+0x0000f04f: D$HSVW
+0x0000f4bf: D$@hx
+0x0000f5f8: 3u@hb
+0x0000f664: \$(tt
+0x0000f8d6: L$ VP
+0x00010665: L$$QP
+0x000116e0: L$ VP
+0x00011da4: T$ VP
+0x00012160: L$ VP
+0x000122e5: t$ WPQ
+0x000123e5: L$$VQP
+0x00012a96: 3u@hb
+0x00012b05: \$Htx
+0x00013fa7: L$<vV
+0x00014355: f;J(u
+0x000143a9: L$<vw
+0x00014449: L$<v{
+0x000144f9: L$<vw
+0x00014599: L$<v{
+0x000147c2: D$xSVW
+0x0001494b: D$0PWQ
+0x00014990: T$DRV
+0x00014b04: RWVPQ
+0x00014ecf: \$,t<
+0x0001500a: Y_^][
+0x0001518c: 90t%;
+0x0001527c: T$<Rh
+0x000152a9: T$<Rh
+0x000152d6: T$<Rh
+0x000152ed: D$xPh
+0x00015333: L$xQh
+0x00015379: T$xRh
+0x000153bc: D$xPh
+0x0001548f: D$(SVW
+0x000155ff: D$HSVW
+0x00015715: T$<RP
+0x000157bf: D$HSVW
+0x000158d5: T$<RP
+0x00015c6d: F(f=e
+0x0001625d: wd;t$8
+0x000162bb: ;t$8r
+0x000162d6: w@;t$8s:
+0x000162f8: ;t$8r
+0x000164d4: W$f;Q(
+0x00016973: C$f=e
+0x00016d6f: _^][Y
+0x00016de5: _^][Y
+0x00016e19: _^][Y
+0x00016e7b: _^][Y
+0x00017131: _^][Y
+0x00017180: _^][Y
+0x0001719b: _^][Y

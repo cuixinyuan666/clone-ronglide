@@ -1,0 +1,14 @@
+Target:   TAFLib.dll
+Format:   Portable Executable (PE)
+Size:     565248 bytes
+Entropy:  6.36 bits/byte
+MD5:      3a5268a1aca29302ea7ed13fc2d002cb
+SHA-1:    ff451249f95e3a04da0037af55c1bb0e1e096fdf
+SHA-256:  d277f1b647e4a5c1c570b0bd69eb0f3955737b65e35332a62d0da4f80ef9b588
+Arch:     X86 (32 bits)
+Entry:    0x1006b798
+ASLR: no
+DEP / NX: no
+Control Flow Guard: no
+Forced integrity checks: no
+Authenticode signature: no
