@@ -1,0 +1,324 @@
+100535e6  jbe      0x100535ea
+100535e8  call     ebp
+100535ec  jne      0x10054673
+100535ff  mov      byte ptr [esp + 0x1f], 1
+10053604  mov      byte ptr [esp + 0x12], 0
+10053609  mov      byte ptr [esp + 0x13], 0
+10053612  jbe      0x10053616
+10053614  call     ebp
+10053626  jbe      0x1005362e
+10053628  call     dword ptr [0x1006f194]
+10053630  je       0x10053636
+10053634  je       0x10053640
+1005363c  call     edi
+1005363e  jmp      0x10053646
+10053648  je       0x10053db2
+10053650  jne      0x10053654
+10053652  call     edi
+10053657  jb       0x1005365b
+10053659  call     edi
+10053662  jl       0x10053d73
+1005366d  je       0x10053695
+10053672  jb       0x10053676
+10053674  call     edi
+10053686  mov      byte ptr [esp + 0x1f], 0
+1005368b  mov      byte ptr [esp + 0x12], 1
+10053690  jmp      0x10053d73
+10053695  cmp      byte ptr [esp + 0x12], 0
+1005369a  je       0x100537b6
+100536a3  jb       0x100536a7
+100536a5  call     edi
+100536a7  fld      dword ptr [ebx + 0xc]
+100536aa  fld      dword ptr [esp + 0x9c]
+100536b1  fcompp   
+100536b3  fnstsw   ax
+100536b8  jp       0x1005370d
+100536bd  jb       0x100536c1
+100536bf  call     edi
+100536c1  fld      dword ptr [ebx + 0x10]
+100536c4  fld      dword ptr [esp + 0xa0]
+100536cb  fcompp   
+100536cd  fnstsw   ax
+100536d2  jp       0x1005370d
+100536df  jb       0x100536e3
+100536e1  call     edi
+100536ed  jb       0x100536f1
+100536ef  call     edi
+100536fe  mov      byte ptr [esp + 0x12], 0
+10053703  mov      byte ptr [esp + 0x13], 1
+10053708  jmp      0x10053d73
+10053710  jb       0x10053714
+10053712  call     edi
+10053714  fld      dword ptr [ebx + 0xc]
+10053717  fld      dword ptr [esp + 0x9c]
+1005371e  fcompp   
+10053720  fnstsw   ax
+10053725  jne      0x10053745
+1005372a  jb       0x1005372e
+1005372c  call     edi
+1005372e  fld      dword ptr [ebx + 0x10]
+10053731  fld      dword ptr [esp + 0xa0]
+10053738  fcompp   
+1005373a  fnstsw   ax
+1005373f  je       0x10053d73
+10053748  jb       0x1005374c
+1005374a  call     edi
+1005374c  fld      dword ptr [ebx + 0xc]
+1005374f  fld      dword ptr [esp + 0x9c]
+10053756  fcompp   
+10053758  fnstsw   ax
+1005375d  jp       0x10053795
+1005376a  jb       0x1005376e
+1005376c  call     edi
+1005377e  jb       0x10053786
+10053780  call     dword ptr [0x1006f194]
+10053786  mov      byte ptr [esp + 0x12], 0
+1005378b  mov      byte ptr [esp + 0x13], 1
+10053790  jmp      0x10053d6c
+10053798  jb       0x1005379c
+1005379a  call     edi
+1005379f  fld      dword ptr [ebx + 0x10]
+100537a2  fstp     dword ptr [esp + 0xa0]
+100537a9  jb       0x10053d73
+100537af  call     edi
+100537b1  jmp      0x10053d73
+100537b6  cmp      byte ptr [esp + 0x13], 0
+100537bb  je       0x10053d73
+100537c4  jb       0x100537c8
+100537c6  call     edi
+100537c8  fld      dword ptr [ebx + 0xc]
+100537cb  fld      dword ptr [esp + 0x74]
+100537cf  fcompp   
+100537d1  fnstsw   ax
+100537d6  jne      0x10053c86
+100537df  jb       0x100537e3
+100537e1  call     edi
+100537e3  fld      dword ptr [ebx + 0x10]
+100537e6  fld      dword ptr [esp + 0x78]
+100537ec  fnstsw   ax
+100537ee  fstp     st(1)
+100537f3  jne      0x10053c84
+100537f9  fld      dword ptr [esp + 0x9c]
+10053800  fcompp   
+10053802  fnstsw   ax
+10053807  jp       0x10053db2
+10053831  mov      byte ptr [esp + 0x1e], 1
+10053836  mov      byte ptr [esp + 0x1c], al
+1005383a  mov      byte ptr [esp + 0x1d], al
+1005383e  jbe      0x10053846
+10053840  call     dword ptr [0x1006f194]
+1005384e  jbe      0x10053856
+10053850  call     dword ptr [0x1006f194]
+10053858  je       0x1005385e
+1005385c  je       0x10053864
+1005385e  call     dword ptr [0x1006f194]
+10053866  je       0x100538d1
+1005386a  jne      0x10053872
+1005386c  call     dword ptr [0x1006f194]
+10053875  jb       0x1005387d
+10053877  call     dword ptr [0x1006f194]
+10053884  jl       0x100538a1
+10053889  jb       0x10053891
+1005388b  call     dword ptr [0x1006f194]
+10053891  fld      dword ptr [esi + 0xc]
+10053894  fld      dword ptr [esp + 0x74]
+10053898  fcompp   
+1005389a  fnstsw   ax
+1005389f  jnp      0x100538b1
+100538a4  jb       0x100538ac
+100538a6  call     dword ptr [0x1006f194]
+100538af  jmp      0x10053848
+100538b4  jb       0x100538bc
+100538b6  call     dword ptr [0x1006f194]
+100538d7  jbe      0x100538df
+100538d9  call     dword ptr [0x1006f194]
+100538f5  jbe      0x100538fd
+100538f7  call     dword ptr [0x1006f194]
+100538ff  je       0x10053905
+10053903  je       0x1005390b
+10053905  call     dword ptr [0x1006f194]
+1005390d  je       0x10053b64
+10053915  jne      0x1005391d
+10053917  call     dword ptr [0x1006f194]
+10053920  jb       0x10053928
+10053922  call     dword ptr [0x1006f194]
+1005392f  jl       0x10053b4f
+1005393a  je       0x10053966
+1005393f  jb       0x10053947
+10053941  call     dword ptr [0x1006f194]
+10053957  mov      byte ptr [esp + 0x1e], 0
+1005395c  mov      byte ptr [esp + 0x1c], 1
+10053961  jmp      0x10053b4f
+1005396b  je       0x10053a55
+1005397a  jb       0x1005397e
+1005397c  call     esi
+1005397e  fld      dword ptr [ebx + 0xc]
+10053981  fld      dword ptr [esp + 0x104]
+10053988  fcompp   
+1005398a  fnstsw   ax
+1005398f  jne      0x100539d1
+10053994  jb       0x10053998
+10053996  call     esi
+10053998  fld      dword ptr [ebx + 0x10]
+1005399b  fld      dword ptr [esp + 0x108]
+100539a2  fcompp   
+100539a4  fnstsw   ax
+100539a9  jne      0x100539d1
+100539ae  jb       0x100539b2
+100539b0  call     esi
+100539c2  mov      byte ptr [esp + 0x1c], 0
+100539c7  mov      byte ptr [esp + 0x1d], 1
+100539cc  jmp      0x10053b4f
+100539d4  jb       0x100539d8
+100539d6  call     esi
+100539d8  fld      dword ptr [ebx + 0xc]
+100539db  fld      dword ptr [esp + 0x104]
+100539e2  fcompp   
+100539e4  fnstsw   ax
+100539e9  jp       0x10053a0f
+100539ee  jb       0x100539f2
+100539f0  call     esi
+100539f2  fld      dword ptr [ebx + 0x10]
+100539f5  fld      dword ptr [esp + 0x108]
+100539fc  fcompp   
+100539fe  fnstsw   ax
+10053a03  jnp      0x10053b4f
+10053a12  jb       0x10053a16
+10053a14  call     esi
+10053a16  fld      dword ptr [ebx + 0x10]
+10053a19  fld      dword ptr [esp + 0x108]
+10053a20  fcompp   
+10053a22  fnstsw   ax
+10053a27  jne      0x10053a3f
+10053a2c  jb       0x10053a30
+10053a2e  call     esi
+10053a30  fld      dword ptr [ebx + 0x10]
+10053a33  fstp     dword ptr [esp + 0x108]
+10053a3a  jmp      0x10053b4f
+10053a42  jb       0x10053a46
+10053a44  call     esi
+10053a46  fld      dword ptr [ebx + 0xc]
+10053a49  fstp     dword ptr [esp + 0x104]
+10053a50  jmp      0x10053b4f
+10053a5a  je       0x10053b4f
+10053a63  jb       0x10053a6b
+10053a65  call     dword ptr [0x1006f194]
+10053a6b  fld      dword ptr [ebx + 0xc]
+10053a74  fld      dword ptr [esp + 0xdc]
+10053a7b  fcompp   
+10053a7d  fnstsw   ax
+10053a82  jp       0x10053aa2
+10053a87  jb       0x10053a8b
+10053a89  call     edi
+10053a8b  fld      dword ptr [ebx + 0x10]
+10053a8e  fld      dword ptr [esp + 0xe0]
+10053a95  fcompp   
+10053a97  fnstsw   ax
+10053a9c  jnp      0x10053b64
+10053aa5  jb       0x10053aa9
+10053aa7  call     edi
+10053aa9  fld      dword ptr [ebx + 0xc]
+10053aac  fld      dword ptr [esp + 0xdc]
+10053ab3  fcompp   
+10053ab5  fnstsw   ax
+10053aba  jne      0x10053b0e
+10053ac3  call     0x1006a830
+10053ac8  fld      dword ptr [eax + 0x10]
+10053acb  fld      dword ptr [esp + 0xe0]
+10053ad2  fcompp   
+10053ad4  fnstsw   ax
+10053ad9  jne      0x10053b0e
+10053af7  call     0x1006a830
+10053b0c  jmp      0x10053b4f
+10053b11  jb       0x10053b15
+10053b13  call     edi
+10053b15  fld      dword ptr [esp + 0xe0]
+10053b23  fld      dword ptr [ebx + 0x10]
+10053b26  fcompp   
+10053b28  fnstsw   ax
+10053b2d  jne      0x10053b40
+10053b2f  call     0x1006a830
+10053b34  fld      dword ptr [eax + 0xc]
+10053b37  fstp     dword ptr [esp + 0xdc]
+10053b3e  jmp      0x10053b4f
+10053b40  call     0x1006a830
+10053b45  fld      dword ptr [eax + 0x10]
+10053b48  fstp     dword ptr [esp + 0xe0]
+10053b52  jb       0x10053b5a
+10053b54  call     dword ptr [0x1006f194]
+10053b5f  jmp      0x100538e8
+10053b70  jbe      0x10053b7a
+10053b72  call     dword ptr [0x1006f194]
+10053b7c  je       0x10053b82
+10053b80  je       0x10053b88
+10053b82  call     dword ptr [0x1006f194]
+10053b8a  je       0x10053bbe
+10053b91  je       0x10053db2
+10053b99  jne      0x10053ba1
+10053b9b  call     dword ptr [0x1006f194]
+10053ba4  jb       0x10053bac
+10053ba6  call     dword ptr [0x1006f194]
+10053bb3  jl       0x10053db2
+10053bb9  jmp      0x10053d73
+10053bc3  jle      0x10053d9c
+10053bcf  jbe      0x10053bd7
+10053bd1  call     dword ptr [0x1006f194]
+10053be6  jbe      0x10053bee
+10053be8  call     dword ptr [0x1006f194]
+10053bf0  je       0x10053bf6
+10053bf4  je       0x10053bfc
+10053bf6  call     dword ptr [0x1006f194]
+10053bfe  je       0x10053d73
+10053c0c  jne      0x10053c10
+10053c0e  call     edi
+10053c13  jb       0x10053c17
+10053c15  call     edi
+10053c20  jne      0x10053c24
+10053c22  call     edi
+10053c2e  jb       0x10053c36
+10053c30  call     dword ptr [0x1006f194]
+10053c3c  je       0x10053c52
+10053c41  jb       0x10053c49
+10053c43  call     dword ptr [0x1006f194]
+10053c50  jmp      0x10053be0
+10053c67  jb       0x10053c6f
+10053c69  call     dword ptr [0x1006f194]
+10053c7f  jmp      0x10053d54
+10053c84  fstp     st(0)
+10053c89  jb       0x10053c8d
+10053c8b  call     edi
+10053c8d  fld      dword ptr [ebx + 0xc]
+10053c90  fld      dword ptr [esp + 0x74]
+10053c94  fcompp   
+10053c96  fnstsw   ax
+10053c9b  jp       0x10053cfa
+10053ca0  jb       0x10053ca4
+10053ca2  call     edi
+10053ca4  fld      dword ptr [ebx + 0x10]
+10053ca7  fld      dword ptr [esp + 0x78]
+10053cab  fcompp   
+10053cad  fnstsw   ax
+10053cb2  jp       0x10053cfa
+10053cc9  jb       0x10053cd1
+10053ccb  call     dword ptr [0x1006f194]
+10053ce9  jb       0x10053cf1
+10053ceb  call     dword ptr [0x1006f194]
+10053cf8  jmp      0x10053d73
+10053cfd  jb       0x10053d01
+10053cff  call     edi
+10053d01  fld      dword ptr [esp + 0x74]
+10053d05  fld      dword ptr [ebx + 0xc]
+10053d08  fcompp   
+10053d0a  fnstsw   ax
+10053d0f  jp       0x10053d2f
+10053d14  jb       0x10053d18
+10053d16  call     edi
+10053d1b  fld      dword ptr [ebx + 0x10]
+10053d1e  fstp     dword ptr [esp + 0x78]
+10053d22  jb       0x10053d26
+10053d24  call     edi
+10053d2d  jmp      0x10053d73
+10053d4c  jb       0x10053d54
+10053d4e  call     dword ptr [0x1006f194]
+10053d64  jb       0x10053d6c
+10053d66  call     dword ptr [0x1006f194]
