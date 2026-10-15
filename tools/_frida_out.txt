@@ -1,0 +1,716 @@
+spawned pid 1496
+[hook] rsfile::open @ 0x1000d200
+[hook] _unlink/rename ok/ok
+[hook] rquo done
+[hook] all installed
+resumed
+logging...
+22:09:23.767 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\DownloadInfo.dn -> ok
+22:09:23.769 [CreateFileA] disp=3 D:\a_ronglide\缠中说禅\User\DownloadInfo.dn -> ok
+22:09:23.789 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\SysConfig.xml -> 32
+22:09:23.789 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\SysConfig.xml -> ok
+22:09:23.795 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\ItemNo.xml -> ok
+22:09:23.805 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\ItemNoCategory.xml -> 32
+22:09:23.805 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\ItemNoCategory.xml -> ok
+22:09:23.809 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\ItemNoHotStar.xml -> 32
+22:09:23.810 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\ItemNoHotStar.xml -> ok
+22:09:23.814 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\QuoteList.xml -> ok
+22:09:23.817 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\TAYunList.xml -> ok
+22:09:23.826 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\QuoteList.xml -> FAIL
+22:09:23.828 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\TAYunList.xml -> FAIL
+22:09:23.830 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Net.xml -> ok
+22:09:23.833 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\NetSetting.xml -> FAIL
+22:09:23.833 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\user.bin -> ok
+22:09:23.834 [CreateFileA] disp=3 D:\a_ronglide\缠中说禅\Sys\user.bin -> ok
+22:09:23.834 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\QuoteInfo.xml -> ok
+22:09:23.837 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\QuoteInfo_I.xml -> ok
+22:09:23.839 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\QuoteInfo_CHF.xml -> ok
+22:09:23.840 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\QuoteInfoEx.xml -> ok
+22:09:23.841 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\QuoteInfoEx_I.xml -> ok
+22:09:23.842 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\QuoteInfoEx_CHF.xml -> ok
+22:09:23.846 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\TAYunInfo.xml -> ok
+22:09:23.852 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\TAQuickBar.xml -> 32
+22:09:23.852 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\TAQuickBar.xml -> ok
+22:09:23.854 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\TAQuickBar.xml -> -1
+22:09:23.854 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\TATempBar.xml -> 32
+22:09:23.855 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\TATempBar.xml -> ok
+22:09:23.855 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\TATempBar.xml -> -1
+22:09:23.856 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\TAQuickBarLong.xml -> 32
+22:09:23.856 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\TAQuickBarLong.xml -> ok
+22:09:23.857 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\SigNoV2.xml -> 32
+22:09:23.858 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\SigNoV2.xml -> ok
+22:09:23.867 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\SigNo.xml -> 32
+22:09:23.867 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\SigNo.xml -> ok
+22:09:23.870 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\py.dt -> ok
+22:09:23.889 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\SelfPeriod.xml -> FAIL
+22:09:23.890 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\UserDraw.xml -> FAIL
+22:09:23.890 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\TAFunc.xml -> 32
+22:09:23.891 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\TAFunc.xml -> ok
+22:09:23.916 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\Interface.xml -> 32
+22:09:23.917 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Interface.xml -> ok
+22:09:23.917 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\Interface.xml -> 32
+22:09:23.918 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\Interface.xml -> ok
+22:09:23.919 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\StudyThumb.xml -> 32
+22:09:23.920 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\StudyThumb.xml -> ok
+22:09:23.922 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\StudyThumb.xml -> -1
+22:09:23.922 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\TA.xml -> -1
+22:09:23.923 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\TA.xml -> -1
+22:09:23.923 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\MinConfig.xml -> -1
+22:09:23.923 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\MinConfig.xml -> -1
+22:09:23.923 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\Trade.xml -> -1
+22:09:23.924 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\Version.xml -> 32
+22:09:23.925 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Version.xml -> ok
+22:09:23.930 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\ViewList.xml -> ok
+22:09:23.934 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\HotKey.xml -> ok
+22:09:23.937 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\HotKey.xml -> FAIL
+22:09:23.937 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\SymbolMark.xml -> -1
+22:09:23.937 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\Private.xml -> -1
+22:09:23.938 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\Private.xml -> -1
+22:09:23.938 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\DBMatrix.xml -> 32
+22:09:23.939 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\DBMatrix.xml -> ok
+22:09:23.940 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\DBMatrix.xml -> -1
+22:09:23.940 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\YunItemVal.xml -> 32
+22:09:23.940 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\YunItemVal.xml -> ok
+22:09:23.941 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\SigNoV2.xml -> 32
+22:09:23.945 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\SigNoV2.xml -> ok
+22:09:23.948 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\SigNo.xml -> 32
+22:09:23.949 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\SigNo.xml -> ok
+22:09:23.952 [GetFileAttributesW] D:\a_ronglide\缠中说禅\Sys\ColorScheme.BLACK.xml -> 32
+22:09:23.952 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\ColorScheme.BLACK.xml -> ok
+22:09:23.955 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\ColorScheme.BLACK.xml -> -1
+22:09:24.033 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\MainApp.exe -> ok
+22:09:24.033 [CreateFileA] disp=3 D:\a_ronglide\缠中说禅\MainApp.exe -> ok
+22:09:24.039 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\crash_reporter.cfg -> FAIL
+22:09:24.040 [CreateFileW] disp=4 acc=4 D:\a_ronglide\缠中说禅\debug.log -> ok
+22:09:24.041 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\icudtl.dat -> ok
+22:09:24.050 [GetFileAttributesW] C:\Users\Administrator\AppData\Local -> 16
+22:09:24.050 [GetFileAttributesW] C:\Users\Administrator\AppData\Local\CEF\User Data -> 16
+22:09:24.050 [GetFileAttributesW] C:\Users\Administrator\AppData\Local\CEF\User Data -> 16
+22:09:24.051 [GetFileAttributesW] C:\Users\Administrator\AppData\Local\CEF\User Data\Dictionaries -> 16
+22:09:24.051 [GetFileAttributesW] D:\a_ronglide\缠中说禅 -> 16
+22:09:24.054 [GetFileAttributesW] D:\a_ronglide\缠中说禅\locales -> 16
+22:09:24.054 [GetFileAttributesW] D:\a_ronglide\缠中说禅\locales\en-US.pak -> 32
+22:09:24.054 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\locales\en-US.pak -> ok
+22:09:24.055 [GetFileAttributesW] D:\a_ronglide\缠中说禅\resources.pak -> 32
+22:09:24.055 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\resources.pak -> ok
+22:09:24.056 [GetFileAttributesW] D:\a_ronglide\缠中说禅\chrome_100_percent.pak -> 32
+22:09:24.056 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\chrome_100_percent.pak -> ok
+22:09:24.056 [GetFileAttributesW] D:\a_ronglide\缠中说禅\chrome_200_percent.pak -> 32
+22:09:24.057 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\chrome_200_percent.pak -> ok
+22:09:24.139 [GetFileAttributesW] C:\ProgramData -> 8210
+22:09:24.139 [GetFileAttributesW] C:\ProgramData\Intel\ShaderCache -> -1
+22:09:24.168 [GetFileAttributesW] D:\a_ronglide\缠中说禅\rldbrowser.exe -> 32
+22:09:24.207 [GetFileAttributesW] C:\Users\Administrator\AppData\Local\CEF\User Data\WidevineCdm -> 16
+22:09:24.236 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\res\loginbk.png -> ok
+22:09:24.351 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\user.bin -> ok
+22:09:24.351 [CreateFileA] disp=3 D:\a_ronglide\缠中说禅\Sys\user.bin -> ok
+22:09:24.353 [CreateFileW] disp=2 acc=1073741824 D:\a_ronglide\缠中说禅\Sys\user.bin -> ok
+22:09:24.353 [CreateFileA] disp=2 D:\a_ronglide\缠中说禅\Sys\user.bin -> ok
+22:09:24.370 [GetFileAttributesW] D:\a_ronglide\缠中说禅\rldbrowser.exe -> 32
+22:09:24.502 [GetFileAttributesW] D:\a_ronglide\缠中说禅\rldbrowser.exe -> 32
+22:09:24.508 [GetFileAttributesW] D:\a_ronglide\缠中说禅\rldbrowser.exe -> 32
+22:09:24.703 [CreateFileW] disp=1 acc=-1073676288 C:\Users\Administrator\AppData\Local\Temp\a58bd03e-898f-419a-842e-f7733c08f892.tmp -> ok
+22:09:24.704 [GetFileAttributesW] C:\Users\Administrator\AppData\Local\Temp\a58bd03e-898f-419a-842e-f7733c08f892.tmp -> 32
+22:09:24.704 [FindFirstFileW] C:\Users\Administrator\AppData -> ok
+22:09:24.704 [FindFirstFileW] C:\Users\Administrator\AppData\Local -> ok
+22:09:24.704 [FindFirstFileW] C:\Users\Administrator\AppData\Local\Temp -> ok
+22:09:24.705 [CreateFileW] disp=2 acc=-1073741824 C:\Users\Administrator\AppData\Local\Temp\a58bd03e-898f-419a-842e-f7733c08f892.tmp -> ok
+22:09:24.756 [CreateFileW] disp=2 acc=1073741824 D:\a_ronglide\缠中说禅\Update\loginbk.png -> ok
+22:09:24.757 [CreateFileA] disp=2 D:\a_ronglide\缠中说禅\Update\loginbk.png -> ok
+22:09:24.815 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.816 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0DA515F703BB9B49479E8697ADB0B955_* -> ok
+22:09:24.818 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.819 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0DA515F703BB9B49479E8697ADB0B955_4136D3715888E22D65EBE484B233D81B -> ok
+22:09:24.819 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\Content\0DA515F703BB9B49479E8697ADB0B955_4136D3715888E22D65EBE484B233D81B -> ok
+22:09:24.821 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.822 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:24.823 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.823 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:24.824 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.824 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:24.828 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.829 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:24.831 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.832 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:24.834 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.834 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:24.834 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.835 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:24.836 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.836 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:24.838 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.838 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:24.839 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.840 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:24.840 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.841 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:24.841 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.844 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:24.846 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.847 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:24.849 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.850 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:24.850 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.851 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:24.851 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.852 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:24.853 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.854 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:24.855 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.855 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:24.856 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.857 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:24.857 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.858 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:24.862 [FindFirstFileW] C:\Users\Administrator\AppData\Roaming\Microsoft\SystemCertificates\My\Certificates\* -> ok
+22:09:24.862 [FindFirstFileW] C:\Users\Administrator\AppData\Roaming\Microsoft\SystemCertificates\My\Certificates\* -> ok
+22:09:24.863 [FindFirstFileW] C:\Users\Administrator\AppData\Roaming\Microsoft\SystemCertificates\My\CRLs\* -> ok
+22:09:24.863 [FindFirstFileW] C:\Users\Administrator\AppData\Roaming\Microsoft\SystemCertificates\My\CTLs\* -> ok
+22:09:24.866 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.866 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:24.868 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.868 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:24.869 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.869 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:24.870 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:24.870 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:25.027 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.027 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:25.028 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.029 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:25.029 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.032 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:25.033 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.033 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:25.034 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.034 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:25.035 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.036 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:25.037 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.037 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:25.038 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.039 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:25.040 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.041 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:25.042 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.044 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:25.047 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.047 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:25.051 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.052 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:25.053 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.053 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:25.054 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.055 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:25.055 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.056 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:25.056 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.057 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:25.061 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.062 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:25.066 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.066 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:25.067 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.068 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:25.068 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.069 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:25.069 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.070 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:25.071 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.071 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:25.072 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.072 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:25.073 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.074 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:25.089 [CreateFileW] disp=1 acc=-1073676288 C:\Users\Administrator\AppData\Local\Temp\ebf8c7f7-53cb-4100-b71b-dade69ec0e3e.tmp -> ok
+22:09:25.089 [GetFileAttributesW] C:\Users\Administrator\AppData\Local\Temp\ebf8c7f7-53cb-4100-b71b-dade69ec0e3e.tmp -> 32
+22:09:25.090 [FindFirstFileW] C:\Users\Administrator\AppData -> ok
+22:09:25.090 [FindFirstFileW] C:\Users\Administrator\AppData\Local -> ok
+22:09:25.091 [FindFirstFileW] C:\Users\Administrator\AppData\Local\Temp -> ok
+22:09:25.091 [CreateFileW] disp=2 acc=-1073741824 C:\Users\Administrator\AppData\Local\Temp\ebf8c7f7-53cb-4100-b71b-dade69ec0e3e.tmp -> ok
+22:09:25.255 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.255 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\572BF21E454637C9F000BE1AF9B1E1A9 -> FAIL
+22:09:25.256 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.258 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\3C523155507C9096C34DE70913E2CA08 -> FAIL
+22:09:25.267 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.269 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\572BF21E454637C9F000BE1AF9B1E1A9 -> FAIL
+22:09:25.271 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.273 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\3C523155507C9096C34DE70913E2CA08 -> FAIL
+22:09:25.275 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.286 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\572BF21E454637C9F000BE1AF9B1E1A9 -> FAIL
+22:09:25.287 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.288 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\3C523155507C9096C34DE70913E2CA08 -> FAIL
+22:09:25.289 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.289 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\572BF21E454637C9F000BE1AF9B1E1A9 -> FAIL
+22:09:25.290 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.290 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\3C523155507C9096C34DE70913E2CA08 -> FAIL
+22:09:25.300 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.300 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.300 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B2FAF7692FD9FFBD64EDE317E42334BA_* -> FAIL
+22:09:25.300 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:25.301 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.301 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B2FAF7692FD9FFBD64EDE317E42334BA_D7393C8F62BDE4D4CB606228BC7A711E -> FAIL
+22:09:25.302 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.302 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.303 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B2FAF7692FD9FFBD64EDE317E42334BA_6F8900FF5837CB8DFA61275648785329 -> FAIL
+22:09:25.303 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:25.303 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.304 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.304 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\572BF21E454637C9F000BE1AF9B1E1A9 -> FAIL
+22:09:25.305 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.305 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B2FAF7692FD9FFBD64EDE317E42334BA_* -> FAIL
+22:09:25.306 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:25.306 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.307 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B2FAF7692FD9FFBD64EDE317E42334BA_D7393C8F62BDE4D4CB606228BC7A711E -> FAIL
+22:09:25.307 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.308 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.310 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B2FAF7692FD9FFBD64EDE317E42334BA_6F8900FF5837CB8DFA61275648785329 -> FAIL
+22:09:25.311 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.312 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\572BF21E454637C9F000BE1AF9B1E1A9 -> FAIL
+22:09:25.314 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.314 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_* -> ok
+22:09:25.316 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.317 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_C57D2B8B27AF8C8DD8DF4E8AA58AF73C -> FAIL
+22:09:25.317 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.317 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_7870B9AF905F427BA4A5FAB36845D1D0 -> FAIL
+22:09:25.317 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:25.317 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.317 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\3538626A1FCCCA43C7E18F220BDD9B02 -> FAIL
+22:09:25.318 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.318 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.318 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:25.318 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_* -> ok
+22:09:25.319 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.320 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.320 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_C57D2B8B27AF8C8DD8DF4E8AA58AF73C -> FAIL
+22:09:25.320 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:25.320 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.320 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.321 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_7870B9AF905F427BA4A5FAB36845D1D0 -> FAIL
+22:09:25.321 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.322 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\3538626A1FCCCA43C7E18F220BDD9B02 -> FAIL
+22:09:25.322 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:25.322 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.322 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:25.323 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.323 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\93A7EA6B0702312BABCF16A9448C0B8C_* -> FAIL
+22:09:25.323 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.324 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.324 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\93A7EA6B0702312BABCF16A9448C0B8C_0018018D42C00CFA278CD4A3FEB8412E -> FAIL
+22:09:25.324 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:25.329 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.329 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:25.330 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.330 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:25.330 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.330 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:25.333 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.333 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.333 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:25.334 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\93A7EA6B0702312BABCF16A9448C0B8C_653DFAEF21D1404349866A0464DBB486 -> FAIL
+22:09:25.334 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.334 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.334 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:25.334 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\8A750399A84BC245E251EDAB7EE63D7C -> FAIL
+22:09:25.334 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.336 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:25.336 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.337 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\93A7EA6B0702312BABCF16A9448C0B8C_* -> FAIL
+22:09:25.337 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.339 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.339 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\93A7EA6B0702312BABCF16A9448C0B8C_0018018D42C00CFA278CD4A3FEB8412E -> FAIL
+22:09:25.339 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:25.340 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.340 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\93A7EA6B0702312BABCF16A9448C0B8C_653DFAEF21D1404349866A0464DBB486 -> FAIL
+22:09:25.340 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.341 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\8A750399A84BC245E251EDAB7EE63D7C -> FAIL
+22:09:25.348 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.349 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_* -> ok
+22:09:25.349 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.349 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_C57D2B8B27AF8C8DD8DF4E8AA58AF73C -> FAIL
+22:09:25.351 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.351 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_7870B9AF905F427BA4A5FAB36845D1D0 -> FAIL
+22:09:25.351 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.351 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\3538626A1FCCCA43C7E18F220BDD9B02 -> FAIL
+22:09:25.352 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.352 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:25.353 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.353 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_* -> ok
+22:09:25.354 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.354 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.355 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:25.355 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_C57D2B8B27AF8C8DD8DF4E8AA58AF73C -> FAIL
+22:09:25.355 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.356 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.367 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\07CEF2F654E3ED6050FFC9B6EB844250_7870B9AF905F427BA4A5FAB36845D1D0 -> FAIL
+22:09:25.368 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.368 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\3538626A1FCCCA43C7E18F220BDD9B02 -> FAIL
+22:09:25.386 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:25.386 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.390 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:25.397 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.397 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:25.400 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.400 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:25.401 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.401 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:25.403 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:25.404 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.054 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.054 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.055 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.055 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.056 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.056 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.056 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.057 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.057 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.058 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.062 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.062 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.063 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.064 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.064 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.065 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.066 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.066 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:26.067 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.067 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:26.068 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.068 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:26.069 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.069 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:26.069 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.070 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:26.086 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.086 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.087 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.087 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.088 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.088 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.088 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.089 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.089 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.089 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.091 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.103 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.103 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.103 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:26.103 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.104 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:26.104 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.104 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:26.106 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.106 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.107 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.107 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.107 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.108 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.108 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.108 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.108 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.108 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.114 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.115 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:26.116 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.117 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.117 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.118 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:26.118 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.119 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.120 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.120 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:26.120 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.120 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.121 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:26.122 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.122 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.122 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:26.123 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.123 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.124 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.124 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:26.124 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.124 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.125 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.125 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:26.134 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.134 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:26.136 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.137 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.138 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.138 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.139 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.139 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.140 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.140 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.141 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.141 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.154 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.154 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.155 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.155 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.156 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.157 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.558 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.558 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.561 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.562 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.562 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.562 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.563 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.563 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.564 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.565 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.566 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.566 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.567 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.568 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.569 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.569 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.571 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.571 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:26.572 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.573 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:26.574 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.574 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:26.575 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.578 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:26.583 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.584 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:26.585 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.585 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:26.586 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.587 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:26.589 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.590 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:26.600 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.601 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.603 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.605 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.605 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.606 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.607 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.608 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.608 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.610 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.612 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.612 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.613 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.614 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.614 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.615 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.616 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.617 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:26.618 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.620 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:26.620 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.621 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:26.622 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.623 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:26.624 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.625 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:26.630 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.630 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:26.631 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.631 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:26.632 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.633 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:26.635 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.636 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.637 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.638 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.639 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.639 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.640 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.640 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.641 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.650 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.651 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.652 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.653 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.654 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.657 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.657 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.686 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.686 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.687 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.688 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.688 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.688 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.689 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.689 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.690 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.691 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.701 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.702 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.704 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.705 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.706 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.707 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.711 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.712 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:26.713 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.714 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:26.715 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.715 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:26.716 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.716 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:26.717 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.718 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_* -> FAIL
+22:09:26.721 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.722 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_AF92154CD0F00D45D4F10E37EF8DAB89 -> FAIL
+22:09:26.722 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.723 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\349D186F1CB5682FA0194D4F3754EF36_C9F0E37C76DFE9D5F5270A4AC7B434F7 -> FAIL
+22:09:26.724 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.724 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\4C74D3A297548316FF1FC843CCCBA3AB -> FAIL
+22:09:26.729 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.730 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.732 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.732 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.734 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.735 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.736 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.736 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:26.738 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.740 [FindFirstFileW] C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_* -> ok
+22:09:26.750 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.751 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_50D7940D5D3FEDD8634D83074C7A46A3 -> FAIL
+22:09:26.752 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.753 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B039FEA45CB4CC4BBACFC013C7C55604_876099E689B75D9979C9ECD0B6B96BD5 -> FAIL
+22:09:26.754 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:09:26.755 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\0766DB9AB186806BB9A6B6802D3BA734 -> FAIL
+22:09:33.521 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\SysBlock.xml -> ok
+22:09:36.123 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\TAF\SysTA.taf -> ok
+22:09:36.123 [CreateFileA] disp=3 D:\a_ronglide\缠中说禅\TAF\SysTA.taf -> ok
+22:09:36.128 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\TAF\UserTA.taf -> FAIL
+22:09:36.129 [CreateFileA] disp=3 D:\a_ronglide\缠中说禅\TAF\UserTA.taf -> FAIL
+22:09:36.130 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\TAF\TAParam.taf -> FAIL
+22:09:36.131 [CreateFileA] disp=3 D:\a_ronglide\缠中说禅\TAF\TAParam.taf -> FAIL
+22:09:36.132 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\TAF\TADrawHide.taf -> FAIL
+22:09:36.132 [CreateFileA] disp=3 D:\a_ronglide\缠中说禅\TAF\TADrawHide.taf -> FAIL
+22:09:36.132 [GetFileAttributesW] D:\a_ronglide\缠中说禅\TAF\TADrawHideSchemeS.xml -> 32
+22:09:36.133 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\TAF\TADrawHideSchemeS.xml -> ok
+22:09:36.135 [GetFileAttributesW] D:\a_ronglide\缠中说禅\TAF\TADrawHideSchemeU.xml -> -1
+22:09:36.135 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User/TA_Template.xml -> FAIL
+22:09:36.136 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys/SelectPlan.xml -> FAIL
+22:09:36.136 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User/UserSelectPlan.xml -> FAIL
+22:09:36.137 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\Alert.xml -> -1
+22:09:36.137 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\ComboAlert.xml -> -1
+22:09:36.137 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\UserDrawV2.xml -> 32
+22:09:36.137 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\UserDrawV2.xml -> 32
+22:09:36.138 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\UserDrawV2.xml -> ok
+22:09:36.139 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\SelfSymbol.xml -> ok
+22:09:36.139 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\TmpSelSymbol.xml -> ok
+22:09:36.141 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\TmpYunSelSymbol.xml -> ok
+22:09:36.150 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\TmpYunSignalSelSymbol.xml -> ok
+22:09:36.151 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\TopSymbol.xml -> ok
+22:09:36.153 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\ComboSymbol.xml -> FAIL
+22:09:36.361 [rquo] get_memory_recordset
+22:09:36.361 [rquo] get_memory_recordset
+22:09:36.361 [rquo] get_memory_recordset
+22:09:36.362 [rquo] get_memory_recordset
+22:09:36.363 [rquo] get_memory_recordset
+22:09:36.381 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\page_tab_close_btn.png -> ok
+22:09:36.381 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\page_tab_close_btn.png -> ok
+22:09:36.381 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\page_tab_close_btn.png -> ok
+22:09:36.382 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\page_tab_close_btn.png -> ok
+22:09:36.387 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\page_tab_pop_menu.png -> ok
+22:09:36.388 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\page_tab_pop_menu.png -> ok
+22:09:36.388 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\page_tab_pop_menu.png -> ok
+22:09:36.388 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\page_tab_pop_menu.png -> ok
+22:09:36.390 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Pages\pages.xml -> ok
+22:09:36.395 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Pages\MODAOKT.xml -> ok
+22:09:36.397 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\User\Pages\pages.xml -> FAIL
+22:09:36.401 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Pages\分类报价.xml -> ok
+22:09:36.406 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\hscroll.bmp -> ok
+22:09:36.407 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\vscroll.bmp -> ok
+22:09:36.413 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\BLACK\ListIconEx.png -> ok
+22:09:36.413 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\BLACK\ListIconUn.png -> ok
+22:09:36.418 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\hscroll.bmp -> ok
+22:09:36.419 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\vscroll.bmp -> ok
+22:09:36.450 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\logo.bmp -> ok
+22:09:36.452 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\ToolBarBk.bmp -> ok
+22:09:36.488 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zxg_page_01.png -> ok
+22:09:36.488 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zxg_page_02.png -> ok
+22:09:36.489 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\flbj_page_01.png -> ok
+22:09:36.489 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\flbj_page_02.png -> ok
+22:09:36.490 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\fs_page_01.png -> ok
+22:09:36.490 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\fs_page_02.png -> ok
+22:09:36.491 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\ta_page_01.png -> ok
+22:09:36.492 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\ta_page_02.png -> ok
+22:09:36.494 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\F10_page_01.png -> ok
+22:09:36.495 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\F10_page_02.png -> ok
+22:09:36.495 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zhpm_page_01.png -> ok
+22:09:36.496 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zhpm_page_02.png -> ok
+22:09:36.497 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\yb_page_01.png -> ok
+22:09:36.498 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\yb_page_02.png -> ok
+22:09:36.499 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zdybm_page_01.png -> ok
+22:09:36.500 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zdybm_page_02.png -> ok
+22:09:36.501 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\0508_page_01.png -> ok
+22:09:36.501 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\0508_page_02.png -> ok
+22:09:36.502 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\web_video_01.png -> ok
+22:09:36.502 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\web_video_02.png -> ok
+22:09:36.503 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\retract_01.png -> ok
+22:09:36.504 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\retract_01.png -> ok
+22:09:36.507 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\retract_01.png -> ok
+22:09:36.508 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\retract_01.png -> ok
+22:09:36.512 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zxg_page_01.png -> ok
+22:09:36.512 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zxg_page_02.png -> ok
+22:09:36.513 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\flbj_page_01.png -> ok
+22:09:36.514 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\flbj_page_02.png -> ok
+22:09:36.514 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\fs_page_01.png -> ok
+22:09:36.515 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\fs_page_02.png -> ok
+22:09:36.516 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\ta_page_01.png -> ok
+22:09:36.517 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\ta_page_02.png -> ok
+22:09:36.517 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\F10_page_01.png -> ok
+22:09:36.518 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\F10_page_02.png -> ok
+22:09:36.518 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zhpm_page_01.png -> ok
+22:09:36.519 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zhpm_page_02.png -> ok
+22:09:36.519 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\yb_page_01.png -> ok
+22:09:36.521 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\yb_page_02.png -> ok
+22:09:36.522 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zdybm_page_01.png -> ok
+22:09:36.523 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\zdybm_page_02.png -> ok
+22:09:36.524 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\0508_page_01.png -> ok
+22:09:36.529 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\0508_page_02.png -> ok
+22:09:36.531 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\web_video_01.png -> ok
+22:09:36.533 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\web_video_02.png -> ok
+22:09:36.533 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\retract_01.png -> ok
+22:09:36.534 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\black\retract_01.png -> ok
+22:09:36.538 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Mainmenu.xml -> ok
+22:09:36.911 [GetFileAttributesW] D:\a_ronglide\缠中说禅\rldbrowser.exe -> 32
+22:09:36.934 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\hscroll.bmp -> ok
+22:09:36.935 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\vscroll.bmp -> ok
+22:09:36.936 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\hscroll.bmp -> ok
+22:09:36.938 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\vscroll.bmp -> ok
+22:09:36.945 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\hscroll.bmp -> ok
+22:09:36.946 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\vscroll.bmp -> ok
+22:09:37.001 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\hscroll.bmp -> ok
+22:09:37.002 [CreateFileW] disp=3 acc=-2147483648 D:\a_ronglide\缠中说禅\Sys\Res\vscroll.bmp -> ok
+22:09:37.121 [CreateFileW] disp=1 acc=-1073676288 C:\Users\Administrator\AppData\Local\Temp\8f4416ba-3fc4-4616-99e3-6a4f52d50960.tmp -> ok
+22:09:37.121 [GetFileAttributesW] C:\Users\Administrator\AppData\Local\Temp\8f4416ba-3fc4-4616-99e3-6a4f52d50960.tmp -> 32
+22:09:37.122 [FindFirstFileW] C:\Users\Administrator\AppData -> ok
+22:09:37.122 [FindFirstFileW] C:\Users\Administrator\AppData\Local -> ok
+22:09:37.123 [FindFirstFileW] C:\Users\Administrator\AppData\Local\Temp -> ok
+22:09:37.124 [CreateFileW] disp=2 acc=-1073741824 C:\Users\Administrator\AppData\Local\Temp\8f4416ba-3fc4-4616-99e3-6a4f52d50960.tmp -> ok
+22:10:25.590 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:10:25.590 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\8B2B9A00839EED1DFDCCC3BFC2F5DF12 -> ok
+22:10:25.591 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\Content\8B2B9A00839EED1DFDCCC3BFC2F5DF12 -> ok
+22:10:25.597 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:10:25.598 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\B46811C17859FFB409CF0E904A4AA8F8 -> ok
+22:10:25.598 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\Content\B46811C17859FFB409CF0E904A4AA8F8 -> ok
+22:10:25.606 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:10:25.606 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\065AF3F276523AFC0C3BE786D678CDE3 -> FAIL
+22:10:25.608 [GetFileAttributesW] C:\Users\Administrator\AppData\LocalLow -> 8208
+22:10:25.609 [CreateFileW] disp=3 acc=-2147483648 C:\Users\Administrator\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\065AF3F276523AFC0C3BE786D678CDE3 -> FAIL
+22:11:24.188 [GetFileAttributesW] D:\a_ronglide\缠中说禅\rldbrowser.exe -> 32
+22:18:55.301 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\Export -> -1
+22:18:57.362 [rsfile::open] D:\testimp\02#000001#1 -> 0xd591201
+22:18:57.711 [rsfile::open] D:\testimp\02#600000#1 -> 0x3b1a801
+22:18:58.024 [rsfile::open] D:\testimp\02#600004#1 -> 0x3b1aa01
+22:18:58.347 [rsfile::open] D:\testimp\02#600006#1 -> 0x3b1ac01
+22:26:18.718 [GetFileAttributesW] D:\a_ronglide\缠中说禅\User\Export -> -1
+22:26:20.431 [rsfile::open] D:\testimp\02#000001#1 -> 0xd591401
+22:26:20.780 [rsfile::open] D:\testimp\02#600000#1 -> 0x3b1ab01
+22:26:21.111 [rsfile::open] D:\testimp\02#600004#1 -> 0x3b1ac01
+22:26:21.482 [rsfile::open] D:\testimp\02#600006#1 -> 0x3b1ab01

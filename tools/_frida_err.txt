@@ -1,0 +1,9 @@
+[1015/220925.783:INFO:CONSOLE(2089)] "无畏是青春的态度，热AI是时代的脉搏。
+各位新同学正以无畏的姿态奔赴通用人工智能的星辰大海！
+作为引领AI时代浪潮的主力军，广阔舞台，待你大展身手。
+乘风破浪，勇往直前，未来百度将与你一起，创造无限可能！
+", source: https://pss.bdstatic.com/r/www/cache/static/protocol/https/global/js/all_async_search_b732276.js (2089)
+[1015/220925.784:INFO:CONSOLE(2089)] "%c百度2027校园招聘简历投递：https://talent.baidu.com/jobs/list color:red", source: https://pss.bdstatic.com/r/www/cache/static/protocol/https/global/js/all_async_search_b732276.js (2089)
+[1015/220926.336:INFO:CONSOLE(1)] "Error", source: https://hectorstatic.baidu.com/cd37ed75a9387c5b.js (1)
+[1015/220927.486:INFO:CONSOLE(0)] "Access to video at 'https://psstatic.cdn.bcebos.com/basics/chat/afx%202_1750155358000.mp4' from origin 'https://www.baidu.com' has been blocked by CORS policy: Request had a target IP address space of `unknown` yet the resource is in address space `unknown`.", source: https://www.baidu.com/ (0)
+[1015/220936.222:INFO:CONSOLE(1870)] "onbeforeunload save spyCache", source: https://pss.bdstatic.com/r/www/cache/static/protocol/https/global/js/all_async_search_b732276.js (1870)

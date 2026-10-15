@@ -1,0 +1,89 @@
+[OK] kernel32!CreateFileW
+[OK] kernel32!GetFileAttributesW
+[OK] kernel32!FindFirstFileW
+[OK] kernel32!MoveFileExW
+[base] MainApp=0x400000 size=4800512
+[base] rld_lib=0xe60000
+[base] RDM_C=0xea0000
+[base] rquo=0x12f0000
+[OK] rld_lib.dll!?open@rsfile@rs@rld@@QAE_NPBD@Z
+[OK] rld_lib.dll!?save@recordset@rs@rld@@QAE_NPBD@Z
+[OK] RDM_C.dll!?ImportHistory@QuoApi@@SAHABVsymbol_info@@ABVrecordset@rs@rld@@G@Z
+[OK] RDM_C.dll!?ImportLongAgoHistory@QuoApi@@SAHABVsymbol_info@@ABVrecordset@rs@rld@@
+[OK] RDM_C.dll!?GetMemoryRecordsetByItemno@QuoApi@@SA?AW4dmresult_t@@AAVrecordset@rs@
+[OK] RDM_C.dll!?GetMemoryRecordsetByItemno@QuoApi@@SA?AW4dmresult_t@@AAVrecordset@rs@
+[OK] RDM_C.dll!?GetTAMemoryRecordset2@QuoApi@@SA?AW4dmresult_t@@ABVsymbol_info@@AAVre
+[OK] RDM_C.dll!?GetTAMemoryRecordset@QuoApi@@SA?AW4dmresult_t@@ABVsymbol_info@@AAVrec
+[OK] RDM_C.dll!?GetTAMemoryRecordset@QuoApi@@SA?AW4dmresult_t@@ABVsymbol_info@@AAVrec
+[OK] RDM_C.dll!?NeedRequestMemoryItemno@QuoApi@@SA_NABVsymbol_info@@G@Z
+[OK] RDM_C.dll!?RequestStaMemory@NetApi@@SA_NE@Z
+[OK] RDM_C.dll!?ReqeustActMemory@NetApi@@SA_NABV?$vector@Vsymbol_info@@V?$allocator@V
+[OK] RDM_C.dll!?ReqeustActMemory@NetApi@@SA_NABVsymbol_info@@@Z
+[OK] RDM_C.dll!?RequestTAMemory@NetApi@@SA_NABV?$vector@Vsymbol_info@@V?$allocator@Vs
+[OK] RDM_C.dll!?RequestTAMemory@NetApi@@SA_NABVsymbol_info@@@Z
+[OK] rquo.dll!?get_memory_recordset@q_module@@QAE?AW4dmresult_t@@AAVrecordset@rs@rld
+[OK] rquo.dll!?get_memory_recordset@q_module@@QAE?AW4dmresult_t@@AAVrecordset@rs@rld
+[OK] rquo.dll!?get_memory_recordset_by_itemno@q_module@@QAE?AW4dmresult_t@@AAVrecord
+[OK] rquo.dll!?get_memory_recordset_by_itemno@q_module@@QAE?AW4dmresult_t@@AAVrecord
+[OK] rquo.dll!?get_min_count@q_module@@QAE?AW4dmresult_t@@AAHABVsymbol_info@@ABVxdat
+[OK] rquo.dll!?get_history_count@q_module@@QAE?AW4dmresult_t@@AAHABVsymbol_info@@G@Z
+[READY]
+22:56:23.906 [FindFirst] D:\testimp\* from MainApp.exe+0x257a64
+22:56:23.907 [AttrW] D:\testimp\02#000001#1 from MainApp.exe+0x258440
+22:56:23.907 [AttrW] D:\testimp\02#600000#1 from MainApp.exe+0x258440
+22:56:23.907 [AttrW] D:\testimp\02#600004#1 from MainApp.exe+0x258440
+22:56:23.907 [AttrW] D:\testimp\02#600006#1 from MainApp.exe+0x258440
+22:56:23.917 [FindFirst] D:\testimp\* from MainApp.exe+0x257a64
+22:56:23.918 [AttrW] D:\testimp\02#000001#1 from MainApp.exe+0x258440
+22:56:23.918 [rsfile::open] ? from MainApp.exe+0x7d626
+22:56:23.920 [CreateFileW] D:\testimp\02#000001#1 disp=3 acc=-1073741824 from KERNELBASE.dll+0x13c811
+22:56:23.921 [rsfile::open] ret=0x6a60401
+22:56:24.228 [ImportHistory] sym="           0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  0123456789ABCDEF\n00000000  02 00 00 00 00 00 00 00 30 30 30 30 30 31 00 00  ........000001..\n00000010  00 00 00 00 00 00 00 00 06 00 00 00 0f 00 00 00  ................\n00000020  00 00 00 00 00 00 00 00                          ........" recset=0xa7bfd84 item=1 from MainApp.exe+0x7d6ed
+22:56:24.229 [rsfile::open] ? from rquo.dll+0xb6c3
+22:56:24.230 [rsfile::open] ret=0x0
+22:56:24.243 [recordset::save] ? from rquo.dll+0xb54d
+22:56:24.246 [recordset::save] ret=0x1
+22:56:24.250 [rsfile::open] ? from rquo.dll+0xaa28
+22:56:24.251 [rsfile::open] ret=0x6a60301
+22:56:24.252 [ImportHistory] ret=0x0
+22:56:24.253 [AttrW] D:\testimp\02#600000#1 from MainApp.exe+0x258440
+22:56:24.254 [rsfile::open] ? from MainApp.exe+0x7d626
+22:56:24.254 [CreateFileW] D:\testimp\02#600000#1 disp=3 acc=-1073741824 from KERNELBASE.dll+0x13c811
+22:56:24.287 [rsfile::open] ret=0x13419001
+22:56:24.655 [ImportHistory] sym="           0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  0123456789ABCDEF\n00000000  02 00 00 00 00 00 a6 06 36 30 30 30 30 30 00 00  ........600000..\n00000010  00 00 00 00 00 00 00 00 06 00 00 00 0f 00 00 00  ................\n00000020  b6 01 00 00 02 00 00 00                          ........" recset=0xa7bfd84 item=1 from MainApp.exe+0x7d6ed
+22:56:24.656 [rsfile::open] ? from rquo.dll+0xb6c3
+22:56:24.656 [rsfile::open] ret=0x0
+22:56:24.658 [recordset::save] ? from rquo.dll+0xb54d
+22:56:24.661 [recordset::save] ret=0x1
+22:56:24.662 [rsfile::open] ? from rquo.dll+0xaa28
+22:56:24.662 [rsfile::open] ret=0x13419101
+22:56:24.662 [ImportHistory] ret=0x0
+22:56:24.663 [AttrW] D:\testimp\02#600004#1 from MainApp.exe+0x258440
+22:56:24.663 [rsfile::open] ? from MainApp.exe+0x7d626
+22:56:24.663 [CreateFileW] D:\testimp\02#600004#1 disp=3 acc=-1073741824 from KERNELBASE.dll+0x13c811
+22:56:24.664 [rsfile::open] ret=0x13419101
+22:56:24.920 [ImportHistory] sym="           0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  0123456789ABCDEF\n00000000  02 00 00 00 00 00 a6 06 36 30 30 30 30 34 00 00  ........600004..\n00000010  00 00 00 00 00 00 00 00 06 00 00 00 0f 00 00 00  ................\n00000020  b6 01 00 00 02 00 00 00                          ........" recset=0xa7bfd84 item=1 from MainApp.exe+0x7d6ed
+22:56:24.921 [rsfile::open] ? from rquo.dll+0xb6c3
+22:56:24.921 [rsfile::open] ret=0x0
+22:56:24.923 [recordset::save] ? from rquo.dll+0xb54d
+22:56:24.926 [recordset::save] ret=0x1
+22:56:24.927 [rsfile::open] ? from rquo.dll+0xaa28
+22:56:24.927 [rsfile::open] ret=0x13419101
+22:56:24.927 [ImportHistory] ret=0x0
+22:56:24.928 [AttrW] D:\testimp\02#600006#1 from MainApp.exe+0x258440
+22:56:24.928 [rsfile::open] ? from MainApp.exe+0x7d626
+22:56:24.928 [CreateFileW] D:\testimp\02#600006#1 disp=3 acc=-1073741824 from KERNELBASE.dll+0x13c811
+22:56:24.928 [rsfile::open] ret=0x13419101
+22:56:25.179 [ImportHistory] sym="           0  1  2  3  4  5  6  7  8  9  A  B  C  D  E  F  0123456789ABCDEF\n00000000  02 00 00 00 00 00 a6 06 36 30 30 30 30 36 00 00  ........600006..\n00000010  00 00 00 00 00 00 00 00 06 00 00 00 0f 00 00 00  ................\n00000020  b6 01 00 00 02 00 00 00                          ........" recset=0xa7bfd84 item=1 from MainApp.exe+0x7d6ed
+22:56:25.180 [rsfile::open] ? from rquo.dll+0xb6c3
+22:56:25.180 [rsfile::open] ret=0x0
+22:56:25.183 [recordset::save] ? from rquo.dll+0xb54d
+22:56:25.186 [recordset::save] ret=0x1
+22:56:25.187 [rsfile::open] ? from rquo.dll+0xaa28
+22:56:25.188 [rsfile::open] ret=0x13419101
+22:56:25.188 [ImportHistory] ret=0x0
+22:57:29.759 [q::get_history_count] a0=0x7695da8 a1=0xd57080 from RDM_C.dll+0x43bc
+22:57:29.759 [q::get_history_count] ret=0x0
+22:57:29.762 [q::get_history_count] a0=0xd59f98 a1=0xd59370 from RDM_C.dll+0x43bc
+22:57:29.762 [q::get_history_count] ret=0x65
+22:57:29.767 [q::get_history_count] a0=0xd59fc0 a1=0xd59370 from RDM_C.dll+0x43bc
