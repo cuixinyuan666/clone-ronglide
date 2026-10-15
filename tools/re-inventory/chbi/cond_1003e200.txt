@@ -1,0 +1,18 @@
+### [A] x87 条件表   src=chbi/f_1003e200.txt   insns=174   blocks=51   conflicts=0   conds=8
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+1003e2bd   fcom     [esp+0x20]         ST1=[esp+0x1c]         ah,0x05 jp    0x1003e360   >|=|U      <         
+1003e2d2   fcom     [esp+0x28]         ST1=[esp+0x24]         ah,0x05 jp    0x1003e360   >|=|U      <         
+1003e32c   fcompp   [esp+0x20]         ST1=[esp+0x1c]         ah,0x05 jp    0x1003e3e4   >|=|U      <         
+1003e340   fcompp   [ebx+0x10]         ST1=[esp+0x24]         ah,0x05 jp    0x1003e3e4   >|=|U      <         
+1003e362   fcomp    [esp+0x1c]         ST2=[esp+0x20]         ah,0x05 jp    0x1003e3e0   >|=|U      <         
+1003e36d   fcompp   [esp+0x24]         ST1=[esp+0x28]         ah,0x05 jp    0x1003e3e4   >|=|U      <         
+1003e3b7   fcompp   [esp+0x20]         ST1=[esp+0x1c]         ah,0x41 jne   0x1003e3e4   <|=|U      >         
+1003e3c7   fcompp   [ebx+0x10]         ST1=[esp+0x24]         ah,0x41 jne   0x1003e3e4   <|=|U      >         
+
+### [B] 非零立即数写入 (标记字段写点)
+1003e354   mov [esi+0x14], 1
+1003e3d7   mov [esi+0x14], 0xffffffff
+
+### [C] 调用目标统计
+  ebp                      x16
+  0x1003f0d0               x1

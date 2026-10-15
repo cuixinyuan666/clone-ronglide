@@ -11,9 +11,13 @@ Intel 语义速查（FNSTSW 后 AX=状态字; AH: C0=b0, C2=b2, C3=b6）:
     ST0 = ST1: C3=1 C2=0 C0=0     Unordered: C3=1 C2=1 C0=1
 
     test ah,0x41 ; jne : 落空 = ST0 >  ST1   (jne 去 else)
-    test ah,0x41 ; jp  : 跳转 = ST0 =  ST1 (含Unordered)
+    test ah,0x41 ; je  : 跳转 = ST0 >  ST1
     test ah,0x05 ; jp  : 落空 = ST0 <  ST1   (jp 跳走 = 非小于)
     test ah,0x01 ; jne : 跳转 = ST0 <  ST1 (含Unordered)
+
+局限: 本工具只做"最近两次 fld"配对, 不模拟 x87 栈 (fxch / fcom st(n) / fstp st(n)
+      均会使其操作数失准)。分支汇合处亦可能串味。**带栈数据流的升级版见 x87_sim.py**
+      (基本块级模拟, 输出真实 ST0/ST(k) 操作数与 Intel 四态解码)。
 
 用法: python extract_x87_conditions.py <start_va> <end_va> [-o out.txt]
 """
@@ -25,14 +29,19 @@ from capstone import CS_ARCH_X86, CS_MODE_32, Cs
 DLL = r"D:\a_ronglide\缠中说禅\TAFLib.dll"
 
 MASK_DECODE = {
+    # 由 Intel 四态编码 (C0/C2/C3) + Jcc(PF/ZF) 推导; 2026-10-16 CHBI 批勘误修正
+    # (修正前 (0x41,je)/(0x41,jp)/(0x41,jnp) 三条标签错误, 详见 docs/20 §勘误)
     (0x41, "jne"): "fall=ST0>ST1 (jne跳=not>)",
-    (0x41, "je"): "jump=ST0=ST1|unord (je跳=not>且非<: 等或不可比)",
-    (0x41, "jp"): "jump=ST0=ST1 (含unord)",
-    (0x41, "jnp"): "jump=ST0<>ST1 (不含unord)",
+    (0x41, "je"): "jmp=ST0>ST1 (je跳=大于)",
+    (0x41, "jz"): "jmp=ST0>ST1",
+    (0x41, "jp"): "jmp=ST0>ST1|unord (jp跳: 大于或不可比)",
+    (0x41, "jnp"): "jmp=ST0<=ST1 (jnp跳: 小于或等于)",
     (0x05, "jp"): "fall=ST0<ST1 (jp跳=非<)",
-    (0x05, "jnp"): "jump=ST0<ST1 (不含unord)",
-    (0x01, "jne"): "jump=ST0<ST1 (含unord)",
-    (0x01, "je"): "jump=not<|unord",
+    (0x05, "jnp"): "jmp=ST0<ST1 (不含unord)",
+    (0x01, "jne"): "jmp=ST0<ST1 (含unord)",
+    (0x01, "je"): "jmp=ST0>=ST1 (je跳: 大于或等于)",
+    (0x44, "jnp"): "jmp=ST0=ST1 (jnp跳: 相等)",
+    (0x44, "jp"): "jmp=ST0<>ST1|unord",
 }
 
 

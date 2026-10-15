@@ -1,0 +1,39 @@
+### [A] x87 条件表   src=chbi/f_1003db40.txt   insns=415   blocks=92   conflicts=1   conds=25
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+1003dc56   fcom     [esp+0x2c]         ST2=[esp+0x14]         ah,0x01 jne   0x1003dca3   <|U        >|=       
+1003dc63   fcom     [esp+0x28]         ST2=[esp+0x18]         ah,0x41 jp    0x1003dca3   >|U        <|=       
+1003dc73   fcomp    [esi+ebp*4]        ST4=[esp+0x14]         ah,0x01 jne   0x1003dc87   <|U        >|=       
+1003dca5   fcom     [esp+0x14]         ST1=[esp+0x2c]         ah,0x01 jne   0x1003dd0f   <|U        >|=       
+1003dcb0   fcom     [esp+0x18]         ST3=[esp+0x28]         ah,0x41 jp    0x1003dd13   >|U        <|=       
+1003dcc0   fcomp    [esi+ebp*4]        ST3=[esp+0x14]         ah,0x01 jne   0x1003dcd2   <|U        >|=       
+1003dcdb   fcomp    [esp+0x14]         ST1=[esp+0x2c]         ah,0x41 je    0x1003dcea   >          <|=|U     
+1003dcec   fcomp    [esp+0x18]         ST1=[esp+0x28]         ah,0x41 je    0x1003dd03   >          <|=|U     
+1003dd17   fcom     [esp+0x14]         ST1=[esp+0x2c]         ah,0x41 jne   0x1003dd36   <|=|U      >         
+1003dd36   fcompp   [esp+0x14]         ST1=[esp+0x2c]         ah,0x05 jp    0x1003de4f   >|=|U      <         
+1003dd5e   fcom     [esp+0x2c]         ST2=[esp+0x14]         ah,0x01 jne   0x1003ddc3   <|U        >|=       
+1003dd6b   fcom     [esp+0x28]         ST2=[esp+0x18]         ah,0x41 jp    0x1003ddc3   >|U        <|=       
+1003dd82   fcomp    [edx+ecx*4]        ST3=[esp+0x18]         ah,0x41 jp    0x1003dd99   >|U        <|=       
+1003ddc5   fcom     [esp+0x14]         ST1=[esp+0x2c]         ah,0x01 jne   0x1003dd0f   <|U        >|=       
+1003ddd4   fcom     [esp+0x18]         ST3=[esp+0x28]         ah,0x41 jp    0x1003dd13   >|U        <|=       
+1003ddef   fcomp    [edx+ecx*4]        ST1=[esp+0x18]         ah,0x41 jp    0x1003de01   >|U        <|=       
+1003de1d   fcomp    [esp+0x14]         ST1=[esp+0x2c]         ah,0x41 jne   0x1003de2c   <|=|U      >         
+1003de2e   fcomp    [esp+0x18]         ST1=[esp+0x28]         ah,0x41 jne   0x1003de42   <|=|U      >         
+1003df32   fcom     [esp+0x14]         ST2=[esp+0x14]         ah,0x01 jne   0x1003df48   <|U        >|=       
+1003df3f   fcom     [esp+0x18]         ST2=[esp+0x18]         ah,0x41 jnp   0x1003df77   <|=        >|U       
+1003df4a   fcomp    [esp+0x14]         ST3=[esp+0x14]         ah,0x41 jp    0x1003df7f   >|U        <|=       
+1003df53   fcomp    [esp+0x18]         ST1=[esp+0x18]         ah,0x01 jne   0x1003df81   <|U        >|=       
+1003e02c   fcom     [esp+0x4c]         ST1=[esp+0x30]         ah,0x41 jne   0x1003e063   <|=|U      >         
+1003e037   fucomp   0.0                ST2=[esp+0x30]         ah,0x44 jnp   0x1003e063   =          >|<|U     
+1003e063   fcom     [esp+0x4c]         ST1=[esp+0x30]         ah,0x05 jp    0x1003e08f   >|=|U      <         
+
+### [B] 非零立即数写入 (标记字段写点)
+1003df6a   mov [esp+0x20], 1
+1003df9b   mov [esp+0xb0], 1
+1003dfd0   mov [esp+0x24], 1
+1003e014   mov [esp+0xd8], 1
+
+### [C] 调用目标统计
+  0x1006a5e0               x4
+  ebx                      x2
+  0x1003d8a0               x1
+  0x1003d780               x1

@@ -1,0 +1,167 @@
+### [A] x87 条件表   src=chbi/f_1004b1e0.txt   insns=4026   blocks=478   conflicts=3   conds=80
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+1004b517   fcompp   [edx+0xc]          ST1=[ecx+0xc]          ah,0x41 jp    0x1004ee36   >|U        <|=       
+1004b61b   fcompp   [esp+0x20]         ST1=[eax+0xc]          ah,0x05 jp    0x1004ee36   >|=|U      <         
+1004b722   fcomp    [eax+0xc]          mem:[esp+0xf0]         ah,0x05 jp    0x1004ee36   >|=|U      <         
+1004b744   fcompp   [esp+0x20]         ST1=[eax+0xc]          ah,0x05 jp    0x1004ee36   >|=|U      <         
+1004b8b5   fcompp   [esp+0x20]         ST1=[eax+0xc]          ah,0x05 jp    0x1004b98c   >|=|U      <         
+1004b99c   fcompp   [esp+0x20]         ST1=[eax+0xc]          ah,0x05 jp    0x1004b9b1   >|=|U      <         
+1004b9d3   fcomp    [eax+0xc]          mem:[esp+0xf0]         ah,0x05 jp    0x1004ee36   >|=|U      <         
+1004ba50   fcomp    [eax+0xc]          mem:[esp+0xf0]         ah,0x05 jp    0x1004bbdb   >|=|U      <         
+1004bc0f   fcomp    [eax+0x10]         mem:[esp+0xf0]         ah,0x41 jne   0x1004bf03   <|=|U      >         
+1004bcab   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jnp   0x1004bd0f   <          >|=|U     
+1004bcd8   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 je    0x1004bd0f   >          <|=|U     
+1004bd9c   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jnp   0x1004bf27   <          >|=|U     
+1004bdcd   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 jne   0x1004bf03   <|=|U      >         
+1004bec6   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 je    0x1004bfe2   >          <|=|U     
+1004bef4   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jnp   0x1004c093   <          >|=|U     
+1004c301   fcompp   [esp+0x20]         ST1=[eax+0xc]          ah,0x41 jp    0x1004c376   >|U        <|=       
+1004c395   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x41 jp    0x1004caaf   >|U        <|=       
+1004c43f   fcompp   [esp+0x20]         ST1=[eax+0xc]          ah,0x41 jp    0x1004c4b1   >|U        <|=       
+1004c4dc   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x41 jp    0x1004ee36   >|U        <|=       
+1004c615   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x41 jp    0x1004ee36   >|U        <|=       
+1004c676   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 jne   0x1004ee36   <|=|U      >         
+1004c734   fcompp   [esp+0x20]         ST1=[eax+0xc]          ah,0x41 jp    0x1004caab   >|U        <|=       
+1004c82e   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jp    0x1004ee36   >|=|U      <         
+1004c84d   fcompp   [esp+0x20]         ST1=[eax+0xc]          ah,0x05 jp    0x1004ee36   >|=|U      <         
+1004c8f6   fcompp   [esp+0x20]         ST1=[eax+0xc]          ah,0x05 jp    0x1004c90b   >|=|U      <         
+1004c9c7   fcompp   [esp+0x20]         ST1=[eax+0xc]          ah,0x41 jp    0x1004caab   >|U        <|=       
+1004cabb   fcompp   [esp+0x20]         ST1=[eax+0xc]          ah,0x05 jp    0x1004ee36   >|=|U      <         
+1004cc67   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x01 jne   0x1004ee36   <|U        >|=       
+1004cd7f   fucom    [esp+0x1c]         ST1=[0x1006fc50]       ah,0x44 jnp   0x1004cda7   =          >|<|U     
+1004cd9c   fcom     [esp+0x1c]         ST1=[eax+0x10]         ah,0x01 jne   0x1004ce03   <|U        >|=       
+1004ce09   fucomp   [0x1006fc50]       ST1=[esp+0x1c]         ah,0x44 jnp   0x1004ce3e   =          >|<|U     
+1004ce22   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x05 jp    0x1004ee36   >|=|U      <         
+1004cef7   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 jne   0x1004ee36   <|=|U      >         
+1004cf16   fcom     [esp+0x1c]         ST1=[eax+0x10]         ah,0x41 je    0x1004cf36   >          <|=|U     
+1004cf27   fucompp  [0x1006fc50]       ST1=[esp+0x1c]         ah,0x44 jp    0x1004ee36   >|<|U      =         
+1004d10c   fcompp   [esp+0x1c]         ST1=[eax+0x10]         ah,0x41 jne   0x1004d121   <|=|U      >         
+1004d1f5   fucom    [esp+0x1c]         ST1=[0x1006fc50]       ah,0x44 jnp   0x1004d221   =          >|<|U     
+1004d212   fcom     [esp+0x1c]         ST1=[eax+0x10]         ah,0x01 jne   0x1004d369   <|U        >|=       
+1004d36f   fucomp   [0x1006fc50]       ST1=[esp+0x1c]         ah,0x44 jnp   0x1004d395   =          >|<|U     
+1004d388   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x05 jp    0x1004d3a7   >|=|U      <         
+1004d3c6   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 jne   0x1004ee36   <|=|U      >         
+1004d43d   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 jne   0x1004d5e8   <|=|U      >         
+1004d616   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jp    0x1004d8f3   >|=|U      <         
+1004d6ab   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 je    0x1004d70c   >          <|=|U     
+1004d6d5   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jnp   0x1004d70c   <          >|=|U     
+1004d792   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 je    0x1004d917   >          <|=|U     
+1004d7c0   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jp    0x1004d8f3   >|=|U      <         
+1004d8b6   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jnp   0x1004d9da   <          >|=|U     
+1004d8e4   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 je    0x1004da65   >          <|=|U     
+1004dc74   fcomp    [0x1006fc50]       mem:[esp+0x1c]         ah,0x44 jnp   0x1004dc98   =          >|<|U     
+1004dc8f   fcompp   [esp+0x1c]         ST1=[eax+0x10]         ah,0x01 jne   0x1004dd0a   <|U        >|=       
+1004dd29   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x01 jne   0x1004dd62   <|U        >|=       
+1004dd6e   fcompp   [esp+0x1c]         ST1=[eax+0x10]         ah,0x41 jne   0x1004ee36   <|=|U      >         
+1004ddea   fcomp    [0x1006fc50]       mem:[esp+0x1c]         ah,0x44 jnp   0x1004de0e   =          >|<|U     
+1004de05   fcompp   [esp+0x1c]         ST1=[eax+0x10]         ah,0x01 jne   0x1004de3f   <|U        >|=       
+1004de6a   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x01 jne   0x1004ee36   <|U        >|=       
+1004df9a   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x01 jne   0x1004ee36   <|U        >|=       
+1004e0bd   fucom    [esp+0x1c]         ST1=[0x1006fc50]       ah,0x44 jnp   0x1004e0e5   =          >|<|U     
+1004e0da   fcom     [esp+0x1c]         ST1=[eax+0x10]         ah,0x01 jne   0x1004e141   <|U        >|=       
+1004e147   fucomp   [0x1006fc50]       ST1=[esp+0x1c]         ah,0x44 jnp   0x1004ce3e   =          >|<|U     
+1004e164   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x05 jp    0x1004ee36   >|=|U      <         
+1004e21a   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 jne   0x1004ee36   <|=|U      >         
+1004e239   fcom     [esp+0x1c]         ST1=[eax+0x10]         ah,0x41 je    0x1004e259   >          <|=|U     
+1004e24a   fucompp  [0x1006fc50]       ST1=[esp+0x1c]         ah,0x44 jp    0x1004ee36   >|<|U      =         
+1004e2d9   fcompp   [esp+0x1c]         ST1=[eax+0x10]         ah,0x41 jne   0x1004ee28   <|=|U      >         
+1004e3a2   fucom    [esp+0x1c]         ST1=[0x1006fc50]       ah,0x44 jnp   0x1004e3ce   =          >|<|U     
+1004e3bf   fcom     [esp+0x1c]         ST1=[eax+0x10]         ah,0x01 jne   0x1004e4d5   <|U        >|=       
+1004e4db   fucomp   [0x1006fc50]       ST1=[esp+0x1c]         ah,0x44 jnp   0x1004e501   =          >|<|U     
+1004e4f4   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x05 jp    0x1004e513   >|=|U      <         
+1004e532   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 jne   0x1004ee36   <|=|U      >         
+1004e5a9   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 jne   0x1004e725   <|=|U      >         
+1004e753   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jp    0x1004ea61   >|=|U      <         
+1004e7eb   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 je    0x1004e84c   >          <|=|U     
+1004e815   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jnp   0x1004e84c   <          >|=|U     
+1004e8d2   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 je    0x1004ea85   >          <|=|U     
+1004e900   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jp    0x1004ea61   >|=|U      <         
+1004ea24   fcomp    [eax+0xc]          mem:[esp+0x30]         ah,0x05 jnp   0x1004eb75   <          >|=|U     
+1004ea52   fcomp    [eax+0x10]         mem:[esp+0x30]         ah,0x41 je    0x1004ec26   >          <|=|U     
+1004f0d4   fcompp   [ebp+0xc]          ST1=[esi+0xc]          ah,0x41 jp    0x1004f074   >|U        <|=       
+1004f1a0   fcompp   [edx+0x10]         ST1=[esi+0x10]         ah,0x01 jne   0x1004f142   <|U        >|=       
+
+### [B] 非零立即数写入 (标记字段写点)
+1004b26f   mov [esp+0x98], 3
+1004b30e   mov [esp+0x98], 2
+1004b31f   mov [esp+0x18], 2
+1004b63c   mov [esp+0x84], 1
+1004b7b1   mov [esp+0x84], 1
+1004b973   mov [esp+0x58], 0xffffffff
+1004bb7b   mov [esp+0x58], 0xffffffff
+1004bb8f   mov [esp+0x84], 1
+1004be57   mov [esp+0x84], 1
+1004bf92   mov [esp+0x84], 0xffffffff
+1004c051   mov [esp+0x84], 1
+1004c10a   mov [esp+0x84], 0xffffffff
+1004c20e   mov [esp+0x58], 0xffffffff
+1004c222   mov [esp+0x84], 1
+1004c31c   mov [esp+0x58], 1
+1004c34d   mov [esp+0x28], 1
+1004c54e   mov [esp+0x104], 1
+1004c593   mov [esp+0x108], 1
+1004c755   mov [esp+0x84], 1
+1004c8a3   mov [esp+0x84], 1
+1004c8e2   mov [esp+0x28], 1
+1004ca8b   mov [esp+0x58], 0xffffffff
+1004cbb1   mov [esp+0x58], 0xffffffff
+1004cbe1   mov [esp+0x28], 1
+1004ccc1   mov [esp+0x58], 0xffffffff
+1004ccf4   mov [esp+0x28], 1
+1004cdc1   mov [esp+0x84], 0xffffffff
+1004cf7f   mov [esp+0x84], 0xffffffff
+1004d0be   mov [esp+0x28], 2
+1004d0f8   mov [esp+0x28], 1
+1004d2e0   mov [esp+0x58], 1
+1004d2f4   mov [esp+0x84], 0xffffffff
+1004d354   mov [esp+0x28], 2
+1004d55f   mov [esp+0x58], 1
+1004d573   mov [esp+0x84], 0xffffffff
+1004d84a   mov [esp+0x84], 0xffffffff
+1004d982   mov [esp+0x84], 1
+1004da49   mov [esp+0x84], 0xffffffff
+1004dadc   mov [esp+0x84], 1
+1004dcb0   mov [esp+0x58], 0xffffffff
+1004dce1   mov [esp+0x28], 1
+1004de26   mov [esp+0x58], 0xffffffff
+1004ded8   mov [esp+0x104], 1
+1004dfef   mov [esp+0x58], 0xffffffff
+1004e014   mov [esp+0x28], 1
+1004e0ff   mov [esp+0x84], 0xffffffff
+1004e2a2   mov [esp+0x84], 0xffffffff
+1004e2c5   mov [esp+0x28], 1
+1004e49b   mov [esp+0x84], 0xffffffff
+1004e6c0   mov [esp+0x58], 1
+1004e6d4   mov [esp+0x84], 0xffffffff
+1004e98a   mov [esp+0x84], 0xffffffff
+1004eaf0   mov [esp+0x84], 1
+1004eb68   mov [esp+0x28], 2
+1004ebe4   mov [esp+0x84], 0xffffffff
+1004ec9d   mov [esp+0x84], 1
+1004eddc   mov [esp+0x58], 1
+1004edeb   mov [esp+0x84], 0xffffffff
+1004ee20   mov [esp+0x28], 2
+1004f26f   mov [ebp+0x20], 1
+1004f2d5   mov [ebx+0x20], 1
+1004f343   mov [ebx+0x20], 1
+1004f381   mov [ebx+0x20], 0xffffffff
+
+### [C] 调用目标统计
+  0x1006a830               x296
+  dword ptr [0x1006f194]   x62
+  0x1003f0d0               x58
+  0x100699c0               x13
+  0x100697a0               x12
+  0x1006a720               x12
+  0x1006a890               x10
+  0x1006a7c0               x9
+  0x1006a680               x6
+  0x1006a6c0               x4
+  0x1006a6a0               x4
+  0x1003d720               x3
+  0x1006a8e0               x3
+  0x1006a8c0               x3
+  0x10069540               x3
+  ebx                      x3
+  0x1006b050               x1
+  0x1003d750               x1

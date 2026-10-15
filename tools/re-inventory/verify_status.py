@@ -46,18 +46,31 @@ TARGETS = [
         "va": "0x1000f580",
         "batches": [
             ("第一批-入口链与工作函数", "docs/18-CHBI-第一批-入口链与工作函数.md"),
+            ("第二批-四函数解剖与条件格", "docs/20-CHBI-第二批-四函数解剖与条件格.md"),
         ],
         "artifacts": [
             "tools/re-inventory/chbi/core_1001c110.txt",
             "tools/re-inventory/chbi/core_1002c1d0.txt",
+            "tools/re-inventory/chbi/wrapper_ChBi_1000f580.txt",
+            "tools/re-inventory/chbi/f_1003db40.txt",
+            "tools/re-inventory/chbi/f_1003e200.txt",
+            "tools/re-inventory/chbi/f_1004b1e0.txt",
+            "tools/re-inventory/chbi/f_1004f430.txt",
+            "tools/re-inventory/chbi/cond_1003db40.txt",
+            "tools/re-inventory/chbi/cond_1003e200.txt",
+            "tools/re-inventory/chbi/cond_1004b1e0.txt",
+            "tools/re-inventory/chbi/cond_1004f430.txt",
+            "tools/re-inventory/x87_sim.py",
+            "tools/re-inventory/disasm_func.py",
+            "pseudocode/chbi.c",
         ],
-        "next": "第二批: 0x1004b1e0/0x1004f430/0x1003db40/0x1003e200 解剖 + 条件格 + chbi.c",
+        "next": "第三批: 0x1003f170(P=11/12, 最大臂) 与 0x1006a040(P=51) 解剖 + 动态校验(frida) + 仲裁 #4/#5",
     },
 ]
 
 # 清单覆盖: 优先级代表函数（来自 docs/14）
 PRIORITY = [
-    ("ChBi", "CHBI", "EA62", "已启动(第一批)"),
+    ("ChBi", "CHBI", "EA62", "已交付(两批)"),
     ("ChDuan", "CHDUAN", "-", "已交付(三批)"),
     ("NChBi", "NCHBI", "EA62", "未启动"),
     ("NChZs", "NCHZS", "EA63", "未启动"),
@@ -111,8 +124,8 @@ def main():
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-",
-                "tools/re-inventory", "pseudocode/chduan", "pseudocode/chbi")
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-",
+                "tools/re-inventory", "pseudocode/chduan", "pseudocode/chbi", "README.md")
     tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]
     untracked = [l for l in status.splitlines() if l.startswith("??")]
     mine = [l for l in tracked_mod if any(s in l for s in MY_SCOPE)]

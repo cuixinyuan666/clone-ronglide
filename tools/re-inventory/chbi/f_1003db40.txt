@@ -1,0 +1,415 @@
+1003db40  sub      esp, 0x174
+1003db46  push     ebx
+1003db47  push     ebp
+1003db48  mov      ebp, dword ptr [esp + 0x180]
+1003db4f  push     esi
+1003db50  push     edi
+1003db51  mov      edi, dword ptr [ebp + 4]
+1003db54  test     edi, edi
+1003db56  je       0x1003db9d
+1003db58  mov      esi, dword ptr [ebp + 8]
+1003db5b  mov      ecx, esi
+1003db5d  sub      ecx, edi
+1003db5f  mov      eax, 0x66666667
+1003db64  imul     ecx
+1003db66  sar      edx, 6
+1003db69  mov      eax, edx
+1003db6b  shr      eax, 0x1f
+1003db6e  add      eax, edx
+1003db70  je       0x1003db9d
+1003db72  cmp      edi, esi
+1003db74  mov      ebx, dword ptr [0x1006f194]
+1003db7a  jbe      0x1003db7e
+1003db7c  call     ebx
+1003db7e  mov      edi, dword ptr [ebp + 4]
+1003db81  cmp      edi, dword ptr [ebp + 8]
+1003db84  jbe      0x1003db88
+1003db86  call     ebx
+1003db88  cmp      edi, esi
+1003db8a  je       0x1003db9d
+1003db8c  mov      ebx, dword ptr [ebp + 8]
+1003db8f  push     edi
+1003db90  mov      eax, esi
+1003db92  call     0x1003d8a0
+1003db97  add      esp, 4
+1003db9a  mov      dword ptr [ebp + 8], eax
+1003db9d  mov      eax, dword ptr [esp + 0x18c]
+1003dba4  xor      ebx, ebx
+1003dba6  cmp      eax, ebx
+1003dba8  mov      dword ptr [esp + 0x20], ebx
+1003dbac  jle      0x1003e0a9
+1003dbb2  test     eax, eax
+1003dbb4  fldz     
+1003dbb6  fst      dword ptr [esp + 0x2c]
+1003dbba  mov      edi, 1
+1003dbbf  fst      dword ptr [esp + 0x28]
+1003dbc3  mov      dword ptr [esp + 0x24], edi
+1003dbc7  fstp     dword ptr [esp + 0x30]
+1003dbcb  jle      0x1003e0a9
+1003dbd1  mov      esi, dword ptr [esp + 0x190]
+1003dbd8  mov      edx, dword ptr [esp + 0x194]
+1003dbdf  mov      ebp, dword ptr [esp + 0xe0]
+1003dbe6  mov      ecx, esi
+1003dbe8  mov      eax, edx
+1003dbea  sub      ecx, edx
+1003dbec  mov      dword ptr [esp + 0x1c], eax
+1003dbf0  mov      dword ptr [esp + 0x38], ecx
+1003dbf4  jmp      0x1003dc16
+1003dbf6  jmp      0x1003dc00
+1003dbf8  lea      esp, [esp]
+1003dbff  nop      
+1003dc00  mov      ecx, dword ptr [esp + 0x38]
+1003dc04  mov      eax, dword ptr [esp + 0x1c]
+1003dc08  mov      esi, dword ptr [esp + 0x190]
+1003dc0f  mov      edx, dword ptr [esp + 0x194]
+1003dc16  cmp      dword ptr [esp + 0x24], 1
+1003dc1b  fld      dword ptr [ecx + eax]
+1003dc1e  fstp     dword ptr [esp + 0x14]
+1003dc22  mov      dword ptr [esp + 0x40], edi
+1003dc26  fld      dword ptr [eax]
+1003dc28  fstp     dword ptr [esp + 0x18]
+1003dc2c  fld      dword ptr [esp + 0x14]
+1003dc30  fld      dword ptr [esp + 0x18]
+1003dc34  jne      0x1003dc4a
+1003dc36  fxch     st(1)
+1003dc38  mov      dword ptr [esp + 0x24], 0
+1003dc40  fst      dword ptr [esp + 0x34]
+1003dc44  fxch     st(1)
+1003dc46  fst      dword ptr [esp + 0x3c]
+1003dc4a  test     ebx, ebx
+1003dc4c  jle      0x1003dd54
+1003dc52  fld      dword ptr [esp + 0x2c]
+1003dc56  fcom     st(2)
+1003dc58  fnstsw   ax
+1003dc5a  fld      dword ptr [esp + 0x28]
+1003dc5e  test     ah, 1
+1003dc61  jne      0x1003dca3
+1003dc63  fcom     st(2)
+1003dc65  fnstsw   ax
+1003dc67  test     ah, 0x41
+1003dc6a  jp       0x1003dca3
+1003dc6c  test     ebp, ebp
+1003dc6e  jle      0x1003dc95
+1003dc70  fld      dword ptr [esi + ebp*4]
+1003dc73  fcomp    st(4)
+1003dc75  fnstsw   ax
+1003dc77  test     ah, 1
+1003dc7a  jne      0x1003dc87
+1003dc7c  lea      ecx, [ebp + 1]
+1003dc7f  fxch     st(3)
+1003dc81  mov      dword ptr [esp + 0x40], ecx
+1003dc85  jmp      0x1003dcdb
+1003dc87  lea      edx, [edi - 1]
+1003dc8a  fxch     st(3)
+1003dc8c  mov      dword ptr [esp + 0x40], edx
+1003dc90  lea      ebp, [edi - 2]
+1003dc93  jmp      0x1003dcdb
+1003dc95  lea      eax, [edi - 1]
+1003dc98  fxch     st(3)
+1003dc9a  mov      dword ptr [esp + 0x40], eax
+1003dc9e  lea      ebp, [edi - 2]
+1003dca1  jmp      0x1003dcdb
+1003dca3  fxch     st(3)
+1003dca5  fcom     st(1)
+1003dca7  fnstsw   ax
+1003dca9  test     ah, 1
+1003dcac  jne      0x1003dd0f
+1003dcae  fxch     st(2)
+1003dcb0  fcom     st(3)
+1003dcb2  fnstsw   ax
+1003dcb4  test     ah, 0x41
+1003dcb7  jp       0x1003dd13
+1003dcb9  test     ebp, ebp
+1003dcbb  jle      0x1003dcd2
+1003dcbd  fld      dword ptr [esi + ebp*4]
+1003dcc0  fcomp    st(3)
+1003dcc2  fnstsw   ax
+1003dcc4  test     ah, 1
+1003dcc7  jne      0x1003dcd2
+1003dcc9  lea      ecx, [ebp + 1]
+1003dccc  mov      dword ptr [esp + 0x40], ecx
+1003dcd0  jmp      0x1003dcd9
+1003dcd2  lea      ebp, [edi - 1]
+1003dcd5  mov      dword ptr [esp + 0x40], edi
+1003dcd9  fxch     st(2)
+1003dcdb  fcomp    st(1)
+1003dcdd  fnstsw   ax
+1003dcdf  test     ah, 0x41
+1003dce2  je       0x1003dcea
+1003dce4  fstp     dword ptr [esp + 0x14]
+1003dce8  jmp      0x1003dcec
+1003dcea  fstp     st(0)
+1003dcec  fcomp    st(1)
+1003dcee  fnstsw   ax
+1003dcf0  test     ah, 0x41
+1003dcf3  je       0x1003dd03
+1003dcf5  fstp     dword ptr [esp + 0x18]
+1003dcf9  mov      ebx, 2
+1003dcfe  jmp      0x1003de4f
+1003dd03  fstp     st(0)
+1003dd05  mov      ebx, 2
+1003dd0a  jmp      0x1003de4f
+1003dd0f  fstp     st(2)
+1003dd11  jmp      0x1003dd15
+1003dd13  fstp     st(0)
+1003dd15  fstp     st(2)
+1003dd17  fcom     st(1)
+1003dd19  fnstsw   ax
+1003dd1b  test     ah, 0x41
+1003dd1e  jne      0x1003dd36
+1003dd20  or       ebp, 0xffffffff
+1003dd23  fstp     st(0)
+1003dd25  mov      ebx, 1
+1003dd2a  mov      dword ptr [esp + 0xe0], ebp
+1003dd31  jmp      0x1003de4d
+1003dd36  fcompp   
+1003dd38  fnstsw   ax
+1003dd3a  test     ah, 5
+1003dd3d  jp       0x1003de4f
+1003dd43  or       ebp, 0xffffffff
+1003dd46  mov      ebx, ebp
+1003dd48  mov      dword ptr [esp + 0xe0], ebp
+1003dd4f  jmp      0x1003de4f
+1003dd54  jge      0x1003de4b
+1003dd5a  fld      dword ptr [esp + 0x2c]
+1003dd5e  fcom     st(2)
+1003dd60  fnstsw   ax
+1003dd62  fld      dword ptr [esp + 0x28]
+1003dd66  test     ah, 1
+1003dd69  jne      0x1003ddc3
+1003dd6b  fcom     st(2)
+1003dd6d  fnstsw   ax
+1003dd6f  test     ah, 0x41
+1003dd72  jp       0x1003ddc3
+1003dd74  mov      ecx, dword ptr [esp + 0xe0]
+1003dd7b  test     ecx, ecx
+1003dd7d  jle      0x1003ddae
+1003dd7f  fld      dword ptr [edx + ecx*4]
+1003dd82  fcomp    st(3)
+1003dd84  fnstsw   ax
+1003dd86  test     ah, 0x41
+1003dd89  jp       0x1003dd99
+1003dd8b  add      ecx, 1
+1003dd8e  fxch     st(3)
+1003dd90  mov      dword ptr [esp + 0x40], ecx
+1003dd94  jmp      0x1003de1d
+1003dd99  lea      edx, [edi - 1]
+1003dd9c  fxch     st(3)
+1003dd9e  lea      eax, [edi - 2]
+1003dda1  mov      dword ptr [esp + 0x40], edx
+1003dda5  mov      dword ptr [esp + 0xe0], eax
+1003ddac  jmp      0x1003de1d
+1003ddae  lea      ecx, [edi - 1]
+1003ddb1  fxch     st(3)
+1003ddb3  lea      edx, [edi - 2]
+1003ddb6  mov      dword ptr [esp + 0xe0], edx
+1003ddbd  mov      dword ptr [esp + 0x40], ecx
+1003ddc1  jmp      0x1003de1d
+1003ddc3  fxch     st(3)
+1003ddc5  fcom     st(1)
+1003ddc7  fnstsw   ax
+1003ddc9  test     ah, 1
+1003ddcc  jne      0x1003dd0f
+1003ddd2  fxch     st(2)
+1003ddd4  fcom     st(3)
+1003ddd6  fnstsw   ax
+1003ddd8  test     ah, 0x41
+1003dddb  jp       0x1003dd13
+1003dde1  mov      ecx, dword ptr [esp + 0xe0]
+1003dde8  test     ecx, ecx
+1003ddea  jle      0x1003de0d
+1003ddec  fld      dword ptr [edx + ecx*4]
+1003ddef  fcomp    st(1)
+1003ddf1  fnstsw   ax
+1003ddf3  test     ah, 0x41
+1003ddf6  jp       0x1003de01
+1003ddf8  add      ecx, 1
+1003ddfb  mov      dword ptr [esp + 0x40], ecx
+1003ddff  jmp      0x1003de1b
+1003de01  lea      eax, [edi - 1]
+1003de04  mov      dword ptr [esp + 0xe0], eax
+1003de0b  jmp      0x1003de17
+1003de0d  lea      ecx, [edi - 1]
+1003de10  mov      dword ptr [esp + 0xe0], ecx
+1003de17  mov      dword ptr [esp + 0x40], edi
+1003de1b  fxch     st(2)
+1003de1d  fcomp    st(1)
+1003de1f  fnstsw   ax
+1003de21  test     ah, 0x41
+1003de24  jne      0x1003de2c
+1003de26  fstp     dword ptr [esp + 0x14]
+1003de2a  jmp      0x1003de2e
+1003de2c  fstp     st(0)
+1003de2e  fcomp    st(1)
+1003de30  fnstsw   ax
+1003de32  test     ah, 0x41
+1003de35  jne      0x1003de42
+1003de37  fstp     dword ptr [esp + 0x18]
+1003de3b  mov      ebx, 0xfffffffe
+1003de40  jmp      0x1003de4f
+1003de42  fstp     st(0)
+1003de44  mov      ebx, 0xfffffffe
+1003de49  jmp      0x1003de4f
+1003de4b  fstp     st(1)
+1003de4d  fstp     st(0)
+1003de4f  mov      esi, dword ptr [esp + 0x188]
+1003de56  mov      ecx, esi
+1003de58  call     0x1003d780
+1003de5d  test     eax, eax
+1003de5f  jne      0x1003de6b
+1003de61  lea      ebx, [eax + 1]
+1003de64  mov      dword ptr [esp + 0x40], edi
+1003de68  or       ebp, 0xffffffff
+1003de6b  fld      dword ptr [esp + 0x18]
+1003de6f  xor      ecx, ecx
+1003de71  cmp      edi, dword ptr [esp + 0x18c]
+1003de78  fst      dword ptr [esp + 0x50]
+1003de7c  fld      dword ptr [esp + 0x14]
+1003de80  mov      dword ptr [esp + 0x5c], ebx
+1003de84  fst      dword ptr [esp + 0x4c]
+1003de88  mov      dword ptr [esp + 0x54], ecx
+1003de8c  fldz     
+1003de8e  mov      dword ptr [esp + 0x60], ecx
+1003de92  fst      dword ptr [esp + 0x58]
+1003de96  mov      dword ptr [esp + 0x64], ecx
+1003de9a  fxch     st(1)
+1003de9c  mov      dword ptr [esp + 0xc4], ecx
+1003dea3  fst      dword ptr [esp + 0x44]
+1003dea7  mov      dword ptr [esp + 0xd0], ecx
+1003deae  fxch     st(2)
+1003deb0  mov      dword ptr [esp + 0x68], ecx
+1003deb4  fst      dword ptr [esp + 0x48]
+1003deb8  mov      dword ptr [esp + 0x6c], ecx
+1003debc  fxch     st(1)
+1003debe  mov      dword ptr [esp + 0x70], ecx
+1003dec2  fst      dword ptr [esp + 0xd4]
+1003dec9  mov      dword ptr [esp + 0x74], ecx
+1003decd  fst      dword ptr [esp + 0x90]
+1003ded4  mov      dword ptr [esp + 0xd8], ecx
+1003dedb  fst      dword ptr [esp + 0x94]
+1003dee2  mov      dword ptr [esp + 0xdc], ecx
+1003dee9  fst      dword ptr [esp + 0xa8]
+1003def0  fst      dword ptr [esp + 0xa4]
+1003def7  fst      dword ptr [esp + 0x98]
+1003defe  fstp     dword ptr [esp + 0x9c]
+1003df05  fxch     st(1)
+1003df07  fst      dword ptr [esp + 0x2c]
+1003df0b  fxch     st(1)
+1003df0d  fst      dword ptr [esp + 0x28]
+1003df11  jge      0x1003e00c
+1003df17  mov      eax, dword ptr [esp + 0x1c]
+1003df1b  mov      edx, dword ptr [esp + 0x38]
+1003df1f  fld      dword ptr [edx + eax + 4]
+1003df23  fstp     dword ptr [esp + 0x14]
+1003df27  fld      dword ptr [eax + 4]
+1003df2a  fstp     dword ptr [esp + 0x18]
+1003df2e  fld      dword ptr [esp + 0x14]
+1003df32  fcom     st(2)
+1003df34  fnstsw   ax
+1003df36  fld      dword ptr [esp + 0x18]
+1003df3a  test     ah, 1
+1003df3d  jne      0x1003df48
+1003df3f  fcom     st(2)
+1003df41  fnstsw   ax
+1003df43  test     ah, 0x41
+1003df46  jnp      0x1003df77
+1003df48  fxch     st(1)
+1003df4a  fcomp    st(3)
+1003df4c  fnstsw   ax
+1003df4e  test     ah, 0x41
+1003df51  jp       0x1003df7f
+1003df53  fcomp    st(1)
+1003df55  fnstsw   ax
+1003df57  test     ah, 1
+1003df5a  jne      0x1003df81
+1003df5c  fstp     st(1)
+1003df5e  cmp      dword ptr [esp + 0x20], ecx
+1003df62  fstp     st(0)
+1003df64  jne      0x1003e091
+1003df6a  mov      dword ptr [esp + 0x20], 1
+1003df72  jmp      0x1003e091
+1003df77  fstp     st(1)
+1003df79  fstp     st(2)
+1003df7b  fstp     st(0)
+1003df7d  jmp      0x1003df5e
+1003df7f  fstp     st(0)
+1003df81  cmp      dword ptr [esp + 0x20], ecx
+1003df85  mov      dword ptr [esp + 0xb8], edi
+1003df8c  je       0x1003dfaf
+1003df8e  fxch     st(1)
+1003df90  mov      dword ptr [esp + 0x20], ecx
+1003df94  fstp     dword ptr [esp + 0xbc]
+1003df9b  mov      dword ptr [esp + 0xb0], 1
+1003dfa6  fstp     dword ptr [esp + 0xc0]
+1003dfad  jmp      0x1003dfc1
+1003dfaf  fstp     st(1)
+1003dfb1  mov      dword ptr [esp + 0xb0], ecx
+1003dfb8  fstp     st(0)
+1003dfba  mov      dword ptr [esp + 0xb4], edi
+1003dfc1  fld      dword ptr [esp + 0x3c]
+1003dfc5  mov      eax, dword ptr [esp + 0x1c]
+1003dfc9  fstp     dword ptr [esp + 0x84]
+1003dfd0  mov      dword ptr [esp + 0x24], 1
+1003dfd8  fld      dword ptr [esp + 0x34]
+1003dfdc  fstp     dword ptr [esp + 0x80]
+1003dfe3  fld      dword ptr [eax]
+1003dfe5  fstp     dword ptr [esp + 0x8c]
+1003dfec  fld      dword ptr [edx + eax]
+1003dfef  lea      eax, [esp + 0x40]
+1003dff3  fstp     dword ptr [esp + 0x88]
+1003dffa  call     0x1006a5e0
+1003dfff  fld      dword ptr [esp + 0x4c]
+1003e003  fstp     dword ptr [esp + 0x30]
+1003e007  jmp      0x1003e091
+1003e00c  fstp     st(1)
+1003e00e  lea      eax, [esp + 0x40]
+1003e012  fstp     st(0)
+1003e014  mov      dword ptr [esp + 0xd8], 1
+1003e01f  call     0x1006a5e0
+1003e024  fld      dword ptr [esp + 0x30]
+1003e028  fld      dword ptr [esp + 0x4c]
+1003e02c  fcom     st(1)
+1003e02e  fnstsw   ax
+1003e030  test     ah, 0x41
+1003e033  jne      0x1003e063
+1003e035  fldz     
+1003e037  fucomp   st(2)
+1003e039  fnstsw   ax
+1003e03b  test     ah, 0x44
+1003e03e  jnp      0x1003e063
+1003e040  fstp     st(1)
+1003e042  lea      eax, [esp + 0x40]
+1003e046  fld      qword ptr [0x1006fc28]
+1003e04c  fsub     st(1), st(0)
+1003e04e  fxch     st(1)
+1003e050  fstp     dword ptr [esp + 0x4c]
+1003e054  fsubr    dword ptr [esp + 0x50]
+1003e058  fstp     dword ptr [esp + 0x50]
+1003e05c  call     0x1006a5e0
+1003e061  jmp      0x1003e091
+1003e063  fcom     st(1)
+1003e065  fnstsw   ax
+1003e067  fstp     st(1)
+1003e069  test     ah, 5
+1003e06c  jp       0x1003e08f
+1003e06e  fld      qword ptr [0x1006fc28]
+1003e074  lea      eax, [esp + 0x40]
+1003e078  fadd     st(1), st(0)
+1003e07a  fxch     st(1)
+1003e07c  fstp     dword ptr [esp + 0x4c]
+1003e080  fadd     dword ptr [esp + 0x50]
+1003e084  fstp     dword ptr [esp + 0x50]
+1003e088  call     0x1006a5e0
+1003e08d  jmp      0x1003e091
+1003e08f  fstp     st(0)
+1003e091  add      dword ptr [esp + 0x1c], 4
+1003e096  add      edi, 1
+1003e099  lea      edx, [edi - 1]
+1003e09c  cmp      edx, dword ptr [esp + 0x18c]
+1003e0a3  jl       0x1003dc00
+1003e0a9  pop      edi
+1003e0aa  pop      esi
+1003e0ab  pop      ebp
+1003e0ac  pop      ebx
+1003e0ad  add      esp, 0x174
+1003e0b3  ret      0x10

@@ -157,7 +157,10 @@ typedef struct AnalyzerCtx {    /* W，尺寸 ≥ 0xBC */
 | [docs/12-收尾核对.md](docs/12-收尾核对.md) | **bar 剩余字段定性（引擎不读取）、哨兵处理、block 下标归属、x64dbg 验证方案、复刻规格摘要** |
 | [docs/13-三级流水线贯通.md](docs/13-三级流水线贯通.md) | **MarkSignalFlag / MergeByFlag 完整还原、三级流水线数据流贯通、wnmr.c 修正** |
 | [docs/14-付费功能与指标总览.md](docs/14-付费功能与指标总览.md) | **付费功能/指标全景：274 公式全解、87 个 Authorize 调用点、4 个授权码、公式名↔实现注册表映射** |
+| [docs/20-CHBI-第二批-四函数解剖与条件格.md](docs/20-CHBI-第二批-四函数解剖与条件格.md) | **CHBI 四函数解剖：0xA0 元素模板、严格分型判定闭式、两个大函数的镜像孪生证明（98.8%）、x87 解码表勘误** |
 | [pseudocode/wnmr.c](pseudocode/wnmr.c) | 合并后的可读伪码 |
+| [pseudocode/chduan.c](pseudocode/chduan.c) | CHDUAN（线段）全链路伪码 |
+| [pseudocode/chbi.c](pseudocode/chbi.c) | CHBI（笔）全链路伪码（包装层 / 工作函数 / 四子函数） |
 | [tools/](tools/) | **自建反汇编 / 栈跟踪（esp delta 传播）/ 递归下降 / 别名写入分析脚本** |
 
 ## 关键地址速查
@@ -177,6 +180,13 @@ typedef struct AnalyzerCtx {    /* W，尺寸 ≥ 0xBC */
 | 容器快照（深拷贝） | `sub_1003f150` @ `0x1003f150` |
 | `vector` 拷贝构造 | `sub_1006a4e0` @ `0x1006a4e0` |
 | `CHBI` 入口 | `0x1000f580` (`CalcProc_ChBi`) |
+| `CHBI` 工作函数 | `sub_1002c1d0` @ `0x1002c1d0`（`ctx,count,outD,src{H,L,P},iface`；按 P 分派） |
+| `CHBI` 候选端点生成 | `sub_1003db40` @ `0x1003db40`（`W,n,srcH,srcL`；产 0xA0 元素） |
+| `CHBI` 严格分型标注 | `sub_1003e200` @ `0x1003e200`（EAX 传 W；写 `+0x14=±1`） |
+| `CHBI` 笔端点定向（顶向） | `sub_1004b1e0` @ `0x1004b1e0`（`W,mode`） |
+| `CHBI` 笔端点定向（底向镜像） | `sub_1004f430` @ `0x1004f430`（与上者 98.8% 同构） |
+| `CHBI` P=11/12 处理器 | `sub_1003f170` @ `0x1003f170`（8368 指令，待解剖） |
+| `CHBI` P=51 处理器 | `sub_1006a040` @ `0x1006a040`（分型笔，另一道 `0xEA62` 门在 `0x1002c330`） |
 | 方向标注 | `sub_1003ef00` @ `0x1003ef00` |
 | 分型标志写入 | `0x10056710`(=-1底) / `0x10056760`(=+1顶) |
 | 函数主出口 | `0x1005cbe9` / `0x1005cbf3` |
@@ -184,8 +194,9 @@ typedef struct AnalyzerCtx {    /* W，尺寸 ≥ 0xBC */
 | 常量 | 值 | 用途 |
 | --- | --- | --- |
 | 授权码 | `0xEA63` | WNMRNEW/WNMRPRINEW |
-| 授权码 | `0xEA62` | CHBI |
-| 浮点常量 | `-1.0` @ `0x1006FC50` | 分型判定基准 |
+| 授权码 | `0xEA62` | CHBI（包装层 `0x1000f5fb` + 工作函数 `0x1002c330` 双查） |
+| 浮点常量 | `-1.0f` @ `0x1006FC50` | 分型判定基准 / 未设置哨兵（`fucom + ah,44 jnp`） |
+| 浮点常量 | `0.001` @ `0x1006FC28` | 共享尾块微调步长 |
 | 魔数除法 | `0x66666667 sar 4` | ÷40（输入 bar，步长 0x28） |
 | 魔数除法 | `0x66666667 sar 6` | ÷160（级别对象，步长 0xA0） |
 
