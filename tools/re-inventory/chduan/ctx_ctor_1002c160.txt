@@ -1,0 +1,26 @@
+1002c160  push     -1
+1002c162  push     0x1006cb1b
+1002c167  mov      eax, dword ptr fs:[0]
+1002c16d  push     eax
+1002c16e  push     ecx
+1002c16f  mov      eax, dword ptr [0x1007c018]
+1002c174  xor      eax, esp
+1002c176  push     eax
+1002c177  lea      eax, [esp + 8]
+1002c17b  mov      dword ptr fs:[0], eax
+1002c181  push     0xc8
+1002c186  call     0x1006b32c
+1002c18b  add      esp, 4
+1002c18e  mov      dword ptr [esp + 4], eax
+1002c192  test     eax, eax
+1002c194  mov      dword ptr [esp + 0x10], 0
+1002c19c  je       0x1002c1b8
+1002c19e  push     eax
+1002c19f  call     0x1003d910
+1002c1a4  mov      dword ptr [esi], eax
+1002c1a6  mov      eax, esi
+1002c1a8  mov      ecx, dword ptr [esp + 8]
+1002c1ac  mov      dword ptr fs:[0], ecx
+1002c1b3  pop      ecx
+1002c1b4  add      esp, 0x10
+1002c1b7  ret      
