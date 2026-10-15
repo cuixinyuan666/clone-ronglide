@@ -156,6 +156,7 @@ typedef struct AnalyzerCtx {    /* W，尺寸 ≥ 0xBC */
 | [docs/11-索引基数定论.md](docs/11-索引基数定论.md) | **bar 写入点定位、bar 布局、索引基数定论（`+0x00` 1 基 / `+0x08` 0 基）** |
 | [docs/12-收尾核对.md](docs/12-收尾核对.md) | **bar 剩余字段定性（引擎不读取）、哨兵处理、block 下标归属、x64dbg 验证方案、复刻规格摘要** |
 | [docs/13-三级流水线贯通.md](docs/13-三级流水线贯通.md) | **MarkSignalFlag / MergeByFlag 完整还原、三级流水线数据流贯通、wnmr.c 修正** |
+| [docs/14-付费功能与指标总览.md](docs/14-付费功能与指标总览.md) | **付费功能/指标全景：274 公式全解、87 个 Authorize 调用点、4 个授权码、公式名↔实现注册表映射** |
 | [pseudocode/wnmr.c](pseudocode/wnmr.c) | 合并后的可读伪码 |
 | [tools/](tools/) | **自建反汇编 / 栈跟踪（esp delta 传播）/ 递归下降 / 别名写入分析脚本** |
 

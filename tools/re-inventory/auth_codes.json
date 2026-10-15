@@ -1,0 +1,800 @@
+{
+ "?CalcStudyFormula@TAF_Calculator@@QAE_NPAVTAF_Context@@ABV?$vector@NV?$allocator@N@std@@@std@@PAUTAF_CompileResult@@PAUTAF_StudyData@@@Z": {
+  "va": "0x10002220",
+  "auth": [
+   {
+    "call": "0x10002312",
+    "code": null
+   }
+  ]
+ },
+ "?CalcProc_IndexDuo@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10008580",
+  "auth": [
+   {
+    "call": "0x100085c7",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_IndexKong@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10008870",
+  "auth": [
+   {
+    "call": "0x100088b7",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_HyDuo@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10008b50",
+  "auth": [
+   {
+    "call": "0x10008b97",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_IndexMA@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10008e10",
+  "auth": [
+   {
+    "call": "0x10008e47",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_IndexCount@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100090f0",
+  "auth": [
+   {
+    "call": "0x10009187",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_IndexCountInner@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10009470",
+  "auth": [
+   {
+    "call": "0x10009520",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_ChBi@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x1000f580",
+  "auth": [
+   {
+    "call": "0x1000f602",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_ChFxbi@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x1000f740",
+  "auth": [
+   {
+    "call": "0x1000f7b0",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_ChZhongShu@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x1000f910",
+  "auth": [
+   {
+    "call": "0x1000f980",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_ChLeimmd@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x1000fa10",
+  "auth": [
+   {
+    "call": "0x1000fa80",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_ChZhongShuG@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x1000fb10",
+  "auth": [
+   {
+    "call": "0x1000fb80",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_ChZhongShuD@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x1000fc10",
+  "auth": [
+   {
+    "call": "0x1000fc80",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_ChBmmd@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x1000fd10",
+  "auth": [
+   {
+    "call": "0x1000fd80",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_ChBmmd_t@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x1000fe10",
+  "auth": [
+   {
+    "call": "0x1000fe80",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_ChBsmmd@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x1000ff10",
+  "auth": [
+   {
+    "call": "0x1000ff80",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_ZouShiBi@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010010",
+  "auth": [
+   {
+    "call": "0x10010080",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_ZouShiZsAll@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010110",
+  "auth": [
+   {
+    "call": "0x10010180",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_ZouShimmd@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010210",
+  "auth": [
+   {
+    "call": "0x10010280",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_Qjtmm@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100103a0",
+  "auth": [
+   {
+    "call": "0x10010410",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_Qjtd@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100104a0",
+  "auth": [
+   {
+    "call": "0x10010510",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_Macdnum@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100105a0",
+  "auth": [
+   {
+    "call": "0x10010608",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_Chdzhongshu@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010760",
+  "auth": [
+   {
+    "call": "0x100107d0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_Zstj@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010860",
+  "auth": [
+   {
+    "call": "0x100108d0",
+    "code": "0xEA61"
+   },
+   {
+    "call": "0x100109d0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_Chdzhongshug@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010960",
+  "auth": [
+   {
+    "call": "0x100109d0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_Chdzhongshud@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010a60",
+  "auth": [
+   {
+    "call": "0x10010ad0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_Chbimacds@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010b60",
+  "auth": [
+   {
+    "call": "0x10010bd0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_Chbimacds_t@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010c60",
+  "auth": [
+   {
+    "call": "0x10010cd0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_Chduanmacds@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010d60",
+  "auth": [
+   {
+    "call": "0x10010dd0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_Chduanmacds_t@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010e60",
+  "auth": [
+   {
+    "call": "0x10010ed0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_scqd@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10010f60",
+  "auth": [
+   {
+    "call": "0x10010fd0",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_dmmd@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011060",
+  "auth": [
+   {
+    "call": "0x100110d0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_dmmd_t@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011160",
+  "auth": [
+   {
+    "call": "0x100111d0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_dnum@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011260",
+  "auth": [
+   {
+    "call": "0x100112d0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_kxqj@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011360",
+  "auth": [
+   {
+    "call": "0x100113d0",
+    "code": "0xEA61"
+   },
+   {
+    "call": "0x100114d0",
+    "code": "0xEA61"
+   },
+   {
+    "call": "0x100115d0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_kxqjg@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011460",
+  "auth": [
+   {
+    "call": "0x100114d0",
+    "code": "0xEA61"
+   },
+   {
+    "call": "0x100115d0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_kxqjd@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011560",
+  "auth": [
+   {
+    "call": "0x100115d0",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_dsmmd@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011720",
+  "auth": [
+   {
+    "call": "0x10011790",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_nzs@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011820",
+  "auth": [
+   {
+    "call": "0x10011890",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_nzsqj@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011920",
+  "auth": [
+   {
+    "call": "0x10011990",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_zsdg@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011a20",
+  "auth": [
+   {
+    "call": "0x10011a90",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_wnmr@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011b20",
+  "auth": [
+   {
+    "call": "0x10011b90",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_wnmrpri@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011c20",
+  "auth": [
+   {
+    "call": "0x10011c90",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_dzstj@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011de0",
+  "auth": [
+   {
+    "call": "0x10011e50",
+    "code": "0xEA61"
+   },
+   {
+    "call": "0x10011f50",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_wnmrnew@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011ee0",
+  "auth": [
+   {
+    "call": "0x10011f50",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_wnmrprinew@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10011fe0",
+  "auth": [
+   {
+    "call": "0x10012050",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_ygj@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100121a0",
+  "auth": [
+   {
+    "call": "0x100121b1",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_bdtd@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012220",
+  "auth": [
+   {
+    "call": "0x10012288",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_ygjmm@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012320",
+  "auth": [
+   {
+    "call": "0x10012388",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_Kzq@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012420",
+  "auth": [
+   {
+    "call": "0x1001242f",
+    "code": "0xEA6B"
+   }
+  ]
+ },
+ "?CalcProc_NChBhh@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012740",
+  "auth": [
+   {
+    "call": "0x10012751",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChBhl@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100127b0",
+  "auth": [
+   {
+    "call": "0x100127c1",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChRef@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012820",
+  "auth": [
+   {
+    "call": "0x10012831",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChFx@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012890",
+  "auth": [
+   {
+    "call": "0x100128a1",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChFxSta@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012900",
+  "auth": [
+   {
+    "call": "0x10012911",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChFxUpDn@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012970",
+  "auth": [
+   {
+    "call": "0x10012981",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChFxOrder@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100129e0",
+  "auth": [
+   {
+    "call": "0x100129f1",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChBi@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012a50",
+  "auth": [
+   {
+    "call": "0x10012aa0",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChBiSta@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012c40",
+  "auth": [
+   {
+    "call": "0x10012c51",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChBiSta2@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012cb0",
+  "auth": [
+   {
+    "call": "0x10012cc1",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChBiZj@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012d20",
+  "auth": [
+   {
+    "call": "0x10012d31",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChBiZj3@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012d90",
+  "auth": [
+   {
+    "call": "0x10012da1",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChBiZjOrder@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012e00",
+  "auth": [
+   {
+    "call": "0x10012e11",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChBiFxNum@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012e70",
+  "auth": [
+   {
+    "call": "0x10012e81",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChBiZjNum@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012ee0",
+  "auth": [
+   {
+    "call": "0x10012ef1",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChBiSpeed@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10012f50",
+  "auth": [
+   {
+    "call": "0x10012f61",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChZs@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013240",
+  "auth": [
+   {
+    "call": "0x1001325a",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_NChZs_L2@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100132d0",
+  "auth": [
+   {
+    "call": "0x100132f0",
+    "code": "0xEA63"
+   },
+   {
+    "call": "0x10013300",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChZsG@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013370",
+  "auth": [
+   {
+    "call": "0x10013381",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChZsD@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100133e0",
+  "auth": [
+   {
+    "call": "0x100133f1",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChZsBs12@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013460",
+  "auth": [
+   {
+    "call": "0x10013471",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChZsBs3@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100134e0",
+  "auth": [
+   {
+    "call": "0x100134f1",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChZsBreach@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013560",
+  "auth": [
+   {
+    "call": "0x10013571",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChZsL2M@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100135e0",
+  "auth": [
+   {
+    "call": "0x100135f1",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChZsFj@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013660",
+  "auth": [
+   {
+    "call": "0x1001367a",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_NChZsDg@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x100136f0",
+  "auth": [
+   {
+    "call": "0x1001370a",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_NChZsHLTurn@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013780",
+  "auth": [
+   {
+    "call": "0x1001379a",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_NChFjZsNum@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013810",
+  "auth": [
+   {
+    "call": "0x10013821",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChZsSel@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013890",
+  "auth": [
+   {
+    "call": "0x100138a1",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChZsSelPri@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013910",
+  "auth": [
+   {
+    "call": "0x10013921",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChZsSelSlPri@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013990",
+  "auth": [
+   {
+    "call": "0x100139a1",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChZsSelSpPri@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013a10",
+  "auth": [
+   {
+    "call": "0x10013a21",
+    "code": "0xEA62"
+   }
+  ]
+ },
+ "?CalcProc_NChMacdArea@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013a90",
+  "auth": [
+   {
+    "call": "0x10013aa1",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_NChSecArea@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10013b10",
+  "auth": [
+   {
+    "call": "0x10013b21",
+    "code": "0xEA61"
+   }
+  ]
+ },
+ "?CalcProc_RLDOrder@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10014160",
+  "auth": [
+   {
+    "call": "0x1001419d",
+    "code": "0xEA63"
+   }
+  ]
+ },
+ "?CalcProc_RLDCycleOrder@TAF_Calculator@@IAE_NIPANQAPAN@Z": {
+  "va": "0x10014270",
+  "auth": [
+   {
+    "call": "0x10014320",
+    "code": "0xEA63"
+   }
+  ]
+ }
+}

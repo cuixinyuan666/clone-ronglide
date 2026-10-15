@@ -1,0 +1,1372 @@
+{
+ "ABS": {
+  "export": "Mod",
+  "seq": 1146,
+  "va": "0x10004930"
+ },
+ "ACOS": {
+  "export": "Acos",
+  "seq": 1157,
+  "va": "0x10004ee0"
+ },
+ "ADVANCE": {
+  "export": "Advance",
+  "seq": 1044,
+  "va": "0x10005b80"
+ },
+ "ALERT": {
+  "export": "Alert",
+  "seq": 1280,
+  "va": "0x10014010"
+ },
+ "AMA": {
+  "export": "Ama",
+  "seq": 1124,
+  "va": "0x1000cdd0"
+ },
+ "AMOUNT": {
+  "export": "Amount",
+  "seq": 1043,
+  "va": "0x10005b10"
+ },
+ "AND": {
+  "export": "Or",
+  "seq": 1032,
+  "va": "0x100043c0"
+ },
+ "ASIN": {
+  "export": "Asin",
+  "seq": 1156,
+  "va": "0x10004e60"
+ },
+ "ATAN": {
+  "export": "Atan",
+  "seq": 1158,
+  "va": "0x10004f60"
+ },
+ "AVEDEV": {
+  "export": "Avedev",
+  "seq": 1125,
+  "va": "0x1000ce90"
+ },
+ "BACKSET": {
+  "export": "BackSet",
+  "seq": 1076,
+  "va": "0x1000a060"
+ },
+ "BARSCOUNT": {
+  "export": "BarsCount",
+  "seq": 1077,
+  "va": "0x1000a110"
+ },
+ "BARSLAST": {
+  "export": "BarsLast",
+  "seq": 1081,
+  "va": "0x1000a210"
+ },
+ "BARSLASTCOUNT": {
+  "export": "BarsLastCount",
+  "seq": 1084,
+  "va": "0x1000a490"
+ },
+ "BARSLASTN": {
+  "export": "BarsLastN",
+  "seq": 1082,
+  "va": "0x1000a270"
+ },
+ "BARSNEXT": {
+  "export": "BarsNext",
+  "seq": 1083,
+  "va": "0x1000a2f0"
+ },
+ "BARSSINCE": {
+  "export": "BarsSince",
+  "seq": 1085,
+  "va": "0x1000a5a0"
+ },
+ "BARSSINCEN": {
+  "export": "BarsSincen",
+  "seq": 1086,
+  "va": "0x1000a6c0"
+ },
+ "BARSTATUS": {
+  "export": "BarStatus",
+  "seq": 1078,
+  "va": "0x1000a150"
+ },
+ "BDTD": {
+  "export": "bdtd",
+  "seq": 1229,
+  "va": "0x10012220"
+ },
+ "BETWEEN": {
+  "export": "Between",
+  "seq": 1162,
+  "va": "0x10005190"
+ },
+ "BIMMD": {
+  "export": "ChBmmd",
+  "seq": 1190,
+  "va": "0x1000fd10"
+ },
+ "BIMMD_T": {
+  "export": "ChBmmd_t",
+  "seq": 1191,
+  "va": "0x1000fe10"
+ },
+ "BISMMD": {
+  "export": "ChBsmmd",
+  "seq": 1192,
+  "va": "0x1000ff10"
+ },
+ "BIZHONGSHU": {
+  "export": "ChZhongShu",
+  "seq": 1186,
+  "va": "0x1000f910"
+ },
+ "BIZHONGSHUD": {
+  "export": "ChZhongShuD",
+  "seq": 1189,
+  "va": "0x1000fc10"
+ },
+ "BIZHONGSHUG": {
+  "export": "ChZhongShuG",
+  "seq": 1188,
+  "va": "0x1000fb10"
+ },
+ "BUY": {
+  "export": "Buy",
+  "seq": 1284,
+  "va": "0x10014390"
+ },
+ "BUYK": {
+  "export": "BuyK",
+  "seq": 1286,
+  "va": "0x100144e0"
+ },
+ "CAPITAL": {
+  "export": "Captital",
+  "seq": 1047,
+  "va": "0x10005d00"
+ },
+ "CEILING": {
+  "export": "Ceiling",
+  "seq": 1159,
+  "va": "0x10004fe0"
+ },
+ "CHBI": {
+  "export": "ChBi",
+  "seq": 1183,
+  "va": "0x1000f580"
+ },
+ "CHBIKNUM": {
+  "export": "Chbiknum",
+  "seq": 1200,
+  "va": "0x100106a0"
+ },
+ "CHBIMACDS": {
+  "export": "Chbimacds",
+  "seq": 1205,
+  "va": "0x10010b60"
+ },
+ "CHBIMACDS_T": {
+  "export": "Chbimacds_t",
+  "seq": 1206,
+  "va": "0x10010c60"
+ },
+ "CHBIS": {
+  "export": "chbis",
+  "seq": 1223,
+  "va": "0x10011d20"
+ },
+ "CHDLM": {
+  "export": "ChDlm",
+  "seq": 1196,
+  "va": "0x10010310"
+ },
+ "CHDUAN": {
+  "export": "ChDuan",
+  "seq": 1185,
+  "va": "0x1000f850"
+ },
+ "CHDUANMACDS": {
+  "export": "Chduanmacds",
+  "seq": 1207,
+  "va": "0x10010d60"
+ },
+ "CHDUANMACDS_T": {
+  "export": "Chduanmacds_t",
+  "seq": 1208,
+  "va": "0x10010e60"
+ },
+ "CHFX": {
+  "export": "chfx",
+  "seq": 1227,
+  "va": "0x100120e0"
+ },
+ "CHNZS": {
+  "export": "nzs",
+  "seq": 1218,
+  "va": "0x10011820"
+ },
+ "CHNZSQJ": {
+  "export": "nzsqj",
+  "seq": 1219,
+  "va": "0x10011920"
+ },
+ "CHWNMR": {
+  "export": "wnmr",
+  "seq": 1221,
+  "va": "0x10011b20"
+ },
+ "CHWNMRPRI": {
+  "export": "wnmrpri",
+  "seq": 1222,
+  "va": "0x10011c20"
+ },
+ "CHZSDG": {
+  "export": "zsdg",
+  "seq": 1220,
+  "va": "0x10011a20"
+ },
+ "CLOSE": {
+  "export": "Close",
+  "seq": 1041,
+  "va": "0x10005a30"
+ },
+ "CODE": {
+  "export": "Code",
+  "seq": 1035,
+  "va": "0x10005590"
+ },
+ "COLORKLINE": {
+  "export": "ColorKLine",
+  "seq": 1278,
+  "va": "0x10013ef0"
+ },
+ "CONST": {
+  "export": "Const",
+  "seq": 1087,
+  "va": "0x1000a750"
+ },
+ "COS": {
+  "export": "Cos",
+  "seq": 1154,
+  "va": "0x10004d60"
+ },
+ "COST": {
+  "export": "Cost",
+  "seq": 1051,
+  "va": "0x100066e0"
+ },
+ "COUNT": {
+  "export": "Count",
+  "seq": 1088,
+  "va": "0x1000a7d0"
+ },
+ "CROSS": {
+  "export": "Cross",
+  "seq": 1134,
+  "va": "0x1000de00"
+ },
+ "CURRBARSCOUNT": {
+  "export": "CurrBarsCount",
+  "seq": 1079,
+  "va": "0x1000a190"
+ },
+ "DATE": {
+  "export": "Date",
+  "seq": 1065,
+  "va": "0x10007ea0"
+ },
+ "DAY": {
+  "export": "Day",
+  "seq": 1069,
+  "va": "0x10008000"
+ },
+ "DECLINE": {
+  "export": "Decline",
+  "seq": 1045,
+  "va": "0x10005c40"
+ },
+ "DIGIT": {
+  "export": "Digit",
+  "seq": 1037,
+  "va": "0x10005810"
+ },
+ "DMA": {
+  "export": "Ma",
+  "seq": 1117,
+  "va": "0x1000c3a0"
+ },
+ "DOWNNDAY": {
+  "export": "DownNDay",
+  "seq": 1137,
+  "va": "0x1000e0a0"
+ },
+ "DRAWBAND": {
+  "export": "DrawRectBox",
+  "seq": 1014,
+  "va": "0x1000ed50"
+ },
+ "DRAWICON": {
+  "export": "TagText",
+  "seq": 1006,
+  "va": "0x1000e890"
+ },
+ "DRAWKLINE": {
+  "export": "DrawRectBox",
+  "seq": 1009,
+  "va": "0x1000ed50"
+ },
+ "DRAWLINE": {
+  "export": "DrawLine",
+  "seq": 1008,
+  "va": "0x1000ed10"
+ },
+ "DRAWMATRIX": {
+  "export": "DrawMatrix",
+  "seq": 1013,
+  "va": "0x1000eb90"
+ },
+ "DRAWNULL": {
+  "export": "NameLike",
+  "seq": 1179,
+  "va": "0x1000eec0"
+ },
+ "DRAWRECTBOX": {
+  "export": "DrawRectBox",
+  "seq": 1017,
+  "va": "0x1000ed50"
+ },
+ "DRAWRLDBOX": {
+  "export": "DrawRldbox",
+  "seq": 1015,
+  "va": "0x1000ec10"
+ },
+ "DRAWTEXT": {
+  "export": "TagText",
+  "seq": 1004,
+  "va": "0x1000e890"
+ },
+ "DRAWTEXT2": {
+  "export": "DrawText2",
+  "seq": 1005,
+  "va": "0x1000e7f0"
+ },
+ "DRAWTITLE": {
+  "export": "DrawTitle",
+  "seq": 1016,
+  "va": "0x1000ec50"
+ },
+ "DRAWTRANSRECT": {
+  "export": "DrawTransparentRect",
+  "seq": 1010,
+  "va": "0x1000ed90"
+ },
+ "DTPRICE": {
+  "export": "DtPrice",
+  "seq": 1132,
+  "va": "0x1000d9e0"
+ },
+ "DUANMMD": {
+  "export": "dmmd",
+  "seq": 1210,
+  "va": "0x10011060"
+ },
+ "DUANMMD_T": {
+  "export": "dmmd_t",
+  "seq": 1211,
+  "va": "0x10011160"
+ },
+ "DUANNUM": {
+  "export": "dnum",
+  "seq": 1212,
+  "va": "0x10011260"
+ },
+ "DUANSMMD": {
+  "export": "dsmmd",
+  "seq": 1217,
+  "va": "0x10011720"
+ },
+ "DUANTZXL": {
+  "export": "duantzxl",
+  "seq": 1216,
+  "va": "0x10011660"
+ },
+ "DUANZSTJ": {
+  "export": "dzstj",
+  "seq": 1224,
+  "va": "0x10011de0"
+ },
+ "DYNAINFO": {
+  "export": "DynaInfo",
+  "seq": 1049,
+  "va": "0x10005fc0"
+ },
+ "DZHONGSHU": {
+  "export": "Chdzhongshu",
+  "seq": 1201,
+  "va": "0x10010760"
+ },
+ "DZHONGSHUD": {
+  "export": "Chdzhongshud",
+  "seq": 1204,
+  "va": "0x10010a60"
+ },
+ "DZHONGSHUG": {
+  "export": "Chdzhongshug",
+  "seq": 1203,
+  "va": "0x10010960"
+ },
+ "EMA": {
+  "export": "Expma",
+  "seq": 1119,
+  "va": "0x1000c930"
+ },
+ "EVERY": {
+  "export": "Every",
+  "seq": 1140,
+  "va": "0x1000e350"
+ },
+ "EXIST": {
+  "export": "Exist",
+  "seq": 1139,
+  "va": "0x1000e180"
+ },
+ "EXP": {
+  "export": "Exp",
+  "seq": 1151,
+  "va": "0x10004be0"
+ },
+ "EXPMA": {
+  "export": "Expma",
+  "seq": 1121,
+  "va": "0x1000c930"
+ },
+ "EXPMEMA": {
+  "export": "Expmema",
+  "seq": 1122,
+  "va": "0x1000cb70"
+ },
+ "FILTER": {
+  "export": "Filter",
+  "seq": 1105,
+  "va": "0x1000b320"
+ },
+ "FILTERX": {
+  "export": "Filterx",
+  "seq": 1106,
+  "va": "0x1000b3a0"
+ },
+ "FLOOR": {
+  "export": "Floor",
+  "seq": 1160,
+  "va": "0x10005070"
+ },
+ "FROMOPEN": {
+  "export": "FromOpen",
+  "seq": 1074,
+  "va": "0x10008180"
+ },
+ "FXBI": {
+  "export": "ChFxbi",
+  "seq": 1184,
+  "va": "0x1000f740"
+ },
+ "HHV": {
+  "export": "Hhv",
+  "seq": 1091,
+  "va": "0x10009be0"
+ },
+ "HHVBARS": {
+  "export": "HhvBars",
+  "seq": 1092,
+  "va": "0x1000abe0"
+ },
+ "HIGH": {
+  "export": "High",
+  "seq": 1039,
+  "va": "0x10005950"
+ },
+ "HOD": {
+  "export": "Hod",
+  "seq": 1093,
+  "va": "0x1000adb0"
+ },
+ "HOUR": {
+  "export": "Hour",
+  "seq": 1070,
+  "va": "0x10008050"
+ },
+ "HSL": {
+  "export": "HSL",
+  "seq": 1048,
+  "va": "0x10005dd0"
+ },
+ "IF": {
+  "export": "Nul",
+  "seq": 1019,
+  "va": "0x10003860"
+ },
+ "IFN": {
+  "export": "Ifn",
+  "seq": 1143,
+  "va": "0x10004680"
+ },
+ "INDEXA": {
+  "export": "DrawNull",
+  "seq": 1075,
+  "va": "0x1000a030"
+ },
+ "INDEXADV": {
+  "export": "IndexAdv",
+  "seq": 1166,
+  "va": "0x10008270"
+ },
+ "INDEXC": {
+  "export": "IndexC",
+  "seq": 1168,
+  "va": "0x10008350"
+ },
+ "INDEXCOUNT": {
+  "export": "IndexCount",
+  "seq": 1177,
+  "va": "0x100090f0"
+ },
+ "INDEXCOUNTNUM": {
+  "export": "TTFilter",
+  "seq": 1290,
+  "va": "0x10014bb0"
+ },
+ "INDEXDEC": {
+  "export": "IndexDec",
+  "seq": 1167,
+  "va": "0x100082e0"
+ },
+ "INDEXH": {
+  "export": "IndexH",
+  "seq": 1169,
+  "va": "0x100083c0"
+ },
+ "INDEXL": {
+  "export": "IndexL",
+  "seq": 1170,
+  "va": "0x10008430"
+ },
+ "INDEXO": {
+  "export": "IndexO",
+  "seq": 1171,
+  "va": "0x100084a0"
+ },
+ "INDEXV": {
+  "export": "IndexV",
+  "seq": 1172,
+  "va": "0x10008510"
+ },
+ "INTPART": {
+  "export": "IntPart",
+  "seq": 1161,
+  "va": "0x10005100"
+ },
+ "INTSTR": {
+  "export": "IntStr",
+  "seq": 1182,
+  "va": "0x1000f420"
+ },
+ "ISLASTBAR": {
+  "export": "IsLastBar",
+  "seq": 1046,
+  "va": "0x100061b0"
+ },
+ "KXQJ": {
+  "export": "kxqj",
+  "seq": 1213,
+  "va": "0x10011360"
+ },
+ "KXQJD": {
+  "export": "kxqjd",
+  "seq": 1215,
+  "va": "0x10011560"
+ },
+ "KXQJG": {
+  "export": "kxqjg",
+  "seq": 1214,
+  "va": "0x10011460"
+ },
+ "LAST": {
+  "export": "Last",
+  "seq": 1141,
+  "va": "0x1000e520"
+ },
+ "LEIMMD": {
+  "export": "ChLeimmd",
+  "seq": 1187,
+  "va": "0x1000fa10"
+ },
+ "LLV": {
+  "export": "Llv",
+  "seq": 1094,
+  "va": "0x10009d20"
+ },
+ "LLVBARS": {
+  "export": "LlvBars",
+  "seq": 1095,
+  "va": "0x1000b010"
+ },
+ "LN": {
+  "export": "Ln",
+  "seq": 1149,
+  "va": "0x10004a90"
+ },
+ "LOD": {
+  "export": "Lod",
+  "seq": 1096,
+  "va": "0x1000aee0"
+ },
+ "LOG": {
+  "export": "Abs",
+  "seq": 1147,
+  "va": "0x100048b0"
+ },
+ "LONGCROSS": {
+  "export": "LongCross",
+  "seq": 1135,
+  "va": "0x1000dfc0"
+ },
+ "LOW": {
+  "export": "Low",
+  "seq": 1040,
+  "va": "0x100059c0"
+ },
+ "LOWRANGE": {
+  "export": "LowRange",
+  "seq": 1090,
+  "va": "0x1000ab10"
+ },
+ "MA": {
+  "export": "Sma",
+  "seq": 1115,
+  "va": "0x1000c550"
+ },
+ "MACDNUM": {
+  "export": "Macdnum",
+  "seq": 1199,
+  "va": "0x100105a0"
+ },
+ "MAX": {
+  "export": "Max",
+  "seq": 1144,
+  "va": "0x10004710"
+ },
+ "MEMA": {
+  "export": "Mema",
+  "seq": 1120,
+  "va": "0x1000ca30"
+ },
+ "MIN": {
+  "export": "Min",
+  "seq": 1145,
+  "va": "0x100047e0"
+ },
+ "MINUTE": {
+  "export": "Minute",
+  "seq": 1071,
+  "va": "0x100080a0"
+ },
+ "MOD": {
+  "export": "Log",
+  "seq": 1148,
+  "va": "0x10004a10"
+ },
+ "MONTH": {
+  "export": "Month",
+  "seq": 1068,
+  "va": "0x10007fb0"
+ },
+ "MULAR": {
+  "export": "Mular",
+  "seq": 1104,
+  "va": "0x10009a80"
+ },
+ "NAMELIKE": {
+  "export": "IndexA",
+  "seq": 1165,
+  "va": "0x10008200"
+ },
+ "NCHBH": {
+  "export": "NChBh",
+  "seq": 1232,
+  "va": "0x100126c0"
+ },
+ "NCHBHH": {
+  "export": "NChBhh",
+  "seq": 1233,
+  "va": "0x10012740"
+ },
+ "NCHBHL": {
+  "export": "NChBhl",
+  "seq": 1234,
+  "va": "0x100127b0"
+ },
+ "NCHBI": {
+  "export": "NChBi",
+  "seq": 1240,
+  "va": "0x10012a50"
+ },
+ "NCHBIFXNUM": {
+  "export": "NChBiFxNum",
+  "seq": 1246,
+  "va": "0x10012e70"
+ },
+ "NCHBISPEED": {
+  "export": "NChBiSpeed",
+  "seq": 1248,
+  "va": "0x10012f50"
+ },
+ "NCHBISTA": {
+  "export": "NChBiSta",
+  "seq": 1241,
+  "va": "0x10012c40"
+ },
+ "NCHBISTA2": {
+  "export": "NChBiSta2",
+  "seq": 1242,
+  "va": "0x10012cb0"
+ },
+ "NCHBIZJ": {
+  "export": "NChBiZj",
+  "seq": 1243,
+  "va": "0x10012d20"
+ },
+ "NCHBIZJ3": {
+  "export": "NChBiZj3",
+  "seq": 1244,
+  "va": "0x10012d90"
+ },
+ "NCHBIZJNUM": {
+  "export": "NChBiZjNum",
+  "seq": 1247,
+  "va": "0x10012ee0"
+ },
+ "NCHBIZJORDER": {
+  "export": "NChBiZjOrder",
+  "seq": 1245,
+  "va": "0x10012e00"
+ },
+ "NCHDUAN": {
+  "export": "NChDuan",
+  "seq": 1249,
+  "va": "0x10012fc0"
+ },
+ "NCHDUANKD": {
+  "export": "NChDuanKd",
+  "seq": 1253,
+  "va": "0x100131c0"
+ },
+ "NCHDUANKH": {
+  "export": "NChDuanKh",
+  "seq": 1251,
+  "va": "0x100130c0"
+ },
+ "NCHDUANKL": {
+  "export": "NChDuanKl",
+  "seq": 1252,
+  "va": "0x10013140"
+ },
+ "NCHDUANSTA": {
+  "export": "NChDuanSta",
+  "seq": 1250,
+  "va": "0x10013040"
+ },
+ "NCHFJZSNUM": {
+  "export": "NChFjZsNum",
+  "seq": 1265,
+  "va": "0x10013810"
+ },
+ "NCHFX": {
+  "export": "NChFx",
+  "seq": 1236,
+  "va": "0x10012890"
+ },
+ "NCHFXORDER": {
+  "export": "NChFxOrder",
+  "seq": 1239,
+  "va": "0x100129e0"
+ },
+ "NCHFXSTA": {
+  "export": "NChFxSta",
+  "seq": 1237,
+  "va": "0x10012900"
+ },
+ "NCHFXUPDN": {
+  "export": "NChFxUpDn",
+  "seq": 1238,
+  "va": "0x10012970"
+ },
+ "NCHMACDAREA": {
+  "export": "NChMacdArea",
+  "seq": 1270,
+  "va": "0x10013a90"
+ },
+ "NCHREF": {
+  "export": "NChRef",
+  "seq": 1235,
+  "va": "0x10012820"
+ },
+ "NCHSECAREA": {
+  "export": "NChSecArea",
+  "seq": 1271,
+  "va": "0x10013b10"
+ },
+ "NCHZS": {
+  "export": "NChZs",
+  "seq": 1254,
+  "va": "0x10013240"
+ },
+ "NCHZSBREACH": {
+  "export": "NChZsBreach",
+  "seq": 1260,
+  "va": "0x10013560"
+ },
+ "NCHZSBS12": {
+  "export": "NChZsBs12",
+  "seq": 1258,
+  "va": "0x10013460"
+ },
+ "NCHZSBS3": {
+  "export": "NChZsBs3",
+  "seq": 1259,
+  "va": "0x100134e0"
+ },
+ "NCHZSD": {
+  "export": "NChZsD",
+  "seq": 1257,
+  "va": "0x100133e0"
+ },
+ "NCHZSDG": {
+  "export": "NChZsDg",
+  "seq": 1263,
+  "va": "0x100136f0"
+ },
+ "NCHZSFJ": {
+  "export": "NChZsFj",
+  "seq": 1262,
+  "va": "0x10013660"
+ },
+ "NCHZSG": {
+  "export": "NChZsG",
+  "seq": 1256,
+  "va": "0x10013370"
+ },
+ "NCHZSHLTURN": {
+  "export": "NChZsHLTurn",
+  "seq": 1264,
+  "va": "0x10013780"
+ },
+ "NCHZSL2M": {
+  "export": "NChZsL2M",
+  "seq": 1261,
+  "va": "0x100135e0"
+ },
+ "NCHZSSEL": {
+  "export": "NChZsSel",
+  "seq": 1266,
+  "va": "0x10013890"
+ },
+ "NCHZSSELPRI": {
+  "export": "NChZsSelPri",
+  "seq": 1267,
+  "va": "0x10013910"
+ },
+ "NCHZSSELSL": {
+  "export": "NChZsSelSlPri",
+  "seq": 1268,
+  "va": "0x10013990"
+ },
+ "NCHZSSELSP": {
+  "export": "NChZsSelSpPri",
+  "seq": 1269,
+  "va": "0x10013a10"
+ },
+ "NCHZS_L2": {
+  "export": "NChZs_L2",
+  "seq": 1255,
+  "va": "0x100132d0"
+ },
+ "NDAY": {
+  "export": "NDay",
+  "seq": 1138,
+  "va": "0x1000e110"
+ },
+ "NOT": {
+  "export": "If",
+  "seq": 1142,
+  "va": "0x100045f0"
+ },
+ "OPEN": {
+  "export": "Name",
+  "seq": 1034,
+  "va": "0x10005420"
+ },
+ "OR": {
+  "export": "Period",
+  "seq": 1033,
+  "va": "0x10005880"
+ },
+ "PEAK": {
+  "export": "Peak",
+  "seq": 1063,
+  "va": "0x10007790"
+ },
+ "PEAKBARS": {
+  "export": "PeakBars",
+  "seq": 1061,
+  "va": "0x100079c0"
+ },
+ "PEAKBARS_C": {
+  "export": "PeakBars_C",
+  "seq": 1062,
+  "va": "0x10007d90"
+ },
+ "PEAK_C": {
+  "export": "Peak_C",
+  "seq": 1064,
+  "va": "0x100078b0"
+ },
+ "PERIOD": {
+  "export": "Open",
+  "seq": 1038,
+  "va": "0x100058e0"
+ },
+ "PLOYLINE": {
+  "export": "PloyLine",
+  "seq": 1007,
+  "va": "0x1000ec80"
+ },
+ "POW": {
+  "export": "Pow",
+  "seq": 1150,
+  "va": "0x10004b10"
+ },
+ "QHJSJ": {
+  "export": "Qhjsj",
+  "seq": 1054,
+  "va": "0x10006af0"
+ },
+ "QJTD": {
+  "export": "Qjtd",
+  "seq": 1198,
+  "va": "0x100104a0"
+ },
+ "QJTMM": {
+  "export": "Qjtmm",
+  "seq": 1197,
+  "va": "0x100103a0"
+ },
+ "QSQD": {
+  "export": "Qsqd",
+  "seq": 1130,
+  "va": "0x1000d720"
+ },
+ "RANGE": {
+  "export": "Range",
+  "seq": 1114,
+  "va": "0x1000c200"
+ },
+ "REF": {
+  "export": "Ref",
+  "seq": 1098,
+  "va": "0x10009e60"
+ },
+ "REFDATE": {
+  "export": "RefDate",
+  "seq": 1102,
+  "va": "0x1000b270"
+ },
+ "REFV": {
+  "export": "Refv",
+  "seq": 1100,
+  "va": "0x10009f30"
+ },
+ "REFX": {
+  "export": "Refx",
+  "seq": 1099,
+  "va": "0x10009ec0"
+ },
+ "REFXV": {
+  "export": "Refxv",
+  "seq": 1101,
+  "va": "0x10009fb0"
+ },
+ "REGRESSTEST": {
+  "export": "RegressTest",
+  "seq": 1288,
+  "va": "0x10014630"
+ },
+ "REPLANHL": {
+  "export": "ReplanHL",
+  "seq": 1133,
+  "va": "0x1000daf0"
+ },
+ "REVERSE": {
+  "export": "Reverse",
+  "seq": 1097,
+  "va": "0x1000b1e0"
+ },
+ "RGB": {
+  "export": "Rgb",
+  "seq": 1164,
+  "va": "0x10005350"
+ },
+ "RLD_CYCLEORDER": {
+  "export": "RLDCycleOrder",
+  "seq": 1283,
+  "va": "0x10014270"
+ },
+ "RLD_HYDUO": {
+  "export": "HyDuo",
+  "seq": 1175,
+  "va": "0x10008b50"
+ },
+ "RLD_HYNAME": {
+  "export": "RldHyName",
+  "seq": 1052,
+  "va": "0x100069b0"
+ },
+ "RLD_INDEXDUO": {
+  "export": "IndexDuo",
+  "seq": 1173,
+  "va": "0x10008580"
+ },
+ "RLD_INDEXKONG": {
+  "export": "IndexKong",
+  "seq": 1174,
+  "va": "0x10008870"
+ },
+ "RLD_INDEXMA": {
+  "export": "IndexMA",
+  "seq": 1176,
+  "va": "0x10008e10"
+ },
+ "RLD_ORDER": {
+  "export": "RLDOrder",
+  "seq": 1282,
+  "va": "0x10014160"
+ },
+ "SAR": {
+  "export": "Sar",
+  "seq": 1113,
+  "va": "0x1000bcf0"
+ },
+ "SCALER": {
+  "export": "Scaler",
+  "seq": 1163,
+  "va": "0x100052f0"
+ },
+ "SCQD": {
+  "export": "scqd",
+  "seq": 1209,
+  "va": "0x10010f60"
+ },
+ "SECID": {
+  "export": "Secid",
+  "seq": 1036,
+  "va": "0x100056e0"
+ },
+ "SECOND": {
+  "export": "Second",
+  "seq": 1072,
+  "va": "0x100080f0"
+ },
+ "SELECT": {
+  "export": "Select",
+  "seq": 1279,
+  "va": "0x10013f90"
+ },
+ "SELL": {
+  "export": "Sell",
+  "seq": 1285,
+  "va": "0x10014430"
+ },
+ "SELLK": {
+  "export": "SellK",
+  "seq": 1287,
+  "va": "0x10014580"
+ },
+ "SIN": {
+  "export": "Sin",
+  "seq": 1153,
+  "va": "0x10004ce0"
+ },
+ "SLOPE": {
+  "export": "Slope",
+  "seq": 1112,
+  "va": "0x1000ba20"
+ },
+ "SMA": {
+  "export": "Dma",
+  "seq": 1118,
+  "va": "0x1000c780"
+ },
+ "SORT": {
+  "export": "Sort",
+  "seq": 1281,
+  "va": "0x100140c0"
+ },
+ "SQRT": {
+  "export": "Sqrt",
+  "seq": 1152,
+  "va": "0x10004c60"
+ },
+ "STD": {
+  "export": "Std",
+  "seq": 1126,
+  "va": "0x1000d010"
+ },
+ "STDP": {
+  "export": "Stdp",
+  "seq": 1127,
+  "va": "0x1000d180"
+ },
+ "STRCAT": {
+  "export": "StrCat",
+  "seq": 1180,
+  "va": "0x1000f030"
+ },
+ "SUM": {
+  "export": "Sum",
+  "seq": 1103,
+  "va": "0x10009890"
+ },
+ "SUMBARS": {
+  "export": "SumBars",
+  "seq": 1111,
+  "va": "0x1000b940"
+ },
+ "TAGTEXT": {
+  "export": "TagText",
+  "seq": 1011,
+  "va": "0x1000e890"
+ },
+ "TAGTEXTN": {
+  "export": "TagTextN",
+  "seq": 1012,
+  "va": "0x1000e930"
+ },
+ "TAN": {
+  "export": "Tan",
+  "seq": 1155,
+  "va": "0x10004de0"
+ },
+ "TFILT": {
+  "export": "Tfilt",
+  "seq": 1107,
+  "va": "0x1000b440"
+ },
+ "TFILTER": {
+  "export": "TFilter",
+  "seq": 1108,
+  "va": "0x1000b560"
+ },
+ "TIME": {
+  "export": "Time",
+  "seq": 1066,
+  "va": "0x10007f00"
+ },
+ "TMA": {
+  "export": "Tma",
+  "seq": 1116,
+  "va": "0x1000c6b0"
+ },
+ "TOPRANGE": {
+  "export": "TopRange",
+  "seq": 1089,
+  "va": "0x1000aa40"
+ },
+ "TOTALBARSCOUNT": {
+  "export": "TotalBarsCount",
+  "seq": 1080,
+  "va": "0x1000a1d0"
+ },
+ "TOTALFZNUM": {
+  "export": "TotalFZNum",
+  "seq": 1073,
+  "va": "0x10008140"
+ },
+ "TR": {
+  "export": "TR",
+  "seq": 1110,
+  "va": "0x1000b6e0"
+ },
+ "TROUGH": {
+  "export": "Trough",
+  "seq": 1059,
+  "va": "0x10007080"
+ },
+ "TROUGHBARS": {
+  "export": "TroughBars",
+  "seq": 1057,
+  "va": "0x100072b0"
+ },
+ "TROUGHBARS_C": {
+  "export": "TroughBars_C",
+  "seq": 1058,
+  "va": "0x10007680"
+ },
+ "TROUGH_C": {
+  "export": "Trough_C",
+  "seq": 1060,
+  "va": "0x100071a0"
+ },
+ "TTFILTER": {
+  "export": "TTFilter",
+  "seq": 1109,
+  "va": "0x10014bb0"
+ },
+ "UPNDAY": {
+  "export": "UpnNDay",
+  "seq": 1136,
+  "va": "0x1000e030"
+ },
+ "VALUE": {
+  "export": "Value",
+  "seq": 1289,
+  "va": "0x100147a0"
+ },
+ "VAR": {
+  "export": "Var",
+  "seq": 1128,
+  "va": "0x1000d280"
+ },
+ "VAR2STR": {
+  "export": "Var2Str",
+  "seq": 1181,
+  "va": "0x1000f280"
+ },
+ "VARP": {
+  "export": "Varp",
+  "seq": 1129,
+  "va": "0x1000d4f0"
+ },
+ "VOL": {
+  "export": "Vol",
+  "seq": 1042,
+  "va": "0x10005aa0"
+ },
+ "VOLINSTK": {
+  "export": "Volinstk",
+  "seq": 1053,
+  "va": "0x10006ac0"
+ },
+ "WINNER": {
+  "export": "Winner",
+  "seq": 1050,
+  "va": "0x100061f0"
+ },
+ "WMA": {
+  "export": "Wma",
+  "seq": 1123,
+  "va": "0x1000ccc0"
+ },
+ "WNMRNEW": {
+  "export": "wnmrnew",
+  "seq": 1225,
+  "va": "0x10011ee0"
+ },
+ "WNMRPRINEW": {
+  "export": "wnmrprinew",
+  "seq": 1226,
+  "va": "0x10011fe0"
+ },
+ "XUECH": {
+  "export": "Xuech",
+  "seq": 1272,
+  "va": "0x10013b90"
+ },
+ "XUECH2": {
+  "export": "Xuech2",
+  "seq": 1273,
+  "va": "0x10013c20"
+ },
+ "XUECHLDN": {
+  "export": "XuechLdn",
+  "seq": 1275,
+  "va": "0x10013d40"
+ },
+ "XUECHLUP": {
+  "export": "XuechLup",
+  "seq": 1274,
+  "va": "0x10013cb0"
+ },
+ "XUECHSDN": {
+  "export": "XuechSdn",
+  "seq": 1277,
+  "va": "0x10013e60"
+ },
+ "XUECHSUP": {
+  "export": "XuechSup",
+  "seq": 1276,
+  "va": "0x10013dd0"
+ },
+ "YEAR": {
+  "export": "Year",
+  "seq": 1067,
+  "va": "0x10007f60"
+ },
+ "YGJ": {
+  "export": "ygj",
+  "seq": 1228,
+  "va": "0x100121a0"
+ },
+ "YGJMM": {
+  "export": "ygjmm",
+  "seq": 1230,
+  "va": "0x10012320"
+ },
+ "ZHONGSHUTJ": {
+  "export": "Zstj",
+  "seq": 1202,
+  "va": "0x10010860"
+ },
+ "ZIG": {
+  "export": "Zig",
+  "seq": 1055,
+  "va": "0x10006d20"
+ },
+ "ZIG_C": {
+  "export": "Zig_C",
+  "seq": 1056,
+  "va": "0x10006f70"
+ },
+ "ZOUSHIBI": {
+  "export": "ZouShiBi",
+  "seq": 1193,
+  "va": "0x10010010"
+ },
+ "ZOUSHIMMD": {
+  "export": "ZouShimmd",
+  "seq": 1195,
+  "va": "0x10010210"
+ },
+ "ZOUSHIZHONGSHU": {
+  "export": "ZouShiZsAll",
+  "seq": 1194,
+  "va": "0x10010110"
+ },
+ "ZTPRICE": {
+  "export": "ZtPrice",
+  "seq": 1131,
+  "va": "0x1000d8d0"
+ },
+ "__KZQ__": {
+  "export": "Kzq",
+  "seq": 1231,
+  "va": "0x10012420"
+ },
+ "___ICNT_INNER_MJW_T_": {
+  "export": "IndexCountInner",
+  "seq": 1178,
+  "va": "0x10009470"
+ }
+}
