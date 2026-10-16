@@ -1,0 +1,20 @@
+### [A] x87 条件表   src=tools/re-inventory/nchzs/chlib_1000ff80.txt   insns=137   blocks=23   conflicts=0   conds=0
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+
+### [B] 非零立即数写入 (标记字段写点)
+10010014   mov [ebp+0x14], cl
+
+### [C] 调用目标统计
+  0x1000f680               x2
+  0x1000fdf0               x1
+  0x10010070               x1
+  0x100100d0               x1
+  0x100101c0               x1
+  0x100102c0               x1
+  0x10010d60               x1
+  0x1000fe50               x1
+  0x1000f0e0               x1
+  0x1000f070               x1
+  0x1000f010               x1
+  0x1000f200               x1
+  0x100104e0               x1

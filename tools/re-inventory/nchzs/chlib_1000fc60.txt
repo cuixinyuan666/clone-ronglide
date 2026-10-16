@@ -1,0 +1,145 @@
+1000fc60  push     ebx
+1000fc61  push     ebp
+1000fc62  mov      ebp, dword ptr [esp + 0x14]
+1000fc66  mov      ebx, eax
+1000fc68  test     ebx, ebx
+1000fc6a  push     esi
+1000fc6b  push     edi
+1000fc6c  mov      dword ptr [ebp], 1
+1000fc73  je       0x1000fc8a
+1000fc75  mov      eax, dword ptr [ebx + 0xc]
+1000fc78  sub      eax, dword ptr [ebx + 8]
+1000fc7b  lea      esi, [eax + 1]
+1000fc7e  cmp      esi, 3
+1000fc81  setg     cl
+1000fc84  test     cl, cl
+1000fc86  jne      0x1000fc8a
+1000fc88  mov      eax, esi
+1000fc8a  mov      edi, dword ptr [esp + 0x14]
+1000fc8e  cmp      eax, dword ptr [edi + 0x1c]
+1000fc91  jge      0x1000fcaa
+1000fc93  cmp      dword ptr [ebx], 0
+1000fc96  jne      0x1000fcb5
+1000fc98  mov      eax, edi
+1000fc9a  call     0x1000fc10
+1000fc9f  test     al, al
+1000fca1  je       0x1000fcb5
+1000fca3  mov      dword ptr [ebp], 2
+1000fcaa  mov      eax, dword ptr [esp + 0x18]
+1000fcae  pop      edi
+1000fcaf  pop      esi
+1000fcb0  pop      ebp
+1000fcb1  pop      ebx
+1000fcb2  ret      0xc
+1000fcb5  mov      esi, dword ptr [ebx + 0x10]
+1000fcb8  call     0x1000f180
+1000fcbd  test     eax, eax
+1000fcbf  jl       0x1000fd40
+1000fcc1  imul     eax, eax, 0x5d
+1000fcc4  add      eax, dword ptr [edi + 0x30]
+1000fcc7  mov      ecx, eax
+1000fcc9  je       0x1000fd40
+1000fccb  cmp      dword ptr [ecx + 0x10], esi
+1000fcce  jne      0x1000fd40
+1000fcd0  mov      eax, dword ptr [ecx + 8]
+1000fcd3  mov      ecx, dword ptr [ecx + 0xc]
+1000fcd6  sub      ecx, eax
+1000fcd8  add      ecx, 1
+1000fcdb  cmp      ecx, 3
+1000fcde  setg     cl
+1000fce1  test     cl, cl
+1000fce3  jne      0x1000fd40
+1000fce5  cmp      esi, -1
+1000fce8  mov      ecx, dword ptr [ebx + 0xc]
+1000fceb  jne      0x1000fd1a
+1000fced  cmp      dword ptr [ebx + 0x2d], ecx
+1000fcf0  je       0x1000fd40
+1000fcf2  cmp      dword ptr [ebx + 0x39], ecx
+1000fcf5  jne      0x1000fd40
+1000fcf7  mov      edx, dword ptr [edi + 0x20]
+1000fcfa  imul     eax, eax, 0x31
+1000fcfd  imul     ecx, ecx, 0x31
+1000fd00  fld      qword ptr [eax + edx + 0x21]
+1000fd04  fcomp    qword ptr [ecx + edx + 0x21]
+1000fd08  fnstsw   ax
+1000fd0a  test     ah, 0x41
+1000fd0d  jne      0x1000fd40
+1000fd0f  mov      eax, dword ptr [esp + 0x18]
+1000fd13  pop      edi
+1000fd14  pop      esi
+1000fd15  pop      ebp
+1000fd16  pop      ebx
+1000fd17  ret      0xc
+1000fd1a  cmp      dword ptr [ebx + 0x39], ecx
+1000fd1d  je       0x1000fd40
+1000fd1f  cmp      dword ptr [ebx + 0x2d], ecx
+1000fd22  jne      0x1000fd40
+1000fd24  mov      edx, dword ptr [edi + 0x20]
+1000fd27  imul     eax, eax, 0x31
+1000fd2a  imul     ecx, ecx, 0x31
+1000fd2d  fld      qword ptr [eax + edx + 0x19]
+1000fd31  fcomp    qword ptr [ecx + edx + 0x19]
+1000fd35  fnstsw   ax
+1000fd37  test     ah, 5
+1000fd3a  jnp      0x1000fcaa
+1000fd40  mov      edi, dword ptr [ebx + 0xc]
+1000fd43  mov      eax, edi
+1000fd45  sub      eax, dword ptr [ebx + 8]
+1000fd48  lea      esi, [eax + 1]
+1000fd4b  cmp      esi, 3
+1000fd4e  setg     cl
+1000fd51  test     cl, cl
+1000fd53  jne      0x1000fd57
+1000fd55  mov      eax, esi
+1000fd57  cmp      eax, 5
+1000fd5a  jl       0x1000fdd8
+1000fd5c  mov      esi, dword ptr [ebx + 0x10]
+1000fd5f  mov      edx, dword ptr [esp + 0x14]
+1000fd63  mov      ebp, ebx
+1000fd65  call     0x1000f1c0
+1000fd6a  test     eax, eax
+1000fd6c  mov      ecx, dword ptr [esp + 0x14]
+1000fd70  jl       0x1000fd7a
+1000fd72  imul     eax, eax, 0x5d
+1000fd75  add      eax, dword ptr [ecx + 0x30]
+1000fd78  mov      ebp, eax
+1000fd7a  cmp      esi, -1
+1000fd7d  jne      0x1000fdaf
+1000fd7f  cmp      dword ptr [ebx + 0x2d], edi
+1000fd82  je       0x1000fdd8
+1000fd84  cmp      dword ptr [ebx + 0x39], edi
+1000fd87  jne      0x1000fdd8
+1000fd89  mov      edx, dword ptr [ebp + 8]
+1000fd8c  imul     edi, edi, 0x31
+1000fd8f  mov      eax, dword ptr [ecx + 0x20]
+1000fd92  imul     edx, edx, 0x31
+1000fd95  fld      qword ptr [edx + eax + 0x21]
+1000fd99  fcomp    qword ptr [edi + eax + 0x21]
+1000fd9d  fnstsw   ax
+1000fd9f  test     ah, 0x41
+1000fda2  jne      0x1000fdd8
+1000fda4  mov      eax, dword ptr [esp + 0x18]
+1000fda8  pop      edi
+1000fda9  pop      esi
+1000fdaa  pop      ebp
+1000fdab  pop      ebx
+1000fdac  ret      0xc
+1000fdaf  cmp      dword ptr [ebx + 0x39], edi
+1000fdb2  je       0x1000fdd8
+1000fdb4  cmp      dword ptr [ebx + 0x2d], edi
+1000fdb7  jne      0x1000fdd8
+1000fdb9  mov      eax, dword ptr [ecx + 0x20]
+1000fdbc  imul     edi, edi, 0x31
+1000fdbf  mov      ecx, dword ptr [ebp + 8]
+1000fdc2  imul     ecx, ecx, 0x31
+1000fdc5  fld      qword ptr [ecx + eax + 0x19]
+1000fdc9  fcomp    qword ptr [edi + eax + 0x19]
+1000fdcd  fnstsw   ax
+1000fdcf  test     ah, 5
+1000fdd2  jnp      0x1000fcaa
+1000fdd8  pop      edi
+1000fdd9  pop      esi
+1000fdda  pop      ebp
+1000fddb  or       eax, 0xffffffff
+1000fdde  pop      ebx
+1000fddf  ret      0xc

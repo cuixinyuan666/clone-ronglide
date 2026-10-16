@@ -17,7 +17,14 @@
  *                 chlib_1000f680.txt (段生产者) / chlib_10004720.txt (Breach) /
  *                 chlib_10005a50.txt (SelPri) / cond_chlib_10004720+10005a50+100048a0.txt /
  *                 chzs_container_layout.txt / nchzs2_wip.md
- * 批次: 第一批 (docs/31) + 第二批 (docs/32), 2026-10-17
+ * 批次: 第一批 (docs/31) + 第二批 (docs/32) + 第三批 (docs/33), 2026-10-17
+ * 第三批新增: 构建链中段 8 支 (seg_init/seg_extend/seg_endcheck/seg_wrapup/
+ *              c2_reg_up/c2_reg_down/seg_finalize/seg_advance) + C1 段记录语义升级
+ *              (ZG/ZD/GG/DD 四值 + 下标对 + A/B 输出区间) + 段入册器 0x1000f0e0
+ * 证据(第三批): chlib_1000f8c0/1000fa40/1000fc60/1000ff80/10010ee0/10010f80/
+ *              10011170/10011360.txt (+cond_*)  chzs_c1_semantics.txt
+ *              build_chain_mid.txt  nchzs_build_graph.txt  nchzs3_wip.md
+ *              chlib_1000edb0/1000edd0/1000edf0/1000ee30/1000f0e0/1000f200.txt
  * 置信度: [A]=实测已证(字节级) [B]=高(多路交叉) [C]=待仲裁/推断
  * ----------------------------------------------------------------------------
  * 整体链路（与 NChBi 不同: NChZs 走 TAFLib 包装 + chlib 转发器 + 引擎对象）:
@@ -415,4 +422,302 @@ typedef struct engine_t {
  *   //   (189 基本块 / 10 conflicts, cond_chlib_100048a0.txt)
  *   // 两类条件: (a) fcomp price vs mem:[edx]; (b) fcom 0.0 vs mem:[ecx+-k*0x31] (符号判定)
  *   // 收口建议: 第三批按支配树切 ~6 段 + x87 条件表逐段复核; 无需追递归栈。
+ */
+
+/* ============================================================================
+ * 8. 第三批: C1 段记录语义升级 (docs/33 T2)   [A 偏移] -> [A 语义]
+ *    权威表: tools/re-inventory/nchzs/chzs_c1_semantics.txt
+ * ==========================================================================*//*
+ * struct Rec5D {              // C1 段记录, stride 0x5d (93 B)
+ *   int    mode;              // +0x00  建段模式 (buildSegment arg2)      1000f6bf
+ *   int    self;              // +0x04  自身下标 (= 写入前的 C1.count)     1000f6c8
+ *   int    startBar;          // +0x08  段起始 bar                       1000f917
+ *   int    endBar;            // +0x0c  段当前终止 bar (随扫描前推)        1000f914/fb2d/fb7a
+ *   int    dir;               // +0x10  方向 +1 / -1 (= C0[startBar].dir) 1000f91a/91d
+ *   u8     flags;             // +0x14  bit0 有效 / bit1 已收尾 / bit2 端点已登记
+ *   int    zgIdx;             // +0x15  ZG 所在 bar 下标
+ *   double ZG;                // +0x19  ★中枢上沿 = min(相邻高点)        1000f967
+ *   int    zdIdx;             // +0x21  ZD 所在 bar 下标 (下标, 非价!)
+ *   double ZD;                // +0x25  ★中枢下沿 = max(相邻低点)        1000f98f
+ *   int    ggIdx;             // +0x2d  GG 所在 bar 下标
+ *   double GG;                // +0x31  ★段内最高 = max(高点)            1000edcb (判据直证)
+ *   int    ddIdx;             // +0x39  DD 所在 bar 下标
+ *   double DD;                // +0x3d  ★段内最低 = min(低点)            1000edeb (判据直证)
+ *   int    barIdx;            // +0x41  (Bs worker 用; 写点未直证)         [B]
+ *   int    slotBar[4];        // +0x45  slotBar[slot] = bar 下标 (slot: 3/4/5/6) 10010f55
+ *   u32    pad;               // +0x55  -- 见下 A/B --
+ *   int    A;                 // +0x55  ★输出 bar 区间起 = C0[startBar+1].idx  1000f14e
+ *   int    B;                 // +0x59  ★输出 bar 区间止 = C0[endBar].idx      1000f161
+ * };
+ *
+ * 8.1 四组「(bar 下标, 价)」对 [A]
+ *    ZG (+0x19) min(高) <-> zgIdx (+0x15)     ZD (+0x25) max(低) <-> zdIdx (+0x21)
+ *    GG (+0x31) max(高) <-> ggIdx (+0x2d)     DD (+0x3d) min(低) <-> ddIdx (+0x39)
+ *    不变式: DD <= ZD <= ZG <= GG
+ *
+ * 8.2 flags(+0x14) 位台账 [A(bit0..2)]
+ *    bit0 = 1  段有效      : 0x1000f680 的 1000f800 / 1000f853 / 1000f8a5  `or byte [edi+0x14],1`
+ *    bit1 = 2  已收尾      : 0x1000ff80 的 10010008..10010014  `(flags & 0xfe) | 2`
+ *    bit2 = 4  端点已登记  : 0x10010ee0 的 10010f5f (dir=+1) / 0x10010f80 的 10010ff7 (dir=-1)
+ *
+ * 8.3 C0 记录 p1/p2/p3 语义 [A]
+ *    C0[t].p1 (+0x19) = 高(high)    C0[t].p2 (+0x21) = 低(low)    C0[t].p3 (+0x29) = 疑 收/中价 [B]
+ *    C0[t].idxA (+0x11) / idxB (+0x15) = 分型点 bar 下标 (dir 分派)
+ */
+
+/* ============================================================================
+ * 9. 第三批: 构建链中段 8 支伪码 (docs/33 T1)  全部上游 = 0x1000f680
+ *    汇总表: tools/re-inventory/nchzs/build_chain_mid.txt
+ * ==========================================================================*//*
+ * 9.0 派发器 0x1000f680 buildSegment (ret 0xc; ecx=engine; 栈=(i, n, mode))
+ *   int buildSegment(Engine* eng, int i, int n, int mode)
+ *   {
+ *     if (C1.count >= C1.cap) return -1;                       // 容量门
+ *     rec = &C1[C1.count]; memset(rec, 0, 0x5d);
+ *     rec->mode = mode;  rec->self = C1.count;
+ *     r = seg_init(rec, eng, i, n);          if (r < 0) return -1;   // #1
+ *     seg_finalize(eng, rec);                                        // #7
+ *     for (k = r + 1; k < n; ) {
+ *        e = seg_extend(rec, eng, k);                                // #2
+ *        if (e > 0) {
+ *           seg_advance(eng, rec);                                  // #8
+ *           if (seg_endcheck(eng, rec, &flag) > 0)                  // #3
+ *               return seg_wrapup(eng, rec, flag);                  // #4  (内含递归)
+ *           break;
+ *        }
+ *        seg_advance(eng, rec);
+ *        if (c2_reg_up(eng, rec, k)   > 0) goto L_up;               // #5
+ *        if (c2_reg_down(eng, rec, k) > 0) goto L_down;             // #6
+ *        if (C0[k].dir != rec->dir) break;
+ *        k++;
+ *     }
+ *   L_up:   if (rec->dir ==  1) return seg_wrapup(eng, rec, 1);
+ *   L_down: if (rec->dir == -1) return seg_wrapup(eng, rec, 1);
+ *   L_tail: rec->flags |= 1;  return <endBar 相关>;    // 段有效
+ *   }
+ *
+ * 9.1 #1 0x1000f8c0 seg_init (ret 8; ecx=rec; eax=engine; 栈=(i,n))  [A]
+ *   int seg_init(Rec5D* rec, Engine* eng, int i, int n)
+ *   {
+ *     if (!rec) return -1;
+ *     if (i < 0 || i + 3 > n) return -1;
+ *     C0 = eng[+0x20];
+ *     if (C0[i].dir == -1) { if (!(C0[i].p2 > C0[i+2].p1)) return -1; }   // 1000f903
+ *     else                 { if (!(C0[i].p1 > C0[i+2].p2)) return -1; }   // 1000f944
+ *     rec->endBar = i + 2;  rec->startBar = i;  rec->dir = C0[i].dir;
+ *     rec->ZG = min(C0[i].p1, C0[i+2].p1); rec->zgIdx = <取者>;   // +0x15/+0x19
+ *     rec->ZD = max(C0[i].p2, C0[i+2].p2); rec->zdIdx = <取者>;   // +0x21/+0x25
+ *     rec->GG = max(C0[i].p1, C0[i+2].p1); rec->ggIdx = <取者>;   // +0x2d/+0x31
+ *     rec->DD = min(C0[i].p2, C0[i+2].p2); rec->ddIdx = <取者>;   // +0x39/+0x3d
+ *     k = sub_1000f180(...);
+ *     if (k < 0 || k >= eng[+0x3c]) return rec->endBar;
+ *     if (rec->dir == -1) sub_10010ee0(*(C1base + k*0x5d));
+ *     else                sub_10010f80(...);
+ *     return rec->endBar;
+ *   }
+ *   // 失败口 0x1000f94e / 0x1000f955(尾): or eax,-1; ret 8
+ *
+ * 9.2 #2 0x1000fa40 seg_extend (ret 8; edi=rec; 栈=(engine,i))  [A]
+ *   int seg_extend(Rec5D* rec, Engine* eng, int i)
+ *   {
+ *     if (i < 0 || i >= eng[+0x2c]) return -1;              // C0 越界门
+ *     if (C0[i].dir == rec->dir)    return -1;              // 非转折点
+ *     if (eng[+0x00] != 0) {                                // 非首段: 与前段比对
+ *        k = sub_1000f200(eng[+0x3c], rec->dir);
+ *        if (k >= 0 && C1[k].dir == rec->dir) {
+ *           if (rec->dir == -1) { if (C1[k].GG <  C0[i].p2) goto alt; }
+ *           else                { if (C1[k].DD >  C0[i].p1) goto alt; }
+ *        }
+ *     }
+ *     span = rec->endBar - rec->startBar + 1;
+ *     if (span > 3) {
+ *        // ★ 中枢重叠门: [ZD,ZG] 与 C0[i] 的 [low,high] 必须相交
+ *        if (rec->dir == -1) { if (!(rec->ZG >= C0[i].p2 && rec->ZD <= C0[i].p1)) return -1; }
+ *        else                { if (!(rec->ZD <= C0[i].p1 && rec->ZG >= C0[i].p2)) return -1; }
+ *        rec->endBar = i;  sub_1000edb0(eng, rec, i);  sub_1000edd0(eng, rec, i);
+ *        return i;
+ *     } else {
+ *        rec->endBar = i;                                   // 短段: 与 C0[startBar(±1)] 重评
+ *        rec->ZG/ZD/GG/DD 与 +0x15/+0x21/+0x2d/+0x39 重写; sub_1000edb0/edd0;
+ *        return i;
+ *     }
+ *   }
+ *   // 拒收口 0x1000fa6b / 0x1000fac1 / 0x1000fb04 / 0x1000fb5f / 0x1000fc08
+ *
+ * 9.3 #3 0x1000fc60 seg_endcheck (ret 0xc; eax=rec; 栈=(engine,i,*flag))  [A]
+ *   int seg_endcheck(Rec5D* rec, Engine* eng, int i, int* flag)
+ *   {
+ *     *flag = 1;
+ *     span = rec ? rec->endBar - rec->startBar + 1 : 0;
+ *     eax  = (span > 3) ? span : span;
+ *     if (eax >= eng[+0x1c] /* = 9 */) return i;
+ *     if (rec->mode == 0) {
+ *        if (sub_1000fc10(eng) & 1) *flag = 2;
+ *        return i;
+ *     }
+ *     k = sub_1000f180(...);
+ *     if (k < 0) return -1;
+ *     seg = &C1[k];
+ *     if (C0base == 0) return -1;
+ *     if (seg->dir != rec->dir) return -1;
+ *     s = seg->endBar - seg->startBar + 1;  if (s > 3) return -1;
+ *     if (rec->dir == -1) {
+ *        if (rec->ggIdx != seg->endBar) return -1;
+ *        if (rec->ddIdx != seg->endBar) return -1;
+ *        if (!(C0[rec->startBar].p2 > C0[seg->endBar].p2)) return -1;
+ *     } else {
+ *        if (rec->ddIdx != seg->endBar) return -1;
+ *        if (rec->ggIdx != seg->endBar) return -1;
+ *        if (!(C0[scale(seg->startBar)].p1 < C0[...].p1)) return -1;
+ *     }
+ *     return i;
+ *   }
+ *
+ * 9.4 #4 0x1000ff80 seg_wrapup (ret 8; eax=engine; 栈=(rec,mode))  ★含递归  [A]
+ *   int seg_wrapup(Engine* eng, Rec5D* rec, int mode)
+ *   {
+ *     if (!rec) return -1;
+ *     s = sub_1000fdf0(eng, rec);
+ *     if (mode == 2) {                                       // 「密集」模式: 四次候选扫描
+ *        if (sub_10010070(eng)      > 0) return mode;
+ *        if (sub_100100d0(eng)      > 0) return mode;
+ *        if (sub_100101c0(eng)      > 0) return mode;
+ *        if (sub_100102c0(eng, rec) > 0) return mode;
+ *        s = rec->startBar;
+ *     }
+ *     if (sub_10010d60(eng, rec) > 0) return mode;
+ *     k = sub_1000fe50(rec, s, rec->endBar, eng);
+ *     if (k < 0) return -1;
+ *     rec->flags = (rec->flags & 0xfe) | 2;                  // 已收尾
+ *     sub_1000f0e0(eng);
+ *     sub_1000f070(rec->endBar, rec->startBar);
+ *     if (sub_1000f680(eng, rec->startBar, k + 1, rec) > k) return ...;   // ★★ 递归
+ *     sub_1000f010(eng, k);
+ *     if (sub_1000f680(eng, <cursor>, eng[+0x2c], rec) > ...) return ...;  // ★★ 递归
+ *     return ...;
+ *   }
+ *
+ * 9.5 #5 0x10010ee0 c2_reg_up (ret 4; ecx=eng; eax=rec; esi=idx; 栈=rec2)  [A]
+ *   int c2_reg_up(Engine* eng, Rec5D* rec, int idx, Rec5D* newRec)
+ *   {
+ *     if (!newRec) return -1;
+ *     if (idx < 0 || idx >= eng[+0x2c]) return -1;
+ *     c0 = &C0[idx];
+ *     if (c0->dir != +1)          return -1;
+ *     if (!(newRec->ZG > c0->p2)) return -1;
+ *     slot = 2;  slot = sub_1000edf0(slot);         // 归一化
+ *     if (slot <= 8 && !(c0->flags & 1) && c0->dir == +1) {
+ *        C2 = eng[+0x40] + idx*0x18;                // ★ stride 0x18
+ *        C2[+0x00]                   = c0->idxB;    // c0[+0x15]
+ *        *(Rec5D**)(C2 + 4 + slot*4) = newRec;
+ *        *(u8*)(C2 + 0x14 + slot)    = 0xfd;
+ *        newRec->slotBar[slot]       = idx;         // newRec[+0x45 + slot*4]
+ *     }
+ *     if (newRec->dir == +1) newRec->flags |= 4;
+ *     return idx - 1;
+ *   }
+ *
+ * 9.6 #6 0x10010f80 c2_reg_down (ecx=eng; ebx=rec; esi=idx)  [A]   // 对称支
+ *   // 门: rec!=0 && C0[idx].dir == -1 && rec->ZD <= C0[idx].high
+ *   // C2[idx][+0x00] = c0->idxA (c0[+0x11]); 标志字节 = 3; rec[+0x45+slot*4] = idx
+ *   // if (rec->dir == -1) rec->flags |= 4;  return idx - 1;
+ *
+ * 9.7 #7 0x10011170 seg_finalize (ret 4; eax=engine; 栈=rec)  [A]
+ *   int seg_finalize(Engine* eng, Rec5D* rec)
+ *   {
+ *     if (!rec) return -1;
+ *     if (!(rec->endBar - rec->startBar + 1 > 3)) return -1;
+ *     if (rec->dir == -1) {
+ *        if (!(C0[rec->endBar].p1 > C0[rec->startBar].p1)) return -1;
+ *        if (!(C0[rec->endBar].p3 < C0[rec->startBar].p3)) return -1;
+ *        slotByte = 4;
+ *     } else {
+ *        if (!(C0[rec->endBar].p2 < C0[rec->startBar].p2)) return -1;
+ *        if (!(C0[rec->endBar].p3 < C0[rec->startBar].p3)) return -1;
+ *        slotByte = 0xfc;
+ *     }
+ *     k = sub_1000f200(eng[+0x3c], rec->dir);
+ *     slot = (k >= 0) ? (rec->dir == -1 ? 5 : 0xfb) : (rec->dir == -1 ? 5 : 0xf9);
+ *     sub_1000ee30(eng, slotByte /* / slot */, rec, ...);      // ★ 写 C3
+ *     return rec->endBar;
+ *   }
+ *
+ * 9.8 #8 0x10011360 seg_advance (ret 8; eax=engine; 栈=(engine, rec))  [A]
+ *   int seg_advance(Engine* eng, Rec5D* rec)
+ *   {
+ *     if (!rec) return -1;
+ *     span = rec->endBar - rec->startBar + 1;
+ *     if (!(span > 3))          return -1;
+ *     if (span >= eng[+0x1c])   return -1;        // ★ = 9: 段长上限
+ *     i = rec->endBar + 1;
+ *     if (i >= eng[+0x2c]) return -1;
+ *     if (rec->dir == -1) { if (!(C0[i].p1 > rec->GG)) return -1; }
+ *     else                { if (!(C0[i].p2 < rec->DD)) return -1; }
+ *     k = sub_1000f200(eng[+0x3c], rec->dir);
+ *     sub_1000f1c0(eng, k);
+ *     ... // C0[startBar±1].p3 单调性复核
+ *     slot = <5 / 6 / 0xfa / 0xfb by (k>=0, dir)>;
+ *     sub_1000ee30(eng, slot, ...);               // ★ 写 C3
+ *     return rec;
+ *   }
+ */
+
+/* ============================================================================
+ * 10. 第三批: 关键下游 (语义直证链)
+ * ==========================================================================*//*
+ * 10.1 0x1000edb0  GG 更新器 (12 行, 无栈参; esi=C0 下标; eax=engine; edx=rec)  ★★ [A]
+ *      if (C0[esi].p1 > rec->GG) { rec->ggIdx(+0x2d) = esi; rec->GG(+0x31) = C0[esi].p1; }
+ *      // 判据: fcomp [edx+0x31]; test ah,0x41; jne -> skip  => 仅当 C0.p1 > rec.GG 才写
+ *      //  => 独立确认 +0x31 = GG = max(high)
+ *
+ * 10.2 0x1000edd0  DD 更新器 (12 行, 同参)  ★★ [A]
+ *      if (C0[esi].p2 <= rec->DD) { rec->ddIdx(+0x39) = esi; rec->DD(+0x3d) = C0[esi].p2; }
+ *      // 判据: fcomp [edx+0x3d]; test ah,5; jp -> skip  => 仅当 C0.p2 <= rec.DD 才写
+ *      //  => 独立确认 +0x3d = DD = min(low)
+ *
+ * 10.3 0x1000f0e0  ★★★ 段入册器 (61 行, ret 4; esi=rec; arg0=engine)  [A]
+ *      int commit_segment(Rec5D* rec, Engine* eng)
+ *      {
+ *        if (!rec) return -1;
+ *        span = rec->endBar - rec->startBar + 1;
+ *        if (!(span > 3 ? span : span) >= 3) return -1;       // 段长门 eax < 3 -> -1
+ *        if (C1.count >= C1.cap) return -1;
+ *        t = &C0[rec->startBar + 1];
+ *        rec->A (+0x55) = (t->dir == -1) ? t->idxA(+0x15) : t->idxB(+0x11);
+ *        u = &C0[(span > 3) ? rec->endBar : rec->endBar - 1];
+ *        rec->B (+0x59) = (u->dir == -1) ? u->idxB(+0x15) : u->idxA(+0x11);
+ *        C1.count += 1;                                       // ★ 唯一入册点
+ *        return rec->endBar;
+ *      }
+ *
+ * 10.4 0x1000f200 前段查找器 (34 行, ret 4; esi=engine; eax=起扫下标(内部-1); arg0=dir 过滤)
+ *      从 C1[eax-1] 反向扫, 返回首个 flags.bit0=1 && span>3 && (dir==arg0 || arg0==0) 的段下标; 无则 -1
+ *
+ * 10.5 0x1000edf0 slot 归一化 (10 行)  [B]
+ *      jmp [eax*4 + 0x1000ee0c];  表项 = 4 个 `ret` 常量桩 (返回 0/1/2/3) => 0..3 恒等映射
+ *
+ * 10.6 0x1000ee30 C3 写入器 (138 行, ret 8; ecx=engine; al=slotByte; 栈=(arg0, rec))  [C 未展开]
+ *      // 段 → C3/V 的映射; 本批只确权调用形态与 slot 字节取值集合 {3,4,5,6,0xfa,0xfb,0xfc,0xfd}
+ */
+
+/* ============================================================================
+ * 11. 第三批: 勘误与遗留
+ * ==========================================================================*//*
+ * 勘误 1: ZG/ZD 推导纠正 —— +0x25 = max(low) 而非 min; 修正后与 0x1000edb0/edd0 判据
+ *         及 0x1000fa40 重叠门三方自洽。 (初稿误读 jp 目标)
+ * 勘误 2: 0x1000f680 非仅被 build 调用 —— 0x1000ff80(seg_wrapup) 内递归调用它 2 次;
+ *         构建链为「外层迭代 + 内层递归」双层。 (docs/32 表述修正)
+ * 勘误 3: engine[+0x1c] = 9 的用途确认 = 段长上限 (0x10011360 判 span >= 9 停止推进);
+ *         撤销 docs/32 的 [C]。 升级 [A]
+ * 勘误 4: docs/32「C1 +0x21 属 C0」进一步明确 —— C1 的 +0x21 = zdIdx (下标, 非价),
+ *         与 C0 的 +0x21(low) 是同偏移不同容器, 两处解读均成立。
+ *
+ * 遗留 [B]/[C]:
+ *   [B] slot 字节 {3,4,5,6,0xfa,0xfb,0xfc,0xfd} 的语义 (疑段端点角色码)
+ *   [B] C1 +0x41 barIdx 的写点 (8 支内未直证, 疑由 0x1000ee30 写)
+ *   [C] C1 +0x45..0x54 未定性 (疑 slot 计数 / 角色位图)
+ *   [C] C0 +0x29 (p3) 语义 (与 high 反向单调 => 疑收/中价)
+ *   [C] 0x1000ee30 (C3 写入器) / 0x100110a0 (插值) / 0x10011010 (价查询) 未展开
+ *   [C] 0x1000fc10 / 0x1000fdf0 / 0x1000fe50 / 0x10010d60 四支收尾辅助未展开
+ *   [C] 本批未做动态验证 (frida 预备包待用户在场)
  */

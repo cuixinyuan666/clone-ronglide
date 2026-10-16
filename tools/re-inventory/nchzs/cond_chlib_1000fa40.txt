@@ -1,0 +1,19 @@
+### [A] x87 条件表   src=tools/re-inventory/nchzs/chlib_1000fa40.txt   insns=179   blocks=34   conflicts=2   conds=10
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+1000fa9c   fcomp    [eax+0x31]         mem:[ebx+0x21]         ah,0x01 jne   0x1000fac8   <|U        >|=       
+1000fab1   fcomp    [eax+0x3d]         mem:[ebx+0x19]         ah,0x41 jp    0x1000fac8   >|U        <|=       
+1000fae7   fcomp    [edi+0x19]         mem:[ebx+0x21]         ah,0x05 jnp   0x1000fafe   <          >|=|U     
+1000faf4   fcomp    [edi+0x25]         mem:[ebx+0x19]         ah,0x41 jne   0x1000fb21   <|=|U      >         
+1000fb0a   fcomp    [edi+0x25]         mem:[ebx+0x19]         ah,0x41 je    0x1000fb5f   >          <|=|U     
+1000fb17   fcomp    [edi+0x19]         mem:[ebx+0x21]         ah,0x05 jnp   0x1000fb5f   <          >|=|U     
+1000fb55   fcomp    [ecx+eax+0x19]     mem:[ebx+0x21]         ah,0x05 jp    0x1000fb76   >|=|U      <         
+1000fb6c   fcomp    [ecx+eax+0x21]     mem:[ebx+0x19]         ah,0x41 je    0x1000fb5f   >          <|=|U     
+1000fb83   fcomp    [ebx+0x19]         mem:[edx+ecx+0x4a]     ah,0x01 jne   0x1000fba1   <|U        >|=       
+1000fbad   fcomp    [ebx+0x21]         mem:[ebp+0x21]         ah,0x41 jp    0x1000fbc2   >|U        <|=       
+
+### [B] 非零立即数写入 (标记字段写点)
+
+### [C] 调用目标统计
+  0x1000edb0               x2
+  0x1000edd0               x2
+  0x1000f200               x1

@@ -1,0 +1,25 @@
+### [A] x87 条件表   src=tools/re-inventory/nchzs/chlib_10011170.txt   insns=177   blocks=27   conflicts=0   conds=9
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+100111ba   fcomp    [ebx+eax+0x19]     mem:[eax+ecx+0x19]     ah,0x41 jnp   0x10011181   <|=        >|U       
+100111cc   fcomp    [eax+ebx+0x29]     mem:[eax+ecx+0x29]     ah,0x01 je    0x10011181   >|=        <|U       
+100111e2   fcomp    [eax+ebx+0x21]     mem:[eax+ecx+0x21]     ah,0x01 je    0x10011181   >|=        <|U       
+100111f4   fcomp    [eax+ebx+0x29]     mem:[eax+ecx+0x29]     ah,0x01 je    0x10011181   >|=        <|U       
+1001122b   fcomp    [ebx+ecx+0x19]     mem:[edi+0x31]         ah,0x41 jnp   0x1001125d   <|=        >|U       
+10011254   fcomp    ?                  mem:[eax]              ah,0x01 jne   0x100112b6   <|U        >|=       
+10011284   fcomp    [ebx+ecx+0x21]     mem:[edi+0x3d]         ah,0x01 je    0x1001125d   >|=        <|U       
+100112ad   fcomp    ?                  mem:[eax]              ah,0x41 jnp   0x1001125d   <|=        >|U       
+10011319   fcompp   ?                  ST1=?                  ah,0x01 je    0x1001125d   >|=        <|U       
+
+### [B] 非零立即数写入 (标记字段写点)
+100111d7   mov [esp+0x17], 4
+100111ff   mov [esp+0x17], 0xfc
+1001133a   mov [esp+0x17], al
+1001134f   mov [esp+0x17], al
+
+### [C] 调用目标统计
+  0x1000f200               x2
+  0x100110a0               x2
+  0x1000f260               x1
+  0x1000ee30               x1
+  0x1000f370               x1
+  0x1000f0b0               x1

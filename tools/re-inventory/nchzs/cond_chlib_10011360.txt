@@ -1,0 +1,17 @@
+### [A] x87 条件表   src=tools/re-inventory/nchzs/chlib_10011360.txt   insns=158   blocks=28   conflicts=0   conds=5
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+100113b6   fcomp    [edi+0x19]         mem:[esi+0x31]         ah,0x41 jp    0x100113da   >|U        <|=       
+100113d0   fcomp    [edi+0x21]         mem:[esi+0x3d]         ah,0x01 je    0x100113c0   >|=        <|U       
+10011404   fcomp    [edi+0x29]         mem:[ebx+eax+0x29]     ah,0x01 je    0x100113c0   >|=        <|U       
+10011447   fcomp    ?                  mem:[edi+0x29]         ah,0x41 jnp   0x100113c0   <|=        >|U       
+100114bb   fcomp    ?                  mem:[eax+0x29]         ah,0x41 jnp   0x100113c0   <|=        >|U       
+
+### [B] 非零立即数写入 (标记字段写点)
+
+### [C] 调用目标统计
+  0x1000ee30               x3
+  0x1000f200               x1
+  0x1000f1c0               x1
+  0x10011010               x1
+  0x1000f0b0               x1
+  0x100110a0               x1

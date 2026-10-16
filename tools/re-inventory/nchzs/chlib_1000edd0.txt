@@ -1,0 +1,12 @@
+1000edd0  mov      ecx, esi
+1000edd2  imul     ecx, ecx, 0x31
+1000edd5  add      ecx, dword ptr [eax + 0x20]
+1000edd8  fld      qword ptr [ecx + 0x21]
+1000eddb  fcomp    qword ptr [edx + 0x3d]
+1000edde  fnstsw   ax
+1000ede0  test     ah, 5
+1000ede3  jp       0x1000edee
+1000ede5  fld      qword ptr [ecx + 0x21]
+1000ede8  mov      dword ptr [edx + 0x39], esi
+1000edeb  fstp     qword ptr [edx + 0x3d]
+1000edee  ret      

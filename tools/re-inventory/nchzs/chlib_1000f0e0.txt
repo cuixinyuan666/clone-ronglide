@@ -1,0 +1,61 @@
+1000f0e0  test     esi, esi
+1000f0e2  push     ebx
+1000f0e3  push     ebp
+1000f0e4  mov      ebp, dword ptr [esp + 0xc]
+1000f0e8  push     edi
+1000f0e9  je       0x1000f109
+1000f0eb  mov      ebx, dword ptr [esi + 0xc]
+1000f0ee  mov      edi, dword ptr [esi + 8]
+1000f0f1  mov      eax, ebx
+1000f0f3  sub      eax, edi
+1000f0f5  lea      ecx, [eax + 1]
+1000f0f8  cmp      ecx, 3
+1000f0fb  setg     dl
+1000f0fe  test     dl, dl
+1000f100  jne      0x1000f104
+1000f102  mov      eax, ecx
+1000f104  cmp      eax, 3
+1000f107  jge      0x1000f112
+1000f109  pop      edi
+1000f10a  pop      ebp
+1000f10b  or       eax, 0xffffffff
+1000f10e  pop      ebx
+1000f10f  ret      4
+1000f112  mov      eax, dword ptr [ebp + 0x3c]
+1000f115  cmp      eax, dword ptr [ebp + 0x38]
+1000f118  jae      0x1000f109
+1000f11a  test     dl, dl
+1000f11c  lea      ecx, [edi + 1]
+1000f11f  mov      eax, ebx
+1000f121  jne      0x1000f126
+1000f123  lea      eax, [ebx - 1]
+1000f126  mov      edx, dword ptr [ebp + 0x20]
+1000f129  imul     ecx, ecx, 0x31
+1000f12c  add      ecx, edx
+1000f12e  cmp      dword ptr [ecx], -1
+1000f131  jne      0x1000f138
+1000f133  mov      ecx, dword ptr [ecx + 0x15]
+1000f136  jmp      0x1000f13b
+1000f138  mov      ecx, dword ptr [ecx + 0x11]
+1000f13b  imul     eax, eax, 0x31
+1000f13e  mov      dword ptr [esi + 0x55], ecx
+1000f141  mov      ecx, dword ptr [ebp + 0x20]
+1000f144  add      eax, ecx
+1000f146  cmp      dword ptr [eax], -1
+1000f149  jne      0x1000f15e
+1000f14b  mov      eax, dword ptr [eax + 0x11]
+1000f14e  mov      dword ptr [esi + 0x59], eax
+1000f151  add      dword ptr [ebp + 0x3c], 1
+1000f155  mov      eax, dword ptr [esi + 0xc]
+1000f158  pop      edi
+1000f159  pop      ebp
+1000f15a  pop      ebx
+1000f15b  ret      4
+1000f15e  mov      eax, dword ptr [eax + 0x15]
+1000f161  mov      dword ptr [esi + 0x59], eax
+1000f164  add      dword ptr [ebp + 0x3c], 1
+1000f168  mov      eax, dword ptr [esi + 0xc]
+1000f16b  pop      edi
+1000f16c  pop      ebp
+1000f16d  pop      ebx
+1000f16e  ret      4

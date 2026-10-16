@@ -1,0 +1,137 @@
+1000ff80  push     ecx
+1000ff81  push     ebx
+1000ff82  push     ebp
+1000ff83  mov      ebp, dword ptr [esp + 0x10]
+1000ff87  test     ebp, ebp
+1000ff89  push     esi
+1000ff8a  push     edi
+1000ff8b  mov      edi, eax
+1000ff8d  jne      0x1000ff9a
+1000ff8f  or       eax, 0xffffffff
+1000ff92  pop      edi
+1000ff93  pop      esi
+1000ff94  pop      ebp
+1000ff95  pop      ebx
+1000ff96  pop      ecx
+1000ff97  ret      8
+1000ff9a  mov      ebx, ebp
+1000ff9c  call     0x1000fdf0
+1000ffa1  cmp      dword ptr [esp + 0x1c], 2
+1000ffa6  mov      esi, eax
+1000ffa8  jne      0x1000ffe9
+1000ffaa  mov      eax, edi
+1000ffac  call     0x10010070
+1000ffb1  test     eax, eax
+1000ffb3  jg       0x10010068
+1000ffb9  push     edi
+1000ffba  call     0x100100d0
+1000ffbf  test     eax, eax
+1000ffc1  jg       0x10010068
+1000ffc7  mov      eax, edi
+1000ffc9  call     0x100101c0
+1000ffce  test     eax, eax
+1000ffd0  jg       0x10010068
+1000ffd6  push     ebp
+1000ffd7  mov      ebx, edi
+1000ffd9  call     0x100102c0
+1000ffde  test     eax, eax
+1000ffe0  jg       0x10010068
+1000ffe6  mov      esi, dword ptr [ebp + 8]
+1000ffe9  push     ebp
+1000ffea  mov      ecx, edi
+1000ffec  call     0x10010d60
+1000fff1  test     eax, eax
+1000fff3  jg       0x10010068
+1000fff5  mov      eax, dword ptr [ebp + 0xc]
+1000fff8  push     eax
+1000fff9  push     esi
+1000fffa  push     edi
+1000fffb  mov      ecx, ebp
+1000fffd  call     0x1000fe50
+10010002  mov      ebx, eax
+10010004  test     ebx, ebx
+10010006  jl       0x1000ff8f
+10010008  mov      cl, byte ptr [ebp + 0x14]
+1001000b  and      cl, 0xfe
+1001000e  or       cl, 2
+10010011  push     edi
+10010012  mov      esi, ebp
+10010014  mov      byte ptr [ebp + 0x14], cl
+10010017  call     0x1000f0e0
+1001001c  mov      edx, dword ptr [ebp + 0xc]
+1001001f  mov      eax, dword ptr [ebp + 8]
+10010022  push     edx
+10010023  call     0x1000f070
+10010028  lea      eax, [ebx + 1]
+1001002b  push     ebp
+1001002c  push     eax
+1001002d  mov      dword ptr [esp + 0x20], eax
+10010031  mov      eax, dword ptr [ebp + 8]
+10010034  push     eax
+10010035  mov      ecx, edi
+10010037  call     0x1000f680
+1001003c  cmp      eax, ebx
+1001003e  mov      dword ptr [esp + 0x1c], eax
+10010042  jg       0x10010068
+10010044  mov      edx, ebx
+10010046  mov      esi, edi
+10010048  call     0x1000f010
+1001004d  mov      ecx, dword ptr [edi + 0x2c]
+10010050  mov      edx, dword ptr [esp + 0x18]
+10010054  push     ebp
+10010055  push     ecx
+10010056  push     edx
+10010057  mov      ecx, edi
+10010059  call     0x1000f680
+1001005e  mov      ecx, dword ptr [esp + 0x1c]
+10010062  cmp      ecx, eax
+10010064  jle      0x10010068
+10010066  mov      eax, ecx
+10010068  pop      edi
+10010069  pop      esi
+1001006a  pop      ebp
+1001006b  pop      ebx
+1001006c  pop      ecx
+1001006d  ret      8
+10010070  test     ebx, ebx
+10010072  push     esi
+10010073  mov      esi, eax
+10010075  jne      0x1001007c
+10010077  or       eax, 0xffffffff
+1001007a  pop      esi
+1001007b  ret      
+1001007c  mov      eax, dword ptr [esi + 0x3c]
+1001007f  push     edi
+10010080  mov      edi, dword ptr [ebx + 0x10]
+10010083  push     edi
+10010084  call     0x1000f200
+10010089  test     eax, eax
+1001008b  jl       0x100100c4
+1001008d  imul     eax, eax, 0x5d
+10010090  add      eax, dword ptr [esi + 0x30]
+10010093  mov      ecx, eax
+10010095  cmp      dword ptr [ecx + 0x10], edi
+10010098  jne      0x100100c4
+1001009a  cmp      edi, -1
+1001009d  jne      0x100100b7
+1001009f  fld      qword ptr [ebx + 0x31]
+100100a2  fcomp    qword ptr [ecx + 0x31]
+100100a5  fnstsw   ax
+100100a7  test     ah, 0x41
+100100aa  je       0x100100c4
+100100ac  push     ebx
+100100ad  push     ecx
+100100ae  push     esi
+100100af  call     0x100104e0
+100100b4  pop      edi
+100100b5  pop      esi
+100100b6  ret      
+100100b7  fld      qword ptr [ebx + 0x3d]
+100100ba  fcomp    qword ptr [ecx + 0x3d]
+100100bd  fnstsw   ax
+100100bf  test     ah, 5
+100100c2  jp       0x100100ac
+100100c4  pop      edi
+100100c5  or       eax, 0xffffffff
+100100c8  pop      esi
+100100c9  ret      
