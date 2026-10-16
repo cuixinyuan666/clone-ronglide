@@ -32,6 +32,7 @@ TARGETS = [
             ("第一批-定位与入口", "docs/15-CHDUAN-第一批-定位与入口.md"),
             ("第二批-准备与标记", "docs/16-CHDUAN-第二批-准备阶段与标记解码.md"),
             ("第三批-条件与决策格", "docs/17-CHDUAN-第三批-条件全表与决策格.md"),
+            ("第四批-实例②③与顺序敏感性", "docs/24-CHDUAN-第四批-实例②③与顺序敏感性.md"),
         ],
         "artifacts": [
             "pseudocode/chduan.c",
@@ -39,8 +40,15 @@ TARGETS = [
             "tools/re-inventory/chduan/engine_1002c710.txt",
             "tools/re-inventory/chduan/prepare_10053540_full.txt",
             "tools/re-inventory/chduan/conditions_10053540.txt",
+            "tools/re-inventory/chduan/conditions_10053540_annotated.txt",
+            "tools/re-inventory/chduan/cfg_10053540.txt",
+            "tools/re-inventory/chduan/cfg_summary.py",
+            "tools/re-inventory/chduan/annotate_conds.py",
+            "tools/re-inventory/chduan/chduan4_wip.md",
+            "tools/re-inventory/chduan/frida_chduan4.md",
+            "tools/re-inventory/chbi/f_1003eba0.txt",
         ],
-        "next": "第四批: 实例②/③展开 + 标志生命周期 + 0x10053db2 深层分支",
+        "next": "第五批(推荐): NChBi 启动 (入口/包装层 + P 分派 + 复用判定); 备选: CHDUAN frida 对拍",
     },
     {
         "id": "CHBI",
@@ -96,7 +104,7 @@ TARGETS = [
 # 清单覆盖: 优先级代表函数（来自 docs/14）
 PRIORITY = [
     ("ChBi", "CHBI", "EA62", "已交付(五批)"),
-    ("ChDuan", "CHDUAN", "-", "已交付(三批)"),
+    ("ChDuan", "CHDUAN", "-", "已交付(四批)"),
     ("NChBi", "NCHBI", "EA62", "未启动"),
     ("NChZs", "NCHZS", "EA63", "未启动"),
     ("NChZsG", "NCHZSG", "EA61", "未启动"),
@@ -150,7 +158,7 @@ def main():
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-",
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-",
                 "tools/re-inventory", "tools/wnmr_py",
                 "pseudocode/chduan", "pseudocode/chbi", "README.md")
     tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]
