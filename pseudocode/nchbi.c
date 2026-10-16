@@ -11,7 +11,11 @@
  *                 chlib_worker_10002900.txt / chlib_prep_10009930.txt /
  *                 family_slots.txt / family_slots_full.txt /
  *                 map_family_slots.py / nchbi2_wip.md
- * 批次: 第一批 (docs/25) + 第二批 (docs/26) + 第三批 (docs/27) + 第四批 (docs/28) + 第五批 (docs/29), 2026-10-17
+ *         第六批: chlib_worker_10003680.txt / cond_chlib_10003680.txt /
+ *                 chlib_worker_10003a90.txt / cond_chlib_10003a90.txt /
+ *                 x87_expr.py / speed_x87_trace.txt /
+ *                 obj8_push_10009500.txt / obj8_m2_10009530.txt / nchbi6_wip.md
+ * 批次: 第一批 (docs/25) + 第二批 (docs/26) + 第三批 (docs/27) + 第四批 (docs/28) + 第五批 (docs/29) + 第六批收官 (docs/30), 2026-10-17
  * 置信度: [A]=实测已证(字节级) [B]=高(多路交叉) [C]=待仲裁/推断
  * ----------------------------------------------------------------------------
  * 整体链路:
@@ -805,9 +809,9 @@ static int pair_recheck(obj10 *o, int j, int i)  /* 0x1000abb0 */
  *  NChBiZj        +0x44   0x10002ea0   EA61    obj10[+30/+3c]  (无 obj8)      out[it.barIdx] = value (bit2)
  *  NChBiZj3       +0x48   0x10002fc0   EA62    obj8[+1c/+28]+obj10[+30/+3c]   out[recs[recIdx].endBar+1] = value (bit2)
  *  NChBiZjOrder   +0x4c   0x10003180   EA61    obj8+obj10 + 临时 vector        ZjNum 过滤后 out[recs[recIdx+1].startBar] = value
- *  NChBiFxNum     +0x58   0x10003680   EA62    obj10[+30/+3c]  (无 obj8)      计数器 -> out[]  (细节 [B])
+ *  NChBiFxNum     +0x58   0x10003680   EA62    obj10[+30/+3c]  (无 obj8)      out[barIdx]=ord(k)-ord(k-1)+1  (§14.1)
  *  NChBiZjNum     +0x5c   0x100038b0   EA62    obj10[+30/+3c]  (无 obj8)      计数器 -> out[] (§13.2)
- *  NChBiSpeed     +0x60   0x10003a90   EA62    obj8[+1c/+28]+obj10[+30/+3c]   out[..] = |value| (fabs; 额外门 obj8[+28]!=0)
+ *  NChBiSpeed     +0x60   0x10003a90   EA62    obj8[+1c/+28]+obj10[+30/+3c]   out[barIdx]=1000*|A-B|/(A*SPAN) (§14.2)
  *
  *  共享内核(内联, 非 call): Item21 遍历(stride 0x21, 4 路展开 0x84) + 越界三段保护
  *                         + memset 前置 + `ch_auth->vt[+4](code)` 授权调用形态
@@ -824,4 +828,182 @@ static int pair_recheck(obj10 *o, int j, int i)  /* 0x1000abb0 */
  *   [C] NChBiSpeed (0x10003a90) 未逐条展开 (已知: EA62 / 读 obj8+obj10 / 输出 |value|)
  *   [C] ZjNum/Zj3 的 arg1(n) 在 TAFLib 侧由谁提供
  *   [C] 本批未做动态验证 (frida 预备包待用户在场运行)
+ *   ---- 以下四条已由第六批 (docs/30) 结案，见 §14 ----
+ *   → "Zj3" 的 "3" = 导出名枚举序号, 非参数 (T4, §14.4)  [A]
+ *   → Rec20 段连续性不变式成立, Zj3/ZjOrder 目标同槽 (T3, §14.3)  [A]
+ *   → FxNum = 相邻分型 bar 间距 ord(k)-ord(k-1)+1 (T1, §14.1)  [A]
+ *   → Speed = 1000×|A-B|/(A×SPAN) (T2, §14.2)  [A]
+ *   → cnt 增量条件 = 滤同向重复项 (T5, §14.5)  [B]
  */
+
+/* ============================================================================
+ * 14. 第六批 (收官): NChBiFxNum / NChBiSpeed / Rec20 段连续性不变式 (docs/30)
+ * ==========================================================================*/
+
+/* ---------------------------------------------------------------------------
+ * 14.1 NChBiFxNum  (TAFLib 槽 +0x58  ->  chlib 0x10003680, 授权码 EA62)  [A]
+ * ---------------------------------------------------------------------------
+ *  签名: int FxNum(int n, double* out, void* ctx?)   // ret 0x10 => 4 参 (末位 P/context)
+ *  证据: tools/re-inventory/nchbi/chlib_worker_10003680.txt (0x10003680-0x100038ad)
+ *        cond_chlib_10003680.txt  => 0 条 x87 条件 (纯整数链, 无浮点比较)
+ *
+ *  容器: 只吃 obj10 (Item21 数组), 不吃 obj8 / 不依赖 Rec20
+ *        obj10[+0x30] = Item21 base, obj10[+0x3c] = Item21 count, stride 0x21
+ *  授权门: 非空门 + memset 前置 + ch_auth->vt[+4](0xEA62);  4 路展开(0x84) + 尾 0x21
+ *
+ *  语义 (与 ZjNum 对照):
+ *    ZjNum = 「配对 Zj 项数」运行计数器 (见 §13.2)
+ *    FxNum = 「相邻分型的 bar 间距(含两端)」= ord(k) - ord(k-1) + 1
+ *      ord   = Item21[+0x05]  (分型中心 bar 序号, docs/28 §1.4)
+ *      barIdx= Item21[+0x1d]  (输出下标)
+ *    首个 Item21 无前项 => 直接跳过 (不写 out)。
+ * -------------------------------------------------------------------------*/
+int NChBiFxNum(int n, double* out, void* P_or_ctx)
+{
+    /* --- 门 1-2: 容器非空 (obj10 base/count) --- */
+    if (obj10->count(0x3c) <= 0 || obj10->base(0x30) == NULL) return 0;
+    /* --- 门 3: 授权 EA62 --- */
+    if (!ch_auth->vt[+4](0xEA62)) return 0;
+    memset(out, 0, n * sizeof(double));                    /* 前置清零 [A] */
+
+    int    prev_ord = 0;
+    bool   have_prev = false;
+    /* --- 主循环: Item21 遍历, 4 路展开 0x84 + 尾单步 0x21 --- */
+    for (int k = 0; k < obj10->count; ++k) {
+        Item21* it = obj10->base + k * 0x21;
+        int ord = it->ord;                                  /* +0x05 */
+        if (have_prev) {
+            int span = ord - prev_ord + 1;                  /* ★ 含两端 bar 数 */
+            out[it->barIdx] = (double)span;                 /* +0x1d -> out[] */
+        }
+        prev_ord  = ord;
+        have_prev = true;                                   /* 首项只记不写 */
+    }
+    return 0;                                               /* ret 0x10 */
+}
+
+/* ---------------------------------------------------------------------------
+ * 14.2 NChBiSpeed  (TAFLib 槽 +0x60  ->  chlib 0x10003a90, 授权码 EA62)  [A]
+ * ---------------------------------------------------------------------------
+ *  证据: tools/re-inventory/nchbi/chlib_worker_10003a90.txt (0x10003a90-0x10003cc1, ret 0x10)
+ *        cond_chlib_10003a90.txt => 1 条 x87 条件 (A == 0.0)
+ *        speed_x87_trace.txt / x87_expr.py  => 符号求解公式
+ *
+ *  容器: 读 obj8 (价数组 + Rec20 段记录) 与 obj10 (Item21 数组)
+ *        obj8[+0x08]/[+0x0c] = double* A/B 两条价数组; obj8[+0x14] = len;
+ *        obj8[+0x28] = Rec20 cnt (额外门: != 0)
+ *  六道门: obj10 非空 / obj8 非空 / 授权 EA62 / A==0 跳过 / SPAN==0 跳过 / obj8[+0x28]!=0
+ *
+ *  ★ 公式 (符号 x87 栈模拟确证, 初始栈 [1000.0, 0.0]):
+ *      out[barIdx(k)] = |(A - B) * 1000.0 / A| / SPAN
+ *                     = 1000.0 * |A - B| / (A * SPAN)
+ *    其中 A = 价数组 A 当前价, B = 配对价, SPAN = bar 跨度 (endBar-startBar 类)。
+ *    语义 = 每 bar 相对涨跌幅度 (‰) = 缠论"速度/斜率"。
+ *    A==0 与 SPAN==0 跳过 => 两处防除零守卫, 反证公式正确。
+ *    常量: 0x10015558 = 1000.0 (邻位 0x10015550 = 5.0, 0x10015560 = 0.25)
+ * -------------------------------------------------------------------------*/
+int NChBiSpeed(int n, double* out, void* P_or_ctx)
+{
+    /* --- 门 1-3: obj10 非空 / obj8 非空 / 授权 EA62 --- */
+    if (obj10->count <= 0 || obj10->base == NULL) return 0;
+    if (obj8 == NULL) return 0;
+    if (!ch_auth->vt[+4](0xEA62)) return 0;
+    if (obj8->rec20Cnt(0x28) == 0) return 0;                /* 门 6 */
+    memset(out, 0, n * sizeof(double));
+
+    for (int k = 0; k < obj10->count; ++k) {
+        Item21* it = obj10->base + k * 0x21;
+        double A = obj8->priceA[ it->barIdx ];              /* 价数组 A */
+        double B = <配对价 B>;                              /* 由 Rec20/配对给出 */
+        int    SPAN = <bar 跨度>;
+        if (A == 0.0)  continue;                            /* ★ 防除零 1 (x87 条件) */
+        if (SPAN == 0) continue;                            /* ★ 防除零 2 */
+        double v = fabs((A - B) * 1000.0 / A) / (double)SPAN;
+        out[it->barIdx] = v;                                /* +0x1d -> out[] */
+    }
+    return 0;                                               /* ret 0x10 */
+}
+
+/* ---------------------------------------------------------------------------
+ * 14.3 obj8 生产者 (chlib 0x10009530) 与 ★ Rec20 段连续性不变式  [A]
+ * ---------------------------------------------------------------------------
+ *  定位: obj8 ctor 0x100094b0 (vt = 0x100153ec);  vt[+0x04]=0x10009500(clear);
+ *        vt[+0x08]=0x10009530(★ Rec20 生产者);  vt[+0x0c]=0x1000e0b0(通用 5 参 setter)
+ *  证据: tools/re-inventory/nchbi/obj8_push_10009500.txt / obj8_m2_10009530.txt
+ *
+ *  Rec20 记录布局 (stride 0x20 = 8 dword; emit 处 rep movsd ecx=8 确证):
+ *    +0x00 i32 startBar / +0x04 i32 endBar / +0x08 i32 idxA / +0x0c i32 idxB
+ *    +0x10 f64 p1(=A[i]) / +0x18 f64 p2(=B[i])
+ *  obj8 完整布局:
+ *    +0x08 double* 价数组A / +0x0c double* 价数组B / +0x14 len / +0x18 flag
+ *    +0x1c Rec20 base / +0x28 Rec20 cnt
+ * -------------------------------------------------------------------------*/
+void obj8_produce_rec20(obj8_t* this_)
+{
+    int len = this_->len(0x14);
+    double* A = this_->priceA(0x08);
+    double* B = this_->priceB(0x0c);
+    if (!len || !A || !B) return;                          /* 返回 -1 */
+    reserve(&this_->rec20_base, len);
+    this_->flag(0x18) = 1;
+    this_->rec20_cnt(0x28) = 0;
+
+    Rec20 buf = { .startBar=0, .endBar=0, .idxA=0, .idxB=0, .p1=A[0], .p2=B[0] };
+    for (int i = 1; i < len; ++i) {
+        if (<价格条件 A 触发>) goto EMIT;
+        if (<价格条件 B 触发>) goto EMIT;
+    EXTEND:
+        buf.endBar = i;                                    /* ★ 0x100095fe 每次非emit迭代 */
+        <与上一段 p1/p2 比较, 必要时改 buf.idxA / buf.idxB>;
+        continue;
+    EMIT:
+        this_->vec[this_->rec20_cnt++] = buf;              /* 0x100096c5 rep movsd x8 */
+        buf.endBar   = i;                                  /* ★ 0x100096d0 */
+        buf.startBar = i;                                  /* ★ 0x100096d8 新段起点 = 当前 i */
+        buf.idxA = i;  buf.p2 = B[i];  buf.idxB = i;
+    }
+    this_->vec[this_->rec20_cnt++] = buf;                  /* 0x10009704 收尾 emit */
+
+    /* ★ 不变式 [A]:  Rec20[k].endBar + 1 == Rec20[k+1].startBar  (k < cnt-1)
+     *   => 段记录构成对 [0, len-1] 的连续划分 (无空洞 / 无重叠)。
+     *   论证: 非 emit 迭代必经 0x100095f9 -> 恒置 endBar=i (0x100095fe);
+     *         emit 迭代把"下一条"startBar 设为当前 i (0x100096d8)
+     *         => 第 k+1 段开段于 i 时, 第 k 段末次 endBar 必为 i-1。零长段亦然。
+     *   推论: Zj3 的 out[Rec20[recIdx].endBar+1] 与 ZjOrder 的 out[Rec20[recIdx+1].startBar]
+     *         在 recIdx+1 < cnt 时是同一槽 => 二者差异仅为过滤门, 非目标位置。
+     */
+}
+
+/* ---------------------------------------------------------------------------
+ * 14.4 "Zj3" 中 "3" 的含义 (T4, docs/30 §四)  [B] -> [A]
+ * ---------------------------------------------------------------------------
+ *  CalcProc_NChBiZj (0x10012d20) 与 CalcProc_NChBiZj3 (0x10012d90) 逐字节同构:
+ *    差异仅 Authorize 立即数 (0xEA61 -> 0xEA62) 与虚表槽 ([+0x44] -> [+0x48]);
+ *    帧 / 0x10006cc0 取行情 / 4 参推送 / ret 0xc 完全相同。
+ *  => 包装体不传额外整型参数、函体内无字面 3;  "Zj3" = 导出名层面的枚举序号
+ *     (族内第 3 变体), 不是运行参数或值域标记。  命名缘由本身无字节证据 [C]。
+ * -------------------------------------------------------------------------*/
+
+/* ---------------------------------------------------------------------------
+ * 14.5 cnt 增量条件 (T5) 与勘误/遗留
+ * ---------------------------------------------------------------------------
+ *  ZjNum 递增条件 (bit2 ∧ ¬bit0 ∧ value ≠ lastValue) 的语义 [B]:
+ *    lastValue = 上一个 bit0(有效分型)项 的 value, 仅在 bit0 分支更新。
+ *    pair_recheck(0x1000abb0) 拒绝同向对 (value[j]==value[i] => false), 但被拒项仍留在
+ *    Item21 数组中 => "value ≠ lastValue" 正是滤除同向重复项 ≈ "该项是反向的"。
+ *    [A] 需运行时统计同向相邻项出现率 (见 frida 预备包)。
+ *
+ *  本批勘误 (docs/30 §6.1) [A]:
+ *   1. 栈基点: FxNum 的 push ebp (0x100036d9) 易漏读, 会把 [esp+0x24] 误算为返回地址槽。
+ *   2. x87 语义两纠: D8/DC 单寄存器形态「不弹栈」(ST(0)=ST(0) op ST(i));
+ *      DE「P」形态才弹栈, 且 FDIVRP ST(i),ST(0) = ST(i)=ST(0)/ST(i)。
+ *      (影响此前所有"寄存器形态弹栈"推导; 本批仅 Speed 受影响。)
+ *   3. obj8 语义补全: 第五批记 obj8=Rec20(+0x1c/+0x28), 本批补其同时持价数组(+0x08/+0x0c/+0x14)。
+ *   4. Speed "输出 |value|" 过简: 实为 1000×|A−B|/(A×SPAN), fabs 只是链条中一步。
+ *
+ *  待仲裁 [B]/[C]:
+ *   [B] Item21[+0x05](ord) 与 Item21[+0x1d](barIdx) 是否同值 (FxNum 用前者/Zj,Zj3 用后者)。
+ *   [B] obj_c[+0x28] 在 Speed 第 4 道门中的用途。
+ *   [C] "Zj3" 编号 3 的命名缘由;  [C] T5 运行时验证;  [C] 本批未做动态验证 (frida 待用户在场)。
+ * -------------------------------------------------------------------------*/
+

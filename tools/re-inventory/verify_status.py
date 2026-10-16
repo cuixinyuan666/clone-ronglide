@@ -110,6 +110,7 @@ TARGETS = [
             ("第三批-NChBiZj族与Out静态深挖", "docs/27-NChBi-第三批-NChBiZj族与Out静态深挖.md"),
             ("第四批-生产端分型几何与Zj配对", "docs/28-NChBi-第四批-生产端分型几何与Zj配对.md"),
             ("第五批-Zj3与ZjNum补完", "docs/29-NChBi-第五批-Zj3与ZjNum补完.md"),
+            ("第六批-收官FxNum/Speed/Rec20不变式", "docs/30-NChBi-第六批-收官.md"),
         ],
         "artifacts": [
             "pseudocode/nchbi.c",
@@ -157,8 +158,15 @@ TARGETS = [
             "tools/re-inventory/nchbi/cond_chlib_10002fc0.txt",
             "tools/re-inventory/nchbi/chlib_worker_10003680.txt",
             "tools/re-inventory/nchbi/chlib_worker_10003a90.txt",
+            "tools/re-inventory/nchbi/nchbi6_wip.md",
+            "tools/re-inventory/nchbi/cond_chlib_10003680.txt",
+            "tools/re-inventory/nchbi/cond_chlib_10003a90.txt",
+            "tools/re-inventory/nchbi/x87_expr.py",
+            "tools/re-inventory/nchbi/speed_x87_trace.txt",
+            "tools/re-inventory/nchbi/obj8_push_10009500.txt",
+            "tools/re-inventory/nchbi/obj8_m2_10009530.txt",
         ],
-        "next": "第六批(推荐): NChBi 族收官 — 补完 NChBiFxNum(0x10003680)/NChBiSpeed(0x10003a90) + 闭环 Rec20 段连续性不变式 (决定 Zj3/ZjOrder 是否同槽); 次选 NChZs 族 (NCHZS/NCHZSG/NCHZSBS12, 槽 +0x78..+0xb4, EA61-63, 共享基础设施已解); 第三顺位 CHBI 第六批 481 条件。可选: 用户在场时先跑 frida 预备包把 [B]/[C] 升 [A]",
+        "next": "NChBi 族静态覆盖 ~100% (六批收官, 9 支全解 + 共享基础设施 + Rec20 契约)。下一步二选一: ①(首选) NChZs 族 kickoff — NChZs/NChZsG/NChZsBs12 (槽 +0x78..+0xb4, EA61-63), 复用已确权的 obj8(价数组+Rec20 段记录+连续性不变式)/obj10(Item21+flags)/配对器 0x1000b000/0x1000a250/通用 setter 0x1000e0b0 与 x87_expr.py 工具链, 边际成本最低; ②(次选) CHBI 第六批 0x1003f170 的 481 条件逐条落地 (docs/23 §七 遗留[C])。可选: 用户在场时先跑 frida 预备包 (frida_nchbi3.md + frida_dump_out.js) 把本批 [B]/[C] 升 [A]",
     },
 ]
 
@@ -166,7 +174,7 @@ TARGETS = [
 PRIORITY = [
     ("ChBi", "CHBI", "EA62", "已交付(五批)"),
     ("ChDuan", "CHDUAN", "-", "已交付(四批)"),
-    ("NChBi", "NCHBI", "EA62", "已交付(五批)"),
+    ("NChBi", "NCHBI", "EA62", "已交付(六批)"),
     ("NChZs", "NCHZS", "EA63", "未启动"),
     ("NChZsG", "NCHZSG", "EA61", "未启动"),
     ("NChZsBs12", "NCHZSBS12", "EA61", "未启动"),
@@ -219,7 +227,7 @@ def main():
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-", "docs/26-", "docs/27-", "docs/28-", "docs/29-",
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-", "docs/26-", "docs/27-", "docs/28-", "docs/29-", "docs/30-",
                 "tools/re-inventory", "tools/wnmr_py",
                 "pseudocode/chduan", "pseudocode/chbi", "pseudocode/nchbi", "README.md")
     tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]

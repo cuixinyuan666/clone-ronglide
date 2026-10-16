@@ -1,0 +1,19 @@
+10009500  push     ebx
+10009501  xor      ebx, ebx
+10009503  push     esi
+10009504  mov      esi, ecx
+10009506  push     edi
+10009507  push     ebx
+10009508  lea      edi, [esi + 0x1c]
+1000950b  mov      dword ptr [esi + 0x10], ebx
+1000950e  mov      dword ptr [esi + 0xc], ebx
+10009511  mov      dword ptr [esi + 8], ebx
+10009514  mov      dword ptr [esi + 4], ebx
+10009517  mov      dword ptr [esi + 0x14], ebx
+1000951a  mov      byte ptr [esi + 0x18], bl
+1000951d  call     0x10009430
+10009522  pop      edi
+10009523  mov      dword ptr [esi + 0x28], ebx
+10009526  pop      esi
+10009527  pop      ebx
+10009528  ret      

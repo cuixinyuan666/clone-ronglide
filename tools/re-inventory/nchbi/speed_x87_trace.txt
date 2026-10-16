@@ -1,0 +1,10 @@
+10003c33  fld      A
+10003c45  fld      B
+10003c48  fld      st(1)
+10003c4a  fucomp   st(4)
+10003c65  fsubr    st(1)
+10003c6c  fmul     st(2)
+10003c6e  fdivrp   st(1)
+10003c70  fabs
+10003c72  fidiv    SPAN
+10003c76  fstp     OUT
