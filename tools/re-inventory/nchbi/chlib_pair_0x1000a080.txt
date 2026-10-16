@@ -1,0 +1,10 @@
+1000a080  test     eax, eax
+1000a082  jl       0x1000a094
+1000a084  cmp      eax, dword ptr [ecx + 0x24]
+1000a087  jae      0x1000a094
+1000a089  mov      ecx, dword ptr [ecx + 0x20]
+1000a08c  shl      eax, 5
+1000a08f  fld      qword ptr [eax + ecx + 0x18]
+1000a093  ret      
+1000a094  fldz     
+1000a096  ret      

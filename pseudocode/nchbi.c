@@ -11,7 +11,7 @@
  *                 chlib_worker_10002900.txt / chlib_prep_10009930.txt /
  *                 family_slots.txt / family_slots_full.txt /
  *                 map_family_slots.py / nchbi2_wip.md
- * 批次: 第一批 (docs/25) + 第二批 (docs/26) + 第三批 (docs/27), 2026-10-17
+ * 批次: 第一批 (docs/25) + 第二批 (docs/26) + 第三批 (docs/27) + 第四批 (docs/28), 2026-10-17
  * 置信度: [A]=实测已证(字节级) [B]=高(多路交叉) [C]=待仲裁/推断
  * ----------------------------------------------------------------------------
  * 整体链路:
@@ -520,8 +520,192 @@ int __thiscall ch_api_vt38_sim(ch_api *self, int count, double *out, void *ctx6,
  *
  * 授权码汇总: NChBi / ZjNum = 0xEA62 ; NChBiSta / Zj / ZjOrder = 0xEA61
  *
- * 待仲裁(第三批遗留):
- *   [B] 0x1000a250 配对查找规则 / 0x1000a060,0x1000a080 取值 / 0x1000abb0 复核判据
+ * 待仲裁(第三批遗留 -> 第四批结算):
+ *   [A] 0x1000a250 配对查找规则      -> 见 §12.2 (前向扫最近 flags&1)
+ *   [A] 0x1000a060,0x1000a080 取值   -> 见 §12.3 (bar HIGH/LOW)
+ *   [A] 0x1000abb0 复核判据          -> 见 §12.5 (value 相反 + 几何分离)
  *   [C] ZjNum 的 cnt 是「间隔笔数」还是「间隔 bar 数」(需 frida 对拍)
  *   [C] ZjOrder 的 a3 / a4 在 TAFLib 侧实参来源
+ */
+
+/* ============================================================================
+ * 12. 第四批: 生产端分型几何 + Zj 配对链 (docs/28)
+ * ==========================================================================*/
+
+/* ---------------------------------------------------------------------------
+ * 12.1 obj_c fill 0x1000e1c0 —— 标准缠论 3 根 K 线分型 [A]
+ * ---------------------------------------------------------------------------
+ * bar 布局 (obj_c[+0x20], stride 0x20, n = obj_c[+0x24]):
+ *   +0x00 i32 idxA           索引 -> obj_c[+0x08][] (double 数组, len obj_c[+0x14])
+ *   +0x04 i32 idxB           索引 -> obj_c[+0x0c][] (double 数组, len obj_c[+0x14])
+ *   +0x08 i32 refHiIdx       TOP 时写入 raw[+0x09]
+ *   +0x0c i32 refLoIdx       BOTTOM 时写入 raw[+0x09]
+ *   +0x10 f64 HIGH
+ *   +0x18 f64 LOW
+ *
+ * raw 记录 (obj_c[+0x28], stride 0x1D=29B, n = obj_c[+0x34]):
+ *   +0x00 i32 value  ∈ {+1 顶, -1 底}          (初值缓冲 0, 未命中不 emit)
+ *   +0x04 u8  flags  bit0 = 单调确认通过; bit1 = 尾根合成分型
+ *   +0x05 i32 barIdx = i (分型中心 bar 序号; 初值 -1)
+ *   +0x09 i32 refIdx = bar[i].+0x08 (顶) 或 bar[i].+0x0c (底)
+ *   +0x0d f64 neuHi  TOP->cur.HIGH   / BOTTOM->max(prev.HIGH,next.HIGH)
+ *   +0x15 f64 neuLo  TOP->min(prev.LOW,next.LOW) / BOTTOM->cur.LOW
+ *   (Item21 = raw 29B + 尾部 i32 barIdx -> 33B, 见 §11)
+ */
+static int objc_fill_fractal(obj_c *o)          /* 0x1000e1c0 */
+{
+    if (!o->n_bars || !o->bars) return -1;      /* obj_c[+0x24]/[+0x20] */
+    reserve_raw(o->raw, o->n_bars);             /* 0x10006b60 */
+    o->raw_count = 0;                           /* obj_c[+0x34] */
+
+    for (int i = 0; i < o->n_bars; i++) {
+        const bar *b = &((bar*)o->bars)[i];      /* stride 0x20 */
+
+        /* 主路径: 需左右邻居 (1 <= i <= n-2) */
+        if (i >= 1 && i + 1 < o->n_bars) {
+            const bar *p = b - 1, *q = b + 1;
+            int val = 0;
+            /* 顶分型: 4 条 "邻居 < 本根" */
+            if (p->HIGH < b->HIGH && p->LOW < b->LOW &&
+                q->HIGH < b->HIGH && q->LOW < b->LOW) {
+                val = +1;
+                emit(o, b->refHiIdx, +1,
+                     b->HIGH, fmin(p->LOW, q->LOW),
+                     confirm_top(o, i, i+1));    /* 0x1000e450 -> flags bit0 */
+            /* 底分型: 4 条 "邻居 > 本根" */
+            } else if (p->HIGH > b->HIGH && p->LOW > b->LOW &&
+                       q->HIGH > b->HIGH && q->LOW > b->LOW) {
+                val = -1;
+                emit(o, b->refLoIdx, -1,
+                     fmax(p->HIGH, q->HIGH), b->LOW,
+                     confirm_bot(o, i, i+1));    /* 0x1000e500 -> flags bit0 */
+            }
+        }
+
+        /* 尾路径: 仅当 obj_c[+0x1c]!=0 且为末根, 只查 prev vs cur 2 条 */
+        if (o->flag1c && i >= 1 && i + 1 == o->n_bars && o->raw_count > 0) {
+            const bar *p = b - 1;
+            if (p->HIGH < b->HIGH && p->LOW < b->LOW)
+                emit_tail(o, b->refHiIdx, +1, b->HIGH, p->LOW);   /* flags |= 2 */
+            else if (p->HIGH > b->HIGH && p->LOW > b->LOW)
+                emit_tail(o, b->refLoIdx, -1, p->HIGH, b->LOW);   /* flags |= 2 */
+        }
+    }
+    return 0;
+}
+
+/* ---------------------------------------------------------------------------
+ * 12.2 确认器 (flags bit0) 0x1000e450(顶) / 0x1000e500(底) [A]
+ * ---------------------------------------------------------------------------
+ * 语义: 新分型须相对「上一条已发射记录」通过同向单调确认。
+ *   顶(0x1000e450): B[idx2] < C[idx1]  且  C[idx2] < raw_last[+0x15]
+ *   底(0x1000e500): C[idx2] > B[idx1]  且  B[idx2] > raw_last[+0x0d]
+ * 其中 B = obj_c[+0x08][], C = obj_c[+0x0c][];
+ *   idx1 = bar[i].+0x04, idx2 = bar[i+1].+0x00;
+ *   raw_last[+0x15] = 上一顶的 min(prev.LOW,next.LOW)  ("确认低", 须逐步降低)
+ *   raw_last[+0x0d] = 上一底的 max(prev.HIGH,next.HIGH) ("确认高", 须逐步升高)
+ * 通过 -> 返回 1 (调用处写 raw[+0x04] |= 1), 否则 0 (仍 emit, 但标为未确认)
+ */
+
+/* ---------------------------------------------------------------------------
+ * 12.3 obj10 成员补映射 [A]
+ * ---------------------------------------------------------------------------
+ *   +0x1c i32 type   类型码 0=P51 1=P12 2=P11 3=P22 4=P21 5=P32 6=P31
+ *   +0x30 Item21*    Item21 数组基址 (stride 0x21)
+ *   +0x3c i32 n      Item21 项数
+ *   +0x44 i32 cur    "当前活动项" 游标
+ *   +0x48 i32 = -1
+ *   +0x4c i32 = 0
+ *   +0x50       子对象/向量 (传入 0x1000ba30)
+ *   +0x20 bar*   bar 数组 (stride 0x20)     +0x24 i32 n_bars
+ *   +0x08/+0x0c double* 两条索引数组;  +0x14 长度
+ */
+
+/* ---------------------------------------------------------------------------
+ * 12.4 配对查找族 [A]
+ * ---------------------------------------------------------------------------
+ * 0x1000a250(o, i) : 向前扫 i-1.. 返回最近 flags&1 的 j  (无距离/值约束), 无则 -1
+ * 0x1000a290(o, i) : 向前扫, 返回最近 value==1 且 flags&1 的 j   ("最近有效顶")
+ * 0x1000a2d0(o, i) : 向前扫, 返回最近 value==-1 且 flags&1 的 j  ("最近有效底")
+ * 0x1000a060(o, i) : bar[i].HIGH  (= obj[+0x20][i*0x20 + 0x10]), 越界 0.0
+ * 0x1000a080(o, i) : bar[i].LOW   (= obj[+0x20][i*0x20 + 0x18]), 越界 0.0
+ * 0x1000a190(o, i) : 激活项 -> flags = (flags & ~2) | 1;  cur=+0x44=i; +0x48=-1; +0x4c=0;
+ *                    若 flags&0x10 则级联清理 i+1
+ * 0x1000a210(o, i) : 失效项 -> 仅当 flags&1: flags = (flags & ~5) | 2;
+ *                    if (i >= cur) cur = 0x1000a250(o, i)
+ */
+static int pair_find_any(obj10 *o, int i)       /* 0x1000a250 */
+{
+    if (i < 0 || i >= o->n) return -1;
+    for (int j = i - 1; j >= 0; j--)
+        if (o->it[j].flags & 0x01) return j;
+    return -1;
+}
+
+/* ---------------------------------------------------------------------------
+ * 12.5 复核判据 0x1000abb0(o, j, i) [A 骨架] —— 顶底合法对校验
+ * ---------------------------------------------------------------------------
+ *   1. j < 0                      -> true
+ *   2. i<0 || i>=n || j>=i        -> false
+ *   3. value[j] == value[i]       -> false   (必须一顶一底)
+ *   4. itTop := value==1 的项; itBot := 另一项
+ *   5. 按 o->type 分支:
+ *        {0,1,2}(P51/12/11): bot.+0x0d < top.+0x0d 且 bot.+0x15 < top.+0x15
+ *        {5,6}  (P32/31)   : 用 refIdx 邻域 min-LOW / max-HIGH 极值比较
+ *        {3,4}  (P22/21)   : 无附加
+ *   6. 公共 tail: bar[bot.refIdx].HIGH < bar[top.refIdx].HIGH
+ *              且 bar[bot.refIdx].LOW  < bar[top.refIdx].LOW   -> true   (几何分离)
+ *   被 0x1000b000 第 6 步调用; 通过 -> Item21[j].flags |= 4 (Zj 配对确认)
+ */
+static int pair_recheck(obj10 *o, int j, int i)  /* 0x1000abb0 */
+{
+    if (j < 0) return 1;
+    if (i < 0 || i >= o->n || j >= i) return 0;
+    if (o->it[j].value == o->it[i].value) return 0;
+
+    item21 *top = (o->it[j].value == 1) ? &o->it[j] : &o->it[i];
+    item21 *bot = (top == &o->it[j])     ? &o->it[i] : &o->it[j];
+
+    switch (o->type) {
+    case 0: case 1: case 2:                       /* P51 / P12 / P11 */
+        if (!(bot->f0d < top->f0d && bot->f15 < top->f15)) return 0;
+        break;
+    case 5: case 6:                               /* P32 / P31 */
+        /* 邻域 min-LOW / max-HIGH 极值比较 (结构见 docs/28 §2.6 类 B) */
+        break;
+    default: break;                               /* P22 / P21 */
+    }
+    /* 公共 tail: 几何分离 */
+    if (!(bar_HIGH(o, bot->refIdx) < bar_HIGH(o, top->refIdx))) return 0;
+    if (!(bar_LOW (o, bot->refIdx) < bar_LOW (o, top->refIdx))) return 0;
+    return 1;
+}
+
+/* ---------------------------------------------------------------------------
+ * 12.6 合并/延伸 driver 0x1000b100(o, count) -> {0,1,2} [B] (用途标注)
+ * ---------------------------------------------------------------------------
+ *   count < 2 -> 0;  j = 0x1000a250(o, count);  j<0 -> 0
+ *   取 itCur = Item21[count], itJ = Item21[j]
+ *   若 itCur.value != itJ.value:
+ *        value==1 -> 0x1000a290 找最近有效顶, 比 HIGH; 成功 return 1
+ *        else      -> 0x1000a2d0 找最近有效底, 比 LOW;  成功 return 2
+ *   若相等(同向): 走"延伸/吞并" (0x1000b20b 起)
+ *        用 0x1000a060/a080 比 refIdx 处 HIGH/LOW; 0x1000abb0 复核; 0x1000ae50 复验
+ *        命中 -> 0x1000b000 置 bit2; 0x1000a190/a210 增删项; 迭代上限 0x14(20)
+ *   => NChBi 族「笔序列构造主驱动」, 非本批 out 消费者
+ */
+
+/* ---------------------------------------------------------------------------
+ * Item21.flags 位台账 (第四批汇总) [A]
+ *   bit0 0x01 有效/已确认项 (配对扫描只看它: 0x1000a250/a290/a2d0)
+ *   bit1 0x02 已失效/取消   (0x1000a210 置; 0x1000a190 清)
+ *   bit2 0x04 Zj 配对确认   (0x1000b000; NChBiZj 的散射门)
+ *   bit3 0x08 ×2 标记       (docs/27)
+ *   bit4 0x10 级联清理标志  (0x1000a190)
+ *   bit5 0x20 后项联动标志  (0x1000a190)
+ *
+ * 第四批遗留:
+ *   [B] bar 数组填充者 / bar[+0x00..+0x0c] 四个 i32 语义
+ *   [B] 0x1000abb0 类 B(P32/31) 与类 A 的分支不等式方向
+ *   [C] ZjNum cnt 语义 / ZjOrder a3,a4 来源 / 8 个无调用者槽 / 本批未做动态验证
  */

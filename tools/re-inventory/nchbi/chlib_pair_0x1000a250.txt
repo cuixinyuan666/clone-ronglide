@@ -1,0 +1,25 @@
+1000a250  test     eax, eax
+1000a252  jl       0x1000a287
+1000a254  cmp      eax, dword ptr [ecx + 0x3c]
+1000a257  jae      0x1000a287
+1000a259  xor      edx, edx
+1000a25b  add      eax, -1
+1000a25e  js       0x1000a287
+1000a260  mov      ecx, dword ptr [ecx + 0x30]
+1000a263  push     esi
+1000a264  mov      esi, eax
+1000a266  shl      esi, 5
+1000a269  add      esi, eax
+1000a26b  lea      ecx, [esi + ecx + 4]
+1000a26f  pop      esi
+1000a270  test     byte ptr [ecx], 1
+1000a273  je       0x1000a27d
+1000a275  add      edx, 1
+1000a278  cmp      edx, 1
+1000a27b  jge      0x1000a28a
+1000a27d  sub      eax, 1
+1000a280  sub      ecx, 0x21
+1000a283  test     eax, eax
+1000a285  jge      0x1000a270
+1000a287  or       eax, 0xffffffff
+1000a28a  ret      

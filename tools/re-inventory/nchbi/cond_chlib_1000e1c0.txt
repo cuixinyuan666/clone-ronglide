@@ -1,0 +1,29 @@
+### [A] x87 条件表   src=tools/re-inventory/nchbi/chlib_objc_fill_1000e1c0.txt   insns=219   blocks=42   conflicts=3   conds=14
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+1000e24f   fcomp    [ebp-8]            mem:[ebp+0x18]         ah,0x05 jp    0x1000e2c3   >|=|U      <         
+1000e25c   fcomp    [ebp]              mem:[ebp+0x20]         ah,0x05 jp    0x1000e2c3   >|=|U      <         
+1000e269   fcomp    [ebp+0x38]         mem:[ebp+0x18]         ah,0x05 jp    0x1000e2c3   >|=|U      <         
+1000e276   fcomp    [ebp+0x40]         mem:[ebp+0x20]         ah,0x05 jp    0x1000e2c3   >|=|U      <         
+1000e2b2   fcom     [ebp+0x40]         ST1=[ebp]              ah,0x41 jne   0x1000e2bf   <|=|U      >         
+1000e2c6   fcomp    [ebp-8]            mem:[ebp+0x18]         ah,0x41 jne   0x1000e36b   <|=|U      >         
+1000e2d7   fcomp    [ebp]              mem:[ebp+0x20]         ah,0x41 jne   0x1000e36b   <|=|U      >         
+1000e2e8   fcomp    [ebp+0x38]         mem:[ebp+0x18]         ah,0x41 jne   0x1000e36b   <|=|U      >         
+1000e2f5   fcomp    [ebp+0x40]         mem:[ebp+0x20]         ah,0x41 jne   0x1000e36b   <|=|U      >         
+1000e326   fcom     [ebp+0x38]         ST1=[ebp-8]            ah,0x05 jp    0x1000e333   >|=|U      <         
+1000e396   fcomp    [ebp-8]            mem:[ebp+0x18]         ah,0x05 jp    0x1000e3c8   >|=|U      <         
+1000e3a3   fcomp    [ebp]              mem:[ebp+0x20]         ah,0x05 jp    0x1000e3c8   >|=|U      <         
+1000e3cb   fcomp    [ebp-8]            mem:[ebp+0x18]         ah,0x41 jne   0x1000e428   <|=|U      >         
+1000e3d8   fcomp    [ebp]              mem:[ebp+0x20]         ah,0x41 jne   0x1000e428   <|=|U      >         
+
+### [B] 非零立即数写入 (标记字段写点)
+1000e1ed   mov [ebx+0x18], 1
+1000e28f   mov [esp+0x20], 1
+1000e2a0   mov [esp+0x24], 1
+1000e31b   mov [esp+0x24], 1
+1000e3b7   mov [esp+0x20], 1
+1000e3ec   mov [esp+0x20], 0xffffffff
+
+### [C] 调用目标统计
+  0x10006b60               x1
+  0x1000e450               x1
+  0x1000e500               x1
