@@ -1,0 +1,130 @@
+10002770  sub      esp, 0xc
+10002773  push     ebx
+10002774  push     ebp
+10002775  mov      ebp, dword ptr [esp + 0x18]
+10002779  push     esi
+1000277a  push     edi
+1000277b  mov      edi, dword ptr [esp + 0x24]
+1000277f  lea      eax, [ebp*8]
+10002786  push     eax
+10002787  push     0
+10002789  push     edi
+1000278a  mov      esi, ecx
+1000278c  call     0x1001494c
+10002791  mov      eax, dword ptr [esi + 8]
+10002794  mov      ecx, dword ptr [eax + 0x1c]
+10002797  mov      edx, dword ptr [eax + 0x28]
+1000279a  mov      eax, dword ptr [esi + 0x10]
+1000279d  mov      ebx, dword ptr [eax + 0x30]
+100027a0  mov      eax, dword ptr [eax + 0x3c]
+100027a3  add      esp, 0xc
+100027a6  test     ecx, ecx
+100027a8  mov      dword ptr [esp + 0x14], ecx
+100027ac  mov      dword ptr [esp + 0x10], edx
+100027b0  mov      dword ptr [esp + 0x24], eax
+100027b4  je       0x100028e6
+100027ba  test     ebx, ebx
+100027bc  je       0x100028e6
+100027c2  cmp      dword ptr [esi + 4], 0
+100027c6  je       0x100028e6
+100027cc  mov      ecx, dword ptr [esi + 4]
+100027cf  mov      edx, dword ptr [ecx]
+100027d1  mov      eax, dword ptr [edx + 4]
+100027d4  push     0xea61
+100027d9  call     eax
+100027db  test     al, al
+100027dd  je       0x100028e6
+100027e3  xor      ecx, ecx
+100027e5  xor      eax, eax
+100027e7  cmp      dword ptr [esp + 0x24], ecx
+100027eb  mov      dword ptr [esp + 0x20], ecx
+100027ef  jbe      0x100028b3
+100027f5  lea      esi, [ebx + 9]
+100027f8  jmp      0x10002800
+100027fa  lea      ebx, [ebx]
+10002800  test     byte ptr [esi - 5], 1
+10002804  je       0x1000289b
+1000280a  mov      edx, dword ptr [esi]
+1000280c  test     edx, edx
+1000280e  jl       0x100028b3
+10002814  cmp      edx, dword ptr [esp + 0x10]
+10002818  jae      0x100028b3
+1000281e  test     ecx, ecx
+10002820  jne      0x10002827
+10002822  mov      ecx, dword ptr [esi - 9]
+10002825  neg      ecx
+10002827  shl      edx, 5
+1000282a  add      edx, dword ptr [esp + 0x14]
+1000282e  cmp      eax, dword ptr [edx]
+10002830  jge      0x1000284e
+10002832  cmp      eax, ebp
+10002834  jae      0x1000284e
+10002836  lea      ebx, [ecx + ecx*4]
+10002839  add      ebx, ebx
+1000283b  mov      dword ptr [esp + 0x18], ebx
+1000283f  fild     dword ptr [esp + 0x18]
+10002843  add      eax, 1
+10002846  fstp     qword ptr [edi + eax*8 - 8]
+1000284a  cmp      eax, dword ptr [edx]
+1000284c  jl       0x10002832
+1000284e  cmp      eax, dword ptr [edx + 4]
+10002851  jg       0x1000287b
+10002853  mov      cl, 8
+10002855  cmp      eax, ebp
+10002857  jae      0x1000287b
+10002859  test     byte ptr [esi - 5], cl
+1000285c  je       0x1000286d
+1000285e  mov      ebx, dword ptr [esi - 9]
+10002861  add      ebx, ebx
+10002863  mov      dword ptr [esp + 0x18], ebx
+10002867  fild     dword ptr [esp + 0x18]
+1000286b  jmp      0x10002870
+1000286d  fild     dword ptr [esi - 9]
+10002870  fstp     qword ptr [edi + eax*8]
+10002873  add      eax, 1
+10002876  cmp      eax, dword ptr [edx + 4]
+10002879  jle      0x10002855
+1000287b  test     eax, eax
+1000287d  jle      0x10002898
+1000287f  cmp      eax, ebp
+10002881  jae      0x10002898
+10002883  mov      ecx, dword ptr [esi - 9]
+10002886  lea      ecx, [ecx + ecx*2]
+10002889  mov      dword ptr [esp + 0x18], ecx
+1000288d  fild     dword ptr [esp + 0x18]
+10002891  add      eax, 1
+10002894  fstp     qword ptr [edi + eax*8 - 8]
+10002898  mov      ecx, dword ptr [esi - 9]
+1000289b  mov      edx, dword ptr [esp + 0x20]
+1000289f  add      edx, 1
+100028a2  add      esi, 0x21
+100028a5  cmp      edx, dword ptr [esp + 0x24]
+100028a9  mov      dword ptr [esp + 0x20], edx
+100028ad  jb       0x10002800
+100028b3  cmp      eax, ebp
+100028b5  jae      0x100028da
+100028b7  lea      edx, [ecx + ecx*4]
+100028ba  add      edx, edx
+100028bc  mov      dword ptr [esp + 0x20], edx
+100028c0  fild     dword ptr [esp + 0x20]
+100028c4  sub      ebp, eax
+100028c6  lea      esi, [edi + eax*8]
+100028c9  lea      ecx, [ebp*8 - 5]
+100028d0  shr      ecx, 2
+100028d3  fstp     qword ptr [esi]
+100028d5  lea      edi, [esi + 8]
+100028d8  rep movsd dword ptr es:[edi], dword ptr [esi]
+100028da  pop      edi
+100028db  pop      esi
+100028dc  pop      ebp
+100028dd  xor      eax, eax
+100028df  pop      ebx
+100028e0  add      esp, 0xc
+100028e3  ret      0x10
+100028e6  pop      edi
+100028e7  pop      esi
+100028e8  pop      ebp
+100028e9  or       eax, 0xffffffff
+100028ec  pop      ebx
+100028ed  add      esp, 0xc
+100028f0  ret      0x10

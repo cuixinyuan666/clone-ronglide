@@ -1,0 +1,71 @@
+10009930  lea      edx, [ecx - 0xb]
+10009933  cmp      edx, 0x28
+10009936  mov      dword ptr [eax + 0x1c], ecx
+10009939  ja       0x10009981
+1000993b  movzx    edx, byte ptr [edx + 0x100099a8]
+10009942  jmp      dword ptr [edx*4 + 0x10009988]
+10009949  mov      dword ptr [eax + 0x1c], 2
+10009950  ret      
+10009951  mov      dword ptr [eax + 0x1c], 1
+10009958  ret      
+10009959  mov      dword ptr [eax + 0x1c], 4
+10009960  ret      
+10009961  mov      dword ptr [eax + 0x1c], 3
+10009968  ret      
+10009969  mov      dword ptr [eax + 0x1c], 6
+10009970  ret      
+10009971  mov      dword ptr [eax + 0x1c], 5
+10009978  ret      
+10009979  mov      dword ptr [eax + 0x1c], 0
+10009980  ret      
+10009981  mov      dword ptr [eax + 0x1c], ecx
+10009984  ret      
+10009985  lea      ecx, [ecx]
+10009988  dec      ecx
+10009989  cdq      
+1000998a  add      byte ptr [eax], dl
+1000998c  push     ecx
+1000998d  cdq      
+1000998e  add      byte ptr [eax], dl
+10009990  pop      ecx
+10009991  cdq      
+10009992  add      byte ptr [eax], dl
+10009994  popal    
+10009995  cdq      
+10009996  add      byte ptr [eax], dl
+10009998  imul     ebx, dword ptr [ecx - 0x668ef000], 0x99791000
+100099a2  add      byte ptr [eax], dl
+100099a4  sbb      dword ptr [ecx + 0x1001000], 0x7070707
+100099ae  pop      es
+100099af  pop      es
+100099b0  pop      es
+100099b1  pop      es
+100099b2  add      al, byte ptr [ebx]
+100099b4  pop      es
+100099b5  pop      es
+100099b6  pop      es
+100099b7  pop      es
+100099b8  pop      es
+100099b9  pop      es
+100099ba  pop      es
+100099bb  pop      es
+100099bc  add      al, 5
+100099be  pop      es
+100099bf  pop      es
+100099c0  pop      es
+100099c1  pop      es
+100099c2  pop      es
+100099c3  pop      es
+100099c4  pop      es
+100099c5  pop      es
+100099c6  pop      es
+100099c7  pop      es
+100099c8  pop      es
+100099c9  pop      es
+100099ca  pop      es
+100099cb  pop      es
+100099cc  pop      es
+100099cd  pop      es
+100099ce  pop      es
+100099cf  pop      es
+100099d0  push     es

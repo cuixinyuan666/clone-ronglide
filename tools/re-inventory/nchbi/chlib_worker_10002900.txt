@@ -1,0 +1,417 @@
+10002900  push     ebp
+10002901  mov      ebp, esp
+10002903  and      esp, 0xfffffff8
+10002906  sub      esp, 0x2c
+10002909  mov      eax, dword ptr [ebp + 8]
+1000290c  push     ebx
+1000290d  push     esi
+1000290e  push     edi
+1000290f  mov      edi, dword ptr [ebp + 0xc]
+10002912  mov      esi, ecx
+10002914  lea      ecx, [eax*8]
+1000291b  push     ecx
+1000291c  push     0
+1000291e  push     edi
+1000291f  call     0x1001494c
+10002924  mov      eax, dword ptr [ebp + 0x10]
+10002927  mov      edx, dword ptr [eax]
+10002929  mov      eax, dword ptr [eax + 8]
+1000292c  mov      dword ptr [esp + 0x20], eax
+10002930  mov      eax, dword ptr [esi + 8]
+10002933  mov      ecx, dword ptr [eax + 0x1c]
+10002936  mov      dword ptr [esp + 0x30], edx
+1000293a  mov      edx, dword ptr [eax + 0x28]
+1000293d  mov      eax, dword ptr [esi + 0x10]
+10002940  mov      ebx, dword ptr [eax + 0x3c]
+10002943  mov      dword ptr [esp + 0x34], edx
+10002947  mov      edx, dword ptr [eax + 0x30]
+1000294a  add      esp, 0xc
+1000294d  test     ecx, ecx
+1000294f  mov      dword ptr [esp + 0x2c], ecx
+10002953  mov      dword ptr [esp + 0x1c], edx
+10002957  mov      dword ptr [esp + 0x34], ebx
+1000295b  je       0x10002d67
+10002961  test     edx, edx
+10002963  je       0x10002d67
+10002969  cmp      dword ptr [esi + 4], 0
+1000296d  je       0x10002d67
+10002973  mov      esi, dword ptr [esi + 4]
+10002976  mov      eax, dword ptr [esi]
+10002978  mov      edx, dword ptr [eax + 4]
+1000297b  push     0xea61
+10002980  mov      ecx, esi
+10002982  call     edx
+10002984  test     al, al
+10002986  je       0x10002d67
+1000298c  fldz     
+1000298e  xor      esi, esi
+10002990  xor      ecx, ecx
+10002992  fld      st(0)
+10002994  cmp      ebx, esi
+10002996  mov      dword ptr [esp + 0x20], esi
+1000299a  jbe      0x10002b48
+100029a0  mov      ebx, dword ptr [esp + 0x1c]
+100029a4  add      ebx, 9
+100029a7  mov      dword ptr [esp + 0x1c], ebx
+100029ab  test     byte ptr [ebx - 5], 1
+100029af  je       0x10002b2e
+100029b5  mov      eax, dword ptr [ebx]
+100029b7  cmp      eax, 1
+100029ba  jl       0x10002b48
+100029c0  cmp      eax, dword ptr [esp + 0x28]
+100029c4  jae      0x10002b48
+100029ca  test     esi, esi
+100029cc  jne      0x100029d3
+100029ce  mov      esi, dword ptr [ebx - 9]
+100029d1  neg      esi
+100029d3  mov      edx, dword ptr [esp + 0x2c]
+100029d7  shl      eax, 5
+100029da  lea      edi, [eax + edx]
+100029dd  mov      edx, dword ptr [edi]
+100029df  cmp      ecx, edx
+100029e1  mov      dword ptr [esp + 0x10], edi
+100029e5  jle      0x100029e9
+100029e7  mov      ecx, edx
+100029e9  xor      al, al
+100029eb  cmp      ecx, edx
+100029ed  jge      0x10002a58
+100029ef  mov      ebx, dword ptr [esp + 0x24]
+100029f3  mov      edi, dword ptr [esp + 0x14]
+100029f7  sub      edi, ebx
+100029f9  mov      dword ptr [esp + 0x18], edi
+100029fd  mov      edi, dword ptr [ebp + 0xc]
+10002a00  lea      edx, [ebx + ecx*8]
+10002a03  sub      edi, ebx
+10002a05  cmp      ecx, dword ptr [ebp + 8]
+10002a08  jae      0x10002a50
+10002a0a  test     al, al
+10002a0c  jne      0x10002a27
+10002a0e  cmp      esi, 1
+10002a11  jne      0x10002a82
+10002a13  mov      eax, dword ptr [esp + 0x18]
+10002a17  fxch     st(1)
+10002a19  fcom     qword ptr [eax + edx]
+10002a1c  fnstsw   ax
+10002a1e  test     ah, 0x41
+10002a21  jne      0x10002a7e
+10002a23  mov      al, 1
+10002a25  fxch     st(1)
+10002a27  mov      bl, al
+10002a29  neg      bl
+10002a2b  sbb      ebx, ebx
+10002a2d  and      ebx, 6
+10002a30  add      ebx, 4
+10002a33  imul     ebx, esi
+10002a36  mov      dword ptr [esp + 0x30], ebx
+10002a3a  mov      ebx, dword ptr [esp + 0x10]
+10002a3e  add      ecx, 1
+10002a41  fild     dword ptr [esp + 0x30]
+10002a45  add      edx, 8
+10002a48  fstp     qword ptr [edi + edx - 8]
+10002a4c  cmp      ecx, dword ptr [ebx]
+10002a4e  jl       0x10002a05
+10002a50  mov      edi, dword ptr [esp + 0x10]
+10002a54  mov      ebx, dword ptr [esp + 0x1c]
+10002a58  cmp      ecx, dword ptr [edi + 4]
+10002a5b  fstp     st(1)
+10002a5d  mov      esi, dword ptr [ebp + 0xc]
+10002a60  fstp     st(0)
+10002a62  jg       0x10002aa1
+10002a64  cmp      ecx, dword ptr [ebp + 8]
+10002a67  jae      0x10002aa1
+10002a69  test     byte ptr [ebx - 5], 8
+10002a6d  je       0x10002a93
+10002a6f  mov      edx, dword ptr [ebx - 9]
+10002a72  add      edx, edx
+10002a74  mov      dword ptr [esp + 0x30], edx
+10002a78  fild     dword ptr [esp + 0x30]
+10002a7c  jmp      0x10002a96
+10002a7e  xor      al, al
+10002a80  jmp      0x10002a25
+10002a82  fcom     qword ptr [edx]
+10002a84  fnstsw   ax
+10002a86  test     ah, 5
+10002a89  jp       0x10002a8f
+10002a8b  mov      al, 1
+10002a8d  jmp      0x10002a27
+10002a8f  xor      al, al
+10002a91  jmp      0x10002a27
+10002a93  fild     dword ptr [ebx - 9]
+10002a96  fstp     qword ptr [esi + ecx*8]
+10002a99  add      ecx, 1
+10002a9c  cmp      ecx, dword ptr [edi + 4]
+10002a9f  jle      0x10002a64
+10002aa1  fld      qword ptr [edi + 0x10]
+10002aa4  fcomp    qword ptr [edi - 0x10]
+10002aa7  fnstsw   ax
+10002aa9  test     ah, 5
+10002aac  jp       0x10002ab3
+10002aae  fld      qword ptr [edi - 0x10]
+10002ab1  jmp      0x10002ab6
+10002ab3  fld      qword ptr [edi + 0x10]
+10002ab6  fld      qword ptr [edi + 0x18]
+10002ab9  fcomp    qword ptr [edi - 8]
+10002abc  fnstsw   ax
+10002abe  test     ah, 0x41
+10002ac1  jne      0x10002ac8
+10002ac3  fld      qword ptr [edi - 8]
+10002ac6  jmp      0x10002acb
+10002ac8  fld      qword ptr [edi + 0x18]
+10002acb  mov      edx, dword ptr [ebx]
+10002acd  lea      eax, [edx + 1]
+10002ad0  cmp      eax, dword ptr [esp + 0x28]
+10002ad4  jae      0x10002b26
+10002ad6  add      edx, 1
+10002ad9  shl      edx, 5
+10002adc  add      edx, dword ptr [esp + 0x2c]
+10002ae0  cmp      ecx, dword ptr [edx + 4]
+10002ae3  jg       0x10002b04
+10002ae5  cmp      ecx, dword ptr [ebp + 8]
+10002ae8  jae      0x10002b04
+10002aea  mov      eax, dword ptr [ebx - 9]
+10002aed  lea      eax, [eax + eax*2]
+10002af0  mov      dword ptr [esp + 0x30], eax
+10002af4  fild     dword ptr [esp + 0x30]
+10002af8  add      ecx, 1
+10002afb  fstp     qword ptr [esi + ecx*8 - 8]
+10002aff  cmp      ecx, dword ptr [edx + 4]
+10002b02  jle      0x10002ae5
+10002b04  fxch     st(1)
+10002b06  fcom     qword ptr [edx + 0x10]
+10002b09  fnstsw   ax
+10002b0b  test     ah, 5
+10002b0e  jp       0x10002b15
+10002b10  fstp     st(0)
+10002b12  fld      qword ptr [edx + 0x10]
+10002b15  fxch     st(1)
+10002b17  fcom     qword ptr [edx + 0x18]
+10002b1a  fnstsw   ax
+10002b1c  test     ah, 0x41
+10002b1f  jne      0x10002b26
+10002b21  fstp     st(0)
+10002b23  fld      qword ptr [edx + 0x18]
+10002b26  mov      esi, dword ptr [ebx - 9]
+10002b29  fxch     st(1)
+10002b2b  mov      edi, dword ptr [ebp + 0xc]
+10002b2e  add      dword ptr [esp + 0x20], 1
+10002b33  mov      edx, dword ptr [esp + 0x20]
+10002b37  add      ebx, 0x21
+10002b3a  cmp      edx, dword ptr [esp + 0x34]
+10002b3e  mov      dword ptr [esp + 0x1c], ebx
+10002b42  jb       0x100029ab
+10002b48  mov      ebx, dword ptr [ebp + 8]
+10002b4b  mov      edx, ebx
+10002b4d  sub      edx, ecx
+10002b4f  xor      al, al
+10002b51  cmp      edx, 4
+10002b54  jl       0x10002ce4
+10002b5a  lea      edx, [edi + ecx*8 + 0x10]
+10002b5e  mov      dword ptr [esp + 0x34], edx
+10002b62  mov      edx, dword ptr [esp + 0x24]
+10002b66  lea      ebx, [edx + ecx*8 + 8]
+10002b6a  mov      dword ptr [esp + 0x10], ebx
+10002b6e  mov      ebx, dword ptr [esp + 0x14]
+10002b72  sub      ebx, edx
+10002b74  mov      dword ptr [esp + 0x18], ebx
+10002b78  mov      ebx, edi
+10002b7a  sub      ebx, edx
+10002b7c  mov      edx, dword ptr [esp + 0x14]
+10002b80  sub      edx, edi
+10002b82  mov      edi, dword ptr [esp + 0x34]
+10002b86  mov      dword ptr [esp + 0x30], ebx
+10002b8a  mov      dword ptr [esp + 0x2c], edx
+10002b8e  test     al, al
+10002b90  mov      edx, dword ptr [esp + 0x10]
+10002b94  jne      0x10002bc3
+10002b96  cmp      esi, 1
+10002b99  jne      0x10002bb3
+10002b9b  mov      eax, dword ptr [esp + 0x14]
+10002b9f  fxch     st(1)
+10002ba1  fcom     qword ptr [eax + ecx*8]
+10002ba4  fnstsw   ax
+10002ba6  test     ah, 0x41
+10002ba9  jne      0x10002baf
+10002bab  mov      al, 1
+10002bad  jmp      0x10002bc5
+10002baf  xor      al, al
+10002bb1  jmp      0x10002bc5
+10002bb3  fcom     qword ptr [edx - 8]
+10002bb6  fnstsw   ax
+10002bb8  test     ah, 5
+10002bbb  jp       0x10002bc1
+10002bbd  mov      al, 1
+10002bbf  jmp      0x10002bc3
+10002bc1  xor      al, al
+10002bc3  fxch     st(1)
+10002bc5  mov      bl, al
+10002bc7  neg      bl
+10002bc9  sbb      ebx, ebx
+10002bcb  and      ebx, 6
+10002bce  add      ebx, 4
+10002bd1  imul     ebx, esi
+10002bd4  test     al, al
+10002bd6  mov      dword ptr [esp + 0x34], ebx
+10002bda  fild     dword ptr [esp + 0x34]
+10002bde  fstp     qword ptr [edi - 0x10]
+10002be1  jne      0x10002c11
+10002be3  cmp      esi, 1
+10002be6  jne      0x10002bfe
+10002be8  mov      eax, dword ptr [esp + 0x18]
+10002bec  fcom     qword ptr [eax + edx]
+10002bef  fnstsw   ax
+10002bf1  test     ah, 0x41
+10002bf4  jne      0x10002bfa
+10002bf6  mov      al, 1
+10002bf8  jmp      0x10002c11
+10002bfa  xor      al, al
+10002bfc  jmp      0x10002c11
+10002bfe  fxch     st(1)
+10002c00  fcom     qword ptr [edx]
+10002c02  fnstsw   ax
+10002c04  test     ah, 5
+10002c07  jp       0x10002c0d
+10002c09  mov      al, 1
+10002c0b  jmp      0x10002c0f
+10002c0d  xor      al, al
+10002c0f  fxch     st(1)
+10002c11  mov      bl, al
+10002c13  neg      bl
+10002c15  sbb      ebx, ebx
+10002c17  and      ebx, 6
+10002c1a  add      ebx, 4
+10002c1d  imul     ebx, esi
+10002c20  test     al, al
+10002c22  mov      dword ptr [esp + 0x34], ebx
+10002c26  mov      ebx, dword ptr [esp + 0x30]
+10002c2a  fild     dword ptr [esp + 0x34]
+10002c2e  fstp     qword ptr [ebx + edx]
+10002c31  jne      0x10002c62
+10002c33  cmp      esi, 1
+10002c36  jne      0x10002c4e
+10002c38  mov      eax, dword ptr [esp + 0x2c]
+10002c3c  fcom     qword ptr [eax + edi]
+10002c3f  fnstsw   ax
+10002c41  test     ah, 0x41
+10002c44  jne      0x10002c4a
+10002c46  mov      al, 1
+10002c48  jmp      0x10002c62
+10002c4a  xor      al, al
+10002c4c  jmp      0x10002c62
+10002c4e  fxch     st(1)
+10002c50  fcom     qword ptr [edx + 8]
+10002c53  fnstsw   ax
+10002c55  test     ah, 5
+10002c58  jp       0x10002c5e
+10002c5a  mov      al, 1
+10002c5c  jmp      0x10002c60
+10002c5e  xor      al, al
+10002c60  fxch     st(1)
+10002c62  mov      bl, al
+10002c64  neg      bl
+10002c66  sbb      ebx, ebx
+10002c68  and      ebx, 6
+10002c6b  add      ebx, 4
+10002c6e  imul     ebx, esi
+10002c71  test     al, al
+10002c73  mov      dword ptr [esp + 0x34], ebx
+10002c77  fild     dword ptr [esp + 0x34]
+10002c7b  fstp     qword ptr [edi]
+10002c7d  jne      0x10002caf
+10002c7f  cmp      esi, 1
+10002c82  jne      0x10002c9b
+10002c84  mov      edx, dword ptr [esp + 0x14]
+10002c88  fcom     qword ptr [edx + ecx*8 + 0x18]
+10002c8c  fnstsw   ax
+10002c8e  test     ah, 0x41
+10002c91  jne      0x10002c97
+10002c93  mov      al, 1
+10002c95  jmp      0x10002caf
+10002c97  xor      al, al
+10002c99  jmp      0x10002caf
+10002c9b  fxch     st(1)
+10002c9d  fcom     qword ptr [edx + 0x10]
+10002ca0  fnstsw   ax
+10002ca2  test     ah, 5
+10002ca5  jp       0x10002cab
+10002ca7  mov      al, 1
+10002ca9  jmp      0x10002cad
+10002cab  xor      al, al
+10002cad  fxch     st(1)
+10002caf  mov      dl, al
+10002cb1  neg      dl
+10002cb3  mov      ebx, dword ptr [ebp + 8]
+10002cb6  sbb      edx, edx
+10002cb8  add      dword ptr [esp + 0x10], 0x20
+10002cbd  and      edx, 6
+10002cc0  add      edx, 4
+10002cc3  imul     edx, esi
+10002cc6  mov      dword ptr [esp + 0x34], edx
+10002cca  add      ecx, 4
+10002ccd  lea      edx, [ebx - 3]
+10002cd0  fild     dword ptr [esp + 0x34]
+10002cd4  add      edi, 0x20
+10002cd7  cmp      ecx, edx
+10002cd9  fstp     qword ptr [edi - 0x18]
+10002cdc  fxch     st(1)
+10002cde  jl       0x10002b8e
+10002ce4  cmp      ecx, ebx
+10002ce6  jae      0x10002d43
+10002ce8  mov      edi, dword ptr [esp + 0x24]
+10002cec  mov      ebx, dword ptr [esp + 0x14]
+10002cf0  sub      ebx, edi
+10002cf2  mov      dword ptr [esp + 0x18], ebx
+10002cf6  mov      ebx, dword ptr [ebp + 0xc]
+10002cf9  lea      edx, [edi + ecx*8]
+10002cfc  sub      ebx, edi
+10002cfe  mov      edi, dword ptr [ebp + 8]
+10002d01  sub      edi, ecx
+10002d03  test     al, al
+10002d05  jne      0x10002d20
+10002d07  cmp      esi, 1
+10002d0a  jne      0x10002d56
+10002d0c  mov      eax, dword ptr [esp + 0x18]
+10002d10  fxch     st(1)
+10002d12  fcom     qword ptr [eax + edx]
+10002d15  fnstsw   ax
+10002d17  test     ah, 0x41
+10002d1a  jne      0x10002d52
+10002d1c  mov      al, 1
+10002d1e  fxch     st(1)
+10002d20  mov      cl, al
+10002d22  neg      cl
+10002d24  sbb      ecx, ecx
+10002d26  and      ecx, 6
+10002d29  add      ecx, 4
+10002d2c  imul     ecx, esi
+10002d2f  mov      dword ptr [esp + 0x34], ecx
+10002d33  add      edx, 8
+10002d36  sub      edi, 1
+10002d39  fild     dword ptr [esp + 0x34]
+10002d3d  fstp     qword ptr [ebx + edx - 8]
+10002d41  jne      0x10002d03
+10002d43  fstp     st(1)
+10002d45  xor      eax, eax
+10002d47  fstp     st(0)
+10002d49  pop      edi
+10002d4a  pop      esi
+10002d4b  pop      ebx
+10002d4c  mov      esp, ebp
+10002d4e  pop      ebp
+10002d4f  ret      0x10
+10002d52  xor      al, al
+10002d54  jmp      0x10002d1e
+10002d56  fcom     qword ptr [edx]
+10002d58  fnstsw   ax
+10002d5a  test     ah, 5
+10002d5d  jp       0x10002d63
+10002d5f  mov      al, 1
+10002d61  jmp      0x10002d20
+10002d63  xor      al, al
+10002d65  jmp      0x10002d20
+10002d67  pop      edi
+10002d68  pop      esi
+10002d69  or       eax, 0xffffffff
+10002d6c  pop      ebx
+10002d6d  mov      esp, ebp
+10002d6f  pop      ebp
+10002d70  ret      0x10

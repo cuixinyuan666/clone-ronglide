@@ -106,6 +106,7 @@ TARGETS = [
         "va": "0x10012a50",
         "batches": [
             ("第一批-入口链与P分派", "docs/25-NChBi-第一批-入口链与P分派.md"),
+            ("第二批-chlib算法解剖", "docs/26-NChBi-第二批-chlib算法解剖.md"),
         ],
         "artifacts": [
             "pseudocode/nchbi.c",
@@ -117,8 +118,16 @@ TARGETS = [
             "tools/re-inventory/nchbi/nchbi1_wip.md",
             "tools/re-inventory/nchbi/dump_chlib_vtable.py",
             "tools/re-inventory/nchbi/scan_member.py",
+            "tools/re-inventory/nchbi/nchbi2_wip.md",
+            "tools/re-inventory/nchbi/chlib_worker_10002770.txt",
+            "tools/re-inventory/nchbi/cond_chlib_10002770.txt",
+            "tools/re-inventory/nchbi/chlib_worker_10002900.txt",
+            "tools/re-inventory/nchbi/chlib_prep_10009930.txt",
+            "tools/re-inventory/nchbi/family_slots.txt",
+            "tools/re-inventory/nchbi/family_slots_full.txt",
+            "tools/re-inventory/nchbi/map_family_slots.py",
         ],
-        "next": "第二批(推荐): chlib 算法解剖 — 0x10002770 (NChBiSta) 输出码 -3/+3/0 + 0x10002340 输出向量; 备选 CHDUAN frida 对拍",
+        "next": "第三批(推荐): Out 向量深挖 — frida dump 0x10002770 的 out[] 与 obj10 Item21, 把输出码判定表升到 [A]; 备选 NChBiZj/NChBiZjOrder 链 (0x10002ea0/0x10003180)",
     },
 ]
 
@@ -126,7 +135,7 @@ TARGETS = [
 PRIORITY = [
     ("ChBi", "CHBI", "EA62", "已交付(五批)"),
     ("ChDuan", "CHDUAN", "-", "已交付(四批)"),
-    ("NChBi", "NCHBI", "EA62", "已交付(一批)"),
+    ("NChBi", "NCHBI", "EA62", "已交付(二批)"),
     ("NChZs", "NCHZS", "EA63", "未启动"),
     ("NChZsG", "NCHZSG", "EA61", "未启动"),
     ("NChZsBs12", "NCHZSBS12", "EA61", "未启动"),
@@ -179,7 +188,7 @@ def main():
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-",
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-", "docs/26-",
                 "tools/re-inventory", "tools/wnmr_py",
                 "pseudocode/chduan", "pseudocode/chbi", "README.md")
     tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]

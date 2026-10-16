@@ -1,42 +1,23 @@
 /* ============================================================================
- * nchbi.c — 融立德「NChBi（缠论笔·新版）」逆向伪码（骨架）
+ * nchbi.c — 融立德「NChBi（缠论笔·新版）」逆向伪码
  * ----------------------------------------------------------------------------
  * 来源: TAFLib.dll (32-bit, PE 链接时间 2023-03-15) + chlib.dll (106 KB, 同日)
  * 定位: 导出 ?NChBi @0x10012a50 (TAFLib)  ->  虚调用 chlib!ch::ch_api::vt[+0x34]
  * 证据: tools/re-inventory/nchbi/
- *         nchbi_entry.txt                   (TAFLib 包装层 0x10012a50-0x10012c38)
- *         chlib_vtable_and_factory.txt      (chlib CreateLib/ctor/ch_api 虚表)
- *         chlib_worker_10002340.txt         (chlib 工作函数 377 insn)
- *         cond_chlib_10002340.txt           (x87_sim.py 条件表, 10 条)
- *         reuse_probe.txt                   (复用判定探针)
- *         nchbi1_wip.md                     (本批工作稿)
- * 批次: NChBi 第一批 (docs/25, 2026-10-17)
+ *         第一批: nchbi_entry.txt / chlib_vtable_and_factory.txt /
+ *                 chlib_worker_10002340.txt / cond_chlib_10002340.txt /
+ *                 reuse_probe.txt / nchbi1_wip.md
+ *         第二批: chlib_worker_10002770.txt / cond_chlib_10002770.txt /
+ *                 chlib_worker_10002900.txt / chlib_prep_10009930.txt /
+ *                 family_slots.txt / family_slots_full.txt /
+ *                 map_family_slots.py / nchbi2_wip.md
+ * 批次: 第一批 (docs/25) + 第二批 (docs/26), 2026-10-17
  * 置信度: [A]=实测已证(字节级) [B]=高(多路交叉) [C]=待仲裁/推断
  * ----------------------------------------------------------------------------
  * 整体链路:
- *   公式 NCHBI(count, out[], P)
- *     -> NChBi @0x10012a50 (TAFLib 包装层, __thiscall, ret 0xc)
- *          P = (int) *(double*) *(double**) param        // 0x1006bc70 = _ftol2
- *          if (P == 0 || P == 51) {                       // ★ 与 CHBI 不同: 多了 P==0
- *              if (!Authorize(0xEA62)) { memset(out, 0, count*8); return 0; }
- *          }
- *          evt = new(0x30); ctor 0x10001cc0(evt);        // 与 CHBI 同一事件对象 ctor
- *          evt->str = this[+0xC] + 4;                    // std::string::operator=
- *          shared_ptr h = 0x1001c110(evt);               // ★ 与 CHBI 同一 shared_ptr 桩
- *          DmcApi::PushEvent(h);                         // RDM_C! 图表事件推送
- *          ctx6 = { H, O, L, C, V, A } 缓冲指针;         // 0x10006cc0 -> RData!XTAData
- *          switch (P) {                                  // ★ P 短路表 (包装层)
- *            case 11: *P_out = 2.0; return 1;
- *            case 12: *P_out = 1.0; return 1;
- *            case 21: *P_out = 4.0; return 1;
- *            case 22: *P_out = 3.0; return 1;
- *            case 31: *P_out = 6.0; return 1;
- *            case 32: *P_out = 5.0; return 1;
- *            case 51: *P_out = 0.0; return 1;
- *          }
- *          ch_api = this[+0xBC];                         // chlib!CreateLib(ch_auth*)
- *          return ch_api->vt[+0x34](count, out, &ctx6, param);   // ★ 真工作函数
- *     -> chlib!0x10002340  (工作函数)  —— 见下
+ *   NCHBI(count, out[], P)    → 算「结构」并填充容器 → out[] = 极值 bar 索引
+ *   NCHBISTA(count, out[])    → 只读容器 → out[] = 逐 bar 的 {±1,±2,±3,±10} 编码
+ *   ★ NCHBISTA 必须在同一实例上「先跑 NCHBI」才有数据（自身不触发计算）[A]
  * ==========================================================================*/
 
 /* ---------------------------------------------------------------------------
@@ -44,33 +25,41 @@
  * -------------------------------------------------------------------------*/
 /*
  *  TAFLib.dll (ImageBase 0x10000000)
- *    0x10012a50  ?NChBi              包装层 (本批主角)
- *    0x10012c40  ?NChBiSta           槽 +0x38
- *    0x10012cb0  ?NChBiSta2          槽 +0x3c
- *    0x10012d20  ?NChBiZj            槽 +0x44
- *    0x10012e00  ?NChBiZjOrder       槽 +0x4c
- *    0x10012e70  ?NChBiFxNum         槽 +0x58
- *    0x10012f50  ?NChBiSpeed         槽 +0x60
+ *    0x10012a50  ?CalcProc_NChBi          包装层 (vtable slot +0x34)
+ *    0x10012c40  ?CalcProc_NChBiSta       包装层 (slot +0x38)
+ *    0x10012cb0  ?CalcProc_NChBiSta2      包装层 (slot +0x3c)
+ *    0x10012d20  ?CalcProc_NChBiZj        (slot +0x44)
+ *    0x10012d90  ?CalcProc_NChBiZj3       (slot +0x48)   ← 第二批新定名
+ *    0x10012e00  ?CalcProc_NChBiZjOrder   (slot +0x4c)
+ *    0x10012e70  ?CalcProc_NChBiFxNum     (slot +0x58)
+ *    0x10012ee0  ?CalcProc_NChBiZjNum     (slot +0x5c)   ← 第二批新定名
+ *    0x10012f50  ?CalcProc_NChBiSpeed     (slot +0x60)
  *    0x10001cc0  事件对象 ctor (与 CHBI 同)
  *    0x10001f6a  this[+0xBC] = ch_api*   (ctor 内)
  *    0x10006cc0  取 6 行情缓冲 (H/O/L/C/V/A)
  *    0x1001c110  boost::shared_ptr 构造桩 (与 CHBI 同)
- *    0x1001c940  shared_count ctor
- *    0x1006bc70  _ftol2  (double -> int)   ← 勘误: 非"P 转码器"
  *    0x10014e60  Authorize(this, code)
+ *    0x1006bc70  _ftol2  (double -> int)   ← 勘误: 非"P 转码器"
  *
  *  chlib.dll (ImageBase 0x10000000, 只导出 CreateLib/FreeLib)
- *    0x10001010  ?CreateLib@ch_api@ch@@SAPAV12@PAVch_auth@2@@Z
  *    0x100010d0  ch_api::ch_api(ch_auth*)   → [this] = vtable 0x10015214
- *    0x10015214  ch_api vtable (槽 +0x18..+0xC4 全部为缠论组实现)
- *    0x10002340  ★ NChBi 真工作函数 (vt[+0x34])
- *    0x10002770  NChBiSta 工作函数 (vt[+0x38])
- *    0x10006670  count 早退检查  [C]
- *    0x10009930  内部数据准备    [C]
+ *    0x10015214  ch_api vtable (+0x18..+0xcc 共 50 槽已映射到 TAFLib 导出名)
+ *    0x10002340  ★ NChBi 工作函数      (vt[+0x34])  —— 计算并填充容器
+ *    0x10002770  ★ NChBiSta 工作函数   (vt[+0x38])  —— 只读容器, 展开成逐 bar 编码
+ *    0x10002900  NChBiSta2 工作函数    (vt[+0x3c])  —— 带乘数变体
+ *    0x10006670  容器准备器 (obj8+obj_c)              [A 第二批]
+ *    0x10009930  chlib 版「P -> 类型码」跳表          [A 第二批]
  *    0x100148a0  chlib 自带 _ftol2
  *    0x1001494c  chlib 自带 memset
- *    0x100154c0  double +DBL_MAX   (argmin 种子)
- *    0x100154c8  double -DBL_MAX   (argmax 种子)
+ *    0x100153ec  obj8  vtable  [this+0x8]
+ *    0x10015474  obj_c vtable  [this+0xc]
+ *    0x10015438  obj10 vtable  [this+0x10]
+ *    0x1001544c  obj14 vtable  [this+0x14]
+ *    0x10015488  obj1c vtable  [this+0x1c]
+ *    0x100154b0  double 2^32
+ *    0x100154b8  double 2.0            (flag bit3 → 值 ×2)
+ *    0x100154c0  double +DBL_MAX       (argmin 种子)
+ *    0x100154c8  double -DBL_MAX       (argmax 种子)
  */
 
 /* ---------------------------------------------------------------------------
@@ -88,33 +77,71 @@ typedef struct Ctx6 {
     const double *amount;   /* +0x14  GetAmountBuffer() */
 } Ctx6;                                          /* [A] */
 
-/* ch_auth: 授权回调对象 (TAFLib 侧实例在 .data 0x10083c58)，虚表槽 +0x04 = 复核 */
-typedef struct ch_auth ch_auth;                  /* [C] 完整布局未解剖 */
+typedef struct ch_auth ch_auth;                  /* [C] */
 
-/* ch_api: chlib.dll 的缠论库句柄，仅 0x24 字节
- *   ctor 0x100010d0: [0]=vtable, [4]=auth, [8..0x20]=0                        */
+/* ch_api: chlib.dll 缠论库句柄；ctor 0x100010d0 实测子对象布局 [A(第二批)] */
 typedef struct ch_api {
-    void    **vt;          /* +0x00  = 0x10015214                              */
-    ch_auth  *auth;        /* +0x04  CreateLib 入参                            */
-    void     *sub;         /* +0x08  ...                                       */
-    void     *engine;      /* +0x10  子对象: 其 vt[+4]/vt[+0xc] 被工作函数调用  */
-    char      _pad[0x24 - 0x14];
-} ch_api;                                        /* [A(前 0x14)] */
+    void    **vt;          /* +0x00  = 0x10015214                                 */
+    ch_auth  *auth;        /* +0x04  CreateLib 入参                               */
+    void     *obj8;        /* +0x08  new(0x2c) vt 0x100153ec  记录表产出者          */
+    void     *obj_c;       /* +0x0c  new(0x38) vt 0x10015474  派生器                */
+    void     *obj10;       /* +0x10  new(0x60) vt 0x10015438  结果容器(项数组)      */
+    void     *obj14;       /* +0x14  new(0x68) vt 0x1001544c                       */
+    void     *obj18;       /* +0x18  new(0x60) init 0x1000e7c0                     */
+    void     *obj1c;       /* +0x1c  new(0x3c) vt 0x10015488  (+0x1c=12,+0x20=26,+0x24=9) */
+    char      _pad[0x24 - 0x20];
+} ch_api;                                        /* [A] */
 
-/* 事件对象 (0x30B): 包装层创建、经 DmcApi::PushEvent 推送，不参与算法
- *   ctor 0x10001cc0; [+8]=1; [+0xc]=0; [+0x10]=1(byte); [+0x14]=std::string   */
-typedef struct EvtObj {
-    void        **vt;      /* +0x00 */
-    int           f08;     /* +0x08 = 1      */
-    int           f0c;     /* +0x0c = 0      */
-    unsigned char f10;     /* +0x10 = 1      */
-    char          _pad11[3];
-    void         *str;     /* +0x14  std::string (自 this[+0xC]+4 赋值)         */
-    char          _pad[0x30 - 0x18];
-} EvtObj;                                        /* [A] */
+/* obj8 ([this+8], 0x2cB, vt 0x100153ec) —— 「记录表」产出者 [A] */
+typedef struct Obj8 {
+    void  **vt;            /* +0x00 = 0x100153ec (4 槽: 0x100094b0/9500/9530/e0b0) */
+    /* vt[+0x04] = 0x10009500  预清
+     * vt[+0x08] = 0x10009530  校验(返回非0 => 失败)
+     * vt[+0x0c] = 0x1000e0b0  主计算(全族共用)                                  */
+    char   _pad1[0x18 - 8];
+    unsigned char prepared;/* +0x18  已备标志 (0/1)                                 */
+    char   _pad2[0x1c - 0x19];
+    Rec20 *recs;           /* +0x1c  记录表 (0x20 字节/条)                          */
+    char   _pad3[0x28 - 0x20];
+    int    nrecs;          /* +0x28  记录数                                          */
+} Obj8;
+
+/* 记录 (0x20B/条, obj8[+0x1c] 指向的表元素) [A] */
+typedef struct Rec20 {
+    int start;             /* +0x00  起 bar 索引   */
+    int end;               /* +0x04  止 bar 索引   */
+    char _pad[0x20 - 8];
+} Rec20;
+
+/* obj10 ([this+0x10], 0x60B, vt 0x10015438) —— 结果容器 [A(第二批)] */
+typedef struct Obj10 {
+    void  **vt;            /* +0x00 = 0x10015438 (0x100098d0/99e0/9a20/e0b0...)     */
+    char   _pad1[0x1c - 8];
+    int    typeCode;       /* +0x1c  0x10009930 写入的 P 类型码                     */
+    int    m20;            /* +0x20  = obj8[+0x1c]  (记录表镜像指针)                */
+    int    m24;            /* +0x24  = obj8[+0x28]  (记录数镜像)                    */
+    int    m28;            /* +0x28  = obj_c[+0x28]                                 */
+    int    m2c;            /* +0x2c  = obj_c[+0x34]                                 */
+    void  *items;          /* +0x30  端点项数组 (0x21 字节/条)                      */
+    char   _pad2[0x3c - 0x34];
+    int    nitems;         /* +0x3c  项数                                           */
+} Obj10;
+
+/* 端点项 (0x21B/条, obj10[+0x30] 指向的数组元素)
+ * 步长 0x21 由两处独立代码交叉确证 (0x10002770 `add esi,0x21` /
+ *                                   0x10002340 `add eax,0x84` = 4×0x21)      [A] */
+typedef struct Item21 {
+    int   value;           /* +0x00  值 v (≡ ±1), 输出时按段缩放                    */
+    unsigned char flags;   /* +0x04  bit0 = 有效项 ; bit3(0x08) = 值 ×2             */
+    char  _pad1[0x09 - 0x05];
+    int   recIdx;          /* +0x09  → obj8 记录表索引 (NChBiSta 用, 须 < nrecs)    */
+    char  _pad2[0x1d - 0x0d];
+    int   barIdx;          /* +0x1d  → out[] bar 索引 (NChBi 用, 须 < count)        */
+    char  _pad3[0x21 - 0x21];
+} Item21;
 
 /* ---------------------------------------------------------------------------
- * 2. TAFLib 包装层  ?NChBi @0x10012a50
+ * 2. TAFLib 包装层  ?NChBi @0x10012a50   (第一批, 不变)
  * -------------------------------------------------------------------------*/
 
 /* [A] 逐句对应 tools/re-inventory/nchbi/nchbi_entry.txt */
@@ -123,129 +150,232 @@ int __thiscall NChBi(void *this_, int count, double *out, double **param)
     int mode = (int)*(*param);                   /* 0x10012a87 fld; 0x1006bc70 _ftol2 */
 
     /* --- 授权门: P == 0 或 P == 51 (CHBI 只有 P == 51) [A] --- */
-    if (mode == 0 || mode == 51) {               /* 0x10012a90 test/je; a94 cmp/jne */
-        if (!Authorize(this_, 0xEA62)) {         /* 0x10012a99 push 0xea62; a a0 call */
+    if (mode == 0 || mode == 51) {
+        if (!Authorize(this_, 0xEA62)) {         /* 0x10012aa0 */
             memset(out, 0, (size_t)count * 8);   /* 0x10012ab9 call 0x1006bd22 */
-            return 0;                            /* 0x10012ac2 xor al,al */
+            return 0;
         }
     }
 
     /* --- 事件对象 (与 CHBI 逐句同构) [A] --- */
-    EvtObj *evt = (EvtObj *)operator_new(0x30);  /* 0x10012ad9 push 0x30; 0x1006b32c */
+    EvtObj *evt = (EvtObj *)operator_new(0x30);
     if (evt) {
-        evt = ctor_10001cc0(evt);                /* 0x10012af4 call 0x10001cc0 */
-        evt->f08 = 1;                            /* 0x10012b0e */
-        evt->f0c = 0;                            /* 0x10012b15 */
-        std_string_assign(&evt->str, (char *)this_ + 0xc + 4);  /* 0x10012b26 [0x1006f07c] */
-        evt->f10 = 1;                            /* 0x10012b33 */
+        evt = ctor_10001cc0(evt);
+        evt->f08 = 1; evt->f0c = 0;
+        std_string_assign(&evt->str, (char *)this_ + 0xc + 4);
+        evt->f10 = 1;
     }
-    shared_ptr_t h = shared_ptr_from_raw(0x1001c110, evt);       /* 0x10012b37 ★ 复用点 */
-    DmcApi_PushEvent(&h);                        /* 0x10012b45 [0x1006f220] */
-    release_shared_ptr(&h);                      /* 0x10012b5a..b80 引用计数递减 */
+    shared_ptr_t h = shared_ptr_from_raw(0x1001c110, evt);       /* 0x10012b37 复用点 */
+    DmcApi_PushEvent(&h);                        /* 0x10012b45 */
+    release_shared_ptr(&h);
 
     /* --- 取 6 个行情缓冲 [A] --- */
     Ctx6 ctx6;
     get_ctx6_0x10006cc0(this_, &ctx6);           /* 0x10012b8d */
 
-    /* --- ★ P 短路表 (包装层) [A] --- */
+    /* --- ★ P 短路表 (包装层, 与 chlib 0x10009930 逐值相同) [A] --- */
     switch (mode) {
-        case 11: **param = 2.0; return 1;        /* 0x10012b97 [0x1006fb48] */
-        case 12: **param = 1.0; return 1;        /* 0x10012ba7 fld1 */
-        case 21: **param = 4.0; return 1;        /* 0x10012bb7 [0x1006fcd8] */
-        case 22: **param = 3.0; return 1;        /* 0x10012bcf [0x1006fc90] */
-        case 31: **param = 6.0; return 1;        /* 0x10012bd8 [0x1006fcd0] */
-        case 32: **param = 5.0; return 1;        /* 0x10012bec [0x1006fcc0] */
-        case 51: **param = 0.0; return 1;        /* 0x10012bfd fldz */
-        default: break;                          /* 0x10012bfb jne 0x10012c06 */
+        case 11: **param = 2.0; return 1;
+        case 12: **param = 1.0; return 1;
+        case 21: **param = 4.0; return 1;
+        case 22: **param = 3.0; return 1;
+        case 31: **param = 6.0; return 1;
+        case 32: **param = 5.0; return 1;
+        case 51: **param = 0.0; return 1;
+        default: break;
     }
 
     /* --- ★ 真工作函数: ch::ch_api 虚调用 [A] --- */
-    ch_api *api = *(ch_api **)((char *)this_ + 0xbc);      /* 0x10012c09 */
-    void **vt   = api->vt;                                  /* 0x10012c0f */
+    ch_api *api = *(ch_api **)((char *)this_ + 0xbc);
     int (*fn)(ch_api *, int, double *, Ctx6 *, double **) =
-        (void *)((uint32_t *)vt)[0x34 / 4];                 /* 0x10012c11 */
-    fn(api, count, out, &ctx6, param);                      /* 0x10012c22 */
-    return 1;                                               /* 0x10012c24 mov al,1 */
+        (void *)((uint32_t *)api->vt)[0x34 / 4];
+    fn(api, count, out, &ctx6, param);
+    return 1;
 }
 
 /* ---------------------------------------------------------------------------
- * 3. chlib 工作函数  ch_api::vt[+0x34] = 0x10002340
+ * 2b. TAFLib 包装层  ?NChBiSta @0x10012c40   (第二批新增) [A]
  * -------------------------------------------------------------------------*/
-
-/* [A] 逐句对应 tools/re-inventory/nchbi/chlib_worker_10002340.txt (377 insn)
- * 前置: 0x10006cc0 已把 H/O/L/C/V/A 填进 ctx6  (chlib 只用 ctx6[0]=high, ctx6[2]=low) */
-int __thiscall ch_api_vt34(ch_api *self, int count, double *out, Ctx6 *ctx6, double **param)
+/* [A] 逐句对应 0x10012c40-0x10012cac (反汇编见 docs/26 §2) */
+int __thiscall NChBiSta(void *this_, int count, double *out)
 {
-    int mode = (int)*(*param);                   /* 0x1000235b fld; 0x100148a0 _ftol2 → ebx */
-    int winLen = -1;                             /* 0x1000245d mov [esp+0xc], -1 [B] */
-    int idx = -1;                                /* edi 初值, 见下 */
-
-    memset(out, 0, (size_t)count * 8);           /* 0x10002381 call 0x1001494c */
-    if (ctx6->high == NULL) return -1;           /* 0x10002389 */
-    if (ctx6->low  == NULL) return -1;           /* 0x10002394 */
-
-    /* --- 第二道授权门: 仅 mode == 0 时 [A] --- */
-    if (mode == 0) {                             /* 0x1000239e test ebx,ebx; jne skip */
-        if (self->auth == NULL) return -1;       /* 0x100023a0 cmp [esi+4],ebx; je -> -1 */
-        if (!self->auth->vt[1](0xEA62))          /* 0x100023ae [edx+4]; push 0xea62 */
-            return -1;                           /* 0x100023ba */
+    if (!Authorize(this_, 0xEA61)) {             /* 0x10012c4a push 0xea61; 0x10014e60 */
+        memset(out, 0, (size_t)count * 8);       /* 0x10012c6b call 0x1006bd22 */
+        return 0;                                /* 0x10012c73 xor al,al */
     }
-    if (early_check_0x10006670(count)) return -1;/* 0x100023c8 */
-    prepare_0x10009930(self->engine, ...);       /* 0x100023e6 + engine vt[+4]/vt[+0xc] */
+    Ctx6 ctx6;
+    get_ctx6_0x10006cc0(this_, &ctx6);           /* 0x10012c83 (填了但下游不用) */
+    ch_api *api = *(ch_api **)((char *)this_ + 0xbc);
+    int (*fn)(ch_api *, int, double *, Ctx6 *, void *) =
+        (void *)((uint32_t *)api->vt)[0x38 / 4];  /* 0x10012c93 = chlib 0x10002770 */
+    fn(api, count, out, &ctx6, /*arg4=*/0);
+    return 1;                                    /* 0x10012ca6 mov al,1 */
+}
+/* ★ 与 NChBi 包装层的差别: ① 授权码 EA61(非 EA62); ② 无 P 短路表;
+ *   ③ 不调任何 prep —— 容器必须由同实例上的 NChBi(vt+0x34) 预先填好 [A] */
 
-    /* --- 分型内核: 两个 argmax/argmin 循环 [A] --- */
-    if (/* 分支选择由 [esp+0xc] 状态 */ true) {
-        /* 顶分型候选: H 缓冲 argmax
-         *   0x1000260b fld [-DBL_MAX];  比较 ctx6->high / [esi+edx*8]
-         *   0x10002629 test ah,5; jp  → 跳转成立 = >=|==|U  (即 ST0 不更小 → 保持)  */
-        idx = argmax_over(ctx6->high, winLen, /*seed=*/-DBL_MAX_CONST /* chlib!0x100154c8 */);
-        /* 0x10002624 fcom [ecx-0x10] ... 0x1000266e add ecx,0x20  (4 个 double 展开)
-         * 0x10002687 fcom [esi+edx*8]   尾段单步                                       */
-    } else {
-        /* 底分型候选: L 缓冲 argmin
-         *   0x100026a9 fld [+DBL_MAX];  0x100026c9 test ah,0x41; jne → 跳转成立 = <=|==|U  */
-        idx = argmin_over(ctx6->low, winLen, /*seed=*/+DBL_MAX_CONST /* chlib!0x100154c0 */);
+/* ---------------------------------------------------------------------------
+ * 3. chlib 容器基础设施   (第二批新增)
+ * -------------------------------------------------------------------------*/
+
+/* [A] 0x10006670(this, count) -> 0 ; 逐句对应 docs/26 §4 */
+int __thiscall prep_containers(ch_api *self, int count)
+{
+    Obj8 *o8 = (Obj8 *)self->obj8;
+    if (!o8->prepared) {                          /* 0x10006673 cmp byte [eax+0x18],0 */
+        o8->vt[+0x04]();                          /* 0x10006685 = 0x10009500 */
+        o8->vt[+0x0c](count, ...);                /* 0x10006696 = 0x1000e0b0 主计算 */
+        if (o8->vt[+0x08]() != 0) return -1;      /* 0x100066a0 = 0x10009530 */
+    }
+    ObjC *oc = (ObjC *)self->obj_c;
+    if (!oc->prepared) {                          /* 0x100066b0 cmp byte [ecx+0x18],0 */
+        oc->vt[+0x04](); oc->vt[+0x0c](count, ...);
+        oc->m20 = o8->recs;                       /* 0x100066e0 [ecx+0x20] = [eax+0x1c] */
+        oc->m24 = o8->nrecs;                      /* 0x100066e3 [ecx+0x24] = [eax+0x28] */
+        oc->vt[+0x08]();
+    }
+    return 0;
+}
+
+/* [A] 0x10009930(P) -> obj10.typeCode ; chlib 版「P -> 类型码」跳表 */
+int code_of_P(void *obj10, int P)
+{
+    obj10->typeCode = P;                          /* 0x10009936 [eax+0x1c] = ecx */
+    if ((unsigned)(P - 11) <= 0x28)               /* 0x10009933/936 ja */
+        return obj10->typeCode = jump_table_100099a8[P - 11];
+    return P;
+}
+/* 跳表值: 11->2, 12->1, 21->4, 22->3, 31->6, 32->5, 其它->0  [A]
+ * 与 TAFLib 包装层 NChBi 的 switch 常量表 **逐值相同** ⇒ 同一 P 编码双实现 */
+
+/* ---------------------------------------------------------------------------
+ * 4. chlib 工作函数  ch_api::vt[+0x38] = 0x10002770  (NChBiSta) ★ 第二批主角
+ * -------------------------------------------------------------------------*/
+
+/* [A] 逐句对应 tools/re-inventory/nchbi/chlib_worker_10002770.txt (130 insn, ret 0x10) */
+int __thiscall ch_api_vt38_sim(ch_api *self, int count, double *out, void *ctx6, void *arg4)
+{
+    (void)ctx6; (void)arg4;                       /* ★ 完全不使用 ctx6/arg4 [A] */
+    Obj8  *o8  = (Obj8  *)self->obj8;             /* [esi+8]   */
+    Obj10 *o10 = (Obj10 *)self->obj10;            /* [esi+0x10] */
+
+    memset(out, 0, (size_t)count * 8);            /* 0x1000278c call 0x1001494c */
+
+    /* --- 四道前置门 (全为「非空 + 授权」) [A] --- */
+    if (o8->recs == NULL)            return -1;   /* 0x100027a6 [[esi+8]+0x1c] */
+    if (o10->items == NULL)          return -1;   /* 0x100027ba [[esi+0x10]+0x30] */
+    if (self->auth == NULL)          return -1;   /* 0x100027c2 [esi+4] */
+    if (!self->auth->vt[1](0xEA61))  return -1;   /* 0x100027cc-db  ★ EA61 (非 EA62) */
+
+    /* --- 主循环: 遍历 obj10 的端点项 (0x21 B/条) [A] --- */
+    int cur = 0;                                  /* ecx = 段间传递值 v */
+    int eax = 0;                                  /* 输出 bar 游标 */
+    for (int k = 0; k < o10->nitems; k++) {       /* 0x100027e7 cmp [esp+0x24],ecx */
+        Item21 *it = (Item21 *)((char *)o10->items + k * 0x21);
+        if (!(it->flags & 1)) { cur = it->value; continue; }   /* 0x10002804 je */
+
+        int idx = it->recIdx;                     /* 0x1000280a [esi] */
+        if (idx < 0 || idx >= o8->nrecs) break;   /* 0x1000280e jl / 0x10002818 jae -> 断链 */
+        if (cur == 0) cur = -it->value;           /* 0x10002822 neg ecx (首项取反) [C] */
+
+        Rec20 *rec = (Rec20 *)((char *)o8->recs + idx * 0x20);  /* 0x1000282a `shl edx,5` */
+
+        /* 段 A: 填充 [eax, rec->start) 为 cur*10 [A] */
+        while (eax < rec->start && eax < count) { /* 0x1000282e jge / 0x10002834 jae */
+            out[eax++] = (double)(cur * 10);      /* 0x10002836-46 (lea/add ×5×2) */
+        }
+        /* 段 B: 区间 [rec->start .. rec->end] 为 cur (bit3 时 cur*2) [A] */
+        while (eax <= rec->end && eax < count) {  /* 0x1000284e jg / 0x10002855 jae */
+            out[eax++] = (it->flags & 8)          /* 0x10002859 test [esi-5],8 */
+                       ? (double)(cur * 2)        /* 0x1000285e-67 add ebx,ebx */
+                       : (double)cur;             /* 0x1000286d fild [esi-9] */
+        }
+        /* 段 C: 端点 bar (rec->end 之后第一格) 为 cur*3  ★ 输出码 ±3 的唯一来源 [A] */
+        if (eax > 0 && eax < count)               /* 0x1000287b jle / 0x10002881 jae */
+            out[eax++] = (double)(cur * 3);       /* 0x10002883-94 (lea ×3) */
+
+        cur = it->value;                          /* 0x10002898 传给下一条 */
     }
 
-    if (idx < 0) return -1;                      /* 0x1000273b test edi,edi; jl 0x10002757 */
-    /* out[idx] = ... ; return 0/1 —— 第二批补全 [C] */
-    return 1;                                    /* [C] 具体出口值待仲裁 */
+    /* --- 尾广播: 剩余 out[eax..count-1] 全填最后一个 cur*10 [A] --- */
+    if (eax < count) {                            /* 0x100028b3 jae */
+        out[eax] = (double)(cur * 10);            /* 0x100028b7-c4 */
+        /* 0x100028c9-d8 rep movsd: 把刚写的 8 字节前向复制到 out[eax+1..count-1] */
+        for (int j = eax + 1; j < count; j++) out[j] = out[eax];
+    }
+    return 0;                                     /* 0x100028dd xor eax,eax */
 }
 
 /* ---------------------------------------------------------------------------
- * 4. 复用判定速记 [A]
+ * 5. ★ 输出码判定表 (NCHBISTA 的 -3/+3/0 闭环) [B]
  * -------------------------------------------------------------------------*/
 /*
- *  0x1001c110  boost::shared_ptr(evt*) 构造桩   → 复用 (NChBi 0x10012b37 / CHBI 0x1000f692)
- *  0x10001cc0  事件对象 ctor                    → 复用 (NChBi 0x10012af4 / CHBI 0x1000f656)
- *  0x1003eba0  CHBI/CHDUAN m[2] 拆表            → 不复用
- *  0x10053540  CHDUAN prep                      → 不复用
- *  0x1003ef00  CHBI 方向标注                    → 不复用
- *  0x1002c1d0  CHBI 真工作函数                  → 不复用 (NChBi 走 chlib 虚接口)
+ *  前提: Item21.value ≡ ±1 (方向: +1 顶 / -1 底) [C 待动态确认]
+ *
+ *  | 输出值 | 产生段 | 地址(0x1000...)  | 语义                                  |
+ *  | ------ | ------ | ---------------- | ------------------------------------- |
+ *  |  ±3    | 段 C   | 10002883-94      | **端点/分型 bar** (=-3 底分型 / +3 顶) |
+ *  |  ±1    | 段 B   | 1000286d         | 记录区间内部 bar (笔内)                |
+ *  |  ±2    | 段 B   | 1000285e-67      | 区间内 flag.bit3 置位的 bar (×2 加权)  |
+ *  |  ±10   | 段 A / 尾 | 10002836-46 / 100028b7-d8 | 区间外的填充段                |
+ *  |   0    | memset | 1000278c         | 未被任何记录覆盖的 bar                 |
+ *
+ *  ⇒ **用户公式 `SELECT(VAR2=-3)` 命中的 = 每个结构区间结束后的端点 bar**
+ *    （段 C 是 `-3` 的唯一产生路径）[A(路径) / B(语义)]。
+ *  ⇒ 函数体无任何 `-3/+3` 立即数 (全文仅 `or eax,0xffffffff` 一处)，且 **x87 条件 0 条**
+ *    （只有 fild/fstp 整数→double）⇒ 输出码 100% 由 value 缩放产生 [A]。
  */
 
 /* ---------------------------------------------------------------------------
- * 5. 勘误与待仲裁 (docs/25 §七)
+ * 6. 兄弟对照: 0x10002900 (NChBiSta2, vt[+0x3c]) [B]
  * -------------------------------------------------------------------------*/
-/*
- *  [勘误 A] 0x1006bc70 不是"P 转码器", 是 _ftol2 (double->int)。
- *            ⇒ NChBi 的 P 比较全是整数比较; (int)P 截断取整。
- *  [勘误 A] "NChBi 与 ChBi 共用工作函数" 的早期假定不成立:
- *            共用仅限包装层辅助 (0x1001c110 / 0x10001cc0 / 0x10006cc0)。
- *  [修正 B] 缠论组绑定不止 7 个导出: ch_api 虚表槽 +0x18..+0xc4 (36+ 处) 全是。
- *  [待仲裁 C] 槽 +0x40/+0x48/+0x50/+0x54/+0x5c/+0x64 对应的导出名。
- *  [待仲裁 C] chlib 0x10002340 的 [esp+0xc](窗口长度) 来源; 0x10006670/0x10009930 语义。
- *  [待仲裁 C] NCHBISTA 返回码 -3/+3/0 的判定 (第二批: chlib 0x10002770)。
- *  [待仲裁 C] NChBi 与 NChBiSta 是否共享 [this+0x10] 子对象。
+/* 与 0x10002770 同族同形 (memset + Authorize + 读 obj8/obj10 表 + ret 0x10)，
+ * 差异: 缩放改用 `imul ebx,esi` 系列 (乘数来自局部) 而非 `lea/add` ⇒ 带可配置乘数。
+ * 证据: chlib_worker_10002900.txt (0x10002900-0x10002d4f / 失败 0x10002d69) */
+
+/* ---------------------------------------------------------------------------
+ * 7. ch_api 虚表槽 -> TAFLib 导出名 全映射 (第二批) [A]
+ * -------------------------------------------------------------------------*/
+/* 工具: tools/re-inventory/nchbi/map_family_slots.py ; 证据: family_slots.txt
+ *   +0x18 NChBhh/NChBh  0x10001590      +0x48 NChBiZj3     0x10002fc0
+ *   +0x1c NChBhl        0x10001690      +0x4c NChBiZjOrder 0x10003180
+ *   +0x20 NChRef        0x10001790      +0x58 NChBiFxNum   0x10003680
+ *   +0x24 NChFx         0x10001a10      +0x5c NChBiZjNum   0x100038b0
+ *   +0x28 NChFxSta      0x10001bd0      +0x60 NChBiSpeed   0x10003a90
+ *   +0x2c NChFxUpDn     0x10001d90      +0x78 NChDuanKh/Kl/Kd/NChZs/NChZs_L2 0x100045f0
+ *   +0x30 NChFxOrder    0x10002190      +0x7c..+0xb0 NChZs* 族
+ *   +0x34 NChBi         0x10002340      +0xb8 NChMacdArea  0x10006190
+ *   +0x38 NChBiSta      0x10002770      +0xbc NChSecArea   0x10006240
+ *   +0x3c NChBiSta2     0x10002900      +0xc4 Xuech/Xuech2  0x10006470
+ *   +0x44 NChBiZj       0x10002ea0
+ *  8 个槽在 TAFLib .text 内无引用 (字节扫描): +0x40/+0x50/+0x54/+0x64/+0x68/+0x6c/+0x70/+0x74
  */
 
 /* ---------------------------------------------------------------------------
- * 6. 第二批待办
+ * 8. 勘误与待仲裁
  * -------------------------------------------------------------------------*/
 /*
- *  [ ] chlib 0x10002770 (NChBiSta) 逐条解剖 → 输出码 -3/+3/0 判定条件
- *  [ ] chlib 0x10006670 / 0x10009930 / 0x100148a0 / engine vt[+4]/vt[+0xc] 语义
- *  [ ] chlib 数据流: ctx6(H/O/L/C/V/A) → 内部容器 → out[]
- *  [ ] 输出向量与 NCHBISTA / NCHBIZJ 组合 (顶/底/笔/段) 交互
- *  [ ] frida 动态验证: 挂 TAFLib 0x10012a50 + chlib base+0x10002340
+ *  [勘误 A] 0x1006bc70 / 0x100148a0 都是 _ftol2, 不是"P 转码器"。
+ *  [勘误 A] NChBi 与 NChBiSta 的授权码不同: EA62 vs **EA61**。
+ *  [勘误 A] "NChBi 与 NChBiSta 各自独立" 不成立: 二者 **共享 obj8/obj10 容器**,
+ *           NChBi 填、NChBiSta 读 (见 §2b/§4 注释)。
+ *  [修正 A] ch_api 子对象布局全部解出 (第二批): +8/+0xc/+0x10/+0x14/+0x18/+0x1c。
+ *  [修正 A] ch_api 虚表槽 +0x18..+0xcc 共 50 槽已映射到 TAFLib 导出名。
+ *  [待仲裁 C] Item21.value 是否恒为 ±1 (决定 ±3 是否唯一由该值产生)。
+ *  [待仲裁 C] Item21 的 recIdx@+0x09 与 barIdx@+0x1D 为何都是「+1 未对齐」偏移
+ *             (疑 struct 为手写字节流序列化; 两函数各自只读其中一个字段)。
+ *  [待仲裁 C] ±2 / ±10 的确切语义 (多级别? 笔间填充?)。
+ *  [待仲裁 C] 8 个无 TAFLib 调用者的槽 (+0x40 等) 的命名归属。
+ *  [待仲裁 C] 0x10002770 段 A 的 `cur = -it->value` 首项取反语义。
+ */
+
+/* ---------------------------------------------------------------------------
+ * 9. 下一批 (第三批) 待办
+ * -------------------------------------------------------------------------*/
+/*
+ *  [ ] Out 向量深挖: 用 frida 在 0x10002770/0x10002340 出口 dump out[] 与 Item21,
+ *      确认 value 值域与 ±3/±2/±10 的实际分布 (闭环 §5 的 [B] -> [A])
+ *  [ ] NChBiZj (0x10002ea0) / NChBiZjOrder (0x10003180) 链: 笔转折与序号
+ *  [ ] NChBiSta2 (0x10002900) 的乘数来源 (哪个参数/哪个内部状态)
+ *  [ ] chlib 内部对 8 个未启用槽的调用点扫描
  */

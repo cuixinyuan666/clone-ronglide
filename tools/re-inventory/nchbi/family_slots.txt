@@ -1,0 +1,108 @@
+# TAFLib NChB* 家族包装层 -> ch_api 虚表槽 -> chlib 实现
+# ch_api vtable = 10015214 (chlib)
+
+TAFLib VA  export           slot     chlib fn     备注
+10012740 ?CalcProc_NChBhh@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x18    10001590     已定名
+100127b0 ?CalcProc_NChBhl@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x1c    10001690     已定名
+10012820 ?CalcProc_NChRef@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x20    10001790     已定名
+10012890 ?CalcProc_NChFx@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x24    10001a10     已定名
+10012900 ?CalcProc_NChFxSta@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x28    10001bd0     已定名
+10012970 ?CalcProc_NChFxUpDn@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x2c    10001d90     已定名
+100129e0 ?CalcProc_NChFxOrder@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x30    10002190     已定名
+10012a50 ?CalcProc_NChBi@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x34    10002340     已定名
+10012c40 ?CalcProc_NChBiSta@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x38    10002770     已定名
+10012cb0 ?CalcProc_NChBiSta2@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x3c    10002900     已定名
+10012d20 ?CalcProc_NChBiZj@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x44    10002ea0     已定名
+10012d90 ?CalcProc_NChBiZj3@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x48    10002fc0     已定名
+10012e00 ?CalcProc_NChBiZjOrder@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x4c    10003180     已定名
+10012e70 ?CalcProc_NChBiFxNum@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x58    10003680     已定名
+10012ee0 ?CalcProc_NChBiZjNum@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x5c    100038b0     已定名
+10012f50 ?CalcProc_NChBiSpeed@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x60    10003a90     已定名
+10012fc0 ?CalcProc_NChDuan@TAF_Calculator@@IAE_NIPANQAPAN@Z ?        ?            未匹配到 [esi+0xbc] 分发
+10013040 ?CalcProc_NChDuanSta@TAF_Calculator@@IAE_NIPANQAPAN@Z ?        ?            未匹配到 [esi+0xbc] 分发
+100130c0 ?CalcProc_NChDuanKh@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x78    100045f0     已定名
+10013140 ?CalcProc_NChDuanKl@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x78    100045f0     已定名
+100131c0 ?CalcProc_NChDuanKd@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x78    100045f0     已定名
+10013240 ?CalcProc_NChZs@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x78    100045f0     已定名
+100132d0 ?CalcProc_NChZs_L2@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x78    100045f0     已定名
+10013370 ?CalcProc_NChZsG@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x7c    100046a0     已定名
+100133e0 ?CalcProc_NChZsD@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x80    100046c0     已定名
+10013460 ?CalcProc_NChZsBs12@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x84    100046e0     已定名
+100134e0 ?CalcProc_NChZsBs3@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x88    10004700     已定名
+10013560 ?CalcProc_NChZsBreach@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x8c    10004720     已定名
+100135e0 ?CalcProc_NChZsL2M@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x90    100048a0     已定名
+10013660 ?CalcProc_NChZsFj@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x94    10005020     已定名
+100136f0 ?CalcProc_NChZsDg@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x98    10005160     已定名
+10013780 ?CalcProc_NChZsHLTurn@TAF_Calculator@@IAE_NIPANQAPAN@Z +0x9c    10005480     已定名
+10013810 ?CalcProc_NChFjZsNum@TAF_Calculator@@IAE_NIPANQAPAN@Z +0xa0    10005810     已定名
+10013890 ?CalcProc_NChZsSel@TAF_Calculator@@IAE_NIPANQAPAN@Z +0xa4    100058f0     已定名
+10013910 ?CalcProc_NChZsSelPri@TAF_Calculator@@IAE_NIPANQAPAN@Z +0xa8    10005a50     已定名
+10013990 ?CalcProc_NChZsSelSlPri@TAF_Calculator@@IAE_NIPANQAPAN@Z +0xac    10005bb0     已定名
+10013a10 ?CalcProc_NChZsSelSpPri@TAF_Calculator@@IAE_NIPANQAPAN@Z +0xb0    10005d10     已定名
+10013a90 ?CalcProc_NChMacdArea@TAF_Calculator@@IAE_NIPANQAPAN@Z +0xb8    10006190     已定名
+10013b10 ?CalcProc_NChSecArea@TAF_Calculator@@IAE_NIPANQAPAN@Z +0xbc    10006240     已定名
+10013b90 ?CalcProc_Xuech@TAF_Calculator@@IAE_NIPANQAPAN@Z +0xc4    10006470     已定名
+10013c20 ?CalcProc_Xuech2@TAF_Calculator@@IAE_NIPANQAPAN@Z +0xc4    10006470     已定名
+10013cb0 ?CalcProc_XuechLup@TAF_Calculator@@IAE_NIPANQAPAN@Z ?        ?            未匹配到 [esi+0xbc] 分发
+10013d40 ?CalcProc_XuechLdn@TAF_Calculator@@IAE_NIPANQAPAN@Z ?        ?            未匹配到 [esi+0xbc] 分发
+10013dd0 ?CalcProc_XuechSup@TAF_Calculator@@IAE_NIPANQAPAN@Z ?        ?            未匹配到 [esi+0xbc] 分发
+10013e60 ?CalcProc_XuechSdn@TAF_Calculator@@IAE_NIPANQAPAN@Z ?        ?            未匹配到 [esi+0xbc] 分发
+10013ef0 ?CalcProc_ColorKLine@TAF_Calculator@@IAE_NIPANQAPAN@Z ?        ?            未匹配到 [esi+0xbc] 分发
+10013f90 ?CalcProc_Select@TAF_Calculator@@IAE_NIPANQAPAN@Z ?        ?            未匹配到 [esi+0xbc] 分发
+10014010 ?CalcProc_Alert@TAF_Calculator@@IAE_NIPANQAPAN@Z ?        ?            未匹配到 [esi+0xbc] 分发
+100140c0 ?CalcProc_Sort@TAF_Calculator@@IAE_NIPANQAPAN@Z ?        ?            未匹配到 [esi+0xbc] 分发
+10014160 ?CalcProc_RLDOrder@TAF_Calculator@@IAE_NIPANQAPAN@Z ?        ?            未匹配到 [esi+0xbc] 分发
+
+# ch_api vtable 全槽清单
+  +0x00 : 100012c0   
+  +0x04 : 100013a0   
+  +0x08 : 10001430   
+  +0x0c : 10001460   
+  +0x10 : 10001490   
+  +0x14 : 100014c0   
+  +0x18 : 10001590   <- ?CalcProc_NChBhh@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x1c : 10001690   <- ?CalcProc_NChBhl@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x20 : 10001790   <- ?CalcProc_NChRef@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x24 : 10001a10   <- ?CalcProc_NChFx@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x28 : 10001bd0   <- ?CalcProc_NChFxSta@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x2c : 10001d90   <- ?CalcProc_NChFxUpDn@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x30 : 10002190   <- ?CalcProc_NChFxOrder@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x34 : 10002340   <- ?CalcProc_NChBi@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x38 : 10002770   <- ?CalcProc_NChBiSta@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x3c : 10002900   <- ?CalcProc_NChBiSta2@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x40 : 10002d80   
+  +0x44 : 10002ea0   <- ?CalcProc_NChBiZj@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x48 : 10002fc0   <- ?CalcProc_NChBiZj3@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x4c : 10003180   <- ?CalcProc_NChBiZjOrder@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x50 : 10003330   
+  +0x54 : 10003450   
+  +0x58 : 10003680   <- ?CalcProc_NChBiFxNum@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x5c : 100038b0   <- ?CalcProc_NChBiZjNum@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x60 : 10003a90   <- ?CalcProc_NChBiSpeed@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x64 : 10003cd0   
+  +0x68 : 10004170   
+  +0x6c : 100042f0   
+  +0x70 : 100043e0   
+  +0x74 : 100044d0   
+  +0x78 : 100045f0   <- ?CalcProc_NChDuanKh@TAF_Calculator@@IAE_NIPANQAPAN@Z,?CalcProc_NChDuanKl@TAF_Calculator@@IAE_NIPANQAPAN@Z,?CalcProc_NChDuanKd@TAF_Calculator@@IAE_NIPANQAPAN@Z,?CalcProc_NChZs@TAF_Calculator@@IAE_NIPANQAPAN@Z,?CalcProc_NChZs_L2@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x7c : 100046a0   <- ?CalcProc_NChZsG@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x80 : 100046c0   <- ?CalcProc_NChZsD@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x84 : 100046e0   <- ?CalcProc_NChZsBs12@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x88 : 10004700   <- ?CalcProc_NChZsBs3@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x8c : 10004720   <- ?CalcProc_NChZsBreach@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x90 : 100048a0   <- ?CalcProc_NChZsL2M@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x94 : 10005020   <- ?CalcProc_NChZsFj@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x98 : 10005160   <- ?CalcProc_NChZsDg@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0x9c : 10005480   <- ?CalcProc_NChZsHLTurn@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0xa0 : 10005810   <- ?CalcProc_NChFjZsNum@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0xa4 : 100058f0   <- ?CalcProc_NChZsSel@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0xa8 : 10005a50   <- ?CalcProc_NChZsSelPri@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0xac : 10005bb0   <- ?CalcProc_NChZsSelSlPri@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0xb0 : 10005d10   <- ?CalcProc_NChZsSelSpPri@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0xb4 : 10005e70   
+  +0xb8 : 10006190   <- ?CalcProc_NChMacdArea@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0xbc : 10006240   <- ?CalcProc_NChSecArea@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0xc0 : 10006260   
+  +0xc4 : 10006470   <- ?CalcProc_Xuech@TAF_Calculator@@IAE_NIPANQAPAN@Z,?CalcProc_Xuech2@TAF_Calculator@@IAE_NIPANQAPAN@Z
+  +0xc8 : 100064f0   
+  +0xcc : 10006550   
