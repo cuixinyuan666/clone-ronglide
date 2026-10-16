@@ -1,0 +1,44 @@
+10013990  push     ebp
+10013991  mov      ebp, esp
+10013993  and      esp, 0xfffffff8
+10013996  sub      esp, 0x1c
+10013999  push     esi
+1001399a  push     0xea62
+1001399f  mov      esi, ecx
+100139a1  call     0x10014e60
+100139a6  test     al, al
+100139a8  jne      0x100139cc
+100139aa  mov      eax, dword ptr [ebp + 8]
+100139ad  mov      edx, dword ptr [ebp + 0xc]
+100139b0  lea      ecx, [eax*8]
+100139b7  push     ecx
+100139b8  push     0
+100139ba  push     edx
+100139bb  call     0x1006bd22
+100139c0  add      esp, 0xc
+100139c3  xor      al, al
+100139c5  pop      esi
+100139c6  mov      esp, ebp
+100139c8  pop      ebp
+100139c9  ret      0xc
+100139cc  lea      eax, [esp + 8]
+100139d0  push     eax
+100139d1  mov      ecx, esi
+100139d3  call     0x10006cc0
+100139d8  mov      eax, dword ptr [ebp + 0x10]
+100139db  mov      ecx, dword ptr [esi + 0xbc]
+100139e1  mov      edx, dword ptr [ecx]
+100139e3  mov      edx, dword ptr [edx + 0xac]
+100139e9  push     eax
+100139ea  lea      eax, [esp + 0xc]
+100139ee  push     eax
+100139ef  mov      eax, dword ptr [ebp + 0xc]
+100139f2  push     eax
+100139f3  mov      eax, dword ptr [ebp + 8]
+100139f6  push     eax
+100139f7  call     edx
+100139f9  mov      al, 1
+100139fb  pop      esi
+100139fc  mov      esp, ebp
+100139fe  pop      ebp
+100139ff  ret      0xc

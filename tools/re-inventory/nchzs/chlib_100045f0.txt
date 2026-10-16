@@ -1,0 +1,71 @@
+100045f0  push     ecx
+100045f1  mov      eax, dword ptr [esp + 0x10]
+100045f5  mov      edx, dword ptr [eax + 0xc]
+100045f8  push     ebx
+100045f9  mov      ebx, dword ptr [eax]
+100045fb  push     ebp
+100045fc  mov      ebp, dword ptr [esp + 0x10]
+10004600  push     esi
+10004601  mov      esi, dword ptr [eax + 8]
+10004604  push     edi
+10004605  mov      edi, ecx
+10004607  mov      ecx, dword ptr [eax + 4]
+1000460a  lea      eax, [ebp*8]
+10004611  push     eax
+10004612  mov      dword ptr [esp + 0x14], ecx
+10004616  mov      ecx, dword ptr [esp + 0x20]
+1000461a  push     0
+1000461c  push     ecx
+1000461d  mov      dword ptr [esp + 0x2c], edx
+10004621  call     0x1001494c
+10004626  add      esp, 0xc
+10004629  test     ebx, ebx
+1000462b  je       0x10004689
+1000462d  test     esi, esi
+1000462f  je       0x10004689
+10004631  mov      ecx, dword ptr [edi + 0x18]
+10004634  mov      edx, dword ptr [ecx]
+10004636  mov      eax, dword ptr [edx + 4]
+10004639  call     eax
+1000463b  mov      eax, dword ptr [esp + 0x20]
+1000463f  mov      ecx, dword ptr [edi + 0x18]
+10004642  mov      edx, dword ptr [ecx]
+10004644  mov      edx, dword ptr [edx + 0xc]
+10004647  push     eax
+10004648  mov      eax, dword ptr [esp + 0x14]
+1000464c  push     esi
+1000464d  push     ebx
+1000464e  push     eax
+1000464f  push     ebp
+10004650  call     edx
+10004652  mov      eax, dword ptr [esp + 0x24]
+10004656  mov      ecx, dword ptr [eax]
+10004658  mov      ebx, dword ptr [edi + 0x18]
+1000465b  push     ecx
+1000465c  push     ebp
+1000465d  call     0x1000e990
+10004662  mov      ecx, dword ptr [edi + 0x18]
+10004665  mov      edx, dword ptr [ecx]
+10004667  mov      eax, dword ptr [edx + 8]
+1000466a  call     eax
+1000466c  test     eax, eax
+1000466e  jne      0x10004689
+10004670  mov      ecx, dword ptr [edi + 0x18]
+10004673  test     ecx, ecx
+10004675  je       0x10004689
+10004677  mov      esi, dword ptr [esp + 0x1c]
+1000467b  push     edi
+1000467c  call     0x10006700
+10004681  pop      edi
+10004682  pop      esi
+10004683  pop      ebp
+10004684  pop      ebx
+10004685  pop      ecx
+10004686  ret      0x10
+10004689  pop      edi
+1000468a  pop      esi
+1000468b  pop      ebp
+1000468c  or       eax, 0xffffffff
+1000468f  pop      ebx
+10004690  pop      ecx
+10004691  ret      0x10

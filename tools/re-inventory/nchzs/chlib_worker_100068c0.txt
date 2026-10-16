@@ -1,0 +1,81 @@
+100068c0  push     ecx
+100068c1  push     esi
+100068c2  mov      esi, eax
+100068c4  mov      eax, dword ptr [esp + 0xc]
+100068c8  lea      ecx, [eax*8]
+100068cf  push     ecx
+100068d0  push     0
+100068d2  push     edi
+100068d3  call     0x1001494c
+100068d8  mov      eax, dword ptr [esi + 0x40]
+100068db  mov      edx, dword ptr [esi + 0x2c]
+100068de  add      esp, 0xc
+100068e1  test     eax, eax
+100068e3  je       0x1000699b
+100068e9  test     edx, edx
+100068eb  je       0x1000699b
+100068f1  jbe      0x10006994
+100068f7  lea      ecx, [eax + 0x14]
+100068fa  mov      esi, edx
+100068fc  push     ebp
+100068fd  lea      ecx, [ecx]
+10006900  cmp      dword ptr [esp + 0x14], 0xc
+10006905  mov      dword ptr [esp + 8], 0
+1000690d  jne      0x10006942
+1000690f  mov      al, byte ptr [ecx + 1]
+10006912  test     al, al
+10006914  je       0x10006921
+10006916  movsx    eax, al
+10006919  test     eax, eax
+1000691b  mov      dword ptr [esp + 8], eax
+1000691f  jne      0x10006973
+10006921  mov      al, byte ptr [ecx]
+10006923  test     al, al
+10006925  je       0x10006932
+10006927  movsx    eax, al
+1000692a  test     eax, eax
+1000692c  mov      dword ptr [esp + 8], eax
+10006930  jne      0x10006973
+10006932  mov      al, byte ptr [ecx + 3]
+10006935  test     al, al
+10006937  je       0x10006973
+10006939  movsx    edx, al
+1000693c  mov      dword ptr [esp + 8], edx
+10006940  jmp      0x10006973
+10006942  mov      dl, byte ptr [ecx + 2]
+10006945  test     dl, dl
+10006947  je       0x10006973
+10006949  mov      eax, dword ptr [ecx - 8]
+1000694c  test     eax, eax
+1000694e  je       0x10006973
+10006950  mov      ebp, dword ptr [eax + 0xc]
+10006953  sub      ebp, dword ptr [eax + 8]
+10006956  movsx    edx, dl
+10006959  add      ebp, 1
+1000695c  cmp      ebp, 3
+1000695f  setg     al
+10006962  neg      al
+10006964  sbb      eax, eax
+10006966  and      eax, 0xfffffff7
+10006969  add      eax, 0xa
+1000696c  imul     eax, edx
+1000696f  mov      dword ptr [esp + 8], eax
+10006973  mov      eax, dword ptr [ecx - 0x14]
+10006976  test     eax, eax
+10006978  jl       0x10006987
+1000697a  cmp      eax, dword ptr [esp + 0x10]
+1000697e  jae      0x10006987
+10006980  fild     dword ptr [esp + 8]
+10006984  fstp     qword ptr [edi + eax*8]
+10006987  add      ecx, 0x18
+1000698a  sub      esi, 1
+1000698d  jne      0x10006900
+10006993  pop      ebp
+10006994  xor      eax, eax
+10006996  pop      esi
+10006997  pop      ecx
+10006998  ret      8
+1000699b  or       eax, 0xffffffff
+1000699e  pop      esi
+1000699f  pop      ecx
+100069a0  ret      8

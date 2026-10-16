@@ -1,0 +1,45 @@
+# NChZs 族 侦察表（家族第一批, 2026-10-17）
+# 来源: TAFLib 包装层实测反汇编 (taf_10013*.txt) + chlib 虚表 dump (vt_nchzs.txt)
+#       + chlib 实现反汇编 (chlib_1000*.txt)
+# ⚠ 勘误: nchbi/family_slots.txt 的 NChDuanKh/Kl/Kd 三行槽号 (+0x78) 有误,
+#         实为 +0x6c/+0x70/+0x74 (窗口越界误映射; 详见 docs/31 §勘误)。本表为权威版。
+
+槽       chlib实现   TAFLib包装  导出            授权码              元素依赖 / 备注
++0x78   100045f0    10013240    NChZs           EA61(首)/EA63        主入口; this[+0x18]; Fetch6@10006cc0; 写 out[]; 4 参
++0x78   100045f0    100132d0    NChZs_L2        EA61/EA62/EA63       ★与 NChZs 共享同一实现; 授权按层递进
++0x7c   100046a0    10013370    NChZsG          EA61                 薄包装 -> 0x10006800 (读段 obj[+0x30/+0x3c], stride 0x5d, ZG)
++0x80   100046c0    100133e0    NChZsD          EA61                 薄包装 -> 0x10006860 (同上, ZD)
++0x84   100046e0    10013460    NChZsBs12       EA61                 薄包装 -> 0x100068c0 (读 obj[+0x40/+0x2c], stride 0x18, mode=12)
++0x88   10004700    100134e0    NChZsBs3        EA61                 薄包装 -> 0x100068c0 (mode=3)
++0x8c   10004720    10013560    NChZsBreach     EA61                 独立实现 (122 行; memset@1001494c)
++0x90   100048a0    100135e0    NChZsL2M        EA61                 大 (695 行); 读段数组 obj[+0x30]; 记录字段 [+0x29]/[+0x31]
++0x94   10005020    10013660    NChZsFj         EA63+EA61            大 (384 行)
++0x98   10005160    100136f0    NChZsDg         EA63+EA61            (260 行)
++0x9c   10005480    10013780    NChZsHLTurn     EA63+EA61            (318 行)
++0xa0   10005810    10013810    NChFjZsNum      EA61                 (79 行; memset; [eax+0x4c])
++0xa4   100058f0    10013890    NChZsSel        EA62                 (125 行; obj[+0x18]; call 0x1000eb80)
++0xa8   10005a50    10013910    NChZsSelPri     EA62                 (129 行)
++0xac   10005bb0    10013990    NChZsSelSlPri   EA62                 (129 行)
++0xb0   10005d10    10013a10    NChZsSelSpPri   EA62                 (129 行)
++0xb4   10005e70    (无导出)     —               —                    (264 行) 无 TAFLib 导出映射 = 内部槽/未导出
+
+共 17 支导出 (16 槽 + NChZs/NChZs_L2 共享 +0x78)。全部 `ret 0x10` (4 参) 或薄包装 `ret 0x10`;
+worker 0x100068c0 为 `ret 8` (2 参)。
+
+## 授权码分组 (实测 push 直证)
+EA61        : NChZsG, NChZsD, NChZsBs12, NChZsBs3, NChZsBreach, NChZsL2M, NChFjZsNum (+ NChZs 首层)
+EA63+EA61   : NChZsFj, NChZsDg, NChZsHLTurn                 (EA63 先, EA61 兜底)
+EA61/EA63   : NChZs (层 0 / 层 >0)
+EA61/62/63  : NChZs_L2
+EA62        : NChZsSel, NChZsSelPri, NChZsSelSlPri, NChZsSelSpPri
+
+## 与 NChZi 已确权基础设施的复用度
+[✓ 复用] Fetch6Buffers 0x10006cc0 (H/O/L/C/V/A 六缓冲, 同 NChBi 包装层)
+[✓ 复用] memset 0x1001494c
+[✓ 复用] TAFLib Authorize 0x10014e60 (授权码形态 `push code; call 0x10014e60` 与 NChBi 族一致)
+[✓ 复用] TAFLib 包装模板: this[+0xbc]=ch_api*; this[+0xb8]=层计数器; 失败 memset+ret 0
+[~ 部分] 容器访问器偏移 [+0x30]=base/[+0x3c]=count (与 NChBi obj10 同偏移)
+[✗ 未复用] 元素类型: NChZs 段 stride **0x5d** / 分类 stride **0x18** ≠ NChBi Item21 **0x21**
+           ⇒ NChZs 引擎对象 `this[+0x18]` 是**独立类**, 容器需新解
+[? 未见] 配对器 0x1000b000 / 0x1000a250 本批函数中未出现 [C]
+         通用 setter 0x1000e0b0 未出现; 另见新 helper 0x1000e990 / 0x1000eb80 [C]

@@ -1,0 +1,125 @@
+100058f0  push     ecx
+100058f1  push     ebp
+100058f2  mov      ebp, dword ptr [esp + 0xc]
+100058f6  push     esi
+100058f7  lea      eax, [ebp*8]
+100058fe  push     eax
+100058ff  mov      esi, ecx
+10005901  mov      ecx, dword ptr [esp + 0x18]
+10005905  push     0
+10005907  push     ecx
+10005908  call     0x1001494c
+1000590d  mov      eax, dword ptr [esp + 0x28]
+10005911  fnstcw   word ptr [esp + 0x28]
+10005915  mov      eax, dword ptr [eax]
+10005917  fld      qword ptr [eax]
+10005919  movzx    eax, word ptr [esp + 0x28]
+1000591e  mov      ecx, dword ptr [esi + 0x18]
+10005921  mov      edx, dword ptr [ecx]
+10005923  mov      edx, dword ptr [edx + 0x10]
+10005926  or       eax, 0xc00
+1000592b  mov      dword ptr [esp + 0x14], eax
+1000592f  add      esp, 0xc
+10005932  fldcw    word ptr [esp + 8]
+10005936  fistp    dword ptr [esp + 8]
+1000593a  movzx    eax, byte ptr [esp + 8]
+1000593f  push     eax
+10005940  fldcw    word ptr [esp + 0x20]
+10005944  call     edx
+10005946  test     eax, eax
+10005948  je       0x10005953
+1000594a  pop      esi
+1000594b  or       eax, 0xffffffff
+1000594e  pop      ebp
+1000594f  pop      ecx
+10005950  ret      0x10
+10005953  mov      esi, dword ptr [esi + 0x18]
+10005956  mov      eax, dword ptr [esi + 0x5c]
+10005959  test     eax, eax
+1000595b  push     edi
+1000595c  jne      0x10005962
+1000595e  xor      edi, edi
+10005960  jmp      0x1000597a
+10005962  mov      ecx, dword ptr [esi + 0x60]
+10005965  sub      ecx, eax
+10005967  mov      eax, 0x8d3dcb09
+1000596c  imul     ecx
+1000596e  add      edx, ecx
+10005970  sar      edx, 4
+10005973  mov      edi, edx
+10005975  shr      edi, 0x1f
+10005978  add      edi, edx
+1000597a  call     0x1000eb80
+1000597f  test     edi, edi
+10005981  je       0x10005a3a
+10005987  test     eax, eax
+10005989  je       0x10005a3a
+1000598f  fld1     
+10005991  push     ebx
+10005992  xor      ebx, ebx
+10005994  cmp      edi, 4
+10005997  jl       0x10005a0f
+10005999  lea      esi, [edi - 4]
+1000599c  shr      esi, 2
+1000599f  add      esi, 1
+100059a2  lea      ecx, [eax + 0x3b]
+100059a5  lea      ebx, [esi*4]
+100059ac  mov      edx, dword ptr [ecx - 0x3a]
+100059af  test     edx, edx
+100059b1  jl       0x100059c3
+100059b3  cmp      edx, ebp
+100059b5  ja       0x100059c3
+100059b7  mov      ebp, dword ptr [esp + 0x1c]
+100059bb  fst      qword ptr [ebp + edx*8]
+100059bf  mov      ebp, dword ptr [esp + 0x18]
+100059c3  mov      edx, dword ptr [ecx - 0x1d]
+100059c6  test     edx, edx
+100059c8  jl       0x100059da
+100059ca  cmp      edx, ebp
+100059cc  ja       0x100059da
+100059ce  mov      ebp, dword ptr [esp + 0x1c]
+100059d2  fst      qword ptr [ebp + edx*8]
+100059d6  mov      ebp, dword ptr [esp + 0x18]
+100059da  mov      edx, dword ptr [ecx]
+100059dc  test     edx, edx
+100059de  jl       0x100059f0
+100059e0  cmp      edx, ebp
+100059e2  ja       0x100059f0
+100059e4  mov      ebp, dword ptr [esp + 0x1c]
+100059e8  fst      qword ptr [ebp + edx*8]
+100059ec  mov      ebp, dword ptr [esp + 0x18]
+100059f0  mov      edx, dword ptr [ecx + 0x1d]
+100059f3  test     edx, edx
+100059f5  jl       0x10005a07
+100059f7  cmp      edx, ebp
+100059f9  ja       0x10005a07
+100059fb  mov      ebp, dword ptr [esp + 0x1c]
+100059ff  fst      qword ptr [ebp + edx*8]
+10005a03  mov      ebp, dword ptr [esp + 0x18]
+10005a07  add      ecx, 0x74
+10005a0a  sub      esi, 1
+10005a0d  jne      0x100059ac
+10005a0f  cmp      ebx, edi
+10005a11  jae      0x10005a37
+10005a13  mov      ecx, ebx
+10005a15  imul     ecx, ecx, 0x1d
+10005a18  lea      ecx, [ecx + eax + 1]
+10005a1c  sub      edi, ebx
+10005a1e  mov      eax, dword ptr [ecx]
+10005a20  test     eax, eax
+10005a22  jl       0x10005a2f
+10005a24  cmp      eax, ebp
+10005a26  ja       0x10005a2f
+10005a28  mov      edx, dword ptr [esp + 0x1c]
+10005a2c  fst      qword ptr [edx + eax*8]
+10005a2f  add      ecx, 0x1d
+10005a32  sub      edi, 1
+10005a35  jne      0x10005a1e
+10005a37  fstp     st(0)
+10005a39  pop      ebx
+10005a3a  pop      edi
+10005a3b  pop      esi
+10005a3c  xor      eax, eax
+10005a3e  pop      ebp
+10005a3f  pop      ecx
+10005a40  ret      0x10

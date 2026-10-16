@@ -1,0 +1,9 @@
+10004700  mov      eax, dword ptr [esp + 4]
+10004704  push     edi
+10004705  mov      edi, dword ptr [esp + 0xc]
+10004709  push     3
+1000470b  push     eax
+1000470c  mov      eax, dword ptr [ecx + 0x18]
+1000470f  call     0x100068c0
+10004714  pop      edi
+10004715  ret      0x10

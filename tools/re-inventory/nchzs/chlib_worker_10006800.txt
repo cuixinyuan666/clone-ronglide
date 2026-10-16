@@ -1,0 +1,31 @@
+10006800  lea      ecx, [eax*8]
+10006807  push     ecx
+10006808  push     0
+1000680a  push     edi
+1000680b  call     0x1001494c
+10006810  mov      eax, dword ptr [esi + 0x30]
+10006813  mov      edx, dword ptr [esi + 0x3c]
+10006816  add      esp, 0xc
+10006819  test     eax, eax
+1000681b  je       0x1000684d
+1000681d  test     edx, edx
+1000681f  je       0x1000684d
+10006821  jbe      0x1000684a
+10006823  lea      ecx, [eax + 0x55]
+10006826  test     byte ptr [ecx - 0x41], 1
+1000682a  je       0x10006842
+1000682c  mov      eax, dword ptr [ecx]
+1000682e  cmp      eax, dword ptr [ecx + 4]
+10006831  jg       0x10006842
+10006833  fld      qword ptr [ecx - 0x3c]
+10006836  add      eax, 1
+10006839  fstp     qword ptr [edi + eax*8 - 8]
+1000683d  cmp      eax, dword ptr [ecx + 4]
+10006840  jle      0x10006833
+10006842  add      ecx, 0x5d
+10006845  sub      edx, 1
+10006848  jne      0x10006826
+1000684a  xor      eax, eax
+1000684c  ret      
+1000684d  or       eax, 0xffffffff
+10006850  ret      

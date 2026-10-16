@@ -1,0 +1,37 @@
+10013140  sub      esp, 0x18
+10013143  push     esi
+10013144  mov      esi, ecx
+10013146  mov      ecx, dword ptr [esi + 0x10]
+10013149  call     dword ptr [0x1006f254]
+1001314f  mov      ecx, dword ptr [esi + 0x10]
+10013152  mov      dword ptr [esp + 4], eax
+10013156  call     dword ptr [0x1006f258]
+1001315c  mov      ecx, dword ptr [esi + 0x10]
+1001315f  mov      dword ptr [esp + 8], eax
+10013163  call     dword ptr [0x1006f250]
+10013169  mov      ecx, dword ptr [esi + 0x10]
+1001316c  mov      dword ptr [esp + 0xc], eax
+10013170  call     dword ptr [0x1006f240]
+10013176  mov      ecx, dword ptr [esi + 0x10]
+10013179  mov      dword ptr [esp + 0x10], eax
+1001317d  call     dword ptr [0x1006f280]
+10013183  mov      ecx, dword ptr [esi + 0x10]
+10013186  mov      dword ptr [esp + 0x14], eax
+1001318a  call     dword ptr [0x1006f2dc]
+10013190  mov      edx, dword ptr [esp + 0x28]
+10013194  mov      ecx, dword ptr [esi + 0xbc]
+1001319a  push     edx
+1001319b  lea      edx, [esp + 8]
+1001319f  push     edx
+100131a0  mov      edx, dword ptr [esp + 0x2c]
+100131a4  mov      dword ptr [esp + 0x20], eax
+100131a8  mov      eax, dword ptr [ecx]
+100131aa  mov      eax, dword ptr [eax + 0x70]
+100131ad  push     edx
+100131ae  mov      edx, dword ptr [esp + 0x2c]
+100131b2  push     edx
+100131b3  call     eax
+100131b5  mov      al, 1
+100131b7  pop      esi
+100131b8  add      esp, 0x18
+100131bb  ret      0xc

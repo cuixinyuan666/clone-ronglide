@@ -1,0 +1,122 @@
+10004720  sub      esp, 0x10
+10004723  mov      eax, dword ptr [esp + 0x1c]
+10004727  push     ebx
+10004728  push     ebp
+10004729  push     esi
+1000472a  mov      esi, dword ptr [ecx + 0x18]
+1000472d  mov      ecx, dword ptr [esp + 0x20]
+10004731  push     edi
+10004732  mov      edi, dword ptr [eax + 0xc]
+10004735  mov      eax, dword ptr [esp + 0x28]
+10004739  lea      edx, [ecx*8]
+10004740  push     edx
+10004741  xor      ebp, ebp
+10004743  push     ebp
+10004744  push     eax
+10004745  mov      dword ptr [esp + 0x1c], edi
+10004749  call     0x1001494c
+1000474e  mov      ebx, dword ptr [esi + 0x20]
+10004751  mov      ecx, dword ptr [esi + 0x2c]
+10004754  mov      eax, dword ptr [esi + 0x30]
+10004757  mov      esi, dword ptr [esi + 0x3c]
+1000475a  add      esp, 0xc
+1000475d  cmp      edi, ebp
+1000475f  mov      dword ptr [esp + 0x18], ebx
+10004763  mov      dword ptr [esp + 0x1c], ecx
+10004767  je       0x10004891
+1000476d  cmp      ebx, ebp
+1000476f  je       0x10004891
+10004775  cmp      ecx, ebp
+10004777  je       0x10004891
+1000477d  cmp      eax, ebp
+1000477f  je       0x10004891
+10004785  cmp      esi, ebp
+10004787  je       0x10004891
+1000478d  jbe      0x10004885
+10004793  lea      edx, [eax + 0xc]
+10004796  mov      dword ptr [esp + 0x14], esi
+1000479a  jmp      0x100047a6
+1000479c  lea      esp, [esp]
+100047a0  mov      ebx, dword ptr [esp + 0x18]
+100047a4  xor      ebp, ebp
+100047a6  test     byte ptr [edx + 8], 1
+100047aa  je       0x10004877
+100047b0  mov      eax, dword ptr [edx]
+100047b2  mov      esi, dword ptr [edx - 4]
+100047b5  mov      ecx, eax
+100047b7  sub      ecx, esi
+100047b9  add      ecx, 1
+100047bc  cmp      ecx, 3
+100047bf  setg     cl
+100047c2  test     cl, cl
+100047c4  je       0x10004877
+100047ca  lea      edi, [esi + 4]
+100047cd  add      eax, 1
+100047d0  cmp      edi, eax
+100047d2  mov      dword ptr [esp + 0x2c], ebp
+100047d6  jg       0x10004877
+100047dc  mov      eax, edi
+100047de  imul     eax, eax, 0x31
+100047e1  mov      dword ptr [esp + 0x24], ebp
+100047e5  lea      ebp, [eax + ebx + 8]
+100047e9  lea      esp, [esp]
+100047f0  cmp      edi, dword ptr [esp + 0x1c]
+100047f4  jae      0x10004877
+100047fa  mov      ebx, dword ptr [edx + 4]
+100047fd  cmp      dword ptr [ebp - 8], ebx
+10004800  jne      0x10004864
+10004802  mov      ecx, dword ptr [ebp - 4]
+10004805  mov      esi, dword ptr [ebp]
+10004808  cmp      ecx, esi
+1000480a  jg       0x10004864
+1000480c  lea      esp, [esp]
+10004810  cmp      ebx, -1
+10004813  mov      eax, dword ptr [esp + 0x10]
+10004817  fld      qword ptr [eax + ecx*8]
+1000481a  jne      0x10004839
+1000481c  fcomp    qword ptr [edx + 0xd]
+1000481f  fnstsw   ax
+10004821  test     ah, 0x41
+10004824  jne      0x10004843
+10004826  mov      eax, 1
+1000482b  add      dword ptr [esp + 0x2c], eax
+1000482f  sub      dword ptr [esp + 0x24], eax
+10004833  fild     dword ptr [esp + 0x2c]
+10004837  jmp      0x1000485d
+10004839  fcomp    qword ptr [edx + 0x19]
+1000483c  fnstsw   ax
+1000483e  test     ah, 5
+10004841  jnp      0x1000484c
+10004843  add      ecx, 1
+10004846  cmp      ecx, esi
+10004848  jle      0x10004810
+1000484a  jmp      0x10004864
+1000484c  mov      eax, 1
+10004851  add      dword ptr [esp + 0x2c], eax
+10004855  sub      dword ptr [esp + 0x24], eax
+10004859  fild     dword ptr [esp + 0x24]
+1000485d  mov      eax, dword ptr [esp + 0x28]
+10004861  fstp     qword ptr [eax + ecx*8]
+10004864  mov      ecx, dword ptr [edx]
+10004866  add      edi, 1
+10004869  add      ecx, 1
+1000486c  add      ebp, 0x31
+1000486f  cmp      edi, ecx
+10004871  jle      0x100047f0
+10004877  add      edx, 0x5d
+1000487a  sub      dword ptr [esp + 0x14], 1
+1000487f  jne      0x100047a0
+10004885  pop      edi
+10004886  pop      esi
+10004887  pop      ebp
+10004888  xor      eax, eax
+1000488a  pop      ebx
+1000488b  add      esp, 0x10
+1000488e  ret      0x10
+10004891  pop      edi
+10004892  pop      esi
+10004893  pop      ebp
+10004894  or       eax, 0xffffffff
+10004897  pop      ebx
+10004898  add      esp, 0x10
+1000489b  ret      0x10

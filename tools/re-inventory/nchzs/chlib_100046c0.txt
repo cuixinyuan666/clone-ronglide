@@ -1,0 +1,9 @@
+100046c0  mov      eax, dword ptr [esp + 4]
+100046c4  push     esi
+100046c5  mov      esi, dword ptr [ecx + 0x18]
+100046c8  push     edi
+100046c9  mov      edi, dword ptr [esp + 0x10]
+100046cd  call     0x10006860
+100046d2  pop      edi
+100046d3  pop      esi
+100046d4  ret      0x10
