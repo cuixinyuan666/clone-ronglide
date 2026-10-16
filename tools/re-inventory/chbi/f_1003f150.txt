@@ -1,0 +1,7 @@
+1003f150  push     ecx
+1003f151  push     esi
+1003f152  mov      dword ptr [esp + 4], 0
+1003f15a  call     0x1006a4e0
+1003f15f  mov      eax, esi
+1003f161  pop      ecx
+1003f162  ret      

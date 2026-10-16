@@ -1,0 +1,41 @@
+1003f0d0  push     ebp
+1003f0d1  push     edi
+1003f0d2  mov      edi, dword ptr [ebx + 4]
+1003f0d5  xor      ebp, ebp
+1003f0d7  cmp      edi, dword ptr [ebx + 8]
+1003f0da  mov      dword ptr [esi], ebp
+1003f0dc  mov      dword ptr [esi + 4], ebp
+1003f0df  jbe      0x1003f0e7
+1003f0e1  call     dword ptr [0x1006f194]
+1003f0e7  mov      dword ptr [esi], ebx
+1003f0e9  mov      dword ptr [esi + 4], edi
+1003f0ec  lea      esp, [esp]
+1003f0f0  mov      edi, dword ptr [ebx + 8]
+1003f0f3  cmp      dword ptr [ebx + 4], edi
+1003f0f6  jbe      0x1003f0fe
+1003f0f8  call     dword ptr [0x1006f194]
+1003f0fe  mov      eax, dword ptr [esi]
+1003f100  test     eax, eax
+1003f102  je       0x1003f108
+1003f104  cmp      eax, ebx
+1003f106  je       0x1003f10e
+1003f108  call     dword ptr [0x1006f194]
+1003f10e  cmp      dword ptr [esi + 4], edi
+1003f111  je       0x1003f140
+1003f113  cmp      dword ptr [esp + 0xc], ebp
+1003f117  je       0x1003f140
+1003f119  add      ebp, 1
+1003f11c  cmp      dword ptr [esi], 0
+1003f11f  jne      0x1003f127
+1003f121  call     dword ptr [0x1006f194]
+1003f127  mov      eax, dword ptr [esi]
+1003f129  mov      ecx, dword ptr [esi + 4]
+1003f12c  cmp      ecx, dword ptr [eax + 8]
+1003f12f  jb       0x1003f137
+1003f131  call     dword ptr [0x1006f194]
+1003f137  add      dword ptr [esi + 4], 0xa0
+1003f13e  jmp      0x1003f0f0
+1003f140  pop      edi
+1003f141  mov      eax, esi
+1003f143  pop      ebp
+1003f144  ret      4

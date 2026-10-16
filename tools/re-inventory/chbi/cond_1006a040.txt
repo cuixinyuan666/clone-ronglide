@@ -1,0 +1,15 @@
+### [A] x87 条件表   src=chbi/f_1006a040.txt   insns=356   blocks=122   conflicts=1   conds=0
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+
+### [B] 非零立即数写入 (标记字段写点)
+1006a310   mov [edi+0x20], 1
+1006a364   mov [ebx+0x20], 1
+1006a3cd   mov [ebx+0x20], 1
+1006a40c   mov [ebx+0x20], 0xffffffff
+
+### [C] 调用目标统计
+  dword ptr [0x1006f194]   x32
+  ebp                      x8
+  0x1003f0d0               x4
+  0x1006b050               x1
+  0x1006a720               x1

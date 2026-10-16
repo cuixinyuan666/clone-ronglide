@@ -1,0 +1,13 @@
+1003d780  mov      eax, dword ptr [ecx + 4]
+1003d783  test     eax, eax
+1003d785  jne      0x1003d788
+1003d787  ret      
+1003d788  mov      ecx, dword ptr [ecx + 8]
+1003d78b  sub      ecx, eax
+1003d78d  mov      eax, 0x66666667
+1003d792  imul     ecx
+1003d794  sar      edx, 6
+1003d797  mov      eax, edx
+1003d799  shr      eax, 0x1f
+1003d79c  add      eax, edx
+1003d79e  ret      

@@ -18,6 +18,9 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, "..", ".."))
 
+if hasattr(sys.stdout, "reconfigure"):          # 控制台 GBK 环境下安全输出
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
 # ---- 目标登记表: 每目标的检查项 ----
 TARGETS = [
     {
@@ -47,30 +50,45 @@ TARGETS = [
         "batches": [
             ("第一批-入口链与工作函数", "docs/18-CHBI-第一批-入口链与工作函数.md"),
             ("第二批-四函数解剖与条件格", "docs/20-CHBI-第二批-四函数解剖与条件格.md"),
+            ("第三批-P51分型笔与共用后处理", "docs/21-CHBI-第三批-P51分型笔与共用后处理.md"),
         ],
         "artifacts": [
             "tools/re-inventory/chbi/core_1001c110.txt",
+            "tools/re-inventory/chbi/core_1001c940.txt",
             "tools/re-inventory/chbi/core_1002c1d0.txt",
             "tools/re-inventory/chbi/wrapper_ChBi_1000f580.txt",
             "tools/re-inventory/chbi/f_1003db40.txt",
             "tools/re-inventory/chbi/f_1003e200.txt",
+            "tools/re-inventory/chbi/f_1003eba0.txt",
+            "tools/re-inventory/chbi/f_1003ef00.txt",
+            "tools/re-inventory/chbi/f_1003f0d0.txt",
+            "tools/re-inventory/chbi/f_1003f150.txt",
+            "tools/re-inventory/chbi/f_1003f170.txt",
             "tools/re-inventory/chbi/f_1004b1e0.txt",
             "tools/re-inventory/chbi/f_1004f430.txt",
+            "tools/re-inventory/chbi/f_1006a040.txt",
+            "tools/re-inventory/chbi/f_1006a5e0.txt",
+            "tools/re-inventory/chbi/f_1006a720.txt",
+            "tools/re-inventory/chbi/f_1006b050.txt",
+            "tools/re-inventory/chbi/f_1003d780.txt",
+            "tools/re-inventory/chbi/f_1003d8a0.txt",
             "tools/re-inventory/chbi/cond_1003db40.txt",
             "tools/re-inventory/chbi/cond_1003e200.txt",
+            "tools/re-inventory/chbi/cond_1003f170.txt",
             "tools/re-inventory/chbi/cond_1004b1e0.txt",
             "tools/re-inventory/chbi/cond_1004f430.txt",
+            "tools/re-inventory/chbi/cond_1006a040.txt",
             "tools/re-inventory/x87_sim.py",
             "tools/re-inventory/disasm_func.py",
             "pseudocode/chbi.c",
         ],
-        "next": "第三批: 0x1003f170(P=11/12, 最大臂) 与 0x1006a040(P=51) 解剖 + 动态校验(frida) + 仲裁 #4/#5",
+        "next": "第四批: db40 状态机 25 条件逐条 + 元素模板对账; 然后 tools/wnmr_py/chbi.py (P=51 全链) + 58560 点核对",
     },
 ]
 
 # 清单覆盖: 优先级代表函数（来自 docs/14）
 PRIORITY = [
-    ("ChBi", "CHBI", "EA62", "已交付(两批)"),
+    ("ChBi", "CHBI", "EA62", "已交付(三批)"),
     ("ChDuan", "CHDUAN", "-", "已交付(三批)"),
     ("NChBi", "NCHBI", "EA62", "未启动"),
     ("NChZs", "NCHZS", "EA63", "未启动"),
@@ -84,8 +102,9 @@ PRIORITY = [
 
 
 def sh(cmd):
-    p = subprocess.run(cmd, cwd=REPO, capture_output=True, text=True, shell=False)
-    return p.stdout.strip(), p.returncode
+    p = subprocess.run(cmd, cwd=REPO, capture_output=True, shell=False)
+    out = (p.stdout or b"").decode("utf-8", errors="replace")
+    return out.strip(), p.returncode
 
 
 def main():
@@ -124,7 +143,7 @@ def main():
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-",
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-",
                 "tools/re-inventory", "pseudocode/chduan", "pseudocode/chbi", "README.md")
     tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]
     untracked = [l for l in status.splitlines() if l.startswith("??")]

@@ -1,0 +1,32 @@
+1003d8a0  push     ebp
+1003d8a1  mov      ebp, dword ptr [esp + 8]
+1003d8a5  push     esi
+1003d8a6  mov      esi, eax
+1003d8a8  mov      ecx, ebx
+1003d8aa  sub      ecx, esi
+1003d8ac  mov      eax, 0x66666667
+1003d8b1  imul     ecx
+1003d8b3  sar      edx, 6
+1003d8b6  mov      eax, edx
+1003d8b8  shr      eax, 0x1f
+1003d8bb  add      eax, edx
+1003d8bd  lea      eax, [eax + eax*4]
+1003d8c0  shl      eax, 5
+1003d8c3  add      eax, ebp
+1003d8c5  cmp      esi, ebx
+1003d8c7  mov      edx, esi
+1003d8c9  je       0x1003d8e7
+1003d8cb  sub      ebp, esi
+1003d8cd  push     edi
+1003d8ce  mov      edi, edi
+1003d8d0  lea      edi, [edx + ebp]
+1003d8d3  mov      esi, edx
+1003d8d5  add      edx, 0xa0
+1003d8db  cmp      edx, ebx
+1003d8dd  mov      ecx, 0x28
+1003d8e2  rep movsd dword ptr es:[edi], dword ptr [esi]
+1003d8e4  jne      0x1003d8d0
+1003d8e6  pop      edi
+1003d8e7  pop      esi
+1003d8e8  pop      ebp
+1003d8e9  ret      
