@@ -52,6 +52,7 @@ TARGETS = [
             ("第二批-四函数解剖与条件格", "docs/20-CHBI-第二批-四函数解剖与条件格.md"),
             ("第三批-P51分型笔与共用后处理", "docs/21-CHBI-第三批-P51分型笔与共用后处理.md"),
             ("第四批-db40状态机与元素模板对账", "docs/22-CHBI-第四批-db40状态机与元素模板对账.md"),
+            ("第五批-f170衔接与P51全链重放骨架", "docs/23-CHBI-第五批-f170衔接与P51全链重放骨架.md"),
         ],
         "artifacts": [
             "tools/re-inventory/chbi/core_1001c110.txt",
@@ -80,18 +81,21 @@ TARGETS = [
             "tools/re-inventory/chbi/cond_1004f430.txt",
             "tools/re-inventory/chbi/cond_1006a040.txt",
             "tools/re-inventory/chbi/db40_minij_wip.md",
+            "tools/re-inventory/chbi/f170_wip.md",
             "tools/re-inventory/chbi/test_db40.py",
             "tools/re-inventory/x87_sim.py",
             "tools/re-inventory/disasm_func.py",
+            "tools/wnmr_py/chbi.py",
+            "tools/wnmr_py/duipai.md",
             "pseudocode/chbi.c",
         ],
-        "next": "第五批: 0x1003f170 (P=11/12) 与 db40 衔接复核 + tools/wnmr_py/chbi.py (P=51 全链) 骨架 + 58560 点 frida 对拍",
+        "next": "第六批(推荐): CHDUAN 第四批 — ContA/ContB 顺序敏感性 + prep 0x10053540 尾块; 备选 NChBi 启动",
     },
 ]
 
 # 清单覆盖: 优先级代表函数（来自 docs/14）
 PRIORITY = [
-    ("ChBi", "CHBI", "EA62", "已交付(四批)"),
+    ("ChBi", "CHBI", "EA62", "已交付(五批)"),
     ("ChDuan", "CHDUAN", "-", "已交付(三批)"),
     ("NChBi", "NCHBI", "EA62", "未启动"),
     ("NChZs", "NCHZS", "EA63", "未启动"),
@@ -146,8 +150,9 @@ def main():
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-",
-                "tools/re-inventory", "pseudocode/chduan", "pseudocode/chbi", "README.md")
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-",
+                "tools/re-inventory", "tools/wnmr_py",
+                "pseudocode/chduan", "pseudocode/chbi", "README.md")
     tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]
     untracked = [l for l in status.splitlines() if l.startswith("??")]
     mine = [l for l in tracked_mod if any(s in l for s in MY_SCOPE)]
