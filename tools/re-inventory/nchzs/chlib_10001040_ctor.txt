@@ -1,0 +1,20 @@
+10001040  rol      bh, 0x44
+10001043  and      al, 0x10
+10001045  add      byte ptr [eax], al
+10001047  add      byte ptr [eax], al
+10001049  je       0x10001066
+1000104b  mov      ecx, dword ptr [esp + 0x18]
+1000104f  push     ecx
+10001050  push     eax
+10001051  call     0x100010d0
+10001056  mov      ecx, dword ptr [esp + 8]
+1000105a  mov      dword ptr fs:[0], ecx
+10001061  pop      ecx
+10001062  add      esp, 0x10
+10001065  ret      
+10001066  xor      eax, eax
+10001068  mov      ecx, dword ptr [esp + 8]
+1000106c  mov      dword ptr fs:[0], ecx
+10001073  pop      ecx
+10001074  add      esp, 0x10
+10001077  ret      

@@ -1,0 +1,80 @@
+# NChZs 引擎容器与记录布局（权威表）— 家族第二批 2026-10-17
+# 引擎对象 = this[+0x18]（ch_api ctor 0x100010d0 中 new(0x68) + ctor 0x1000e7c0）
+# 引擎虚表 = 0x1001549c   |  大小 0x68
+# 证据: chlib_100010d0.txt(ctor) chlib_1000e7c0.txt(engine ctor) chlib_1000e900.txt(reset)
+#       chlib_1000e0b0.txt(setter) chlib_1000ebe0.txt(build) chlib_1000e990.txt(C0 生产者)
+#       chlib_1000f680.txt(段生产者) chlib_10004720.txt(Breach) chlib_10005a50.txt(SelPri)
+
+## 一、引擎虚表 0x1001549c（5 槽）
++0x00  0x1000e850   dtor（调 0x1000e870 析构 + 可选 free）
++0x04  0x1000e900   reset（清 [+4..+0x18] + 四容器 init）
++0x08  0x1000ebe0   build（★ 构建 C1/C2/C3 + 后处理映射到 C3）；返 int，≠0 ⇒ 核心体返 -1
++0x0c  0x1000e0b0   setter（ret 0x14，5 参：engine[+4]←a2 [+8]←a3 [+0xc]←a4 [+0x10]←a5 [+0x14]←a1）
++0x10  0x1000ed20   mode 处理（arg==1→0x10011500 / ==2→0x10011660 / ==0x65→0x100117b0 / else -1）
+
+## 二、引擎字段（0x68 字节对象）
++0x00  ptr   虚表 0x1001549c
++0x04  i32   setter 输入槽 1
++0x08  i32   setter 输入槽 2
++0x0c  i32   setter 输入槽 3
++0x10  i32   setter 输入槽 4
++0x14  i32   setter 输入槽 5
++0x18  u8    标志
++0x1c  i32   常量 9（ctor 初始化；疑级别/阈值）[C]
++0x20  ptr   C0.base  ← 分型/笔序列（stride 0x31）
++0x2c  i32   C0.count
++0x30  ptr   C1.base  ← 中枢段（stride 0x5d）
++0x38  i32   C1.capacity
++0x3c  i32   C1.count
++0x40  ptr   C2.base  ← 分类/标志（stride 0x18，count = C0.count）
++0x4c  ptr   C3.base  ← 段点输出（stride 0x1d）
++0x58  i32   C3.count / 或 vector 辅助字段 [B]
++0x5c  ptr   V.begin  ← 0x74 元素向量（= 4 × 0x1d 子记录）
++0x60  ptr   V.end
++0x64  i32   0
+
+## 三、C1 中枢段记录（stride 0x5d = 93 B）★ 权威
++0x00  i32   模式/标志（buildSegment arg3）
++0x04  i32   自身下标（写入前的 C1.count）
++0x08  i32   startBar（段起）
++0x0c  i32   endBar（段止）
++0x10  i32   方向 ±1
++0x14  u8    flags（bit0 = 有效段）
++0x19  f64   ZG 中枢上沿   ← G worker(0x10006800) 用；Breach dir≠-1 时 fcomp 用
++0x25  f64   ZD 中枢下沿   ← D worker(0x10006860) 用；Breach dir==-1 时 fcomp 用
++0x41  i32   barIdx        ← Bs worker(0x100068c0) 用（ptr-0x14）
++0x55  i32   A 输出区间起  ← G/D worker [ptr]
++0x59  i32   B 输出区间止  ← G/D worker [ptr+4]（0x59+4 = 0x5d 收尾）
+有效判据: flags.bit0 ∧ (endBar-startBar+1 >= 3)  [buildSegment]
+          Breach 另加严: span >= 4
+
+## 四、C0 分型/笔记录（stride 0x31 = 49 B）
++0x00  i32   方向 ±1（与段方向比对；0x1000ebe0 后处理里与 -1 比较）
++0x04  i32   子区间起（Breach: k 下界）
++0x08  i32   子区间止（Breach: k 上界）
++0x0c  i32   分型标记（=1 当某值 ∈ {−2,+2}，0x1000eb33）[B]
++0x11  i32   索引 A（0x1000ebe0 后处理写入 C3[+0x09]）
++0x15  i32   索引 B（同上，另一分支）
++0x19  f64   价 1（→ C3[+0x0d]）
++0x21  f64   价 2（→ C3[+0x15]）
++0x29  f64   价 3（条件写，0x1000eb2e）
+生产者: 0x1000e990（核心体在 vt[+8] 之前调用；参数 (n, priceArrayPtr)）[B]
+
+## 五、C3 段点记录 / 0x74 向量子记录（stride 0x1d = 29 B）
++0x00  i32   barIdx
++0x04  f64   价
++0x0c  u8    =1（有效标记；0x1000ebe0 后处理 `dst[+4]=1`）
++0x0d  f64   价 1
++0x15  f64   价 2
+(0x1000ebe0 后处理写入: dst[+0]=±1, [u8+4]=1, [i32+5]=idx, [i32+9]=src[+0x11|+0x15],
+ *(f64*)(+0x0d)=src[+0x19], *(f64*)(+0x15)=src[+0x21])
+向量 V (engine[+0x5c]/[+0x60]): 元素 0x74 = 4 × 0x1d；SelPri 逐子记录 out[barIdx] = 价。
+
+## 六、C2 分类记录（stride 0x18 = 24 B）
+Bs worker(0x100068c0) 用: mode12 → 读字节 +1/+0/+3（3 选 1）；
+mode3 → 读字节 +2 与 [+0x0c] 指针，按 span>3 缩放（×1 或 ×10）。barIdx 在子记录 +0x00（ptr-0x14）。
+
+## 勘误（相对第一批 WIP）
+- 第一批 WIP-C 曾把 C1 的 `+0x21` 记为 f64 价 —— 实为 **C0 记录**的字段（0x1000ebe0 后处理里
+  src = C0.base + idx*0x31）。**C1 在 +0x19 之后到 +0x41 之间无第二个价字段**（+0x21 处为 C1 的填充/未知区）。
+- 第一批记「NChZs 引擎读 obj[+0x30]/[+0x3c]」—— 现确证该偏移**就是引擎自身字段**（引擎即 obj），非另设容器对象。

@@ -1,0 +1,149 @@
+# ===== [1] 指令引用立即数 0x5d (中枢段 stride) =====
+10004877  add      edx, 0x5d
+100049b1  add      ecx, 0x5d
+10004a4c  add      ecx, 0x5d
+10005887  imul     eax, eax, 0x5d
+1000589f  add      eax, 0x5d
+100067da  add      eax, 0x5d
+10006842  add      ecx, 0x5d
+100068a2  add      ecx, 0x5d
+1000ecb9  add      ecx, 0x5d
+1000f18d  imul     edx, edx, 0x5d
+1000f1ab  sub      edx, 0x5d
+1000f1d1  imul     edi, edi, 0x5d
+1000f1f3  sub      edx, 0x5d
+1000f210  imul     edx, edx, 0x5d
+1000f245  sub      edx, 0x5d
+1000f6a6  imul     edi, edi, 0x5d
+1000fa05  imul     eax, eax, 0x5d
+1000fa1e  imul     ebx, ebx, 0x5d
+1000fa87  imul     eax, eax, 0x5d
+1000fc24  imul     eax, eax, 0x5d
+1000fcc1  imul     eax, eax, 0x5d
+1000fd72  imul     eax, eax, 0x5d
+1000fe02  imul     edx, edx, 0x5d
+1000fe20  sub      edx, 0x5d
+1000fe37  imul     eax, eax, 0x5d
+1001008d  imul     eax, eax, 0x5d
+100100f5  imul     eax, eax, 0x5d
+100101d6  imul     eax, eax, 0x5d
+100102e0  imul     eax, eax, 0x5d
+1001067a  add      eax, 0x5d
+1001083a  add      esi, 0x5d
+10010b8d  add      eax, 0x5d
+10010cdb  add      esi, 0x5d
+10011214  imul     eax, eax, 0x5d
+100112cd  imul     edx, edx, 0x5d
+10011437  imul     eax, eax, 0x5d
+10011947  imul     esi, esi, 0x5d
+10011973  imul     eax, eax, 0x5d
+
+# ===== [2] 候选虚表 (.rdata 中连续指向 .text 的 dword 串) =====
+vt @ 10015134  len=54 : 100010b0 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56 10013f56
+vt @ 10015214  len=54 : 100012c0 100013a0 10001430 10001460 10001490 100014c0 10001590 10001690 10001790 10001a10 10001bd0 10001d90 10002190 10002340 10002770 10002900 10002d80 10002ea0 10002fc0 10003180 10003330 10003450 10003680 100038b0
+vt @ 1001549c  len=5 : 1000e850 1000e900 1000ebe0 1000e0b0 1000ed20
+
+# ===== [3] mov dword ptr [reg+0x18], reg 形态 (引擎字段写) =====
+10001117  mov      dword ptr [esi + 0x18], ebx
+10001203  mov      dword ptr [esi + 0x18], eax
+10001274  mov      dword ptr [eax + 0x18], ebx
+1000130f  mov      dword ptr [esp + 0x18], 0
+10001946  mov      dword ptr [esp + 0x18], ecx
+1000195e  mov      dword ptr [esp + 0x18], ebx
+10001964  mov      dword ptr [esp + 0x18], 0
+10001c5b  mov      dword ptr [esp + 0x18], esi
+10001e92  mov      dword ptr [esp + 0x18], ecx
+10001ed4  mov      dword ptr [esp + 0x18], ecx
+10001f26  mov      dword ptr [esp + 0x18], ecx
+10001f64  mov      dword ptr [esp + 0x18], ecx
+10001fb4  mov      dword ptr [esp + 0x18], ecx
+10001ff2  mov      dword ptr [esp + 0x18], ecx
+10002042  mov      dword ptr [esp + 0x18], ecx
+10002080  mov      dword ptr [esp + 0x18], ecx
+1000228a  mov      dword ptr [esp + 0x18], ecx
+10002469  mov      dword ptr [esp + 0x18], ebx
+10002488  mov      dword ptr [esp + 0x18], edx
+1000283b  mov      dword ptr [esp + 0x18], ebx
+10002863  mov      dword ptr [esp + 0x18], ebx
+10002889  mov      dword ptr [esp + 0x18], ecx
+100029f9  mov      dword ptr [esp + 0x18], edi
+10002b74  mov      dword ptr [esp + 0x18], ebx
+10002cf2  mov      dword ptr [esp + 0x18], ebx
+10002e62  mov      dword ptr [esp + 0x18], 0
+10002e6e  mov      dword ptr [esp + 0x18], edi
+100031f4  mov      dword ptr [esp + 0x18], edx
+1000335c  mov      dword ptr [esp + 0x18], ecx
+100033ba  mov      dword ptr [esp + 0x18], ecx
+100033ce  mov      dword ptr [esp + 0x18], ecx
+100033e3  mov      dword ptr [esp + 0x18], ecx
+100033f8  mov      dword ptr [esp + 0x18], ecx
+1000342e  mov      dword ptr [esp + 0x18], ecx
+100034e9  mov      dword ptr [esp + 0x18], ebx
+10003719  mov      dword ptr [esp + 0x18], ebx
+1000422b  mov      dword ptr [esp + 0x18], edx
+10004254  mov      dword ptr [esp + 0x18], eax
+10004283  mov      dword ptr [esp + 0x18], edx
+1000475f  mov      dword ptr [esp + 0x18], ebx
+10004a7c  mov      dword ptr [esp + 0x18], 1
+10004aa6  mov      dword ptr [esp + 0x18], eax
+10004d5b  mov      dword ptr [esp + 0x18], 1
+10004d85  mov      dword ptr [esp + 0x18], eax
+1000504f  mov      dword ptr [esp + 0x18], ecx
+100051ce  mov      dword ptr [esp + 0x18], edi
+100051d7  mov      dword ptr [esp + 0x18], 0xffffffff
+100055fe  mov      dword ptr [esp + 0x18], edx
+10005769  mov      dword ptr [esp + 0x18], edx
+10005f08  mov      dword ptr [esp + 0x18], 1
+1000614f  mov      dword ptr [esp + 0x18], eax
+10006356  mov      dword ptr [esp + 0x18], ecx
+10006d72  mov      dword ptr [esi + 0x18], edi
+100070a8  mov      dword ptr [esp + 0x18], 0
+1000719d  mov      dword ptr [esp + 0x18], edx
+100071da  mov      dword ptr [esp + 0x18], ebp
+100072ab  mov      dword ptr [esp + 0x18], ebx
+100072d5  mov      dword ptr [esp + 0x18], edx
+100072f8  mov      dword ptr [esp + 0x18], eax
+10007319  mov      dword ptr [esp + 0x18], eax
+1000733a  mov      dword ptr [esp + 0x18], eax
+10007377  mov      dword ptr [esp + 0x18], edx
+100074cc  mov      dword ptr [esp + 0x18], eax
+10007587  mov      dword ptr [esp + 0x18], eax
+10007640  mov      dword ptr [esp + 0x18], ebp
+100083d4  mov      dword ptr [esp + 0x18], edx
+10008567  mov      dword ptr [esp + 0x18], esi
+10008a3c  mov      dword ptr [esp + 0x18], 0xb
+10008b44  mov      dword ptr [esp + 0x18], eax
+1000954a  mov      dword ptr [esp + 0x18], esi
+10009817  mov      dword ptr [esp + 0x18], 0
+10009de6  mov      dword ptr [esp + 0x18], edi
+1000a3de  mov      dword ptr [esp + 0x18], eax
+1000a3ed  mov      dword ptr [esp + 0x18], ecx
+1000a439  mov      dword ptr [esp + 0x18], eax
+1000a55c  mov      dword ptr [esp + 0x18], eax
+1000b282  mov      dword ptr [esp + 0x18], 0
+1000b361  mov      dword ptr [esp + 0x18], eax
+1000b478  mov      dword ptr [esp + 0x18], 0
+1000b4e9  mov      dword ptr [esp + 0x18], eax
+1000b724  mov      dword ptr [esp + 0x18], 0
+1000b79e  mov      dword ptr [esp + 0x18], eax
+1000b87a  mov      dword ptr [esp + 0x18], 0
+1000b8f6  mov      dword ptr [esp + 0x18], eax
+1000c769  mov      dword ptr [esp + 0x18], ecx
+1000cd17  mov      dword ptr [esp + 0x18], eax
+1000d10d  mov      dword ptr [esp + 0x18], edx
+1000d267  mov      dword ptr [esp + 0x18], eax
+1000d659  mov      dword ptr [esp + 0x18], edx
+1000e1d7  mov      dword ptr [esp + 0x18], esi
+1000e6a0  mov      dword ptr [esp + 0x18], edx
+1000e9b0  mov      dword ptr [esp + 0x18], edi
+1000f928  mov      dword ptr [esp + 0x18], eax
+10010994  mov      dword ptr [esp + 0x18], ebp
+100113a9  mov      dword ptr [esp + 0x18], edi
+10011683  mov      dword ptr [esp + 0x18], 0
+100117d3  mov      dword ptr [esp + 0x18], 0
+10012712  mov      dword ptr [esp + 0x18], eax
+10012aff  mov      dword ptr [esp + 0x18], ecx
+100135a5  mov      dword ptr [esp + 0x18], ecx
+10014026  mov      dword ptr [esp + 0x18], ebp
+10014052  mov      dword ptr [esp + 0x18], 1
+10014152  mov      dword ptr [esp + 0x18], eax

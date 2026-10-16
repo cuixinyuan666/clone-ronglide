@@ -1,0 +1,34 @@
+### [A] x87 条件表   src=tools/re-inventory/nchzs/chlib_100048a0.txt   insns=695   blocks=189   conflicts=10   conds=24
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+10004985   fcomp    [ecx+0x11]         mem:[edx]              ah,0x41 jne   0x100049a6   <|=|U      >         
+10004997   fcomp    [eax+edi+0x21]     mem:[edx]              ah,0x05 jp    0x100049a6   >|=|U      <         
+10004a20   fcomp    [ecx+0x1d]         mem:[edx]              ah,0x05 jp    0x10004a41   >|=|U      <         
+10004a32   fcomp    [eax+edi+0x19]     mem:[edx]              ah,0x41 jne   0x10004a41   <|=|U      >         
+10004ba1   fcom     0.0                mem:[ecx-0x31]         ah,0x05 jp    0x10004bc3   >|=|U      <         
+10004bad   fcom     0.0                mem:[ecx-0x39]         ah,0x41 jne   0x10004bc1   <|=|U      >         
+10004bde   fcom     0.0                mem:[ecx]              ah,0x05 jp    0x10004bff   >|=|U      <         
+10004be9   fcom     0.0                mem:[ecx-8]            ah,0x41 jne   0x10004bfd   <|=|U      >         
+10004c1a   fcom     0.0                mem:[ecx+0x31]         ah,0x05 jp    0x10004c3c   >|=|U      <         
+10004c26   fcom     0.0                mem:[ecx+0x29]         ah,0x41 jne   0x10004c3a   <|=|U      >         
+10004c57   fcom     0.0                mem:[ecx+0x62]         ah,0x05 jp    0x10004c79   >|=|U      <         
+10004c63   fcom     0.0                mem:[ecx+0x5a]         ah,0x41 jne   0x10004c77   <|=|U      >         
+10004cf1   fcom     0.0                mem:[ecx]              ah,0x05 jp    0x10004d12   >|=|U      <         
+10004cfc   fcom     0.0                mem:[ecx-8]            ah,0x41 jne   0x10004d10   <|=|U      >         
+10004e86   fcom     0.0                mem:[ecx-0x31]         ah,0x05 jp    0x10004ea8   >|=|U      <         
+10004e92   fcom     0.0                mem:[ecx-0x39]         ah,0x41 jne   0x10004ea6   <|=|U      >         
+10004ec3   fcom     0.0                mem:[ecx]              ah,0x05 jp    0x10004ee4   >|=|U      <         
+10004ece   fcom     0.0                mem:[ecx-8]            ah,0x41 jne   0x10004ee2   <|=|U      >         
+10004eff   fcom     0.0                mem:[ecx+0x31]         ah,0x05 jp    0x10004f21   >|=|U      <         
+10004f0b   fcom     0.0                mem:[ecx+0x29]         ah,0x41 jne   0x10004f1f   <|=|U      >         
+10004f3c   fcom     0.0                mem:[ecx+0x62]         ah,0x05 jp    0x10004f5e   >|=|U      <         
+10004f48   fcom     0.0                mem:[ecx+0x5a]         ah,0x41 jne   0x10004f5c   <|=|U      >         
+10004fea   fcom     0.0                mem:[ecx]              ah,0x05 jp    0x1000500b   >|=|U      <         
+10004ff5   fcom     0.0                mem:[ecx-8]            ah,0x41 jne   0x10005009   <|=|U      >         
+
+### [B] 非零立即数写入 (标记字段写点)
+10004a7c   mov [esp+0x18], 1
+10004d5b   mov [esp+0x18], 1
+
+### [C] 调用目标统计
+  0x100148a0               x1
+  0x1001494c               x1

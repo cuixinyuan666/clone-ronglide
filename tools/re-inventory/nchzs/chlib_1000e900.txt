@@ -1,0 +1,53 @@
+1000e900  push     ebp
+1000e901  mov      ebp, esp
+1000e903  and      esp, 0xfffffff8
+1000e906  push     ebx
+1000e907  push     ebp
+1000e908  xor      ebx, ebx
+1000e90a  push     esi
+1000e90b  mov      esi, ecx
+1000e90d  push     edi
+1000e90e  push     ebx
+1000e90f  lea      edi, [esi + 0x20]
+1000e912  mov      dword ptr [esi + 0x10], ebx
+1000e915  mov      dword ptr [esi + 0xc], ebx
+1000e918  mov      dword ptr [esi + 8], ebx
+1000e91b  mov      dword ptr [esi + 4], ebx
+1000e91e  mov      dword ptr [esi + 0x14], ebx
+1000e921  mov      byte ptr [esi + 0x18], bl
+1000e924  call     0x1000dee0
+1000e929  push     ebx
+1000e92a  lea      edi, [esi + 0x30]
+1000e92d  mov      dword ptr [esi + 0x2c], ebx
+1000e930  call     0x10011930
+1000e935  push     ebx
+1000e936  lea      edi, [esi + 0x40]
+1000e939  mov      dword ptr [esi + 0x3c], ebx
+1000e93c  call     0x100119b0
+1000e941  push     ebx
+1000e942  lea      edi, [esi + 0x4c]
+1000e945  call     0x10006b60
+1000e94a  mov      edi, dword ptr [esi + 0x60]
+1000e94d  cmp      dword ptr [esi + 0x5c], edi
+1000e950  mov      ebp, dword ptr [0x1001509c]
+1000e956  jbe      0x1000e95a
+1000e958  call     ebp
+1000e95a  mov      ebx, dword ptr [esi + 0x5c]
+1000e95d  cmp      ebx, dword ptr [esi + 0x60]
+1000e960  jbe      0x1000e964
+1000e962  call     ebp
+1000e964  cmp      ebx, edi
+1000e966  je       0x1000e979
+1000e968  push     ebx
+1000e969  mov      ebx, dword ptr [esi + 0x60]
+1000e96c  mov      eax, edi
+1000e96e  call     0x10012550
+1000e973  add      esp, 4
+1000e976  mov      dword ptr [esi + 0x60], eax
+1000e979  pop      edi
+1000e97a  pop      esi
+1000e97b  pop      ebp
+1000e97c  pop      ebx
+1000e97d  mov      esp, ebp
+1000e97f  pop      ebp
+1000e980  ret      

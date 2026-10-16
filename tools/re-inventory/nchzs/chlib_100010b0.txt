@@ -1,0 +1,11 @@
+100010b0  test     byte ptr [esp + 4], 1
+100010b5  push     esi
+100010b6  mov      esi, ecx
+100010b8  mov      dword ptr [esi], 0x10015134
+100010be  je       0x100010c9
+100010c0  push     esi
+100010c1  call     0x10013f00
+100010c6  add      esp, 4
+100010c9  mov      eax, esi
+100010cb  pop      esi
+100010cc  ret      4

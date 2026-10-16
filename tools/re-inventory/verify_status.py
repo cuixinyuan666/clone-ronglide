@@ -175,6 +175,7 @@ TARGETS = [
         "va": "0x10013240",
         "batches": [
             ("第一批-入口链与三支骨架", "docs/31-NChZs-第一批-入口链与三支骨架.md"),
+            ("第二批-核心体与三兄弟", "docs/32-NChZs-第二批-核心体与三兄弟.md"),
         ],
         "artifacts": [
             "pseudocode/nchzs.c",
@@ -222,8 +223,26 @@ TARGETS = [
             "tools/re-inventory/nchzs/vtable_dump.txt",
             "tools/re-inventory/nchzs/family_recon.txt",
             "tools/re-inventory/nchzs/nchzs1_wip.md",
+            "tools/re-inventory/nchzs/nchzs2_wip.md",
+            "tools/re-inventory/nchzs/scan_engine.py",
+            "tools/re-inventory/nchzs/scan_engine.txt",
+            "tools/re-inventory/nchzs/chlib_100010d0.txt",
+            "tools/re-inventory/nchzs/chlib_10001040_ctor.txt",
+            "tools/re-inventory/nchzs/chlib_100010b0.txt",
+            "tools/re-inventory/nchzs/chlib_1000e7c0.txt",
+            "tools/re-inventory/nchzs/chlib_1000e850.txt",
+            "tools/re-inventory/nchzs/chlib_1000e900.txt",
+            "tools/re-inventory/nchzs/chlib_1000e0b0.txt",
+            "tools/re-inventory/nchzs/chlib_1000ebe0.txt",
+            "tools/re-inventory/nchzs/chlib_1000ed20.txt",
+            "tools/re-inventory/nchzs/chlib_1000e990.txt",
+            "tools/re-inventory/nchzs/chlib_1000f680.txt",
+            "tools/re-inventory/nchzs/cond_chlib_10004720.txt",
+            "tools/re-inventory/nchzs/cond_chlib_10005a50.txt",
+            "tools/re-inventory/nchzs/cond_chlib_100048a0.txt",
+            "tools/re-inventory/nchzs/chzs_container_layout.txt",
         ],
-        "next": "第二批: ①(首选) NChZs 核心体 — 0x100045f0 的 this[+0x18]->vt[+4]/vt[+0xc] 引擎真身 + this[+0x18] 构造点与容器生产者 (决定中枢段 stride 0x5d 字段全貌); ②(次选) NChZsBs3/Breach/SelPri 三兄弟(122-129 行)快产出; ③(第三) NChZsL2M(695 行, 疑多级别递归)。可选: 用户在场时 frida 挂 0x100045f0 dump this[+0x18] 容器把 [B]/[C] 升 [A]",
+        "next": "NChZs 第二批已收官 (核心体引擎真身 + 容器生产者 + 三兄弟; 引擎 vt 0x1001549c 五槽全解; C0/C1 记录布局闭合; L2M 递归假设证伪)。下一步三选一: ①(首选) NChZs 第三批 — 构建链中段 8 支 (0x1000f8c0/fa40/fc60/ff80/10ee0/10f80/11170/11360) 补完, 把 C1 段记录的 bar区间/方向/ZG/ZD 赋值点由 [A 偏移] 升到 [A 语义]; ②(次选) NChZsFj(0x10005020,384)/NChZsDg(0x10005160,260)/NChZsHLTurn(0x10005480,318) 三支 (EA63+EA61 组); ③(第三) NChZsL2M(0x100048a0) 按支配树分块收口。可选: 用户在场时 frida 挂 0x100045f0 dump 引擎容器把 [B] 升 [A]",
     },
 ]
 
@@ -232,9 +251,12 @@ PRIORITY = [
     ("ChBi", "CHBI", "EA62", "已交付(五批)"),
     ("ChDuan", "CHDUAN", "-", "已交付(四批)"),
     ("NChBi", "NCHBI", "EA62", "已交付(六批)"),
-    ("NChZs", "NCHZS", "EA63", "已交付(一批)"),
-    ("NChZsG", "NCHZSG", "EA61", "已交付(一批/骨架)"),
-    ("NChZsBs12", "NCHZSBS12", "EA61", "已交付(一批/骨架)"),
+    ("NChZs", "NCHZS", "EA63", "已交付(两批/核心体)"),
+    ("NChZsG", "NCHZSG", "EA61", "已交付(两批/ZG 价带)"),
+    ("NChZsBs12", "NCHZSBS12", "EA61", "已交付(两批/分类)"),
+    ("NChZsBreach", "NCHZSBR", "EA61", "已交付(两批/突破计数)"),
+    ("NChZsSelPri", "NCHZSSP", "EA62", "已交付(两批/Sel 三同构)"),
+    ("NChZsL2M", "NCHZSL2M", "EA61", "已交付(两批/骨架, 无递归)"),
     ("ChZhongShu", "BIZHONGSHU", "EA61", "未启动"),
     ("zsdg", "CHZSDG", "EA63", "未启动"),
     ("ZouShiBi", "ZOUSHIBI", "EA62", "未启动"),
@@ -284,7 +306,7 @@ def main():
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-", "docs/26-", "docs/27-", "docs/28-", "docs/29-", "docs/30-", "docs/31-",
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-", "docs/26-", "docs/27-", "docs/28-", "docs/29-", "docs/30-", "docs/31-", "docs/32-",
                 "tools/re-inventory", "tools/wnmr_py",
                 "pseudocode/chduan", "pseudocode/chbi", "pseudocode/nchbi", "pseudocode/nchzs", "README.md")
     tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]

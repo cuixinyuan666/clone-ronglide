@@ -1,0 +1,11 @@
+1000e850  push     esi
+1000e851  mov      esi, ecx
+1000e853  call     0x1000e870
+1000e858  test     byte ptr [esp + 8], 1
+1000e85d  je       0x1000e868
+1000e85f  push     esi
+1000e860  call     0x10013f00
+1000e865  add      esp, 4
+1000e868  mov      eax, esi
+1000e86a  pop      esi
+1000e86b  ret      4

@@ -10,7 +10,14 @@
  *                 chlib_worker_100068c0.txt /
  *                 taf_10013*.txt / dump_vt_nchzs.py / vt_nchzs.txt /
  *                 family_recon.txt / nchzs1_wip.md
- * 批次: 第一批 (docs/31, 2026-10-17)
+ *         第二批: scan_engine.py / chlib_100010d0.txt (ch_api ctor) /
+ *                 chlib_1000e7c0.txt (engine ctor, vt 0x1001549c) /
+ *                 chlib_1000e900.txt (reset) / chlib_1000e0b0.txt (setter) /
+ *                 chlib_1000ebe0.txt (build) / chlib_1000e990.txt (C0 生产者) /
+ *                 chlib_1000f680.txt (段生产者) / chlib_10004720.txt (Breach) /
+ *                 chlib_10005a50.txt (SelPri) / cond_chlib_10004720+10005a50+100048a0.txt /
+ *                 chzs_container_layout.txt / nchzs2_wip.md
+ * 批次: 第一批 (docs/31) + 第二批 (docs/32), 2026-10-17
  * 置信度: [A]=实测已证(字节级) [B]=高(多路交叉) [C]=待仲裁/推断
  * ----------------------------------------------------------------------------
  * 整体链路（与 NChBi 不同: NChZs 走 TAFLib 包装 + chlib 转发器 + 引擎对象）:
@@ -222,11 +229,190 @@ typedef struct engine_t {
  * 5. 遗留 [B]/[C]
  * ==========================================================================*/
 /*
- *  [B] 段记录绝对偏移 (rec = segs + i*0x5d, 循环 ptr = rec+0x55)
- *  [C] 段 rec+0x00..0x13 的 20B 头部语义 (疑嵌套子结构)
- *  [C] 引擎对象 this[+0x18] 的类定义与构造点 (未查 ctor)
- *  [C] this[+0x18]->vt[+4] / vt[+0xc] / vt[+8] 的实现 (引擎真身, 第二批)
- *  [C] "G/D"=ZG/ZD、"Bs" 命名 (字面 3/12); this[+0xb8] 层计数器语义
- *  [C] helper 0x1000e990 / 0x1000eb80 / 0x10006700 用途
+ *  [A] 段记录偏移 (rec = segs + i*0x5d) —— 第二批已闭合 (见 6.2)
+ *  [C] 段 rec+0x15..0x18 / 0x29..0x40 / 0x45..0x54 未知区语义
+ *  [A] 引擎对象 this[+0x18]: ctor 0x1000e7c0, 虚表 0x1001549c (第二批已闭合, 6.1)
+ *  [A] vt[+4]=reset(0x1000e900) / vt[+0xc]=setter(0x1000e0b0) / vt[+8]=build(0x1000ebe0) (6.3/6.5)
+ *  [B] "G/D"=ZG/ZD 已由 Breach 的 fcomp 反证; "Bs" 字面 3/12 = 模式开关; this[+0xb8] 层计数器语义
+ *  [A] C0 生产者 = 0x1000e990 (核心体 helper); [C] 0x1000eb80 / 0x10006700 未展开
+ *  [A] 第二批: NChZsL2M(0x100048a0) 无递归 (递归假设证伪, 7.4)
+ *  [A] 第二批: SelPri/SelSlPri/SelSpPri 三支逐字节同构
+ *  [C] 构建链中段 8 支 (0x1000f8c0/fa40/fc60/ff80/10ee0/10f80/11170/11360) 未展开
  *  [C] 本批未做动态验证 (frida 预备包待用户在场)
+ */
+
+/* ============================================================================
+ * 6. 第二批: 核心体引擎 (docs/32 T1)
+ * ==========================================================================*/
+/*
+ * 6.1 引擎身份 [A]
+ *   ch_api ctor 0x100010d0 (ret 8): this[+0x18] = new(0x68) + ctor 0x1000e7c0
+ *   engine ctor 0x1000e7c0 (ret 4): engine[0x00] = &vt_engine (0x1001549c)
+ *                                   engine[+0x1c] = 9; 其余清零   (对象大小 0x68)
+ *   引擎虚表 0x1001549c (5 槽):
+ *     +0x00 0x1000e850  dtor
+ *     +0x04 0x1000e900  reset
+ *     +0x08 0x1000ebe0  build      (返 int; !=0 -> 核心体返 -1)
+ *     +0x0c 0x1000e0b0  setter     (ret 0x14, 5 参)
+ *     +0x10 0x1000ed20  dispatch   (1 -> 0x10011500 / 2 -> 0x10011660 / 0x65 -> 0x100117b0)
+ *
+ * 6.2 引擎容器与记录 (详表: tools/re-inventory/nchzs/chzs_container_layout.txt) [A]
+ *   C0: engine[+0x20] base / engine[+0x2c] count / stride 0x31   分型-笔序列
+ *   C1: engine[+0x30] base / engine[+0x38] cap / engine[+0x3c] count / stride 0x5d  中枢段
+ *   C2: engine[+0x40] base / stride 0x18 (count = C0.count)      分类标志
+ *   C3: engine[+0x4c] base / stride 0x1d                         段点输出
+ *   V : engine[+0x5c] beg / engine[+0x60] end / 元素 0x74 = 4 x 0x1d
+ *
+ *   struct Rec5D {            // C1: stride 0x5d = 93
+ *     int    mode;            // +0x00  buildSegment arg3
+ *     int    self;            // +0x04  写入前的 C1.count
+ *     int    startBar;        // +0x08
+ *     int    endBar;          // +0x0c
+ *     int    dir;             // +0x10  +1 / -1
+ *     u8     flags;           // +0x14  bit0 = 有效
+ *     u8     pad[4];          // +0x15
+ *     double ZG;              // +0x19  中枢上沿 (G worker / Breach dir!=-1)
+ *     u8     pad2[4];         // +0x21
+ *     double ZD;              // +0x25  中枢下沿 (D worker / Breach dir==-1)
+ *     u8     pad3[0x18];      // +0x2d
+ *     int    barIdx;          // +0x41  (Bs worker)
+ *     u8     pad4[0x10];      // +0x45
+ *     int    A;               // +0x55  输出区间起
+ *     int    B;               // +0x59  输出区间止
+ *   };
+ *   struct Rec31 {            // C0: stride 0x31 = 49
+ *     int    dir;             // +0x00
+ *     int    lo;              // +0x04  子区间起
+ *     int    hi;              // +0x08  子区间止
+ *     int    mark;            // +0x0c  =1 当值 in {-2,+2}
+ *     u8     pad[4];          // +0x10
+ *     int    idxA;            // +0x11  -> C3[+0x09] (dir==-1 支)
+ *     int    idxB;            // +0x15  -> C3[+0x09] (dir!=-1 支)
+ *     double p1;              // +0x19  -> C3[+0x0d]
+ *     double p2;              // +0x21  -> C3[+0x15]
+ *     double p3;              // +0x29  条件写
+ *   };
+ *
+ * 6.3 核心体 0x100045f0 主路径 [A]  (ret 0x10, 4 参)
+ *   int NChZs_core(ch_api* this, int n, double* out, TDesc* a3, TArg* a4)
+ *   {
+ *     memset(out, 0, n*8);                                   // 0x1001494c
+ *     if (a3[0] == 0 || a3[8] == 0) return -1;               // 两指针非空门
+ *     engine = this[+0x18];
+ *     engine->vt[+4]();                                      // 0x1000e900 reset
+ *     engine->vt[+0xc](n, a3[0], a3[8], a3[4], a3);          // 0x1000e0b0 setter
+ *     sub_1000e990(n, a4[0]);                                // 生产 C0
+ *     if (engine->vt[+8]() != 0) return -1;                  // 0x1000ebe0 build
+ *     if (this[+0x18] == 0) return -1;
+ *     sub_10006700(this);
+ *     return 0;
+ *   }
+ *   // 失败出口 0x10004689: or eax,-1 ; pop edi/esi/ebp/ebx/ecx ; ret 0x10
+ *
+ * 6.4 setter 0x1000e0b0 [A]  (ret 0x14)
+ *   { engine[+4]=a2; engine[+8]=a3; engine[+0xc]=a4; engine[+0x10]=a5; engine[+0x14]=a1; }
+ *
+ * 6.5 build 0x1000ebe0 [A]
+ *   int build(engine)
+ *   {
+ *     if (!C0.count || !C0.base || !engine[+0x28]) return -1;
+ *     n = C0.count;
+ *     resize(&C1, n*2); memset(C1.base, 0, n*0xba); C1.count = 0;
+ *     resize(&C2, n);   memset(C2.base, 0, n*0x18);
+ *     resize(&C3, n);   memset(C3.base, 0, n*0x1d);
+ *     reset(&engine[+0x58]);
+ *     for (i = 0; i < n; ) { r = buildSegment(engine, i, n, 0); i = (r > 0 ? r : i) + 1; }
+ *     for (k = 0; k < C1.count; k++) {                 // C1 -> C3 后处理
+ *        Rec5D* rec = &C1[k];
+ *        if (!(rec->flags & 1)) continue;
+ *        idx = rec->startBar + 1;
+ *        if (idx < 0 || idx >= n) break;
+ *        Rec1D* dst = (Rec1D*)((char*)C3.base + idx*0x1d);
+ *        Rec31* src = (Rec31*)((char*)C0.base + idx*0x31);
+ *        dst->valid = 1; dst->barIdx = idx;
+ *        dst->dir = (src->dir == -1) ? +1 : -1;
+ *        dst->idx = (src->dir == -1) ? src->idxA : src->idxB;
+ *        dst->p1  = src->p1;  dst->p2 = src->p2;
+ *     }
+ *     return 0;
+ *   }
+ *
+ * 6.6 段生产者 0x1000f680 [A]  (ret 0xc, 3 参)
+ *   int buildSegment(engine [ecx], int i, int n, int mode)
+ *   {
+ *     if (C1.count >= engine[+0x38]) return -1;              // 容量门
+ *     Rec5D* rec = &C1[C1.count]; memset(rec, 0, 0x5d);
+ *     rec->mode = mode;  rec->self = C1.count;
+ *     r = sub_1000f8c0(i, n); if (r < 0) return -1;
+ *     sub_10011170(engine, rec);
+ *     ... // 在 0x1000fa40 / 10ee0 / 10f80 / 0x1000fc60 / 0x1000ff80 判据下推进/收尾
+ *     rec->flags |= 1;                                       // 有效
+ *     // 有效性: span = endBar - startBar + 1 >= 3 且 dir in {+1,-1}
+ *   }
+ *
+ * 6.7 C0 生产者 0x1000e990 [B]  (ret 8, 2 参)
+ *   入参: n (a1), priceArray (a2)。init C0 (resize n) -> engine[+0x2c]=0 ->
+ *   逐 bar 生成记录: 写 p2(+0x21)/p3(+0x29), mark(+0x0c)=1 当值 in {-2,+2}, count++。
+ */
+
+/* ============================================================================
+ * 7. 第二批: 三兄弟与 L2M 侦察 (docs/32 T2/T3)
+ * ==========================================================================*/
+/*
+ * 7.1 NChZsBs3 (0x10004700) [A]
+ *   { eax = a1; edi = a2; push 3; push eax; eax = this[+0x18]; call 0x100068c0; }
+ *   // 与 NChZsBs12 唯一差别 = 字面量 3 vs 12 (模式开关)。 0 个 x87 条件。
+ *
+ * 7.2 NChZsBreach (0x10004720) [A 结构 / B 语义]  (ret 0x10, 4 参, 2 个 x87 条件)
+ *   int breach(this, n, out, a3, a4)
+ *   {
+ *     memset(out, 0, n*8);
+ *     engine = this[+0x18];
+ *     if (!C0.count || !C0.base || !C1.count || !C1.base) return -1;   // 非空门
+ *     for (s = 0; s < C1.count; s++) {
+ *        Rec5D* rec = &C1[s];
+ *        if (!(rec->flags & 1)) continue;
+ *        if (rec->endBar - rec->startBar + 1 <= 3) continue;   // 需 span >= 4
+ *        for (idx = rec->startBar + 4; idx <= rec->endBar + 1; idx++) {
+ *           Rec31* c0 = (Rec31*)((char*)C0.base + idx*0x31);
+ *           if (c0->dir != rec->dir) continue;
+ *           cnt = 0;
+ *           for (k = c0->lo; k <= c0->hi; k++) {
+ *              double p = price[k];
+ *              if (rec->dir != -1) { if (!(p <= rec->ZG)) cnt++; }   // fcomp vs rec+0x19
+ *              else                { if (  p >= rec->ZD ) cnt++; }   // fcomp vs rec+0x25
+ *           }
+ *           out[idx] = (double)cnt;    // 计数 (上/下越界次数)
+ *        }
+ *     }
+ *     return 0;
+ *   }
+ *   // x87 直证: cond_chlib_10004720.txt 2 条件 (price vs [edx+0xd]=ZG / [edx+0x19]=ZD)
+ *
+ * 7.3 NChZsSelPri (0x10005a50) [A]  (ret 0x10, 4 参, 0 个 x87 条件)
+ *   int selpri(this, n, out, a3, a4)
+ *   {
+ *     memset(out, 0, n*8);
+ *     engine = this[+0x18];
+ *     beg = engine[+0x5c]; end = engine[+0x60];
+ *     cnt = (beg ? (end - beg) / 0x74 : 0);        // 魔数 0x8d3dcb09 => /116
+ *     for (e = 0; e < cnt; e++) {
+ *        for (j = 0; j < 4; j++) {                 // 4 x 0x1d 子记录
+ *           sub = beg + e*0x74 + j*0x1d;
+ *           idx = *(int*)(sub + 0x00);  val = *(double*)(sub + 0x04);
+ *           if (0 <= idx && idx <= n) out[idx] = val;
+ *        }
+ *     }
+ *     return 0;
+ *   }
+ *   // SelPri / SelSlPri(0x10005bb0) / SelSpPri(0x10005d10) 三支逐字节同构
+ *   //   (diff 仅跳转地址位移); NChZsSel(0x100058f0) 形态不同(有前置 setup)。
+ *
+ * 7.4 NChZsL2M (0x100048a0) 递归假设证伪 [A]
+ *   // 695 行, ret 0x10, sub esp,0x14; 全部直接调用仅 2 处:
+ *   //   0x100148a0 (_ftol2) 与 0x1001494c (memset)  => 无自调用/无递归
+ *   // 双数组遍历 (imul 0x31 + add 0x5d, 读 C0/C1), 24 处 x87 比较
+ *   //   (189 基本块 / 10 conflicts, cond_chlib_100048a0.txt)
+ *   // 两类条件: (a) fcomp price vs mem:[edx]; (b) fcom 0.0 vs mem:[ecx+-k*0x31] (符号判定)
+ *   // 收口建议: 第三批按支配树切 ~6 段 + x87 条件表逐段复核; 无需追递归栈。
  */
