@@ -1,0 +1,33 @@
+10012550  push     ebp
+10012551  push     esi
+10012552  mov      esi, eax
+10012554  mov      ecx, ebx
+10012556  sub      ecx, esi
+10012558  mov      ebp, dword ptr [esp + 0xc]
+1001255c  mov      eax, 0x8d3dcb09
+10012561  imul     ecx
+10012563  add      edx, ecx
+10012565  sar      edx, 4
+10012568  mov      eax, edx
+1001256a  shr      eax, 0x1f
+1001256d  add      eax, edx
+1001256f  imul     eax, eax, 0x1d
+10012572  add      eax, ebp
+10012574  cmp      esi, ebx
+10012576  mov      edx, esi
+10012578  je       0x10012595
+1001257a  sub      ebp, esi
+1001257c  push     edi
+1001257d  lea      ecx, [ecx]
+10012580  lea      edi, [edx + ebp]
+10012583  mov      esi, edx
+10012585  mov      ecx, 7
+1001258a  rep movsd dword ptr es:[edi], dword ptr [esi]
+1001258c  add      edx, 0x1d
+1001258f  cmp      edx, ebx
+10012591  movsb    byte ptr es:[edi], byte ptr [esi]
+10012592  jne      0x10012580
+10012594  pop      edi
+10012595  pop      esi
+10012596  pop      ebp
+10012597  ret      

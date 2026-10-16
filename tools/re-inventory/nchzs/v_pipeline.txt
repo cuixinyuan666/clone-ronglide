@@ -1,0 +1,128 @@
+================================================================================
+ v_pipeline.txt — NChZs 第四批 T2
+ 「V 向量（engine[+0x5c]/[+0x60]，0x74 组 × 4 子记录）产线闭环」
+ 证据: chlib_1000ed20.txt(dispatch) / chlib_10011500.txt / chlib_10011660.txt /
+       chlib_100117b0.txt / chlib_10011a70.txt(push) / chlib_10012550.txt(compact) /
+       chlib_10005a50.txt(SelPri 消费端) / chlib_100110a0.txt / chlib_10011010.txt
+================================================================================
+
+[0] 结论速览
+--------------------------------------------------------------------------------
+  ✓ SelPri 消费的 V(0x74) 四子记录 **由 engine vt[+0x10] dispatch 的三个 mode 生产者**
+    (0x10011500 / 0x10011660 / 0x100117b0) 经 V.push_back(0x10011a70) 产生。
+  ✗ 任务书设想的「0x100110a0/0x10011010 是 V 生产者」**不成立**：两支是
+    「C0[i].p3 区间求和器」，用于**段评分/区间对比**（见 [5]）。
+  ★ 第三批对子记录偏移的记录（+0x00/+0x04）**错位 1 字节**，本批校正为
+    {u8 tag@+0, i32 barIdx@+0x01, f64 v1@+0x05, f64 v2@+0x0d, f64 v3@+0x15}。
+
+[1] V 容器身份
+--------------------------------------------------------------------------------
+  engine[+0x5c] = beg, engine[+0x60] = end（engine ctor 0x1000e7c0 清零；reset
+  (0x1000e900) 与 dispatch(0x1000ed20) 均经 0x10012550 维护其 beg/end）
+  组大小 0x74 (116 B) = 4 × 0x1d (29 B) 子记录
+  容量/计数魔法常数 0x8d3dcb09 ⇒ 整数除以 0x74（见 0x10011a70、SelPri、0x10012550）
+
+  0x10012550(eax=first, ebx=last, arg=dest) = 「0x1d 块搬移/紧致化」:
+     n = (ebx-first)/0x74;  dst = arg + n*0x1d
+     do { rep movsd ecx=7; movsb } while (src += 0x1d) < ebx
+     ⇒ 以 0x1d 步长、按 0x74 计量范围的搬运原语（用于 V 收缩）。
+
+[2] dispatch：engine vt[+0x10] = 0x1000ed20（ret 4，arg = mode）
+--------------------------------------------------------------------------------
+  mode==0        → 返 -1（1000ed27-30）
+  mode==1        → 0x10011500   (dir +1 族，严 span 门)
+  mode==2        → 0x10011660   (dir +1 族，宽 span 门)
+  mode==0x65(101)→ 0x100117b0   (dir -1 族)
+  调用前: 对 V 做一次紧致化（ebx=beg, esi=end → 0x10012550 → 回写 [+0x60]）
+
+[3] 三个 V 生产者（结构同构）
+--------------------------------------------------------------------------------
+  共同骨架（以 0x10011500 为例，行号见 chlib_10011500.txt）:
+    L5    if (engine[+0x2c] /*C0.count*/ <= {1|2}) return 0;
+    循环 i（C0 下标；[esp+0x3c] 自 0x31 起步进 0x31；[esp+0x14] 自 0x18 起步进 0x18）:
+    L13   c2 = C2.base + c2off
+    L15   if ((s8)c2.slotB[0](+0x14) < 0)  ptr = c2.ptr[0](+4);
+          else if ((s8)c2.slotB[3](+0x17) < 0) ptr = c2.ptr[3](+0x10);
+          else goto next;
+    L22   if (ptr == 0) goto next;
+    L24   if (ptr->dir(+0x10) != DIR_TARGET) goto next;         ; mode1/2: +1; mode0x65: -1
+    L26   span = ptr->endBar(+0xc) - ptr->startBar(+8) + 1;
+          e  = (span > 3) ? span - 1 : span;                    ; 编译器形态
+    L35   if (e < SPAN_MIN) goto next;                          ; mode1: 7 ⇒ span>=8; mode2/0x65: 5 ⇒ span>=6
+    L37   if (i - ptr->startBar + 1 != 8) goto next;            ; ★ 定位到 startBar+7 / startBar+8 邻域
+    L42   if (C0[i].dir != DIR_TARGET) goto next;
+    L47   if (C0[startBar..i-1].p2 关系门) goto next;           ; 逐 bar 价比较（fcomp）
+    L63   limit = engine[+0x14] - 1;  (i+2 < count 时 limit = C0[i].? [+0x42])
+    L71   idx = ptr->idxB(+0x15);
+    L72   if (idx > limit) goto next;
+    L74   price = engine[+8];                                   ; ★ 价格数组基址 = engine[+8]
+    逐 idx 推进直到 price[idx] 满足 fcomp 关系（jnp/jne 出口见各 mode）
+    L87   --- 组装 0x1d 子记录 (栈上 [esp+0x18]) ---
+             [esp+0x19] = idx            (i32, base+1)
+             [esp+0x1d] = v1 (f64, base+5)   ; mode1: C0[i-? ].p2 / mode2: C0[i].p2 / 0x65: p1
+             [esp+0x25] = v2 (f64, base+0xd)
+             [esp+0x2d] = 0.0 (f64, base+0x15)
+    L96   call 0x10011a70               ; V.push_back(&子记录)
+    L97   next: 三个 offset 步进; 循环
+
+  各 mode 差异（[A 结构]）:
+    0x10011500  span 门 e>=7 (⇒ span>=8)   入口 slotB[0] 负 → ptr[0]；末端 idxB(+0x15)；limit 源 engine[+0x14]
+    0x10011660  span 门 e>=5 (⇒ span>=6)   入口 slotB[0] 负 → ptr[0]；末端 idxB(+0x15)；limit 源 engine[+0x14]
+    0x100117b0  dir = -1                   入口 slotB[0] **正**(jle) → ptr[0]；末端 idxA(+0x11)
+
+[4] V.push_back = 0x10011a70
+--------------------------------------------------------------------------------
+  入参: eax = 子记录地址 (0x1d)，esi = &V (engine+0x58)
+  容量检查: cnt = (V.end - V.beg)/0x74 ; cap = (V.cap - V.beg)/0x74
+    若 cnt <  cap: 直接写入 → 0x10012770 拷贝 → V.end += 0x1d
+    否则:         调 0x10011c40（扩容器）
+  ⇒ 单次 push 只前进 0x1d，但容量以 0x74 组计量（每 4 次 push 消化一组容量）
+
+[5] 0x100110a0 / 0x10011010 —— **不是** V 生产者，而是「区间 p3 求和（段评分）」
+--------------------------------------------------------------------------------
+  0x10011010 (ret 4; eax=a, ebx=b, arg0=engine):
+     ST0 = Σ_{i=a..b} C0[i].p3(+0x29)         （4 路展开 + 尾循环；无方向过滤）
+  0x100110a0 (ret 8; edx=a, arg1=b, arg0=engine, edi=dir):
+     ST0 = Σ_{i=a..b, C0[i].dir(+0x00)==edi} C0[i].p3(+0x29)
+  结果留在 ST(0)（f64 返回值）。
+  直证用途:
+    0x10011360 @10011442   call 0x10011010 后 `fcomp [edi+0x29]`（当前 C0 的 p3）
+    0x10011170 @100112ff/@10011314  连调 0x100110a0 ×2 后 `fcompp`（两区间累计量对比）
+  ⇒ p3 是「可加的每 bar 标量」，Σ 为区间累计量（面积/量）[B]；两支用于**段择取评分**。
+
+[6] 消费端 SelPri（校正后精确版；证据 chlib_10005a50.txt）
+--------------------------------------------------------------------------------
+  0x10005a50 (ret 0x10):
+     memset(out, 0, n*8)                                  ; n = arg0
+     V = engine[+0x5c]..[+0x60]; cnt = (end-beg)/0x74
+     for (e=0; e<cnt; e++)
+       for (j=0; j<4; j++) {
+          sub = V.beg + e*0x74 + j*0x1d;
+          idx = *(i32*)(sub+0x01);   // 10005b20 [eax-0x1d] / 10005b86 [eax]
+          val = *(f64*)(sub+0x05);   // 10005b2f [eax-0x19] / 10005b92 [eax+4]
+          if (0 <= idx && idx <= n) out[idx] = val;      // 上界 = arg0 = n
+       }
+     return 0;
+  注意: 4 路展开块内 `eax` 起点为 V.beg+0x1e（= 第 0 子记录的 idx 槽）；
+        尾块用 [esp+0x18] = V.beg 作基址（同批 push ebx 前写入）。
+
+[7] 闭环
+--------------------------------------------------------------------------------
+  构建链(build/0x1000f680) → C1 段记录
+       │  (0x1000ee30 登记 C2 并发槽)
+       ▼
+  C2[stride 0x18] ── engine vt[+0x10] dispatch(mode 1/2/0x65)
+       ▼
+  0x10011500 / 0x10011660 / 0x100117b0 ── 组装 0x1d 子记录 ── 0x10011a70 push
+       ▼
+  V = engine[+0x5c]/[+0x60]（0x74 组 × 4 子记录）
+       ▼
+  SelPri / SelSlPri / SelSpPri  →  out[barIdx] = val
+
+[8] 遗留
+--------------------------------------------------------------------------------
+  [B] v2（子记录 +0x0d）语义（mode1/2/0x65 各写不同 C0 字段，需逐 mode 定值表）
+  [B] mode 1 / 2 / 0x65 三档的选用者（TAFLib 侧包装 NChZsL2M / NChZsFj 等）
+  [C] 子记录 +0x00 标签字节（生产者未显式写）实际取值
+  [C] 本批未做动态验证（frida 待用户在场）
+================================================================================

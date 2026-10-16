@@ -17,7 +17,7 @@
  *                 chlib_1000f680.txt (段生产者) / chlib_10004720.txt (Breach) /
  *                 chlib_10005a50.txt (SelPri) / cond_chlib_10004720+10005a50+100048a0.txt /
  *                 chzs_container_layout.txt / nchzs2_wip.md
- * 批次: 第一批 (docs/31) + 第二批 (docs/32) + 第三批 (docs/33), 2026-10-17
+ * 批次: 第一批 (docs/31) + 第二批 (docs/32) + 第三批 (docs/33) + 第四批 (docs/34), 2026-10-17
  * 第三批新增: 构建链中段 8 支 (seg_init/seg_extend/seg_endcheck/seg_wrapup/
  *              c2_reg_up/c2_reg_down/seg_finalize/seg_advance) + C1 段记录语义升级
  *              (ZG/ZD/GG/DD 四值 + 下标对 + A/B 输出区间) + 段入册器 0x1000f0e0
@@ -712,12 +712,195 @@ typedef struct engine_t {
  * 勘误 4: docs/32「C1 +0x21 属 C0」进一步明确 —— C1 的 +0x21 = zdIdx (下标, 非价),
  *         与 C0 的 +0x21(low) 是同偏移不同容器, 两处解读均成立。
  *
- * 遗留 [B]/[C]:
- *   [B] slot 字节 {3,4,5,6,0xfa,0xfb,0xfc,0xfd} 的语义 (疑段端点角色码)
- *   [B] C1 +0x41 barIdx 的写点 (8 支内未直证, 疑由 0x1000ee30 写)
- *   [C] C1 +0x45..0x54 未定性 (疑 slot 计数 / 角色位图)
- *   [C] C0 +0x29 (p3) 语义 (与 high 反向单调 => 疑收/中价)
- *   [C] 0x1000ee30 (C3 写入器) / 0x100110a0 (插值) / 0x10011010 (价查询) 未展开
- *   [C] 0x1000fc10 / 0x1000fdf0 / 0x1000fe50 / 0x10010d60 四支收尾辅助未展开
+ * 遗留 [B]/[C] (第四批更新):
+ *   [A] slot 字节语义已闭合 -> 见 §12.2 归一化表 (只取决于 |slot|; 符号 = 方向门)
+ *   [A] C1 +0x45+slot*4 = bar 下标, 由 0x1000ee30 写 (第四批直证, 撤 [B])
+ *   [B] C1 +0x45..0x54 部分槽位仍无写入者 (本批见得 4 槽)
+ *   [B] C0 +0x29 (p3) 语义: 本批确认为「可加每 bar 标量」, 区间求和后作段评分 (面积/量?)
+ *   [A] 0x1000ee30 = C3/C2 写入器 (第四批已展开, §12)
+ *   [A] 0x100110a0 / 0x10011010 = C0.p3 区间求和器 (第四批勘误: 非「插值/价查询」, §13.1)
+ *   [A] 0x1000fc10 / 0x1000fdf0 / 0x1000fe50 / 0x10010d60 四支收尾辅助已展开 (§14)
+ *   [B] 0x1000fe50 的候选生成器 0x1000f490 / 0x1000f5b0 未展开
+ *   [C] V 子记录 +0x00 标签字节实际取值; v2(+0x0d) 三 mode 定值表
  *   [C] 本批未做动态验证 (frida 预备包待用户在场)
+ */
+
+/* ============================================================================
+ * 12. 第四批: C3/C2 写入器 0x1000ee30 + slot 归一化 (docs/34 T1)
+ * ==========================================================================*/
+/*
+ * 12.1 签名 [A]  (ret 8; 4 处调用点直证)
+ *
+ *   void sub_1000ee30(Engine* eng /*arg0, ebp*/, Rec* rec /*arg1*/,
+ *                     int i /*ecx*/, signed char slot /*al*/)
+ *   {
+ *     if (rec == 0) return;                                  // 1000ee30
+ *     if (i < 0 || i >= eng->count /*[+0x2c]*/) return;       // 1000ee46 / ee4e
+ *     if (abs(slot) - 1 > 8) return;                          // slot in +-1..+-9
+ *     s = sub_1000edf0(abs(slot) - 1);                        // 归一槽 0..3
+ *     if (s < 0) return;
+ *     Rec31* c0 = &C0[i];                                     // [eng+0x20] + i*0x31
+ *     if (c0->mark /*[+0xc]*/ & 1) return;
+ *     if (slot < 0 && c0->dir /*[+0x00]*/ != +1) return;       // 方向门
+ *     if (slot > 0 && c0->dir                != -1) return;    // 方向门
+ *     C2[i].id       (+0x00)     = (c0->dir == -1) ? c0->idxA(+0x11) : c0->idxB(+0x15);
+ *     C2[i].ptr      (+4 + s*4)  = rec;
+ *     C2[i].slotB    (+0x14 + s) = slot;
+ *     rec[+0x45 + s*4]           = i;
+ *     if (slot == 0xfa || slot == 0xf8) goto MIRROR_A;
+ *     if (slot == 6    || slot == 8)    goto MIRROR_B;
+ *     return;
+ *   MIRROR_B:  j = i + 2;  if (j >= eng->count) return;
+ *              if (!(C0[j].p1(+0x19) < C0[i].p1)) return;
+ *              if (C0[j].mark & 1) return;
+ *              newSlotRaw = (slot == 6) ? 9 : 2;                  // (slot!=6)-1 & 7 + 2
+ *              goto EMIT2;
+ *   MIRROR_A:  j = i + 2;  if (j >= eng->count) return;
+ *              if (!(C0[j].p2(+0x21) > C0[i].p2)) return;
+ *              if (C0[j].mark & 1) return;
+ *              newSlotRaw = (slot == 0xfa) ? 0xF7 : 0xFE;         // (slot!=0xfa)-1 & 0xF9 + 0xFE
+ *   EMIT2:     s2 = sub_1000edf0(abs((s8)newSlotRaw) - 1);        // 两路均 -> 槽 1
+ *              C2[j].id = (C0[j].dir == -1) ? C0[j].idxA : C0[j].idxB;
+ *              C2[j].ptr  [+4 + s2*4] = rec;
+ *              C2[j].slotB[+0x14+s2]  = newSlotRaw;              // 存原始字节
+ *              rec[+0x45 + s2*4]      = j;
+ *   }
+ *
+ * 12.2 slot 归一化表 0x1000edf0 [A]
+ *   jmp dword ptr [eax*4 + 0x1000ee0c]; 表体 0x1000ee0c..0x1000ee2f = 9 x 4 字节
+ *   目标桩: 0x1000edf7(ret 0) / 0x1000edfa(ret 1) / 0x1000ee00(ret 2) / 0x1000ee06(ret 3)
+ *     idx = |slot|-1 :  0  1  2  3  4  5  6  7  8
+ *     槽             :  0  1  2  3  3  3  3  0  1
+ *   raw slot -> 槽:  3->2  4/5/6->3  8->0   0xfd->2  0xfc/0xfb/0xfa->3  0xf8->0
+ *   => 只取决于 |slot|; 符号仅决定方向门 (负 => C0.dir==+1; 正 => C0.dir==-1)
+ *   => C2 的 4 并发槽: 槽2="+-3" / 槽3="+-4,+-5,+-6" / 槽0="+-8" / 槽1=仅镜像分支
+ *   (第一批列出的 {3,4,5,6,0xfa,0xfb,0xfc,0xfd} 之外, 本批补齐 {8, 0xf8})
+ *
+ * 12.3 C2 记录布局 (stride 0x18) [A]
+ *   +0x00     i32  C0 分型 id (dir==-1 取 idxA(+0x11), 否则 idxB(+0x15))
+ *   +0x04+s*4 ptr  段记录指针 rec (s = 归一槽 0..3)
+ *   +0x14+s   i8   该槽的 slot 原始字节 (不归一)
+ *   调用者: 0x1001126a(seg_finalize) / 0x1001146b / 0x10011484 / 0x100114e7(seg_advance)
+ */
+
+/* ============================================================================
+ * 13. 第四批: 消费侧产线闭环 (docs/34 T2)
+ * ==========================================================================*/
+/*
+ * 13.1 ★ 勘误: 0x100110a0 / 0x10011010 = C0.p3 区间求和器 (不是「插值/价查询」)
+ *   double sum_p3     (Engine* eng, int b /*ebx*/, int a /*eax*/)   // 0x10011010, ret 4
+ *   { ST0 = SUM_{i=a..b} C0[i].p3 /*+0x29*/; }                      // 无方向过滤
+ *   double sum_p3_dir (Engine* eng, int b, int a /*edx*/, int dir /*edi*/)  // 0x100110a0, ret 8
+ *   { ST0 = SUM_{i=a..b, C0[i].dir(+0x00)==dir} C0[i].p3; }
+ *   结果留在 ST(0)；循环单位 = C0 下标 (= bar 下标)。
+ *   直证用途: 0x10011360 @10011442 (call sum_p3 后 fcomp [edi+0x29]);
+ *             0x10011170 @100112ff/@10011314 (连调 sum_p3_dir x2 后 fcompp)。
+ *   => p3 = 可加每 bar 标量, SUM = 区间累计量(面积/量) [B]; 两支服务段择取评分 [A 结构]
+ *
+ * 13.2 V 向量 (engine[+0x5c]/[+0x60]) 产线 [A]
+ *   engine vt[+0x10] = 0x1000ed20 (dispatch, ret 4, arg = mode)
+ *     mode 0        -> 返 -1
+ *     mode 1        -> 0x10011500   (dir +1 族, span 门 >= 8)
+ *     mode 2        -> 0x10011660   (dir +1 族, span 门 >= 6)
+ *     mode 0x65(101)-> 0x100117b0   (dir -1 族, span 门 >= 6)
+ *     入口前: 0x10012550 对 V 紧致化 (回写 engine[+0x60])
+ *
+ *   三支同构:
+ *     循环 i (C2 += 0x18, C0 += 0x31):
+ *       c2 = C2[i];
+ *       if ((s8)c2.slotB[0](+0x14) < 0)      ptr = c2.ptr[0](+4);
+ *       else if ((s8)c2.slotB[3](+0x17) < 0) ptr = c2.ptr[3](+0x10);
+ *       else continue;
+ *       if (!ptr || ptr->dir(+0x10) != DIR) continue;
+ *       span = ptr->endBar(+0xc) - ptr->startBar(+8) + 1;
+ *       if (!(span >= SPAN_MIN)) continue;              // mode1:8; mode2/0x65:6
+ *       if (i - ptr->startBar + 1 != 8) continue;
+ *       if (C0[i].dir != DIR) continue;
+ *       if (C0[startBar..i-1].p2 关系门) continue;       // 逐 bar fcomp
+ *       idx = ptr->idxB(+0x15);  if (idx > limit) continue;
+ *       for (; idx <= limit; idx++) if (price[idx] 满足 fcomp) break;   // price = engine[+8]
+ *       组装 Rec1D; V.push_back(0x10011a70, &sub);
+ *
+ * 13.3 ★★ V 0x1d 子记录布局 (生产者写点 + SelPri 读点 双向确证) [A]
+ *   +0x00  u8   标签 (生产者未显式写)
+ *   +0x01  i32  barIdx      (prod: 10011619 [esp+0x19]; Sel: 10005b20 [eax-0x1d] / 10005b86 [eax])
+ *   +0x05  f64  v1          (prod: 1001160e [esp+0x1d]; Sel: 10005b2f [eax-0x19] / 10005b92 [eax+4])
+ *   +0x0d  f64  v2          (prod: 1001161d [esp+0x25]; Sel 不读)
+ *   +0x15  f64  v3 = 0.0    (prod: 10011627 [esp+0x2d]; Sel 不读)
+ *   每 0x74 组 = 4 x 0x1d 子记录; 组内偏移 base + {0,1,2,3}*0x1d
+ *   0x10011a70 = 单子记录 push_back (容量按 0x74 组计量, magic 0x8d3dcb09)
+ *   0x10012550 = 0x1d 块搬移/紧致化 (n=(last-first)/0x74; dst = arg + n*0x1d)
+ *   勘误: docs/32 记 {i32 barIdx@+0x00, f64 价@+0x04} 为错位 1 字节
+ *
+ * 13.4 SelPri 消费路径 (0x10005a50, ret 0x10) [A] —— 校正后
+ *   memset(out, 0, n*8);
+ *   V = engine[+0x5c]..engine[+0x60]; cnt = (end-beg)/0x74;
+ *   for (e=0; e<cnt; e++)
+ *     for (j=0; j<4; j++) {
+ *        sub = V.beg + e*0x74 + j*0x1d;
+ *        idx = *(i32*)(sub+0x01);  val = *(f64*)(sub+0x05);
+ *        if (0 <= idx && idx <= n) out[idx] = val;     // 上界 = arg0 = n
+ *     }
+ *   闭环: 构建链 -> C1 段 -> C2 并发槽(0x1000ee30) -> vt[+0x10] dispatch(mode 1/2/0x65)
+ *         -> 0x10011500/60/b0 -> 0x10011a70 push -> V -> SelPri/SelSlPri/SelSpPri -> out[barIdx]
+ */
+
+/* ============================================================================
+ * 14. 第四批: 四支收尾辅助 (docs/34 T3)
+ * ==========================================================================*/
+/*
+ * 14.1 0x1000fc10 — seg_overlap_check (ret 无栈参; eax=engine, ebx=rec; 返回 al=bool) [A]
+ *   prevIdx = 0x1000f200(engine, rec->dir /*[+0x10]*/);
+ *   if (prevIdx < 0) return 0;
+ *   prev = &C1[prevIdx];
+ *   if (prev->dir != rec->dir) return 0;
+ *   if (rec->dir == -1) return (prev->GG(+0x31) >= rec->DD(+0x3d));
+ *   else                return (prev->DD(+0x3d) <= rec->GG(+0x31));
+ *   => 语义: 前一同向有效段 [DD,GG] 与当前段 [DD,GG] 相交谓词。 x87 2 条。
+ *
+ * 14.2 0x1000fdf0 — find_prev_valid (ret 无栈参; ebx=rec, edi=engine; 返回 bar 下标) [A]
+ *   if (rec->self(+4) - 1 < 0) return rec->startBar(+8) + 2;
+ *   for (k = rec->self - 1; k >= 0; k--) {
+ *      seg = &C1[k];                       // stride 0x5d
+ *      if (seg->dir != rec->dir) continue;
+ *      if (!(seg->flags(+0x14) & 1)) continue;
+ *      return rec->startBar;
+ *   }
+ *   return rec->startBar + 2;
+ *
+ * 14.3 0x1000fe50 — scan_candidate (ret 0xc; 含 SEH 帧 + 局部 vector stride 0xc) [A 结构/B 语义]
+ *   若 rec->dir == -1 -> 0x1000f490(&vec, engine, arg); 否则 0x1000f5b0(...);
+ *   cnt = (vec.end - vec.beg) / 0xc;
+ *   for (e=0; e<cnt; e++) {
+ *      idx = vec[e]->[+8];
+ *      if (idx + 4 >= C0.count) break;
+ *      a = &C0[idx+1];  b = &C0[idx+2];
+ *      if (a->dir == -1) { if (!(a->p2 <= b->p1)) { free vec(0x10013f00); return idx; } }
+ *      else              { if (!(a->p1 >= b->p2)) { free vec; return idx; } }
+ *   }
+ *   => 门 = 相邻 C0 记录价格区间相交 (dir 分派)。 x87 2 条。
+ *
+ * 14.4 ★ 0x10010d60 — split_rebuild (ret 4; ecx=engine(edi), ebx=rec) [A]
+ *   span_m1 = rec->endBar(+0xc) - rec->startBar(+8);   e = span_m1 + 1; if (span<=3) e = span;
+ *   if (e < engine[+0x1c] /*=9 段长上限*/) return -1;
+ *   r1 = 0x1000fdf0(rec, engine);
+ *   c  = 0x1000fe50(rec, engine, r1, rec->endBar);
+ *   if (c + 1 < rec->endBar - 3) return -1;
+ *   if (c + 4 >= engine[+0x2c])  return -1;
+ *   p  = &C0[c];
+ *   ... dir 分派 8 条 fcomp (p 与 C0[c+-k] 之 p1/p2) ...
+ *   c2 = 0x1000fe50(rec, engine, r1, c - 1);
+ *   if (c2 < 0) return -1;
+ *   rec->flags = (rec->flags & 0xFE) | 2;              // ★ 置 bit1「已收尾」 (10010e7a)
+ *   0x1000f0e0(engine, rec);                           // ★ 段入册 (C1.count++)
+ *   0x1000f070(rec->startBar, rec->endBar);
+ *   a = 0x1000f680(engine, rec->startBar, c2 + 1, rec);      // ★ 递归 buildSegment #1
+ *   b = 0x1000f680(engine, newIdx, engine[+0x2c], rec);      // ★ 递归 buildSegment #2
+ *   return max(a, b);
+ *   => 语义: 收尾(flags|=2 + 入册) + 段分裂 + 递归再建两子段。
+ *   => ★ 本支是 0x1000f680 「内层递归」的真实发起者 (docs/33 勘误②的落点)。
+ *
+ * 14.5 接线
+ *   0x1000f200 前段查找器 <- 14.1     0x1000f0e0 段入册器 <- 14.4
+ *   0x1000f680 buildSegment <- 14.4 (递归 x2)        engine[+0x1c]=9 段长上限 <- 14.4
  */

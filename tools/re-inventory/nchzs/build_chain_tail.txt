@@ -1,0 +1,107 @@
+================================================================================
+ build_chain_tail.txt — NChZs 第四批 T3
+ 「四支收尾辅助」骨架表（构建链尾部：收尾 / 分裂 / 递归再建）
+ 证据: chlib_1000fc10.txt(33) chlib_1000fdf0.txt(38) chlib_1000fe50.txt(102) chlib_10010d60.txt(140)
+================================================================================
+
+[0] 定位关系
+--------------------------------------------------------------------------------
+  seg_wrapup (0x1000ff80, docs/33 §4 第 4 支) 的收尾子层 = 下列四支：
+      谓词(1) 0x1000fc10   →  查找(2) 0x1000fdf0   →  候选扫描(3) 0x1000fe50
+                                                    →  分裂递归(4) 0x10010d60
+  其中 (4) 是 0x1000f680(buildSegment) 「内层递归」的**真实发起者**（docs/33 勘误②落点）。
+
+[1] 0x1000fc10 — seg_overlap_check  谓词 [A]
+--------------------------------------------------------------------------------
+  签名: ret (无栈参)；eax = engine，ebx = rec；返回 al ∈ {0,1}
+  行为:
+    prevIdx = 0x1000f200(engine, rec->dir /*[+0x10]*/);   ; 反向找前一有效段
+    if (prevIdx < 0) return 0;
+    prev = &C1[prevIdx];
+    if (prev->dir(+0x10) != rec->dir) return 0;
+    if (rec->dir == -1)  return (prev->GG(+0x31) >= rec->DD(+0x3d));   // 1000fc34-3f: fcomp + test ah,1 + jne
+    else                 return (prev->DD(+0x3d) <= rec->GG(+0x31));   // 1000fc46-51: fcomp + test ah,0x41 + jnp
+  ⇒ 语义: 「前一同向有效段的 [DD,GG] 区间与当前段 [DD,GG] 相交」谓词 [A]
+  x87 条件: 2 条（cond_chlib_1000fc10.txt）
+
+[2] 0x1000fdf0 — find_prev_valid  查找 [A]
+--------------------------------------------------------------------------------
+  签名: ret (无栈参)；ebx = rec，edi = engine；返回 bar 下标
+  行为:
+    if (rec->self(+4) - 1 < 0) → 返 rec->startBar(+8) + 2
+    for (k = rec->self(+4) - 1; k >= 0; k--) {
+       seg = &C1[k] (stride 0x5d)
+       if (rec->dir(+0x10) != 0 && seg->dir != rec->dir) continue;
+       if (!(seg->flags(+0x14) & 1)) continue;              // 段有效
+       if (seg->dir != rec->dir) continue;                  // 复核
+       return rec->startBar(+8);
+    }
+    return rec->startBar + 2;
+  ⇒ 语义: 「向前查找首个同向且有效的段」；命中返回 startBar，否则 startBar+2 [A]
+  注意: `rec->self(+0x04)` = 该段在 C1 中的自身下标（docs/33: 段生产者写入前的 C1.count）
+
+[3] 0x1000fe50 — scan_candidate  候选段扫描 [A 结构 / B 语义]
+--------------------------------------------------------------------------------
+  签名: ret 0xc（3 栈参）；含 SEH 帧（fs:[0] 链 + cookie 0x1001701c）
+  栈对象: std::vector<T>（局部，元素 stride 0xc；magic 0x2aaaaaab）
+  行为（骨架）:
+    局部 vec = {};                                             // [esp+0x1c/0x20/0x24]
+    if (rec->dir(+0x10) == -1) 0x1000f490(&vec, engine, arg);  // 生成一类候选
+    else                       0x1000f5b0(&vec, engine, arg);
+    cnt = (vec.end - vec.beg) / 0xc;
+    for (e = 0; e < cnt; e++) {
+       t = vec.beg + e*0xc;
+       idx = t->[+8];                                          // 候选 bar 下标
+       if (idx + 4 >= C0.count) break;
+       k = idx + 1;
+       if (k < 0) { continue/pop; }
+       if (k + 3 > C0.count) { continue/pop; }
+       a = &C0[k]; b = &C0[k+2];
+       if (a->dir == -1) { if (!(a->p2 <= b->p1)) { free vec; return idx; } }   // 1000ff10-1b
+       else              { if (!(a->p1 >= b->p2)) { free vec; return idx; } }   // 1000ff2e-39
+    }
+    if (vec non-empty) 0x10013f00(vec.beg);                    // 销毁局部 vec
+    return <上层尾值>;
+  x87 条件: 2 条；判据 = **相邻 C0 记录的价格区间相交**（dir 分派）[A]
+  ⇒ 语义: 在给定方向上扫描候选转折 bar，返回首个「相邻 C0 区间不相交」的位置 [B]
+
+[4] 0x10010d60 — split_rebuild  段分裂 + 递归再建 ★ [A]
+--------------------------------------------------------------------------------
+  签名: ret 4；ecx = engine(edi)，ebx = rec（arg0）
+  行为（行号见 chlib_10010d60.txt）:
+    L6    span_m1 = rec->endBar(+0xc) - rec->startBar(+8);     // = span - 1
+    L10   e = span_m1 + 1 (=span)；if (span <= 3) e = span；    // 编译器形态
+    L17   if (e < engine[+0x1c] /*=9, 段长上限*/) return -1;
+    L26   r1 = 0x1000fdf0(rec, engine);                        // find_prev_valid
+    L29   c  = 0x1000fe50(rec, engine, r1, rec->endBar);       // scan_candidate
+    L34   if (c + 1 < rec->endBar - 3) return -1;              // 界检
+    L39   if (c + 4 >= engine[+0x2c]) return -1;
+    L43   p  = &C0[c];                                         // C0.base + c*0x31
+    L45   if (rec->dir == -1) { ...4 条 fcomp (p 与 C0[c±k] 之 p1/p2)... }
+          else                { ...4 条 fcomp... }
+    L90   c2 = 0x1000fe50(rec, engine, r1, c - 1);             // 第二次扫描
+    L97   if (c2 < 0) return -1;
+    L99   rec->flags = (rec->flags & 0xFE) | 2;                // ★ 置 bit1「已收尾」(10010e7a)
+    L105  val = 0x1000f0e0(engine, rec);                       // ★ 段入册（C1.count++）
+    L109  0x1000f070(rec->startBar, rec->endBar);
+    L117  a = 0x1000f680(engine, rec->startBar, c2 + 1, rec);  // ★ 递归 buildSegment #1
+    L130  b = 0x1000f680(engine, newIdx, engine[+0x2c], rec);  // ★ 递归 buildSegment #2
+    return max(a, b);
+  x87 条件: 8 条（dir 分派 2 组 × 4）
+  ⇒ 语义: 把当前段**收尾**（flags|=2 + 入册）并在其内部**分裂出两个子段**递归重建 [A]
+
+[5] 与本族已确权设施的接线
+--------------------------------------------------------------------------------
+  0x1000f200  前段查找器（docs/33 §WIP-C）        ← 被 (1) 调用
+  0x1000f0e0  段入册器（唯一 C1.count++）        ← 被 (4) 调用
+  0x1000f680  buildSegment（中央派发器）         ← 被 (4) 递归调用 ×2
+  0x1000f070 / 0x1000f010 / 0x1000f0b0           ← 被 (4) / 前批各支调用（未展开，登记）
+  engine[+0x1c] = 9  段长上限（docs/33 勘误③）   ← 被 (4) 用作门
+
+[6] 遗留
+--------------------------------------------------------------------------------
+  [B] 0x1000fe50 的 0x1000f490 / 0x1000f5b0 候选生成器（按 dir 的两支）未展开
+  [B] 0x10010d60 中 4 条 dir 分派 fcomp 的具体比较对象（C0[c±k].p1/p2 组合）
+  [C] 0x1000f070 / 0x1000f010 / 0x1000f0b0 / 0x10013f00 未展开
+  [C] 本批未做动态验证（frida 待用户在场）
+================================================================================

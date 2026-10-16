@@ -1,0 +1,38 @@
+1000fdf0  mov      eax, dword ptr [ebx + 4]
+1000fdf3  sub      eax, 1
+1000fdf6  push     ebp
+1000fdf7  push     esi
+1000fdf8  mov      esi, dword ptr [ebx + 0x10]
+1000fdfb  js       0x1000fe27
+1000fdfd  mov      ebp, dword ptr [edi + 0x3c]
+1000fe00  mov      edx, eax
+1000fe02  imul     edx, edx, 0x5d
+1000fe05  cmp      eax, ebp
+1000fe07  jae      0x1000fe27
+1000fe09  mov      ecx, dword ptr [edi + 0x30]
+1000fe0c  add      ecx, edx
+1000fe0e  test     esi, esi
+1000fe10  je       0x1000fe17
+1000fe12  cmp      esi, dword ptr [ecx + 0x10]
+1000fe15  jne      0x1000fe27
+1000fe17  test     byte ptr [ecx + 0x14], 1
+1000fe1b  jne      0x1000fe30
+1000fe1d  sub      eax, 1
+1000fe20  sub      edx, 0x5d
+1000fe23  test     eax, eax
+1000fe25  jge      0x1000fe05
+1000fe27  mov      eax, dword ptr [ebx + 8]
+1000fe2a  pop      esi
+1000fe2b  add      eax, 2
+1000fe2e  pop      ebp
+1000fe2f  ret      
+1000fe30  test     eax, eax
+1000fe32  jl       0x1000fe27
+1000fe34  mov      ecx, dword ptr [edi + 0x30]
+1000fe37  imul     eax, eax, 0x5d
+1000fe3a  cmp      dword ptr [eax + ecx + 0x10], esi
+1000fe3e  jne      0x1000fe27
+1000fe40  mov      eax, dword ptr [ebx + 8]
+1000fe43  pop      esi
+1000fe44  pop      ebp
+1000fe45  ret      

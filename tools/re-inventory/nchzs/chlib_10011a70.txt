@@ -1,0 +1,65 @@
+10011a70  sub      esp, 0x10
+10011a73  push     ebx
+10011a74  push     ebp
+10011a75  mov      ebp, dword ptr [esi + 4]
+10011a78  test     ebp, ebp
+10011a7a  push     edi
+10011a7b  mov      ebx, eax
+10011a7d  jne      0x10011a83
+10011a7f  xor      edi, edi
+10011a81  jmp      0x10011a9b
+10011a83  mov      ecx, dword ptr [esi + 8]
+10011a86  sub      ecx, ebp
+10011a88  mov      eax, 0x8d3dcb09
+10011a8d  imul     ecx
+10011a8f  add      edx, ecx
+10011a91  sar      edx, 4
+10011a94  mov      edi, edx
+10011a96  shr      edi, 0x1f
+10011a99  add      edi, edx
+10011a9b  test     ebp, ebp
+10011a9d  je       0x10011ae9
+10011a9f  mov      ecx, dword ptr [esi + 0xc]
+10011aa2  sub      ecx, ebp
+10011aa4  mov      eax, 0x8d3dcb09
+10011aa9  imul     ecx
+10011aab  add      edx, ecx
+10011aad  sar      edx, 4
+10011ab0  mov      eax, edx
+10011ab2  shr      eax, 0x1f
+10011ab5  add      eax, edx
+10011ab7  cmp      edi, eax
+10011ab9  jae      0x10011ae9
+10011abb  mov      edi, dword ptr [esi + 8]
+10011abe  mov      byte ptr [esp + 0x10], 0
+10011ac3  mov      eax, dword ptr [esp + 0x10]
+10011ac7  mov      ecx, dword ptr [esp + 0x10]
+10011acb  push     eax
+10011acc  push     ecx
+10011acd  mov      edx, 1
+10011ad2  mov      eax, edi
+10011ad4  call     0x10012770
+10011ad9  add      esp, 8
+10011adc  add      edi, 0x1d
+10011adf  mov      dword ptr [esi + 8], edi
+10011ae2  pop      edi
+10011ae3  pop      ebp
+10011ae4  pop      ebx
+10011ae5  add      esp, 0x10
+10011ae8  ret      
+10011ae9  mov      edi, dword ptr [esi + 8]
+10011aec  cmp      ebp, edi
+10011aee  jbe      0x10011af6
+10011af0  call     dword ptr [0x1001509c]
+10011af6  push     edi
+10011af7  push     esi
+10011af8  push     ebx
+10011af9  lea      edx, [esp + 0x1c]
+10011afd  push     edx
+10011afe  mov      eax, esi
+10011b00  call     0x10011c40
+10011b05  pop      edi
+10011b06  pop      ebp
+10011b07  pop      ebx
+10011b08  add      esp, 0x10
+10011b0b  ret      

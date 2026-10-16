@@ -1,0 +1,71 @@
+100110a0  push     ecx
+100110a1  fldz     
+100110a3  push     ebx
+100110a4  mov      ebx, dword ptr [esp + 0x10]
+100110a8  mov      eax, ebx
+100110aa  sub      eax, edx
+100110ac  push     ebp
+100110ad  mov      ebp, dword ptr [esp + 0x10]
+100110b1  add      eax, 1
+100110b4  cmp      eax, 4
+100110b7  push     esi
+100110b8  jl       0x10011136
+100110ba  mov      ebx, dword ptr [ebp + 0x2c]
+100110bd  mov      eax, edx
+100110bf  mov      dword ptr [esp + 0xc], ebx
+100110c3  imul     eax, eax, 0x31
+100110c6  lea      esi, [edx + 2]
+100110c9  jmp      0x100110cf
+100110cb  mov      ebx, dword ptr [esp + 0xc]
+100110cf  cmp      edx, ebx
+100110d1  jae      0x1001115c
+100110d7  mov      ecx, dword ptr [ebp + 0x20]
+100110da  cmp      dword ptr [eax + ecx], edi
+100110dd  jne      0x100110e3
+100110df  fadd     qword ptr [eax + ecx + 0x29]
+100110e3  lea      ebp, [esi - 1]
+100110e6  cmp      ebp, ebx
+100110e8  jae      0x1001115c
+100110ea  cmp      dword ptr [eax + ecx + 0x31], edi
+100110ee  jne      0x100110f4
+100110f0  fadd     qword ptr [eax + ecx + 0x5a]
+100110f4  cmp      esi, ebx
+100110f6  jae      0x1001115c
+100110f8  cmp      dword ptr [eax + ecx + 0x62], edi
+100110fc  jne      0x10011105
+100110fe  fadd     qword ptr [eax + ecx + 0x8b]
+10011105  lea      ebp, [esi + 1]
+10011108  cmp      ebp, ebx
+1001110a  jae      0x1001115c
+1001110c  cmp      dword ptr [eax + ecx + 0x93], edi
+10011113  jne      0x1001111c
+10011115  fadd     qword ptr [eax + ecx + 0xbc]
+1001111c  mov      ebx, dword ptr [esp + 0x18]
+10011120  mov      ebp, dword ptr [esp + 0x14]
+10011124  add      edx, 4
+10011127  lea      ecx, [ebx - 3]
+1001112a  add      esi, 4
+1001112d  add      eax, 0xc4
+10011132  cmp      edx, ecx
+10011134  jle      0x100110cb
+10011136  cmp      edx, ebx
+10011138  jg       0x1001115c
+1001113a  mov      esi, dword ptr [ebp + 0x2c]
+1001113d  mov      eax, edx
+1001113f  imul     eax, eax, 0x31
+10011142  cmp      edx, esi
+10011144  jae      0x1001115c
+10011146  mov      ecx, dword ptr [ebp + 0x20]
+10011149  add      ecx, eax
+1001114b  cmp      dword ptr [ecx], edi
+1001114d  jne      0x10011152
+1001114f  fadd     qword ptr [ecx + 0x29]
+10011152  add      edx, 1
+10011155  add      eax, 0x31
+10011158  cmp      edx, ebx
+1001115a  jle      0x10011142
+1001115c  pop      esi
+1001115d  pop      ebp
+1001115e  pop      ebx
+1001115f  pop      ecx
+10011160  ret      8

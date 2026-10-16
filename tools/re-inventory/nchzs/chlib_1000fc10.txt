@@ -1,0 +1,33 @@
+1000fc10  push     esi
+1000fc11  push     edi
+1000fc12  mov      edi, dword ptr [ebx + 0x10]
+1000fc15  mov      esi, eax
+1000fc17  mov      eax, dword ptr [esi + 0x3c]
+1000fc1a  push     edi
+1000fc1b  call     0x1000f200
+1000fc20  test     eax, eax
+1000fc22  jl       0x1000fc53
+1000fc24  imul     eax, eax, 0x5d
+1000fc27  add      eax, dword ptr [esi + 0x30]
+1000fc2a  cmp      dword ptr [eax + 0x10], edi
+1000fc2d  jne      0x1000fc53
+1000fc2f  cmp      edi, -1
+1000fc32  jne      0x1000fc46
+1000fc34  fld      qword ptr [eax + 0x31]
+1000fc37  fcomp    qword ptr [ebx + 0x3d]
+1000fc3a  fnstsw   ax
+1000fc3c  test     ah, 1
+1000fc3f  jne      0x1000fc53
+1000fc41  pop      edi
+1000fc42  mov      al, 1
+1000fc44  pop      esi
+1000fc45  ret      
+1000fc46  fld      qword ptr [eax + 0x3d]
+1000fc49  fcomp    qword ptr [ebx + 0x31]
+1000fc4c  fnstsw   ax
+1000fc4e  test     ah, 0x41
+1000fc51  jnp      0x1000fc41
+1000fc53  pop      edi
+1000fc54  xor      al, al
+1000fc56  pop      esi
+1000fc57  ret      
