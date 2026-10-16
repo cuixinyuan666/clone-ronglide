@@ -11,7 +11,7 @@
  *                 chlib_worker_10002900.txt / chlib_prep_10009930.txt /
  *                 family_slots.txt / family_slots_full.txt /
  *                 map_family_slots.py / nchbi2_wip.md
- * 批次: 第一批 (docs/25) + 第二批 (docs/26) + 第三批 (docs/27) + 第四批 (docs/28), 2026-10-17
+ * 批次: 第一批 (docs/25) + 第二批 (docs/26) + 第三批 (docs/27) + 第四批 (docs/28) + 第五批 (docs/29), 2026-10-17
  * 置信度: [A]=实测已证(字节级) [B]=高(多路交叉) [C]=待仲裁/推断
  * ----------------------------------------------------------------------------
  * 整体链路:
@@ -518,7 +518,9 @@ int __thiscall ch_api_vt38_sim(ch_api *self, int count, double *out, void *ctx6,
  *      ±10 = NChBiSta 段A 缩放 [A];  ±3 = 段C [A];  均非独立值域
  *   bit2 = "已被 0x1000b000 配对确认为 Zj 点" [A]
  *
- * 授权码汇总: NChBi / ZjNum = 0xEA62 ; NChBiSta / Zj / ZjOrder = 0xEA61
+ * 授权码汇总 (第五批修正为全族实测): EA62 = {NChBi, Zj3, ZjNum, FxNum, Speed}
+ *                                EA61 = {NChBiSta, NChBiSta2, Zj, ZjOrder}
+ *   >>> 本族「非统一授权」: Zj(EA61) 与 Zj3(EA62) 跨组, 可独立许可 [A docs/29]
  *
  * 待仲裁(第三批遗留 -> 第四批结算):
  *   [A] 0x1000a250 配对查找规则      -> 见 §12.2 (前向扫最近 flags&1)
@@ -708,4 +710,118 @@ static int pair_recheck(obj10 *o, int j, int i)  /* 0x1000abb0 */
  *   [B] bar 数组填充者 / bar[+0x00..+0x0c] 四个 i32 语义
  *   [B] 0x1000abb0 类 B(P32/31) 与类 A 的分支不等式方向
  *   [C] ZjNum cnt 语义 / ZjOrder a3,a4 来源 / 8 个无调用者槽 / 本批未做动态验证
+ */
+
+/* ============================================================================
+ * 13. 第五批: NChBiZj3 / NChBiZjNum 补完 + 族总览 (2026-10-17, docs/29)
+ * ----------------------------------------------------------------------------
+ * 证据: tools/re-inventory/nchbi/
+ *         chlib_worker_10002fc0.txt / cond_chlib_10002fc0.txt   (NChBiZj3)
+ *         chlib_worker_100038b0.txt                             (NChBiZjNum)
+ *         chlib_worker_10003680.txt / chlib_worker_10003a90.txt (FxNum/Speed, 族总览用)
+ *         nchbi5_wip.md
+ * ==========================================================================*/
+
+/* ---------------------------------------------------------------------------
+ * 13.1 NChBiZj3 —— ch_api vt[+0x48] = chlib 0x10002fc0   授权码 0xEA62
+ *      语义: Item21 散射器 —— bit2 门, 写入点 = Rec20[recIdx] 段尾 + 1
+ * ---------------------------------------------------------------------------
+ * [A] int __thiscall NChBiZj3(int count /*n*/, double *out, int a3, int a4)
+ * {
+ *     memset(out, 0, count * 8);                    // 0x10002fdc (thunk 0x1001494c)
+ *
+ *     rec20 *recs = (rec20 *)this->obj8->f1c;       // 0x10002fe1-4  Rec20 base
+ *     int    nRec = this->obj8->f28;                // 0x10002fe7-0x10002fea  Rec20 cnt
+ *     item21 *it  = (item21 *)this->obj10->f30;     // 0x10002fee-0x10002ff1  Item21 base
+ *     int    cnt  = this->obj10->f3c;               // 0x10002ff4  Item21 cnt
+ *
+ *     if (!recs || !it) return -1;                  // 0x10002ffa / 0x10003006
+ *     if (!this->auth)  return -1;                  // 0x1000300e
+ *     if (!this->auth->vt[+4](0xEA62)) return -1;   // 0x10003018-0x10003029 ★EA62
+ *
+ *     for (int k = 0; k < cnt; k++) {               // 4 路展开: add eax,0x84; 尾 0x21
+ *         if (!(it[k].flags & 0x04)) continue;      // ★ 唯一门 = bit2 (0x10003050 等)
+ *         int idx = it[k].recIdx;                   // [+0x09]
+ *         if (idx < 0 || idx >= nRec) continue;     // 0x1000305d cmp nRec
+ *         int slot = recs[idx].endBar + 1;          // [+0x04] + 1 ; stride 0x20
+ *                                                   //  0x10003063 shl 5 / 0x10003066 [ecx+edi+4] / 0x1000306a add 1
+ *         if (slot < 0 || slot >= count) continue;  // 0x1000306d js / 0x1000306f cmp n
+ *         out[slot] = (double)it[k].value;          // 0x10003075 fild dword / 0x1000307c fstp qword
+ *     }
+ *     return 0;
+ * }
+ *
+ * 与 NChBiZj(11) 唯一差别 = 目标下标:
+ *     Zj : out[ it[k].barIdx(+0x1d) ] = value          (授权 0xEA61)
+ *     Zj3: out[ recs[it[k].recIdx].endBar + 1 ] = value (授权 0xEA62)
+ * 与 NChBiZjOrder 目标同槽 (若 Rec20 段连续); 但 Zj3 无 ZjNum 依赖、无阈值门。
+ * "3" 语义: 函数体无字面 3 -> 判为枚举第 3 变体名 [B]
+ */
+
+/* ---------------------------------------------------------------------------
+ * 13.2 NChBiZjNum —— ch_api vt[+0x5c] = chlib 0x100038b0   授权码 0xEA62
+ *      语义: 计数器散射器 —— 有效项处写出「自上一有效项以来的 Zj 项计数」
+ * ---------------------------------------------------------------------------
+ * [A] int __thiscall NChBiZjNum(int count /*n*/, double *out, int a3, int a4)
+ * {
+ *     memset(out, 0, count * 8);                    // 0x100038cb
+ *     item21 *it  = this->obj10->f30;               // 0x100038d3  (★不读 obj8)
+ *     int     cnt = this->obj10->f3c;               // 0x100038d6
+ *     if (!it) return -1;                           // 0x100038dc
+ *     if (!this->auth || !this->auth->vt[+4](0xEA62)) return -1;  // 0x100038f8 ★EA62
+ *     // ★ arg3/arg4 从不读取 (ZjOrder 会传, 本函数忽略) [A docs/29 §4.1.3]
+ *
+ *     int counter = 0, lastValue = 0;               // 0x10003903
+ *     for (int k = 0; k < cnt; k++) {               // 4 路展开 + 尾 0x21
+ *         int f = it[k].flags;                      // [+0x04]
+ *         if (f & 0x01) {                           // ---- bit0 = 有效项 ----
+ *             int b = it[k].barIdx;                 // [+0x1d]
+ *             if (b >= 0 && b < count)              // 0x10003930-0x10003938
+ *                 out[b] = (double)counter;         // 0x1000393a fild / 0x10003942 fstp
+ *             lastValue = it[k].value;              // [+0x00]  0x10003945
+ *             counter = 0;                          // 0x10003948
+ *         } else if (f & 0x04) {                    // ---- bit2 = 已配对 Zj 项 ----
+ *             if (it[k].value != lastValue)         // 0x10003957 cmp / 0x1000395a je
+ *                 counter += 1;                     // 0x1000395c
+ *         }
+ *     }
+ *     return 0;
+ * }
+ *
+ * ★ cnt 语义结案 (docs/27 §6.2 [C] -> [A]):
+ *   计数单位 = Item21 条目数 (步进恒 0x21, 每条目至多 +1; 全程无 bar 差值运算)
+ *   => cnt 是「分型/Zj 项计数」(近似笔数量纲), **不是 bar 数**; "bar 数"假设证伪。
+ *   => ZjOrder 门 `|ZjNum[barIdx]| >= THR` 的语义 = 「相邻有效分型间至少 THR 个 Zj 项」,
+ *      而非「至少隔 THR 根 K 线」(docs/27 门条件语义修正)。
+ */
+
+/* ---------------------------------------------------------------------------
+ * 13.3 NChB* 族总览 (槽 / 地址 / 授权码 / 容器依赖 / 输出语义) [A]
+ * ---------------------------------------------------------------------------
+ *  导出            vt槽    chlib 地址   授权码   容器依赖(读)                       输出语义
+ *  NChBi          +0x34   0x10002340   EA62    obj8[+1c/+28]+obj10[+30/+3c]; 写 obj10[+28]  主计算: 重排/填充端点
+ *  NChBiSta       +0x38   0x10002770   EA61    obj8[+1c]+obj10[+30]           展开: value×{1,2,10}; 段C 唯一±3
+ *  NChBiSta2      +0x3c   0x10002900   EA61    obj8[+1c/+28]+obj10[+30/+3c]   兄弟展开器(含 fcom 真比较)
+ *  NChBiZj        +0x44   0x10002ea0   EA61    obj10[+30/+3c]  (无 obj8)      out[it.barIdx] = value (bit2)
+ *  NChBiZj3       +0x48   0x10002fc0   EA62    obj8[+1c/+28]+obj10[+30/+3c]   out[recs[recIdx].endBar+1] = value (bit2)
+ *  NChBiZjOrder   +0x4c   0x10003180   EA61    obj8+obj10 + 临时 vector        ZjNum 过滤后 out[recs[recIdx+1].startBar] = value
+ *  NChBiFxNum     +0x58   0x10003680   EA62    obj10[+30/+3c]  (无 obj8)      计数器 -> out[]  (细节 [B])
+ *  NChBiZjNum     +0x5c   0x100038b0   EA62    obj10[+30/+3c]  (无 obj8)      计数器 -> out[] (§13.2)
+ *  NChBiSpeed     +0x60   0x10003a90   EA62    obj8[+1c/+28]+obj10[+30/+3c]   out[..] = |value| (fabs; 额外门 obj8[+28]!=0)
+ *
+ *  共享内核(内联, 非 call): Item21 遍历(stride 0x21, 4 路展开 0x84) + 越界三段保护
+ *                         + memset 前置 + `ch_auth->vt[+4](code)` 授权调用形态
+ *  Zj / ZjNum / FxNum 只吃 obj10 => 仅需 NCHBI 一步即可运行 (不依赖 Rec20)
+ */
+
+/* ---------------------------------------------------------------------------
+ * 13.4 第五批遗留 [B]/[C]
+ * ---------------------------------------------------------------------------
+ *   [B] "Zj3" 中 "3" 的含义 (函体内无字面 3; 倾向枚举序号; 坐实需查 CalcProc_NChBiZj3@0x10012d90 包装体)
+ *   [B] Rec20[k].endBar+1 与 Rec20[k+1].startBar 是否恒等 (Zj3/ZjOrder 同槽之前提 = 段连续; 未验证不变式)
+ *   [B] ZjNum 增量条件 (bit2 ∧ ¬bit0 ∧ value≠lastValue) 与"笔方向交替"的等价性
+ *   [C] NChBiFxNum (0x10003680) 未逐条展开 (已知: EA62 / 只读 obj10 / 计数器输出)
+ *   [C] NChBiSpeed (0x10003a90) 未逐条展开 (已知: EA62 / 读 obj8+obj10 / 输出 |value|)
+ *   [C] ZjNum/Zj3 的 arg1(n) 在 TAFLib 侧由谁提供
+ *   [C] 本批未做动态验证 (frida 预备包待用户在场运行)
  */

@@ -109,6 +109,7 @@ TARGETS = [
             ("第二批-chlib算法解剖", "docs/26-NChBi-第二批-chlib算法解剖.md"),
             ("第三批-NChBiZj族与Out静态深挖", "docs/27-NChBi-第三批-NChBiZj族与Out静态深挖.md"),
             ("第四批-生产端分型几何与Zj配对", "docs/28-NChBi-第四批-生产端分型几何与Zj配对.md"),
+            ("第五批-Zj3与ZjNum补完", "docs/29-NChBi-第五批-Zj3与ZjNum补完.md"),
         ],
         "artifacts": [
             "pseudocode/nchbi.c",
@@ -151,8 +152,13 @@ TARGETS = [
             "tools/re-inventory/nchbi/chlib_pair_0x1000a080.txt",
             "tools/re-inventory/nchbi/chlib_recheck_0x1000abb0.txt",
             "tools/re-inventory/nchbi/chlib_recheck_0x1000b100.txt",
+            "tools/re-inventory/nchbi/nchbi5_wip.md",
+            "tools/re-inventory/nchbi/chlib_worker_10002fc0.txt",
+            "tools/re-inventory/nchbi/cond_chlib_10002fc0.txt",
+            "tools/re-inventory/nchbi/chlib_worker_10003680.txt",
+            "tools/re-inventory/nchbi/chlib_worker_10003a90.txt",
         ],
-        "next": "第五批(推荐): NChBiZj3/ZjNum 补完 (vt[+0x48]=0x10002fc0, vt[+0x5c]=0x100038b0, 同族收敛快, 依赖已全部确权) — 顺带结清 ZjNum cnt 语义静态侧证据; 次选 NChZs 族(NCHZS/NCHZSG/NCHZSBS12, EA61-63); 第三顺位 CHBI 第六批 481 条件 (共用基础设施已确权, 边际成本下降)。可选: 用户在场时先跑 frida 预备包把 [B]/[C] 升 [A]",
+        "next": "第六批(推荐): NChBi 族收官 — 补完 NChBiFxNum(0x10003680)/NChBiSpeed(0x10003a90) + 闭环 Rec20 段连续性不变式 (决定 Zj3/ZjOrder 是否同槽); 次选 NChZs 族 (NCHZS/NCHZSG/NCHZSBS12, 槽 +0x78..+0xb4, EA61-63, 共享基础设施已解); 第三顺位 CHBI 第六批 481 条件。可选: 用户在场时先跑 frida 预备包把 [B]/[C] 升 [A]",
     },
 ]
 
@@ -160,7 +166,7 @@ TARGETS = [
 PRIORITY = [
     ("ChBi", "CHBI", "EA62", "已交付(五批)"),
     ("ChDuan", "CHDUAN", "-", "已交付(四批)"),
-    ("NChBi", "NCHBI", "EA62", "已交付(四批)"),
+    ("NChBi", "NCHBI", "EA62", "已交付(五批)"),
     ("NChZs", "NCHZS", "EA63", "未启动"),
     ("NChZsG", "NCHZSG", "EA61", "未启动"),
     ("NChZsBs12", "NCHZSBS12", "EA61", "未启动"),
@@ -213,9 +219,9 @@ def main():
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-", "docs/26-", "docs/27-", "docs/28-",
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-", "docs/26-", "docs/27-", "docs/28-", "docs/29-",
                 "tools/re-inventory", "tools/wnmr_py",
-                "pseudocode/chduan", "pseudocode/chbi", "README.md")
+                "pseudocode/chduan", "pseudocode/chbi", "pseudocode/nchbi", "README.md")
     tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]
     untracked = [l for l in status.splitlines() if l.startswith("??")]
     mine = [l for l in tracked_mod if any(s in l for s in MY_SCOPE)]
