@@ -107,6 +107,7 @@ TARGETS = [
         "batches": [
             ("第一批-入口链与P分派", "docs/25-NChBi-第一批-入口链与P分派.md"),
             ("第二批-chlib算法解剖", "docs/26-NChBi-第二批-chlib算法解剖.md"),
+            ("第三批-NChBiZj族与Out静态深挖", "docs/27-NChBi-第三批-NChBiZj族与Out静态深挖.md"),
         ],
         "artifacts": [
             "pseudocode/nchbi.c",
@@ -126,8 +127,24 @@ TARGETS = [
             "tools/re-inventory/nchbi/family_slots.txt",
             "tools/re-inventory/nchbi/family_slots_full.txt",
             "tools/re-inventory/nchbi/map_family_slots.py",
+            "tools/re-inventory/nchbi/nchbi3_wip.md",
+            "tools/re-inventory/nchbi/chlib_worker_10002ea0.txt",
+            "tools/re-inventory/nchbi/cond_chlib_10002ea0.txt",
+            "tools/re-inventory/nchbi/chlib_worker_10003180.txt",
+            "tools/re-inventory/nchbi/cond_chlib_10003180.txt",
+            "tools/re-inventory/nchbi/chlib_worker_100038b0.txt",
+            "tools/re-inventory/nchbi/chlib_fill_10006c00.txt",
+            "tools/re-inventory/nchbi/chlib_item21_fill_10009a20.txt",
+            "tools/re-inventory/nchbi/chlib_item21_body_10009a50.txt",
+            "tools/re-inventory/nchbi/chlib_item21_code16_10009dd0.txt",
+            "tools/re-inventory/nchbi/chlib_bit2_1000b000.txt",
+            "tools/re-inventory/nchbi/chlib_1000b100.txt",
+            "tools/re-inventory/nchbi/chlib_objc_fill_1000e1c0.txt",
+            "tools/re-inventory/nchbi/chlib_main_1000e0b0.txt",
+            "tools/re-inventory/nchbi/frida_nchbi3.md",
+            "tools/re-inventory/nchbi/frida_dump_out.js",
         ],
-        "next": "第三批(推荐): Out 向量深挖 — frida dump 0x10002770 的 out[] 与 obj10 Item21, 把输出码判定表升到 [A]; 备选 NChBiZj/NChBiZjOrder 链 (0x10002ea0/0x10003180)",
+        "next": "第四批(推荐): 生产端补完 — 0x1000e1c0 分型几何 8 条件 + 0x1000a250/0x1000a060/0x1000a080/0x1000abb0 (Zj 配对与取值), 打通 bar→顶底→Zj→out 全链; 可选第一步: 用户在场时跑 frida 预备包 (tools/re-inventory/nchbi/frida_nchbi3.md) 把静态结论升为运行时实证",
     },
 ]
 
@@ -135,7 +152,7 @@ TARGETS = [
 PRIORITY = [
     ("ChBi", "CHBI", "EA62", "已交付(五批)"),
     ("ChDuan", "CHDUAN", "-", "已交付(四批)"),
-    ("NChBi", "NCHBI", "EA62", "已交付(二批)"),
+    ("NChBi", "NCHBI", "EA62", "已交付(三批)"),
     ("NChZs", "NCHZS", "EA63", "未启动"),
     ("NChZsG", "NCHZSG", "EA61", "未启动"),
     ("NChZsBs12", "NCHZSBS12", "EA61", "未启动"),
@@ -188,7 +205,7 @@ def main():
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-", "docs/26-",
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-", "docs/26-", "docs/27-",
                 "tools/re-inventory", "tools/wnmr_py",
                 "pseudocode/chduan", "pseudocode/chbi", "README.md")
     tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]

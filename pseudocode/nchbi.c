@@ -11,7 +11,7 @@
  *                 chlib_worker_10002900.txt / chlib_prep_10009930.txt /
  *                 family_slots.txt / family_slots_full.txt /
  *                 map_family_slots.py / nchbi2_wip.md
- * 批次: 第一批 (docs/25) + 第二批 (docs/26), 2026-10-17
+ * 批次: 第一批 (docs/25) + 第二批 (docs/26) + 第三批 (docs/27), 2026-10-17
  * 置信度: [A]=实测已证(字节级) [B]=高(多路交叉) [C]=待仲裁/推断
  * ----------------------------------------------------------------------------
  * 整体链路:
@@ -361,10 +361,12 @@ int __thiscall ch_api_vt38_sim(ch_api *self, int count, double *out, void *ctx6,
  *           NChBi 填、NChBiSta 读 (见 §2b/§4 注释)。
  *  [修正 A] ch_api 子对象布局全部解出 (第二批): +8/+0xc/+0x10/+0x14/+0x18/+0x1c。
  *  [修正 A] ch_api 虚表槽 +0x18..+0xcc 共 50 槽已映射到 TAFLib 导出名。
- *  [待仲裁 C] Item21.value 是否恒为 ±1 (决定 ±3 是否唯一由该值产生)。
+ *  [已结案 A] Item21.value 恒为 ±1(或0) —— 第三批确权: value = raw[+0x00],
+ *             raw 生产者 0x1000e1c0 只写 {0,+1,-1}; 故 ±3 = 3×value 为唯一来源 (见 §11)
  *  [待仲裁 C] Item21 的 recIdx@+0x09 与 barIdx@+0x1D 为何都是「+1 未对齐」偏移
  *             (疑 struct 为手写字节流序列化; 两函数各自只读其中一个字段)。
- *  [待仲裁 C] ±2 / ±10 的确切语义 (多级别? 笔间填充?)。
+ *  [已结案 A] ±2 / ±10 语义 —— ±2 = flags bit3 触发 ×2; ±10 = NChBiSta 段A 缩放;
+ *             ±3 = NChBiSta 段C; 三者均为同一 ±1 基值的整数倍 (见 §11)
  *  [待仲裁 C] 8 个无 TAFLib 调用者的槽 (+0x40 等) 的命名归属。
  *  [待仲裁 C] 0x10002770 段 A 的 `cur = -it->value` 首项取反语义。
  */
@@ -378,4 +380,148 @@ int __thiscall ch_api_vt38_sim(ch_api *self, int count, double *out, void *ctx6,
  *  [ ] NChBiZj (0x10002ea0) / NChBiZjOrder (0x10003180) 链: 笔转折与序号
  *  [ ] NChBiSta2 (0x10002900) 的乘数来源 (哪个参数/哪个内部状态)
  *  [ ] chlib 内部对 8 个未启用槽的调用点扫描
+ */
+
+/* ============================================================================
+ * 10. 第三批: NChBiZj / NChBiZjOrder 链  (2026-10-17, docs/27)
+ * ----------------------------------------------------------------------------
+ * 证据: tools/re-inventory/nchbi/
+ *         chlib_worker_10002ea0.txt / cond_chlib_10002ea0.txt   (NChBiZj)
+ *         chlib_worker_10003180.txt / cond_chlib_10003180.txt   (NChBiZjOrder)
+ *         chlib_fill_10006c00.txt / chlib_worker_100038b0.txt
+ * ==========================================================================*/
+
+/* ---------------------------------------------------------------------------
+ * 10.1 NChBiZj  —— ch_api vt[+0x44] = chlib 0x10002ea0   授权码 0xEA61
+ *      语义: Item21 的「散射器」: 把 flags bit2 置位者的 value 写到 out[barIdx]
+ * -------------------------------------------------------------------------*/
+/*
+ * [A] int __thiscall NChBiZj(int count, double *out, int a3, int a4)
+ *     // a3/a4 本函数内未引用
+ * {
+ *     memset(out, 0, count * 8);
+ *     obj10 = this[+0x10];
+ *     BASE  = obj10[+0x30];               // Item21 数组, stride 0x21
+ *     CNT   = obj10[+0x3c];
+ *     if (BASE == 0)          return -1;
+ *     if (this[+4] == 0)      return -1;  // ch_auth*
+ *     if (!Authorize(0xEA61)) return -1;  // vt[+4]
+ *
+ *     for (i = 0; i < CNT; i++) {
+ *         it = BASE + i*0x21;
+ *         if (!(it->flags & 4)) continue;         // ★ bit2 = 配对确认的 Zj 项
+ *         idx = it->barIdx;                       // +0x1d
+ *         if (idx < 0 || idx >= count) continue;
+ *         out[idx] = (double) it->value;          // +0x00 (int32)
+ *     }
+ *     return 0;
+ * }
+ * // x87 条件 0 条; 不读 obj8; 依赖 NChBi 先填充 obj10。
+ */
+
+/* ---------------------------------------------------------------------------
+ * 10.2 NChBiZjOrder —— ch_api vt[+0x4c] = chlib 0x10003180   授权码 0xEA61
+ *      语义: 先跑 ZjNum 得间隔计数 → 阈值过滤 → 按记录序列重排
+ * -------------------------------------------------------------------------*/
+/*
+ * [A] int __thiscall NChBiZjOrder(int count, double *out, int a3, void *a4)
+ *     // a4 -> double* 阈值指针
+ * {
+ *     THR = (int)( *(double*)(*a4) );
+ *     memset(out, 0, count * 8);
+ *
+ *     obj8  = this[+8];  obj10 = this[+0x10];
+ *     A = obj8[+0x1c];  B = obj8[+0x28];       // Rec20 数组(stride 0x20) / 条数
+ *     BASE = obj10[+0x30]; CNT = obj10[+0x3c]; // Item21 / 条数
+ *     if (A == 0)    return -1;
+ *     if (BASE == 0) return -1;
+ *
+ *     vector<double> vec;                      // 本地, 三指针
+ *     vec.resize(count);                       // 0x10006c00
+ *     if (vt[+0x5c](count, vec.begin(), a3, a4) != 0) {   // = NChBiZjNum
+ *         vec.~vector();  return -1;
+ *     }
+ *     // ★ 授权门在调用 ZjNum 之后
+ *     if (this[+4] == 0 || !Authorize(0xEA61)) { vec.~vector(); return -1; }
+ *
+ *     for (i = 0; i < CNT; i++) {
+ *         it = BASE + i*0x21;
+ *         if (!(it->flags & 1))  continue;             // bit0 有效
+ *         if (  it->flags & 8)   continue;             // 排除 ×2 档
+ *         r = it->recIdx;                              // +0x09
+ *         if (r < 0 || r >= B)   continue;
+ *         if (r + 1 >= B)        continue;
+ *         if (fabs(vec[it->barIdx]) < THR) continue;   // barIdx @+0x1d
+ *         out[ *(int*)(A + (r+1)*0x20) ] = (double) it->value;   // Rec20[r+1].startBar
+ *     }
+ *     vec.~vector();
+ *     return 0;
+ * }
+ * // "Order" = 按记录序列(下一段起始 bar)重排, 不是"序号排序"。
+ */
+
+/* ---------------------------------------------------------------------------
+ * 10.3 NChBiZjNum —— ch_api vt[+0x5c] = chlib 0x100038b0   授权码 0xEA62
+ *      语义: 输出「间隔计数」cnt
+ * -------------------------------------------------------------------------*/
+/*
+ * [A] int NChBiZjNum(int count, double *out, int a3, int a4)
+ * {
+ *     memset(out, 0, count*8);
+ *     BASE = obj10[+0x30]; CNT = obj10[+0x3c];
+ *     if (BASE == 0 || this[+4] == 0) return -1;
+ *     if (!Authorize(0xEA62)) return -1;
+ *
+ *     int cnt = 0, lastVal = 0;
+ *     for (i = 0; i < CNT; i++) {
+ *         it = BASE + i*0x21;
+ *         if (it->flags & 1) {                       // bit0: Zj 点
+ *             if (0 <= it->barIdx && it->barIdx < count)
+ *                 out[it->barIdx] = (double) cnt;
+ *             cnt = 0;
+ *             lastVal = it->value;                   // 供下轮比较
+ *         } else if (it->flags & 4) {                // bit2: 非 Zj 点(待确认)
+ *             if (it->value != lastVal) cnt++;
+ *         }
+ *     }
+ *     return 0;
+ * }
+ */
+
+/* ============================================================================
+ * 11. 第三批: Out 静态深挖 —— Item21 生产链确权 (docs/27 §三)
+ * ==========================================================================*/
+/*
+ * 生产链 (自下而上):
+ *   bar[] (obj_c[+0x20], stride 0x20)
+ *     --0x1000e1c0--> raw[] (obj_c[+0x28], stride 0x1D, value∈{0,+1,-1}) [A]
+ *     --NChBi 0x10002340 拷 obj_c[+0x28]/[+0x34] -> obj10[+0x28]/[+0x2c]-->
+ *   obj10.vt[+8] = 0x10009a20 (按 obj10[+0x1c] 类型码分派)
+ *     ├ code 0 (P=51) -> 0x10009a50  flags∈{0x01,0x21,0x11} | 0x08
+ *     └ code 1..6     -> 0x10009dd0  flags∈{0x00,0x10,0x20} | 0x08
+ *                          └ 0x1000b000 -> Item21[j].flags |= 4  (Zj 配对确认) [A]
+ *   -> Item21[] (obj10[+0x30], stride 0x21, count obj10[+0x3c])
+ *
+ * Item21 布局 [A]:
+ *   +0x00 i32 value   ∈ {0,+1,-1}          <-- 本批结案 docs/26 待仲裁 #1
+ *   +0x04 u8  flags   bit0|bit3|bit4|bit5 (code0) / bit3|bit4|bit5 (code1..6)
+ *                     bit2 = "Zj 配对确认" (0x1000b000)
+ *   +0x05 i32 ordinal (1-based 源序号)
+ *   +0x09 i32 recIdx  <- raw[+0x05]
+ *   +0x0d f64         <- raw[+0x0d]
+ *   +0x15 f64         <- raw[+0x15]
+ *   +0x1d i32 barIdx  <- raw[+0x09]   (out 目标下标)
+ *
+ * 结案:
+ *   #1 Item21.value ≡ ±1(或0) [A] => ±3 = 3×value (NChBiSta 段C) 是 ±3 的唯一来源
+ *   #3 ±2 = flags bit3 触发 ×2 (NChBi 0x100024a6 & NChBiSta 段B)  [A]
+ *      ±10 = NChBiSta 段A 缩放 [A];  ±3 = 段C [A];  均非独立值域
+ *   bit2 = "已被 0x1000b000 配对确认为 Zj 点" [A]
+ *
+ * 授权码汇总: NChBi / ZjNum = 0xEA62 ; NChBiSta / Zj / ZjOrder = 0xEA61
+ *
+ * 待仲裁(第三批遗留):
+ *   [B] 0x1000a250 配对查找规则 / 0x1000a060,0x1000a080 取值 / 0x1000abb0 复核判据
+ *   [C] ZjNum 的 cnt 是「间隔笔数」还是「间隔 bar 数」(需 frida 对拍)
+ *   [C] ZjOrder 的 a3 / a4 在 TAFLib 侧实参来源
  */

@@ -1,0 +1,12 @@
+### [A] x87 条件表   src=tools/re-inventory/nchbi/chlib_worker_10003180.txt   insns=148   blocks=23   conflicts=2   conds=0
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+
+### [B] 非零立即数写入 (标记字段写点)
+
+### [C] 调用目标统计
+  0x100148a0               x2
+  edx                      x2
+  dword ptr [0x100150b0]   x2
+  0x1001494c               x1
+  0x10006c00               x1
+  0x10011900               x1

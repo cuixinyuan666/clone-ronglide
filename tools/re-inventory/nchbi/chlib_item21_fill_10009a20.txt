@@ -1,0 +1,15 @@
+10009a20  mov      eax, ecx
+10009a22  mov      ecx, dword ptr [eax + 0x1c]
+10009a25  test     ecx, ecx
+10009a27  je       0x10009a3a
+10009a29  add      ecx, -1
+10009a2c  cmp      ecx, 5
+10009a2f  ja       0x10009a36
+10009a31  jmp      0x10009dd0
+10009a36  or       eax, 0xffffffff
+10009a39  ret      
+10009a3a  push     ebx
+10009a3b  mov      ebx, eax
+10009a3d  call     0x10009a50
+10009a42  pop      ebx
+10009a43  ret      
