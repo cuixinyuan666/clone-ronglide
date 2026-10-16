@@ -1,0 +1,13 @@
+# 复用判定探针 — NChBi 包装层调用表 (0x10012a50-0x10012c38)
+# 生成: grep 自 tools/re-inventory/nchbi/nchbi_entry.txt
+call 0x1003eba0 : 0 次
+call 0x10053540 : 0 次
+call 0x1003ef00 : 0 次
+call 0x1002c1d0 : 0 次
+call 0x1001c110 : 1 次
+
+# chlib 工作函数的全部 call 目标 (不可能回调 TAFLib, 因为 chlib 只导入 MSVCR80/MSVCP80/KERNEL32)
+      1 call     0x10006670
+      1 call     0x10009930
+      1 call     0x100148a0
+      1 call     0x1001494c

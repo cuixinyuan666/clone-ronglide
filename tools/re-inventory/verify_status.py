@@ -48,7 +48,7 @@ TARGETS = [
             "tools/re-inventory/chduan/frida_chduan4.md",
             "tools/re-inventory/chbi/f_1003eba0.txt",
         ],
-        "next": "第五批(推荐): NChBi 启动 (入口/包装层 + P 分派 + 复用判定); 备选: CHDUAN frida 对拍",
+        "next": "第五批: frida 动态对拍 (tools/re-inventory/chduan/frida_chduan4.md, 需用户启动软件配合); 静态已交付四批",
     },
     {
         "id": "CHBI",
@@ -97,7 +97,28 @@ TARGETS = [
             "tools/wnmr_py/duipai.md",
             "pseudocode/chbi.c",
         ],
-        "next": "第六批(推荐): CHDUAN 第四批 — ContA/ContB 顺序敏感性 + prep 0x10053540 尾块; 备选 NChBi 启动",
+        "next": "第六批: 0x1003f170 的 481 条条件逐条落地 (docs/23 §七 遗留[C]); 备选 CHBI frida 对拍",
+    },
+    {
+        "id": "NCHBI",
+        "name": "NChBi 缠论笔·新版 (EA62, P=0/51 门控, 实现位于 chlib.dll)",
+        "export": "NChBi",
+        "va": "0x10012a50",
+        "batches": [
+            ("第一批-入口链与P分派", "docs/25-NChBi-第一批-入口链与P分派.md"),
+        ],
+        "artifacts": [
+            "pseudocode/nchbi.c",
+            "tools/re-inventory/nchbi/nchbi_entry.txt",
+            "tools/re-inventory/nchbi/chlib_vtable_and_factory.txt",
+            "tools/re-inventory/nchbi/chlib_worker_10002340.txt",
+            "tools/re-inventory/nchbi/cond_chlib_10002340.txt",
+            "tools/re-inventory/nchbi/reuse_probe.txt",
+            "tools/re-inventory/nchbi/nchbi1_wip.md",
+            "tools/re-inventory/nchbi/dump_chlib_vtable.py",
+            "tools/re-inventory/nchbi/scan_member.py",
+        ],
+        "next": "第二批(推荐): chlib 算法解剖 — 0x10002770 (NChBiSta) 输出码 -3/+3/0 + 0x10002340 输出向量; 备选 CHDUAN frida 对拍",
     },
 ]
 
@@ -105,7 +126,7 @@ TARGETS = [
 PRIORITY = [
     ("ChBi", "CHBI", "EA62", "已交付(五批)"),
     ("ChDuan", "CHDUAN", "-", "已交付(四批)"),
-    ("NChBi", "NCHBI", "EA62", "未启动"),
+    ("NChBi", "NCHBI", "EA62", "已交付(一批)"),
     ("NChZs", "NCHZS", "EA63", "未启动"),
     ("NChZsG", "NCHZSG", "EA61", "未启动"),
     ("NChZsBs12", "NCHZSBS12", "EA61", "未启动"),
@@ -158,7 +179,7 @@ def main():
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-",
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-",
                 "tools/re-inventory", "tools/wnmr_py",
                 "pseudocode/chduan", "pseudocode/chbi", "README.md")
     tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]

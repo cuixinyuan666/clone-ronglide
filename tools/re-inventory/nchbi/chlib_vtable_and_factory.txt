@@ -1,0 +1,118 @@
+### chlib.dll = D:/a_ronglide/clone-ronglide/ronglide-app/chlib.dll  (ImageBase 10000000)
+
+--- CreateLib 0x10001010 ---
+10001010  push     -1
+10001012  push     0x10014cdb
+10001017  mov      eax, dword ptr fs:[0]
+1000101d  push     eax
+1000101e  push     ecx
+1000101f  mov      eax, dword ptr [0x1001701c]
+10001024  xor      eax, esp
+10001026  push     eax
+10001027  lea      eax, [esp + 8]
+1000102b  mov      dword ptr fs:[0], eax
+10001031  push     0x24
+10001033  call     0x10013f06
+10001038  add      esp, 4
+1000103b  mov      dword ptr [esp + 4], eax
+1000103f  test     eax, eax
+10001041  mov      dword ptr [esp + 0x10], 0
+10001049  je       0x10001066
+1000104b  mov      ecx, dword ptr [esp + 0x18]
+1000104f  push     ecx
+10001050  push     eax
+10001051  call     0x100010d0
+10001056  mov      ecx, dword ptr [esp + 8]
+1000105a  mov      dword ptr fs:[0], ecx
+10001061  pop      ecx
+10001062  add      esp, 0x10
+10001065  ret      
+10001066  xor      eax, eax
+10001068  mov      ecx, dword ptr [esp + 8]
+1000106c  mov      dword ptr fs:[0], ecx
+10001073  pop      ecx
+10001074  add      esp, 0x10
+10001077  ret      
+
+--- ch_api::ch_api(ch_auth*) 0x100010d0 -> vtable ---
+100010d0  push     -1
+100010d2  push     0x10014cae
+100010d7  mov      eax, dword ptr fs:[0]
+100010dd  push     eax
+100010de  push     ebx
+100010df  push     esi
+100010e0  mov      eax, dword ptr [0x1001701c]
+100010e5  xor      eax, esp
+100010e7  push     eax
+100010e8  lea      eax, [esp + 0xc]
+100010ec  mov      dword ptr fs:[0], eax
+100010f2  mov      esi, dword ptr [esp + 0x1c]
+100010f6  xor      ebx, ebx
+100010f8  mov      dword ptr [esp + 0x14], ebx
+100010fc  mov      eax, dword ptr [esp + 0x20]
+10001100  push     0x2c
+10001102  mov      dword ptr [esi], 0x10015214
+10001108  mov      dword ptr [esi + 4], eax
+1000110b  mov      dword ptr [esi + 8], ebx
+1000110e  mov      dword ptr [esi + 0xc], ebx
+10001111  mov      dword ptr [esi + 0x10], ebx
+10001114  mov      dword ptr [esi + 0x14], ebx
+10001117  mov      dword ptr [esi + 0x18], ebx
+1000111a  mov      dword ptr [esi + 0x1c], ebx
+1000111d  mov      dword ptr [esi + 0x20], ebx
+10001120  call     0x10013f06
+10001125  add      esp, 4
+10001128  cmp      eax, ebx
+1000112a  je       0x10001152
+1000112c  mov      dword ptr [eax + 4], ebx
+1000112f  mov      dword ptr [eax + 8], ebx
+10001132  mov      dword ptr [eax + 0xc], ebx
+10001135  mov      dword ptr [eax + 0x10], ebx
+10001138  mov      dword ptr [eax + 0x14], ebx
+1000113b  mov      byte ptr [eax + 0x18], bl
+1000113e  mov      dword ptr [eax], 0x100153ec
+10001144  mov      dword ptr [eax + 0x1c], ebx
+10001147  mov      dword ptr [eax + 0x20], ebx
+1000114a  mov      dword ptr [eax + 0x24], ebx
+1000114d  mov      dword ptr [eax + 0x28], ebx
+10001150  jmp      0x10001154
+10001152  xor      eax, eax
+10001154  push     0x38
+10001156  mov      dword ptr [esi + 8], eax
+10001159  call     0x10013f06
+1000115e  add      esp, 4
+
+### ch_api vtable = 10015214  (ctor 0x10001102 立即数)
+槽        实现         TAFLib 绑定
++0x00    100012c0
++0x04    100013a0
++0x08    10001430
++0x0c    10001460
++0x10    10001490
++0x14    100014c0
++0x18    10001590
++0x1c    10001690
++0x20    10001790
++0x24    10001a10
++0x28    10001bd0
++0x2c    10001d90
++0x30    10002190
++0x34    10002340  <- NChBi @ 0x10012a50 (auth EA62, P in {0,51})
++0x38    10002770  <- NChBiSta @ 0x10012c40 (auth EA61, always)
++0x3c    10002900  <- NChBiSta2 @ 0x10012cb0 (auth EA61, always)
++0x40    10002d80  <- ? @ - (auth -, -)
++0x44    10002ea0  <- NChBiZj @ 0x10012d20 (auth EA61, always)
++0x48    10002fc0  <- ? @ - (auth -, -)
++0x4c    10003180  <- NChBiZjOrder @ 0x10012e00 (auth EA62, always)
++0x50    10003330  <- ? @ - (auth -, -)
++0x54    10003450  <- ? @ - (auth -, -)
++0x58    10003680  <- NChBiFxNum @ 0x10012e70 (auth EA62, always)
++0x5c    100038b0  <- ? @ - (auth -, -)
++0x60    10003a90  <- NChBiSpeed @ 0x10012f50 (auth EA62, always)
++0x64    10003cd0  <- ? @ - (auth -, -)
++0x68    10004170
++0x6c    100042f0
++0x70    100043e0
++0x74    100044d0
++0x78    100045f0
++0x7c    100046a0

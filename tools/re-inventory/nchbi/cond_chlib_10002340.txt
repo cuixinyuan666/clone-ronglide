@@ -1,0 +1,23 @@
+### [A] x87 条件表   src=tools/re-inventory/nchbi/chlib_worker_10002340.txt   insns=377   blocks=92   conflicts=17   conds=10
+地址         op       ST0                ST(k)                  test   jcc   目标           跳转成立       落空成立      
+10002624   fcom     [0x100154c8]       mem:[ecx-0x10]         ah,0x05 jp    0x10002635   >|=|U      <         
+10002635   fcom     [0x100154c8]       mem:[ecx-8]            ah,0x05 jp    0x10002647   >|=|U      <         
+10002647   fcom     [0x100154c8]       mem:[ecx]              ah,0x05 jp    0x10002656   >|=|U      <         
+10002656   fcom     [0x100154c8]       mem:[ecx+8]            ah,0x05 jp    0x10002668   >|=|U      <         
+10002687   fcom     [0x100154c8]       mem:[esi+edx*8]        ah,0x05 jp    0x10002698   >|=|U      <         
+100026c4   fcom     [0x100154c0]       mem:[ecx-0x10]         ah,0x41 jne   0x100026d5   <|=|U      >         
+100026d5   fcom     [0x100154c0]       mem:[ecx-8]            ah,0x41 jne   0x100026e7   <|=|U      >         
+100026e7   fcom     [0x100154c0]       mem:[ecx]              ah,0x41 jne   0x100026f6   <|=|U      >         
+100026f6   fcom     [0x100154c0]       mem:[ecx+8]            ah,0x41 jne   0x10002708   <|=|U      >         
+10002723   fcom     [0x100154c0]       mem:[ecx+edx*8]        ah,0x41 jne   0x10002734   <|=|U      >         
+
+### [B] 非零立即数写入 (标记字段写点)
+1000245d   mov [esp+0xc], 0xffffffff
+
+### [C] 调用目标统计
+  eax                      x3
+  0x100148a0               x1
+  0x1001494c               x1
+  0x10006670               x1
+  0x10009930               x1
+  edx                      x1

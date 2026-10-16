@@ -5,8 +5,9 @@
 capstone 线性 disasm 遇到无效字节会静默停止; 本工具在停止点跳 1 字节续扫,
 直到函数边界: 连续 int3(0xCC)/nop 填充 或 撞到下一个函数的序.prologue。
 
-用法: python disasm_func.py <start_va_hex> [-o out.txt] [--max 0x8000]
+用法: python disasm_func.py <start_va_hex> [-o out.txt] [--max 0x8000] [--dll <path>]
 输出格式与 core_*.txt 一致: "地址  助记符  操作数"
+默认 DLL = 缠中说禅\TAFLib.dll; 需要分析 chlib.dll 等其它模块时用 --dll 指定。
 """
 import sys
 
@@ -27,7 +28,11 @@ def main():
     if "--max" in argv:
         max_len = int(argv[argv.index("--max") + 1], 16)
 
-    pe = pefile.PE(DLL, fast_load=True)
+    dll = DLL
+    if "--dll" in argv:
+        dll = argv[argv.index("--dll") + 1]
+
+    pe = pefile.PE(dll, fast_load=True)
     base = pe.OPTIONAL_HEADER.ImageBase
     sec = next(s for s in pe.sections if b".text" in s.Name)
 
