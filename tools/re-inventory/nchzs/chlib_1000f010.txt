@@ -1,0 +1,28 @@
+1000f014  cmp      edx, dword ptr [esi + 0x2c]
+1000f017  jae      0x1000f066
+1000f019  mov      eax, edx
+1000f01b  mov      ecx, edx
+1000f01d  imul     eax, eax, 0x1d
+1000f020  add      eax, dword ptr [esi + 0x4c]
+1000f023  imul     ecx, ecx, 0x31
+1000f026  add      ecx, dword ptr [esi + 0x20]
+1000f029  mov      byte ptr [eax + 4], 1
+1000f02d  mov      dword ptr [eax + 5], edx
+1000f030  cmp      dword ptr [ecx], -1
+1000f033  jne      0x1000f04e
+1000f035  mov      dword ptr [eax], 1
+1000f03b  mov      edx, dword ptr [ecx + 0x11]
+1000f03e  mov      dword ptr [eax + 9], edx
+1000f041  fld      qword ptr [ecx + 0x19]
+1000f044  fstp     qword ptr [eax + 0xd]
+1000f047  fld      qword ptr [ecx + 0x21]
+1000f04a  fstp     qword ptr [eax + 0x15]
+1000f04d  ret      
+1000f04e  mov      dword ptr [eax], 0xffffffff
+1000f054  mov      edx, dword ptr [ecx + 0x15]
+1000f057  mov      dword ptr [eax + 9], edx
+1000f05a  fld      qword ptr [ecx + 0x19]
+1000f05d  fstp     qword ptr [eax + 0xd]
+1000f060  fld      qword ptr [ecx + 0x21]
+1000f063  fstp     qword ptr [eax + 0x15]
+1000f066  ret      

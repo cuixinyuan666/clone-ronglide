@@ -1,0 +1,73 @@
+1000f5b4  push     ebp
+1000f5b5  mov      ebp, dword ptr [esp + 0x24]
+1000f5b9  push     esi
+1000f5ba  mov      ebx, eax
+1000f5bc  test     ebx, ebx
+1000f5be  push     edi
+1000f5bf  mov      esi, ecx
+1000f5c1  jl       0x1000f670
+1000f5c7  mov      edi, dword ptr [esi + 8]
+1000f5ca  cmp      dword ptr [esi + 4], edi
+1000f5cd  jbe      0x1000f5d5
+1000f5cf  call     dword ptr [0x1001509c]
+1000f5d5  mov      eax, dword ptr [esi + 4]
+1000f5d8  cmp      eax, dword ptr [esi + 8]
+1000f5db  mov      dword ptr [esp + 0x2c], eax
+1000f5df  jbe      0x1000f5eb
+1000f5e1  call     dword ptr [0x1001509c]
+1000f5e7  mov      eax, dword ptr [esp + 0x2c]
+1000f5eb  push     edi
+1000f5ec  push     esi
+1000f5ed  push     eax
+1000f5ee  push     esi
+1000f5ef  lea      eax, [esp + 0x24]
+1000f5f3  push     eax
+1000f5f4  push     esi
+1000f5f5  call     0x10011da0
+1000f5fa  cmp      ebx, ebp
+1000f5fc  mov      edi, ebx
+1000f5fe  jg       0x1000f62f
+1000f600  imul     ebx, ebx, 0x31
+1000f603  mov      eax, dword ptr [esp + 0x28]
+1000f607  cmp      edi, dword ptr [eax + 0x2c]
+1000f60a  jae      0x1000f62f
+1000f60c  mov      ecx, dword ptr [eax + 0x20]
+1000f60f  fld      qword ptr [ecx + ebx + 0x21]
+1000f613  lea      edx, [esp + 0x14]
+1000f617  push     edx
+1000f618  fstp     qword ptr [esp + 0x18]
+1000f61c  mov      dword ptr [esp + 0x20], edi
+1000f620  call     0x10011ba0
+1000f625  add      edi, 2
+1000f628  add      ebx, 0x62
+1000f62b  cmp      edi, ebp
+1000f62d  jle      0x1000f603
+1000f62f  mov      ebx, dword ptr [esi + 4]
+1000f632  test     ebx, ebx
+1000f634  je       0x1000f670
+1000f636  mov      edi, dword ptr [esi + 8]
+1000f639  mov      ecx, edi
+1000f63b  sub      ecx, ebx
+1000f63d  mov      eax, 0x2aaaaaab
+1000f642  imul     ecx
+1000f644  sar      edx, 1
+1000f646  mov      eax, edx
+1000f648  shr      eax, 0x1f
+1000f64b  add      eax, edx
+1000f64d  je       0x1000f670
+1000f64f  cmp      ebx, edi
+1000f651  jbe      0x1000f659
+1000f653  call     dword ptr [0x1001509c]
+1000f659  mov      ebx, dword ptr [esi + 4]
+1000f65c  cmp      ebx, dword ptr [esi + 8]
+1000f65f  jbe      0x1000f667
+1000f661  call     dword ptr [0x1001509c]
+1000f667  cmp      ebx, edi
+1000f669  je       0x1000f670
+1000f66b  call     0x100126d0
+1000f670  pop      edi
+1000f671  pop      esi
+1000f672  pop      ebp
+1000f673  pop      ebx
+1000f674  add      esp, 0x14
+1000f677  ret      8

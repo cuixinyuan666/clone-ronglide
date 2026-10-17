@@ -1,0 +1,649 @@
+# CFG / 支配树报告  src=chlib_100048a0.txt
+  insns=695  blocks=321  calls=2  ret@0x100049c5, 0x10004a60, 0x10004d3f, 0x10004fdb, 0x10005018
+  自然环(while/for) 头部: 0x1000494a, 0x1000497c, 0x100049e5, 0x10004a17, 0x10004ab0, 0x10004ccb, 0x10004d89, 0x10004f90
+
+## 支配树（缩进=被支配深度；[Lx] 为环头）
+B0   0x100048a0-0x100048b5  n=12  in=0  out=0x100048ba   | push     ebp
+  B1   0x100048ba-0x100048d6  n=11  in=1  out=0x100048db   | mov      edx, dword ptr [ebp + 0x10]
+    B2   0x100048db-0x100048f7  n=10  in=1  out=0x100048fb   | mov      eax, dword ptr [esi + 0x20]
+      B3   0x100048fb-0x100048fb  n=1   in=1  out=0x1000500f,0x10004901   | je       0x1000500f
+        B4   0x10004901-0x10004905  n=2   in=1  out=0x10004907   | mov      edi, dword ptr [esp + 0x14]
+          B5   0x10004907-0x10004907  n=1   in=1  out=0x1000500f,0x1000490d   | je       0x1000500f
+            B6   0x1000490d-0x1000490d  n=1   in=1  out=0x1000490f   | test     eax, eax
+              B7   0x1000490f-0x1000490f  n=1   in=1  out=0x1000500f,0x10004915   | je       0x1000500f
+                B8   0x10004915-0x10004915  n=1   in=1  out=0x10004917   | test     edx, edx
+                  B9   0x10004917-0x10004917  n=1   in=1  out=0x1000500f,0x1000491d   | je       0x1000500f
+                    B10  0x1000491d-0x1000491d  n=1   in=1  out=0x1000491f   | test     ecx, ecx
+                      B11  0x1000491f-0x1000491f  n=1   in=1  out=0x1000500f,0x10004925   | je       0x1000500f
+                        B12  0x10004925-0x10004925  n=1   in=1  out=0x10004927   | test     esi, esi
+                          B13  0x10004927-0x10004927  n=1   in=1  out=0x1000500f,0x1000492d   | je       0x1000500f
+                            B14  0x1000492d-0x1000492d  n=1   in=1  out=0x10004930   | cmp      ebx, 1
+                              B15  0x10004930-0x10004930  n=1   in=1  out=0x100049c8,0x10004936   | jne      0x100049c8
+                                B16  0x10004936-0x10004936  n=1   in=1  out=0x10004938   | test     esi, esi
+                                  B17  0x10004938-0x10004938  n=1   in=1  out=0x10004fd3,0x1000493e   | jbe      0x10004fd3
+                                    B18  0x1000493e-0x10004946  n=4   in=1  out=0x1000494a   | fld1
+                                      B19  0x1000494a-0x1000494a  n=1   in=2  out=0x1000494e [L]   | test     byte ptr [ecx + 0xc], 1
+                                        B20  0x1000494e-0x1000494e  n=1   in=1  out=0x100049b1,0x10004950   | je       0x100049b1
+                                          B21  0x10004950-0x10004962  n=8   in=1  out=0x10004964   | mov      eax, dword ptr [ecx + 4]
+                                            B22  0x10004964-0x10004964  n=1   in=1  out=0x100049b1,0x10004966   | je       0x100049b1
+                                              B23  0x10004966-0x10004966  n=1   in=1  out=0x1000496a   | cmp      dword ptr [ecx + 8], -1
+                                                B24  0x1000496a-0x1000496a  n=1   in=1  out=0x100049b1,0x1000496c   | jne      0x100049b1
+                                                  B25  0x1000496c-0x1000496f  n=2   in=1  out=0x10004971   | add      esi, 3
+                                                    B26  0x10004971-0x10004971  n=1   in=1  out=0x100049b1,0x10004973   | jg       0x100049b1
+                                                      B27  0x10004973-0x10004978  n=3   in=1  out=0x1000497c   | mov      eax, esi
+                                                        B28  0x1000497c-0x1000497c  n=1   in=2  out=0x10004980 [L]   | test     byte ptr [edx - 0x15], 1
+                                                          B29  0x10004980-0x10004980  n=1   in=1  out=0x100049a6,0x10004982   | jne      0x100049a6
+                                                            B30  0x10004982-0x10004989  n=4   in=1  out=0x1000498c   | fld      qword ptr [ecx + 0x11]
+                                                              B31  0x1000498c-0x1000498c  n=1   in=1  out=0x100049a6,0x1000498e   | jne      0x100049a6
+                                                                B32  0x1000498e-0x1000499b  n=6   in=1  out=0x1000499e   | mov      eax, dword ptr [ecx]
+                                                                  B33  0x1000499e-0x1000499e  n=1   in=1  out=0x100049a6,0x100049a0   | jp       0x100049a6
+                                                                    B34  0x100049a0-0x100049a3  n=2   in=1  out=0x100049a6   | mov      eax, dword ptr [edx - 0xc]
+                                                            B35  0x100049a6-0x100049ac  n=3   in=4  out=0x100049af   | add      esi, 2
+                                                              B36  0x100049af-0x100049af  n=1   in=1  out=0x1000497c,0x100049b1   | jle      0x1000497c
+                                          B37  0x100049b1-0x100049b4  n=2   in=5  out=0x100049b9   | add      ecx, 0x5d
+                                            B38  0x100049b9-0x100049b9  n=1   in=1  out=0x1000494a,0x100049bb   | jne      0x1000494a
+                                              B39  0x100049bb-0x100049c5  n=8   in=1  out=-   | fstp     st(0)
+                                B40  0x100049c8-0x100049c8  n=1   in=1  out=0x100049cb   | cmp      ebx, 2
+                                  B41  0x100049cb-0x100049cb  n=1   in=1  out=0x10004a63,0x100049d1   | jne      0x10004a63
+                                    B42  0x100049d1-0x100049d1  n=1   in=1  out=0x100049d3   | test     esi, esi
+                                      B43  0x100049d3-0x100049d3  n=1   in=1  out=0x10004fd3,0x100049d9   | jbe      0x10004fd3
+                                        B44  0x100049d9-0x100049e1  n=4   in=1  out=0x100049e5   | fld1
+                                          B45  0x100049e5-0x100049e5  n=1   in=2  out=0x100049e9 [L]   | test     byte ptr [ecx + 0xc], 1
+                                            B46  0x100049e9-0x100049e9  n=1   in=1  out=0x10004a4c,0x100049eb   | je       0x10004a4c
+                                              B47  0x100049eb-0x100049fd  n=8   in=1  out=0x100049ff   | mov      eax, dword ptr [ecx + 4]
+                                                B48  0x100049ff-0x100049ff  n=1   in=1  out=0x10004a4c,0x10004a01   | je       0x10004a4c
+                                                  B49  0x10004a01-0x10004a01  n=1   in=1  out=0x10004a05   | cmp      dword ptr [ecx + 8], 1
+                                                    B50  0x10004a05-0x10004a05  n=1   in=1  out=0x10004a4c,0x10004a07   | jne      0x10004a4c
+                                                      B51  0x10004a07-0x10004a0a  n=2   in=1  out=0x10004a0c   | add      esi, 3
+                                                        B52  0x10004a0c-0x10004a0c  n=1   in=1  out=0x10004a4c,0x10004a0e   | jg       0x10004a4c
+                                                          B53  0x10004a0e-0x10004a13  n=3   in=1  out=0x10004a17   | mov      eax, esi
+                                                            B54  0x10004a17-0x10004a17  n=1   in=2  out=0x10004a1b [L]   | test     byte ptr [edx - 0xd], 1
+                                                              B55  0x10004a1b-0x10004a1b  n=1   in=1  out=0x10004a41,0x10004a1d   | jne      0x10004a41
+                                                                B56  0x10004a1d-0x10004a24  n=4   in=1  out=0x10004a27   | fld      qword ptr [ecx + 0x1d]
+                                                                  B57  0x10004a27-0x10004a27  n=1   in=1  out=0x10004a41,0x10004a29   | jp       0x10004a41
+                                                                    B58  0x10004a29-0x10004a36  n=6   in=1  out=0x10004a39   | mov      eax, dword ptr [ecx]
+                                                                      B59  0x10004a39-0x10004a39  n=1   in=1  out=0x10004a41,0x10004a3b   | jne      0x10004a41
+                                                                        B60  0x10004a3b-0x10004a3e  n=2   in=1  out=0x10004a41   | mov      eax, dword ptr [edx - 8]
+                                                                B61  0x10004a41-0x10004a47  n=3   in=4  out=0x10004a4a   | add      esi, 2
+                                                                  B62  0x10004a4a-0x10004a4a  n=1   in=1  out=0x10004a17,0x10004a4c   | jle      0x10004a17
+                                              B63  0x10004a4c-0x10004a4f  n=2   in=5  out=0x10004a54   | add      ecx, 0x5d
+                                                B64  0x10004a54-0x10004a54  n=1   in=1  out=0x100049e5,0x10004a56   | jne      0x100049e5
+                                                  B65  0x10004a56-0x10004a60  n=8   in=1  out=-   | fstp     st(0)
+                                    B66  0x10004a63-0x10004a63  n=1   in=1  out=0x10004a66   | cmp      ebx, 3
+                                      B67  0x10004a66-0x10004a66  n=1   in=1  out=0x10004d42,0x10004a6c   | jne      0x10004d42
+                                        B68  0x10004a6c-0x10004a7c  n=8   in=1  out=0x10004a84   | fldz
+                                          B69  0x10004a84-0x10004a84  n=1   in=1  out=0x10004c98,0x10004a8a   | jl       0x10004c98
+                                            B70  0x10004a8a-0x10004aa6  n=8   in=1  out=0x10004aaa   | add      edx, -5
+                                              B71  0x10004aaa-0x10004aaa  n=1   in=1  out=0x10004ab0   | jmp      0x10004ab0
+                                                B73  0x10004ab0-0x10004ab0  n=1   in=2  out=0x10004ab4 [L]   | test     byte ptr [ecx - 0x46], 1
+                                                  B74  0x10004ab4-0x10004ab4  n=1   in=1  out=0x10004ae5,0x10004ab6   | jne      0x10004ae5
+                                                    B75  0x10004ab6-0x10004ab9  n=2   in=1  out=0x10004abb   | mov      al, byte ptr [esi - 0x18]
+                                                      B76  0x10004abb-0x10004abb  n=1   in=1  out=0x10004ac5,0x10004abd   | je       0x10004ac5
+                                                        B77  0x10004abd-0x10004abd  n=1   in=1  out=0x10004abf   | cmp      al, 3
+                                                          B78  0x10004abf-0x10004abf  n=1   in=1  out=0x10004b8d,0x10004ac5   | jne      0x10004b8d
+                                                            B114 0x10004b8d-0x10004b8d  n=1   in=1  out=0x10004b8f   | test     bl, bl
+                                                              B115 0x10004b8f-0x10004b8f  n=1   in=1  out=0x10004ad1,0x10004b95   | je       0x10004ad1
+                                                                B116 0x10004b95-0x10004b95  n=1   in=1  out=0x10004b99   | cmp      dword ptr [ecx - 0x52], 1
+                                                                  B117 0x10004b99-0x10004b99  n=1   in=1  out=0x10004ad1,0x10004b9f   | jne      0x10004ad1
+                                                                    B118 0x10004b9f-0x10004ba6  n=4   in=1  out=0x10004ba9   | fxch     st(1)
+                                                                      B119 0x10004ba9-0x10004ba9  n=1   in=1  out=0x10004bc3,0x10004bab   | jp       0x10004bc3
+                                                                        B120 0x10004bab-0x10004bb2  n=4   in=1  out=0x10004bb5   | fxch     st(2)
+                                                                          B121 0x10004bb5-0x10004bb5  n=1   in=1  out=0x10004bc1,0x10004bb7   | jne      0x10004bc1
+                                                                            B122 0x10004bb7-0x10004bbf  n=4   in=1  out=0x10004bc1   | mov      eax, dword ptr [ecx - 0x3d]
+                                                                            B123 0x10004bc1-0x10004bc1  n=1   in=2  out=0x10004bc3   | fxch     st(2)
+                                                                        B124 0x10004bc3-0x10004bc3  n=1   in=2  out=0x10004bc5   | fxch     st(1)
+                                                                          B125 0x10004bc5-0x10004bc5  n=1   in=1  out=0x10004ad1   | jmp      0x10004ad1
+                                                        B79  0x10004ac5-0x10004acf  n=6   in=2  out=0x10004ad1   | fstp     st(2)
+                                                        B80  0x10004ad1-0x10004ad1  n=1   in=4  out=0x10004ad5   | cmp      byte ptr [esi - 0x19], 0xfe
+                                                          B81  0x10004ad5-0x10004ad5  n=1   in=1  out=0x10004ae5,0x10004ad7   | jne      0x10004ae5
+                                                            B82  0x10004ad7-0x10004ae3  n=6   in=1  out=0x10004ae5   | fstp     st(2)
+                                                    B83  0x10004ae5-0x10004ae5  n=1   in=3  out=0x10004ae9   | test     byte ptr [ecx - 0x15], 1
+                                                      B84  0x10004ae9-0x10004ae9  n=1   in=1  out=0x10004b19,0x10004aeb   | jne      0x10004b19
+                                                        B85  0x10004aeb-0x10004aed  n=2   in=1  out=0x10004aef   | mov      al, byte ptr [esi]
+                                                          B86  0x10004aef-0x10004aef  n=1   in=1  out=0x10004af9,0x10004af1   | je       0x10004af9
+                                                            B87  0x10004af1-0x10004af1  n=1   in=1  out=0x10004af3   | cmp      al, 3
+                                                              B88  0x10004af3-0x10004af3  n=1   in=1  out=0x10004bca,0x10004af9   | jne      0x10004bca
+                                                                B126 0x10004bca-0x10004bca  n=1   in=1  out=0x10004bcc   | test     bl, bl
+                                                                  B127 0x10004bcc-0x10004bcc  n=1   in=1  out=0x10004b05,0x10004bd2   | je       0x10004b05
+                                                                    B128 0x10004bd2-0x10004bd2  n=1   in=1  out=0x10004bd6   | cmp      dword ptr [ecx - 0x21], 1
+                                                                      B129 0x10004bd6-0x10004bd6  n=1   in=1  out=0x10004b05,0x10004bdc   | jne      0x10004b05
+                                                                        B130 0x10004bdc-0x10004be2  n=4   in=1  out=0x10004be5   | fxch     st(1)
+                                                                          B131 0x10004be5-0x10004be5  n=1   in=1  out=0x10004bff,0x10004be7   | jp       0x10004bff
+                                                                            B132 0x10004be7-0x10004bee  n=4   in=1  out=0x10004bf1   | fxch     st(2)
+                                                                              B133 0x10004bf1-0x10004bf1  n=1   in=1  out=0x10004bfd,0x10004bf3   | jne      0x10004bfd
+                                                                                B134 0x10004bf3-0x10004bfb  n=4   in=1  out=0x10004bfd   | mov      eax, dword ptr [ecx - 0xc]
+                                                                                B135 0x10004bfd-0x10004bfd  n=1   in=2  out=0x10004bff   | fxch     st(2)
+                                                                            B136 0x10004bff-0x10004bff  n=1   in=2  out=0x10004c01   | fxch     st(1)
+                                                                              B137 0x10004c01-0x10004c01  n=1   in=1  out=0x10004b05   | jmp      0x10004b05
+                                                            B89  0x10004af9-0x10004b03  n=6   in=2  out=0x10004b05   | fstp     st(2)
+                                                            B90  0x10004b05-0x10004b05  n=1   in=4  out=0x10004b09   | cmp      byte ptr [esi - 1], 0xfe
+                                                              B91  0x10004b09-0x10004b09  n=1   in=1  out=0x10004b19,0x10004b0b   | jne      0x10004b19
+                                                                B92  0x10004b0b-0x10004b17  n=6   in=1  out=0x10004b19   | fstp     st(2)
+                                                        B93  0x10004b19-0x10004b19  n=1   in=3  out=0x10004b1d   | test     byte ptr [ecx + 0x1c], 1
+                                                          B94  0x10004b1d-0x10004b1d  n=1   in=1  out=0x10004b4d,0x10004b1f   | jne      0x10004b4d
+                                                            B95  0x10004b1f-0x10004b22  n=2   in=1  out=0x10004b24   | mov      al, byte ptr [esi + 0x18]
+                                                              B96  0x10004b24-0x10004b24  n=1   in=1  out=0x10004b2e,0x10004b26   | je       0x10004b2e
+                                                                B97  0x10004b26-0x10004b26  n=1   in=1  out=0x10004b28   | cmp      al, 3
+                                                                  B98  0x10004b28-0x10004b28  n=1   in=1  out=0x10004c06,0x10004b2e   | jne      0x10004c06
+                                                                    B138 0x10004c06-0x10004c06  n=1   in=1  out=0x10004c08   | test     bl, bl
+                                                                      B139 0x10004c08-0x10004c08  n=1   in=1  out=0x10004b3a,0x10004c0e   | je       0x10004b3a
+                                                                        B140 0x10004c0e-0x10004c0e  n=1   in=1  out=0x10004c12   | cmp      dword ptr [ecx + 0x10], 1
+                                                                          B141 0x10004c12-0x10004c12  n=1   in=1  out=0x10004b3a,0x10004c18   | jne      0x10004b3a
+                                                                            B142 0x10004c18-0x10004c1f  n=4   in=1  out=0x10004c22   | fxch     st(1)
+                                                                              B143 0x10004c22-0x10004c22  n=1   in=1  out=0x10004c3c,0x10004c24   | jp       0x10004c3c
+                                                                                B144 0x10004c24-0x10004c2b  n=4   in=1  out=0x10004c2e   | fxch     st(2)
+                                                                                  B145 0x10004c2e-0x10004c2e  n=1   in=1  out=0x10004c3a,0x10004c30   | jne      0x10004c3a
+                                                                                    B146 0x10004c30-0x10004c38  n=4   in=1  out=0x10004c3a   | mov      eax, dword ptr [ecx + 0x25]
+                                                                                    B147 0x10004c3a-0x10004c3a  n=1   in=2  out=0x10004c3c   | fxch     st(2)
+                                                                                B148 0x10004c3c-0x10004c3c  n=1   in=2  out=0x10004c3e   | fxch     st(1)
+                                                                                  B149 0x10004c3e-0x10004c3e  n=1   in=1  out=0x10004b3a   | jmp      0x10004b3a
+                                                                B99  0x10004b2e-0x10004b38  n=6   in=2  out=0x10004b3a   | fstp     st(2)
+                                                                B100 0x10004b3a-0x10004b3a  n=1   in=4  out=0x10004b3e   | cmp      byte ptr [esi + 0x17], 0xfe
+                                                                  B101 0x10004b3e-0x10004b3e  n=1   in=1  out=0x10004b4d,0x10004b40   | jne      0x10004b4d
+                                                                    B102 0x10004b40-0x10004b4b  n=6   in=1  out=0x10004b4d   | fstp     st(2)
+                                                            B103 0x10004b4d-0x10004b4d  n=1   in=3  out=0x10004b51   | test     byte ptr [ecx + 0x4d], 1
+                                                              B104 0x10004b51-0x10004b51  n=1   in=1  out=0x10004c80,0x10004b57   | jne      0x10004c80
+                                                                B105 0x10004b57-0x10004b5a  n=2   in=1  out=0x10004b5c   | mov      al, byte ptr [esi + 0x30]
+                                                                  B106 0x10004b5c-0x10004b5c  n=1   in=1  out=0x10004b66,0x10004b5e   | je       0x10004b66
+                                                                    B107 0x10004b5e-0x10004b5e  n=1   in=1  out=0x10004b60   | cmp      al, 3
+                                                                      B108 0x10004b60-0x10004b60  n=1   in=1  out=0x10004c43,0x10004b66   | jne      0x10004c43
+                                                                        B150 0x10004c43-0x10004c43  n=1   in=1  out=0x10004c45   | test     bl, bl
+                                                                          B151 0x10004c45-0x10004c45  n=1   in=1  out=0x10004b72,0x10004c4b   | je       0x10004b72
+                                                                            B152 0x10004c4b-0x10004c4b  n=1   in=1  out=0x10004c4f   | cmp      dword ptr [ecx + 0x41], 1
+                                                                              B153 0x10004c4f-0x10004c4f  n=1   in=1  out=0x10004b72,0x10004c55   | jne      0x10004b72
+                                                                                B154 0x10004c55-0x10004c5c  n=4   in=1  out=0x10004c5f   | fxch     st(1)
+                                                                                  B155 0x10004c5f-0x10004c5f  n=1   in=1  out=0x10004c79,0x10004c61   | jp       0x10004c79
+                                                                                    B156 0x10004c61-0x10004c68  n=4   in=1  out=0x10004c6b   | fxch     st(2)
+                                                                                      B157 0x10004c6b-0x10004c6b  n=1   in=1  out=0x10004c77,0x10004c6d   | jne      0x10004c77
+                                                                                        B158 0x10004c6d-0x10004c75  n=4   in=1  out=0x10004c77   | mov      eax, dword ptr [ecx + 0x56]
+                                                                                        B159 0x10004c77-0x10004c77  n=1   in=2  out=0x10004c79   | fxch     st(2)
+                                                                                    B160 0x10004c79-0x10004c79  n=1   in=2  out=0x10004c7b   | fxch     st(1)
+                                                                                      B161 0x10004c7b-0x10004c7b  n=1   in=1  out=0x10004b72   | jmp      0x10004b72
+                                                                    B109 0x10004b66-0x10004b70  n=6   in=2  out=0x10004b72   | fstp     st(2)
+                                                                    B110 0x10004b72-0x10004b72  n=1   in=4  out=0x10004b76   | cmp      byte ptr [esi + 0x2f], 0xfe
+                                                                      B111 0x10004b76-0x10004b76  n=1   in=1  out=0x10004c80,0x10004b7c   | jne      0x10004c80
+                                                                        B112 0x10004b7c-0x10004b85  n=5   in=1  out=0x10004b88   | fstp     st(2)
+                                                                          B113 0x10004b88-0x10004b88  n=1   in=1  out=0x10004c84   | jmp      0x10004c84
+                                                                B162 0x10004c80-0x10004c82  n=2   in=2  out=0x10004c84   | fxch     st(2)
+                                                                B163 0x10004c84-0x10004c8d  n=3   in=2  out=0x10004c90   | add      esi, 0x60
+                                                                  B164 0x10004c90-0x10004c90  n=1   in=1  out=0x10004aac,0x10004c96   | jne      0x10004aac
+                                                                    B72  0x10004aac-0x10004aae  n=2   in=1  out=0x10004ab0   | fxch     st(1)
+                                                                    B165 0x10004c96-0x10004c96  n=1   in=1  out=0x10004c9f   | jmp      0x10004c9f
+                                            B166 0x10004c98-0x10004c9d  n=3   in=1  out=0x10004c9f   | mov      edi, dword ptr [ebp + 0xc]
+                                            B167 0x10004c9f-0x10004ca3  n=2   in=2  out=0x10004ca7   | mov      eax, dword ptr [esp + 0x18]
+                                              B168 0x10004ca7-0x10004ca7  n=1   in=1  out=0x10004d2f,0x10004cad   | jae      0x10004d2f
+                                                B169 0x10004cad-0x10004cc9  n=9   in=1  out=0x10004ccb   | mov      edx, dword ptr [esp + 0x14]
+                                                  B170 0x10004ccb-0x10004ccb  n=1   in=2  out=0x10004ccf [L]   | test     byte ptr [ecx - 0x15], 1
+                                                    B171 0x10004ccf-0x10004ccf  n=1   in=1  out=0x10004d24,0x10004cd1   | jne      0x10004d24
+                                                      B172 0x10004cd1-0x10004cd3  n=2   in=1  out=0x10004cd5   | mov      al, byte ptr [esi]
+                                                        B173 0x10004cd5-0x10004cd5  n=1   in=1  out=0x10004cdb,0x10004cd7   | je       0x10004cdb
+                                                          B174 0x10004cd7-0x10004cd7  n=1   in=1  out=0x10004cd9   | cmp      al, 3
+                                                            B175 0x10004cd9-0x10004cd9  n=1   in=1  out=0x10004ce7,0x10004cdb   | jne      0x10004ce7
+                                                              B178 0x10004ce7-0x10004ce7  n=1   in=1  out=0x10004ce9   | test     bl, bl
+                                                                B179 0x10004ce9-0x10004ce9  n=1   in=1  out=0x10004d12,0x10004ceb   | je       0x10004d12
+                                                                  B180 0x10004ceb-0x10004ceb  n=1   in=1  out=0x10004cef   | cmp      dword ptr [ecx - 0x21], 1
+                                                                    B181 0x10004cef-0x10004cef  n=1   in=1  out=0x10004d12,0x10004cf1   | jne      0x10004d12
+                                                                      B182 0x10004cf1-0x10004cf5  n=3   in=1  out=0x10004cf8   | fcom     qword ptr [ecx]
+                                                                        B183 0x10004cf8-0x10004cf8  n=1   in=1  out=0x10004d12,0x10004cfa   | jp       0x10004d12
+                                                                          B184 0x10004cfa-0x10004d01  n=4   in=1  out=0x10004d04   | fxch     st(1)
+                                                                            B185 0x10004d04-0x10004d04  n=1   in=1  out=0x10004d10,0x10004d06   | jne      0x10004d10
+                                                                              B186 0x10004d06-0x10004d0e  n=4   in=1  out=0x10004d10   | mov      eax, dword ptr [ecx - 0xc]
+                                                          B176 0x10004cdb-0x10004ce3  n=5   in=2  out=0x10004ce5   | fstp     st(1)
+                                                            B177 0x10004ce5-0x10004ce5  n=1   in=1  out=0x10004d10   | jmp      0x10004d10
+                                                          B187 0x10004d10-0x10004d10  n=1   in=3  out=0x10004d12   | fxch     st(1)
+                                                          B188 0x10004d12-0x10004d12  n=1   in=4  out=0x10004d16   | cmp      byte ptr [esi - 1], 0xfe
+                                                            B189 0x10004d16-0x10004d16  n=1   in=1  out=0x10004d24,0x10004d18   | jne      0x10004d24
+                                                              B190 0x10004d18-0x10004d21  n=5   in=1  out=0x10004d24   | fstp     st(1)
+                                                      B191 0x10004d24-0x10004d2a  n=3   in=3  out=0x10004d2d   | add      esi, 0x18
+                                                        B192 0x10004d2d-0x10004d2d  n=1   in=1  out=0x10004ccb,0x10004d2f   | jne      0x10004ccb
+                                                B193 0x10004d2f-0x10004d3f  n=11  in=2  out=-   | fstp     st(1)
+                                        B194 0x10004d42-0x10004d42  n=1   in=1  out=0x10004d45   | cmp      ebx, 4
+                                          B195 0x10004d45-0x10004d45  n=1   in=1  out=0x10004fd3,0x10004d4b   | jne      0x10004fd3
+                                            B196 0x10004d4b-0x10004d5b  n=8   in=1  out=0x10004d63   | fldz
+                                              B197 0x10004d63-0x10004d63  n=1   in=1  out=0x10004f65,0x10004d69   | jl       0x10004f65
+                                                B198 0x10004d69-0x10004d85  n=8   in=1  out=0x10004d89   | add      edx, -5
+                                                  B199 0x10004d89-0x10004d89  n=1   in=2  out=0x10004d8d [L]   | test     byte ptr [ecx - 0x46], 1
+                                                    B200 0x10004d8d-0x10004d8d  n=1   in=1  out=0x10004dbe,0x10004d8f   | jne      0x10004dbe
+                                                      B201 0x10004d8f-0x10004d92  n=2   in=1  out=0x10004d94   | mov      al, byte ptr [esi - 0x18]
+                                                        B202 0x10004d94-0x10004d94  n=1   in=1  out=0x10004d9e,0x10004d96   | je       0x10004d9e
+                                                          B203 0x10004d96-0x10004d96  n=1   in=1  out=0x10004d98   | cmp      al, 3
+                                                            B204 0x10004d98-0x10004d98  n=1   in=1  out=0x10004e72,0x10004d9e   | jne      0x10004e72
+                                                              B242 0x10004e72-0x10004e72  n=1   in=1  out=0x10004e74   | test     bl, bl
+                                                                B243 0x10004e74-0x10004e74  n=1   in=1  out=0x10004daa,0x10004e7a   | je       0x10004daa
+                                                                  B244 0x10004e7a-0x10004e7a  n=1   in=1  out=0x10004e7e   | cmp      dword ptr [ecx - 0x52], -1
+                                                                    B245 0x10004e7e-0x10004e7e  n=1   in=1  out=0x10004daa,0x10004e84   | jne      0x10004daa
+                                                                      B246 0x10004e84-0x10004e8b  n=4   in=1  out=0x10004e8e   | fxch     st(1)
+                                                                        B247 0x10004e8e-0x10004e8e  n=1   in=1  out=0x10004ea8,0x10004e90   | jp       0x10004ea8
+                                                                          B248 0x10004e90-0x10004e97  n=4   in=1  out=0x10004e9a   | fxch     st(2)
+                                                                            B249 0x10004e9a-0x10004e9a  n=1   in=1  out=0x10004ea6,0x10004e9c   | jne      0x10004ea6
+                                                                              B250 0x10004e9c-0x10004ea4  n=4   in=1  out=0x10004ea6   | mov      eax, dword ptr [ecx - 0x3d]
+                                                                              B251 0x10004ea6-0x10004ea6  n=1   in=2  out=0x10004ea8   | fxch     st(2)
+                                                                          B252 0x10004ea8-0x10004ea8  n=1   in=2  out=0x10004eaa   | fxch     st(1)
+                                                                            B253 0x10004eaa-0x10004eaa  n=1   in=1  out=0x10004daa   | jmp      0x10004daa
+                                                          B205 0x10004d9e-0x10004da8  n=6   in=2  out=0x10004daa   | fstp     st(2)
+                                                          B206 0x10004daa-0x10004daa  n=1   in=4  out=0x10004dae   | cmp      byte ptr [esi - 0x19], 2
+                                                            B207 0x10004dae-0x10004dae  n=1   in=1  out=0x10004dbe,0x10004db0   | jne      0x10004dbe
+                                                              B208 0x10004db0-0x10004dbc  n=6   in=1  out=0x10004dbe   | fstp     st(2)
+                                                      B209 0x10004dbe-0x10004dbe  n=1   in=3  out=0x10004dc2   | test     byte ptr [ecx - 0x15], 1
+                                                        B210 0x10004dc2-0x10004dc2  n=1   in=1  out=0x10004df2,0x10004dc4   | jne      0x10004df2
+                                                          B211 0x10004dc4-0x10004dc6  n=2   in=1  out=0x10004dc8   | mov      al, byte ptr [esi]
+                                                            B212 0x10004dc8-0x10004dc8  n=1   in=1  out=0x10004dd2,0x10004dca   | je       0x10004dd2
+                                                              B213 0x10004dca-0x10004dca  n=1   in=1  out=0x10004dcc   | cmp      al, 3
+                                                                B214 0x10004dcc-0x10004dcc  n=1   in=1  out=0x10004eaf,0x10004dd2   | jne      0x10004eaf
+                                                                  B254 0x10004eaf-0x10004eaf  n=1   in=1  out=0x10004eb1   | test     bl, bl
+                                                                    B255 0x10004eb1-0x10004eb1  n=1   in=1  out=0x10004dde,0x10004eb7   | je       0x10004dde
+                                                                      B256 0x10004eb7-0x10004eb7  n=1   in=1  out=0x10004ebb   | cmp      dword ptr [ecx - 0x21], -1
+                                                                        B257 0x10004ebb-0x10004ebb  n=1   in=1  out=0x10004dde,0x10004ec1   | jne      0x10004dde
+                                                                          B258 0x10004ec1-0x10004ec7  n=4   in=1  out=0x10004eca   | fxch     st(1)
+                                                                            B259 0x10004eca-0x10004eca  n=1   in=1  out=0x10004ee4,0x10004ecc   | jp       0x10004ee4
+                                                                              B260 0x10004ecc-0x10004ed3  n=4   in=1  out=0x10004ed6   | fxch     st(2)
+                                                                                B261 0x10004ed6-0x10004ed6  n=1   in=1  out=0x10004ee2,0x10004ed8   | jne      0x10004ee2
+                                                                                  B262 0x10004ed8-0x10004ee0  n=4   in=1  out=0x10004ee2   | mov      eax, dword ptr [ecx - 0xc]
+                                                                                  B263 0x10004ee2-0x10004ee2  n=1   in=2  out=0x10004ee4   | fxch     st(2)
+                                                                              B264 0x10004ee4-0x10004ee4  n=1   in=2  out=0x10004ee6   | fxch     st(1)
+                                                                                B265 0x10004ee6-0x10004ee6  n=1   in=1  out=0x10004dde   | jmp      0x10004dde
+                                                              B215 0x10004dd2-0x10004ddc  n=6   in=2  out=0x10004dde   | fstp     st(2)
+                                                              B216 0x10004dde-0x10004dde  n=1   in=4  out=0x10004de2   | cmp      byte ptr [esi - 1], 2
+                                                                B217 0x10004de2-0x10004de2  n=1   in=1  out=0x10004df2,0x10004de4   | jne      0x10004df2
+                                                                  B218 0x10004de4-0x10004df0  n=6   in=1  out=0x10004df2   | fstp     st(2)
+                                                          B219 0x10004df2-0x10004df2  n=1   in=3  out=0x10004df6   | test     byte ptr [ecx + 0x1c], 1
+                                                            B220 0x10004df6-0x10004df6  n=1   in=1  out=0x10004e26,0x10004df8   | jne      0x10004e26
+                                                              B221 0x10004df8-0x10004dfb  n=2   in=1  out=0x10004dfd   | mov      al, byte ptr [esi + 0x18]
+                                                                B222 0x10004dfd-0x10004dfd  n=1   in=1  out=0x10004e07,0x10004dff   | je       0x10004e07
+                                                                  B223 0x10004dff-0x10004dff  n=1   in=1  out=0x10004e01   | cmp      al, 3
+                                                                    B224 0x10004e01-0x10004e01  n=1   in=1  out=0x10004eeb,0x10004e07   | jne      0x10004eeb
+                                                                      B266 0x10004eeb-0x10004eeb  n=1   in=1  out=0x10004eed   | test     bl, bl
+                                                                        B267 0x10004eed-0x10004eed  n=1   in=1  out=0x10004e13,0x10004ef3   | je       0x10004e13
+                                                                          B268 0x10004ef3-0x10004ef3  n=1   in=1  out=0x10004ef7   | cmp      dword ptr [ecx + 0x10], -1
+                                                                            B269 0x10004ef7-0x10004ef7  n=1   in=1  out=0x10004e13,0x10004efd   | jne      0x10004e13
+                                                                              B270 0x10004efd-0x10004f04  n=4   in=1  out=0x10004f07   | fxch     st(1)
+                                                                                B271 0x10004f07-0x10004f07  n=1   in=1  out=0x10004f21,0x10004f09   | jp       0x10004f21
+                                                                                  B272 0x10004f09-0x10004f10  n=4   in=1  out=0x10004f13   | fxch     st(2)
+                                                                                    B273 0x10004f13-0x10004f13  n=1   in=1  out=0x10004f1f,0x10004f15   | jne      0x10004f1f
+                                                                                      B274 0x10004f15-0x10004f1d  n=4   in=1  out=0x10004f1f   | mov      eax, dword ptr [ecx + 0x25]
+                                                                                      B275 0x10004f1f-0x10004f1f  n=1   in=2  out=0x10004f21   | fxch     st(2)
+                                                                                  B276 0x10004f21-0x10004f21  n=1   in=2  out=0x10004f23   | fxch     st(1)
+                                                                                    B277 0x10004f23-0x10004f23  n=1   in=1  out=0x10004e13   | jmp      0x10004e13
+                                                                  B225 0x10004e07-0x10004e11  n=6   in=2  out=0x10004e13   | fstp     st(2)
+                                                                  B226 0x10004e13-0x10004e13  n=1   in=4  out=0x10004e17   | cmp      byte ptr [esi + 0x17], 2
+                                                                    B227 0x10004e17-0x10004e17  n=1   in=1  out=0x10004e26,0x10004e19   | jne      0x10004e26
+                                                                      B228 0x10004e19-0x10004e24  n=6   in=1  out=0x10004e26   | fstp     st(2)
+                                                              B229 0x10004e26-0x10004e26  n=1   in=3  out=0x10004e2a   | test     byte ptr [ecx + 0x4d], 1
+                                                                B230 0x10004e2a-0x10004e2a  n=1   in=1  out=0x10004e5b,0x10004e2c   | jne      0x10004e5b
+                                                                  B231 0x10004e2c-0x10004e2f  n=2   in=1  out=0x10004e31   | mov      al, byte ptr [esi + 0x30]
+                                                                    B232 0x10004e31-0x10004e31  n=1   in=1  out=0x10004e3b,0x10004e33   | je       0x10004e3b
+                                                                      B233 0x10004e33-0x10004e33  n=1   in=1  out=0x10004e35   | cmp      al, 3
+                                                                        B234 0x10004e35-0x10004e35  n=1   in=1  out=0x10004f28,0x10004e3b   | jne      0x10004f28
+                                                                          B278 0x10004f28-0x10004f28  n=1   in=1  out=0x10004f2a   | test     bl, bl
+                                                                            B279 0x10004f2a-0x10004f2a  n=1   in=1  out=0x10004e47,0x10004f30   | je       0x10004e47
+                                                                              B280 0x10004f30-0x10004f30  n=1   in=1  out=0x10004f34   | cmp      dword ptr [ecx + 0x41], -1
+                                                                                B281 0x10004f34-0x10004f34  n=1   in=1  out=0x10004e47,0x10004f3a   | jne      0x10004e47
+                                                                                  B282 0x10004f3a-0x10004f41  n=4   in=1  out=0x10004f44   | fxch     st(1)
+                                                                                    B283 0x10004f44-0x10004f44  n=1   in=1  out=0x10004f5e,0x10004f46   | jp       0x10004f5e
+                                                                                      B284 0x10004f46-0x10004f4d  n=4   in=1  out=0x10004f50   | fxch     st(2)
+                                                                                        B285 0x10004f50-0x10004f50  n=1   in=1  out=0x10004f5c,0x10004f52   | jne      0x10004f5c
+                                                                                          B286 0x10004f52-0x10004f5a  n=4   in=1  out=0x10004f5c   | mov      eax, dword ptr [ecx + 0x56]
+                                                                                          B287 0x10004f5c-0x10004f5c  n=1   in=2  out=0x10004f5e   | fxch     st(2)
+                                                                                      B288 0x10004f5e-0x10004f5e  n=1   in=2  out=0x10004f60   | fxch     st(1)
+                                                                                        B289 0x10004f60-0x10004f60  n=1   in=1  out=0x10004e47   | jmp      0x10004e47
+                                                                      B235 0x10004e3b-0x10004e45  n=6   in=2  out=0x10004e47   | fstp     st(2)
+                                                                      B236 0x10004e47-0x10004e47  n=1   in=4  out=0x10004e4b   | cmp      byte ptr [esi + 0x2f], 2
+                                                                        B237 0x10004e4b-0x10004e4b  n=1   in=1  out=0x10004e5b,0x10004e4d   | jne      0x10004e5b
+                                                                          B238 0x10004e4d-0x10004e59  n=6   in=1  out=0x10004e5b   | fstp     st(2)
+                                                                  B239 0x10004e5b-0x10004e64  n=3   in=3  out=0x10004e67   | add      esi, 0x60
+                                                                    B240 0x10004e67-0x10004e67  n=1   in=1  out=0x10004d89,0x10004e6d   | jne      0x10004d89
+                                                                      B241 0x10004e6d-0x10004e6d  n=1   in=1  out=0x10004f68   | jmp      0x10004f68
+                                                B290 0x10004f65-0x10004f65  n=1   in=1  out=0x10004f68   | mov      edi, dword ptr [ebp + 0xc]
+                                                B291 0x10004f68-0x10004f6c  n=2   in=2  out=0x10004f70   | mov      eax, dword ptr [esp + 0x18]
+                                                  B292 0x10004f70-0x10004f70  n=1   in=1  out=0x10004fcb,0x10004f72   | jae      0x10004fcb
+                                                    B293 0x10004f72-0x10004f8e  n=9   in=1  out=0x10004f90   | mov      edx, dword ptr [esp + 0x14]
+                                                      B294 0x10004f90-0x10004f90  n=1   in=2  out=0x10004f94 [L]   | test     byte ptr [ecx - 0x15], 1
+                                                        B295 0x10004f94-0x10004f94  n=1   in=1  out=0x10004fc0,0x10004f96   | jne      0x10004fc0
+                                                          B296 0x10004f96-0x10004f98  n=2   in=1  out=0x10004f9a   | mov      al, byte ptr [esi]
+                                                            B297 0x10004f9a-0x10004f9a  n=1   in=1  out=0x10004fa0,0x10004f9c   | je       0x10004fa0
+                                                              B298 0x10004f9c-0x10004f9c  n=1   in=1  out=0x10004f9e   | cmp      al, 3
+                                                                B299 0x10004f9e-0x10004f9e  n=1   in=1  out=0x10004fde,0x10004fa0   | jne      0x10004fde
+                                                                  B308 0x10004fde-0x10004fde  n=1   in=1  out=0x10004fe0   | test     bl, bl
+                                                                    B309 0x10004fe0-0x10004fe0  n=1   in=1  out=0x10004fac,0x10004fe2   | je       0x10004fac
+                                                                      B310 0x10004fe2-0x10004fe2  n=1   in=1  out=0x10004fe6   | cmp      dword ptr [ecx - 0x21], -1
+                                                                        B311 0x10004fe6-0x10004fe6  n=1   in=1  out=0x10004fac,0x10004fe8   | jne      0x10004fac
+                                                                          B312 0x10004fe8-0x10004fee  n=4   in=1  out=0x10004ff1   | fxch     st(1)
+                                                                            B313 0x10004ff1-0x10004ff1  n=1   in=1  out=0x1000500b,0x10004ff3   | jp       0x1000500b
+                                                                              B314 0x10004ff3-0x10004ffa  n=4   in=1  out=0x10004ffd   | fxch     st(2)
+                                                                                B315 0x10004ffd-0x10004ffd  n=1   in=1  out=0x10005009,0x10004fff   | jne      0x10005009
+                                                                                  B316 0x10004fff-0x10005007  n=4   in=1  out=0x10005009   | mov      eax, dword ptr [ecx - 0xc]
+                                                                                  B317 0x10005009-0x10005009  n=1   in=2  out=0x1000500b   | fxch     st(2)
+                                                                              B318 0x1000500b-0x1000500b  n=1   in=2  out=0x1000500d   | fxch     st(1)
+                                                                                B319 0x1000500d-0x1000500d  n=1   in=1  out=0x10004fac   | jmp      0x10004fac
+                                                              B300 0x10004fa0-0x10004faa  n=6   in=2  out=0x10004fac   | fstp     st(2)
+                                                              B301 0x10004fac-0x10004fac  n=1   in=4  out=0x10004fb0   | cmp      byte ptr [esi - 1], 2
+                                                                B302 0x10004fb0-0x10004fb0  n=1   in=1  out=0x10004fc0,0x10004fb2   | jne      0x10004fc0
+                                                                  B303 0x10004fb2-0x10004fbe  n=6   in=1  out=0x10004fc0   | fstp     st(2)
+                                                          B304 0x10004fc0-0x10004fc6  n=3   in=3  out=0x10004fc9   | add      esi, 0x18
+                                                            B305 0x10004fc9-0x10004fc9  n=1   in=1  out=0x10004f90,0x10004fcb   | jne      0x10004f90
+                                                    B306 0x10004fcb-0x10004fd1  n=4   in=2  out=0x10004fd3   | fstp     st(2)
+                                B307 0x10004fd3-0x10004fdb  n=7   in=4  out=-   | xor      eax, eax
+        B320 0x1000500f-0x10005018  n=7   in=6  out=-   | pop      edi
+
+## 块清单（按地址序；in=前驱数, out=后继）
+B0   0x100048a0-0x100048b5 n=12  in=0  <- -> 0x100048ba   | push     ebp
+B1   0x100048ba-0x100048d6 n=11  in=1  <-0x100048a0 -> 0x100048db   | mov      edx, dword ptr [ebp + 0x10]
+B2   0x100048db-0x100048f7 n=10  in=1  <-0x100048ba -> 0x100048fb   | mov      eax, dword ptr [esi + 0x20]
+B3   0x100048fb-0x100048fb n=1   in=1  <-0x100048db -> 0x1000500f,0x10004901   | je       0x1000500f
+B4   0x10004901-0x10004905 n=2   in=1  <-0x100048fb -> 0x10004907   | mov      edi, dword ptr [esp + 0x14]
+B5   0x10004907-0x10004907 n=1   in=1  <-0x10004901 -> 0x1000500f,0x1000490d   | je       0x1000500f
+B6   0x1000490d-0x1000490d n=1   in=1  <-0x10004907 -> 0x1000490f   | test     eax, eax
+B7   0x1000490f-0x1000490f n=1   in=1  <-0x1000490d -> 0x1000500f,0x10004915   | je       0x1000500f
+B8   0x10004915-0x10004915 n=1   in=1  <-0x1000490f -> 0x10004917   | test     edx, edx
+B9   0x10004917-0x10004917 n=1   in=1  <-0x10004915 -> 0x1000500f,0x1000491d   | je       0x1000500f
+B10  0x1000491d-0x1000491d n=1   in=1  <-0x10004917 -> 0x1000491f   | test     ecx, ecx
+B11  0x1000491f-0x1000491f n=1   in=1  <-0x1000491d -> 0x1000500f,0x10004925   | je       0x1000500f
+B12  0x10004925-0x10004925 n=1   in=1  <-0x1000491f -> 0x10004927   | test     esi, esi
+B13  0x10004927-0x10004927 n=1   in=1  <-0x10004925 -> 0x1000500f,0x1000492d   | je       0x1000500f
+B14  0x1000492d-0x1000492d n=1   in=1  <-0x10004927 -> 0x10004930   | cmp      ebx, 1
+B15  0x10004930-0x10004930 n=1   in=1  <-0x1000492d -> 0x100049c8,0x10004936   | jne      0x100049c8
+B16  0x10004936-0x10004936 n=1   in=1  <-0x10004930 -> 0x10004938   | test     esi, esi
+B17  0x10004938-0x10004938 n=1   in=1  <-0x10004936 -> 0x10004fd3,0x1000493e   | jbe      0x10004fd3
+B18  0x1000493e-0x10004946 n=4   in=1  <-0x10004938 -> 0x1000494a   | fld1
+B19  0x1000494a-0x1000494a n=1   in=2  <-0x1000493e,0x100049b9 -> 0x1000494e   | test     byte ptr [ecx + 0xc], 1
+B20  0x1000494e-0x1000494e n=1   in=1  <-0x1000494a -> 0x100049b1,0x10004950   | je       0x100049b1
+B21  0x10004950-0x10004962 n=8   in=1  <-0x1000494e -> 0x10004964   | mov      eax, dword ptr [ecx + 4]
+B22  0x10004964-0x10004964 n=1   in=1  <-0x10004950 -> 0x100049b1,0x10004966   | je       0x100049b1
+B23  0x10004966-0x10004966 n=1   in=1  <-0x10004964 -> 0x1000496a   | cmp      dword ptr [ecx + 8], -1
+B24  0x1000496a-0x1000496a n=1   in=1  <-0x10004966 -> 0x100049b1,0x1000496c   | jne      0x100049b1
+B25  0x1000496c-0x1000496f n=2   in=1  <-0x1000496a -> 0x10004971   | add      esi, 3
+B26  0x10004971-0x10004971 n=1   in=1  <-0x1000496c -> 0x100049b1,0x10004973   | jg       0x100049b1
+B27  0x10004973-0x10004978 n=3   in=1  <-0x10004971 -> 0x1000497c   | mov      eax, esi
+B28  0x1000497c-0x1000497c n=1   in=2  <-0x10004973,0x100049af -> 0x10004980   | test     byte ptr [edx - 0x15], 1
+B29  0x10004980-0x10004980 n=1   in=1  <-0x1000497c -> 0x100049a6,0x10004982   | jne      0x100049a6
+B30  0x10004982-0x10004989 n=4   in=1  <-0x10004980 -> 0x1000498c   | fld      qword ptr [ecx + 0x11]
+B31  0x1000498c-0x1000498c n=1   in=1  <-0x10004982 -> 0x100049a6,0x1000498e   | jne      0x100049a6
+B32  0x1000498e-0x1000499b n=6   in=1  <-0x1000498c -> 0x1000499e   | mov      eax, dword ptr [ecx]
+B33  0x1000499e-0x1000499e n=1   in=1  <-0x1000498e -> 0x100049a6,0x100049a0   | jp       0x100049a6
+B34  0x100049a0-0x100049a3 n=2   in=1  <-0x1000499e -> 0x100049a6   | mov      eax, dword ptr [edx - 0xc]
+B35  0x100049a6-0x100049ac n=3   in=4  <-0x10004980,0x1000498c,0x1000499e,0x100049a0 -> 0x100049af   | add      esi, 2
+B36  0x100049af-0x100049af n=1   in=1  <-0x100049a6 -> 0x1000497c,0x100049b1   | jle      0x1000497c
+B37  0x100049b1-0x100049b4 n=2   in=5  <-0x1000494e,0x10004964,0x1000496a,0x10004971,0x100049af -> 0x100049b9   | add      ecx, 0x5d
+B38  0x100049b9-0x100049b9 n=1   in=1  <-0x100049b1 -> 0x1000494a,0x100049bb   | jne      0x1000494a
+B39  0x100049bb-0x100049c5 n=8   in=1  <-0x100049b9 -> -   | fstp     st(0)
+B40  0x100049c8-0x100049c8 n=1   in=1  <-0x10004930 -> 0x100049cb   | cmp      ebx, 2
+B41  0x100049cb-0x100049cb n=1   in=1  <-0x100049c8 -> 0x10004a63,0x100049d1   | jne      0x10004a63
+B42  0x100049d1-0x100049d1 n=1   in=1  <-0x100049cb -> 0x100049d3   | test     esi, esi
+B43  0x100049d3-0x100049d3 n=1   in=1  <-0x100049d1 -> 0x10004fd3,0x100049d9   | jbe      0x10004fd3
+B44  0x100049d9-0x100049e1 n=4   in=1  <-0x100049d3 -> 0x100049e5   | fld1
+B45  0x100049e5-0x100049e5 n=1   in=2  <-0x100049d9,0x10004a54 -> 0x100049e9   | test     byte ptr [ecx + 0xc], 1
+B46  0x100049e9-0x100049e9 n=1   in=1  <-0x100049e5 -> 0x10004a4c,0x100049eb   | je       0x10004a4c
+B47  0x100049eb-0x100049fd n=8   in=1  <-0x100049e9 -> 0x100049ff   | mov      eax, dword ptr [ecx + 4]
+B48  0x100049ff-0x100049ff n=1   in=1  <-0x100049eb -> 0x10004a4c,0x10004a01   | je       0x10004a4c
+B49  0x10004a01-0x10004a01 n=1   in=1  <-0x100049ff -> 0x10004a05   | cmp      dword ptr [ecx + 8], 1
+B50  0x10004a05-0x10004a05 n=1   in=1  <-0x10004a01 -> 0x10004a4c,0x10004a07   | jne      0x10004a4c
+B51  0x10004a07-0x10004a0a n=2   in=1  <-0x10004a05 -> 0x10004a0c   | add      esi, 3
+B52  0x10004a0c-0x10004a0c n=1   in=1  <-0x10004a07 -> 0x10004a4c,0x10004a0e   | jg       0x10004a4c
+B53  0x10004a0e-0x10004a13 n=3   in=1  <-0x10004a0c -> 0x10004a17   | mov      eax, esi
+B54  0x10004a17-0x10004a17 n=1   in=2  <-0x10004a0e,0x10004a4a -> 0x10004a1b   | test     byte ptr [edx - 0xd], 1
+B55  0x10004a1b-0x10004a1b n=1   in=1  <-0x10004a17 -> 0x10004a41,0x10004a1d   | jne      0x10004a41
+B56  0x10004a1d-0x10004a24 n=4   in=1  <-0x10004a1b -> 0x10004a27   | fld      qword ptr [ecx + 0x1d]
+B57  0x10004a27-0x10004a27 n=1   in=1  <-0x10004a1d -> 0x10004a41,0x10004a29   | jp       0x10004a41
+B58  0x10004a29-0x10004a36 n=6   in=1  <-0x10004a27 -> 0x10004a39   | mov      eax, dword ptr [ecx]
+B59  0x10004a39-0x10004a39 n=1   in=1  <-0x10004a29 -> 0x10004a41,0x10004a3b   | jne      0x10004a41
+B60  0x10004a3b-0x10004a3e n=2   in=1  <-0x10004a39 -> 0x10004a41   | mov      eax, dword ptr [edx - 8]
+B61  0x10004a41-0x10004a47 n=3   in=4  <-0x10004a1b,0x10004a27,0x10004a39,0x10004a3b -> 0x10004a4a   | add      esi, 2
+B62  0x10004a4a-0x10004a4a n=1   in=1  <-0x10004a41 -> 0x10004a17,0x10004a4c   | jle      0x10004a17
+B63  0x10004a4c-0x10004a4f n=2   in=5  <-0x100049e9,0x100049ff,0x10004a05,0x10004a0c,0x10004a4a -> 0x10004a54   | add      ecx, 0x5d
+B64  0x10004a54-0x10004a54 n=1   in=1  <-0x10004a4c -> 0x100049e5,0x10004a56   | jne      0x100049e5
+B65  0x10004a56-0x10004a60 n=8   in=1  <-0x10004a54 -> -   | fstp     st(0)
+B66  0x10004a63-0x10004a63 n=1   in=1  <-0x100049cb -> 0x10004a66   | cmp      ebx, 3
+B67  0x10004a66-0x10004a66 n=1   in=1  <-0x10004a63 -> 0x10004d42,0x10004a6c   | jne      0x10004d42
+B68  0x10004a6c-0x10004a7c n=8   in=1  <-0x10004a66 -> 0x10004a84   | fldz
+B69  0x10004a84-0x10004a84 n=1   in=1  <-0x10004a6c -> 0x10004c98,0x10004a8a   | jl       0x10004c98
+B70  0x10004a8a-0x10004aa6 n=8   in=1  <-0x10004a84 -> 0x10004aaa   | add      edx, -5
+B71  0x10004aaa-0x10004aaa n=1   in=1  <-0x10004a8a -> 0x10004ab0   | jmp      0x10004ab0
+B72  0x10004aac-0x10004aae n=2   in=1  <-0x10004c90 -> 0x10004ab0   | fxch     st(1)
+B73  0x10004ab0-0x10004ab0 n=1   in=2  <-0x10004aaa,0x10004aac -> 0x10004ab4   | test     byte ptr [ecx - 0x46], 1
+B74  0x10004ab4-0x10004ab4 n=1   in=1  <-0x10004ab0 -> 0x10004ae5,0x10004ab6   | jne      0x10004ae5
+B75  0x10004ab6-0x10004ab9 n=2   in=1  <-0x10004ab4 -> 0x10004abb   | mov      al, byte ptr [esi - 0x18]
+B76  0x10004abb-0x10004abb n=1   in=1  <-0x10004ab6 -> 0x10004ac5,0x10004abd   | je       0x10004ac5
+B77  0x10004abd-0x10004abd n=1   in=1  <-0x10004abb -> 0x10004abf   | cmp      al, 3
+B78  0x10004abf-0x10004abf n=1   in=1  <-0x10004abd -> 0x10004b8d,0x10004ac5   | jne      0x10004b8d
+B79  0x10004ac5-0x10004acf n=6   in=2  <-0x10004abb,0x10004abf -> 0x10004ad1   | fstp     st(2)
+B80  0x10004ad1-0x10004ad1 n=1   in=4  <-0x10004ac5,0x10004b8f,0x10004b99,0x10004bc5 -> 0x10004ad5   | cmp      byte ptr [esi - 0x19], 0xfe
+B81  0x10004ad5-0x10004ad5 n=1   in=1  <-0x10004ad1 -> 0x10004ae5,0x10004ad7   | jne      0x10004ae5
+B82  0x10004ad7-0x10004ae3 n=6   in=1  <-0x10004ad5 -> 0x10004ae5   | fstp     st(2)
+B83  0x10004ae5-0x10004ae5 n=1   in=3  <-0x10004ab4,0x10004ad5,0x10004ad7 -> 0x10004ae9   | test     byte ptr [ecx - 0x15], 1
+B84  0x10004ae9-0x10004ae9 n=1   in=1  <-0x10004ae5 -> 0x10004b19,0x10004aeb   | jne      0x10004b19
+B85  0x10004aeb-0x10004aed n=2   in=1  <-0x10004ae9 -> 0x10004aef   | mov      al, byte ptr [esi]
+B86  0x10004aef-0x10004aef n=1   in=1  <-0x10004aeb -> 0x10004af9,0x10004af1   | je       0x10004af9
+B87  0x10004af1-0x10004af1 n=1   in=1  <-0x10004aef -> 0x10004af3   | cmp      al, 3
+B88  0x10004af3-0x10004af3 n=1   in=1  <-0x10004af1 -> 0x10004bca,0x10004af9   | jne      0x10004bca
+B89  0x10004af9-0x10004b03 n=6   in=2  <-0x10004aef,0x10004af3 -> 0x10004b05   | fstp     st(2)
+B90  0x10004b05-0x10004b05 n=1   in=4  <-0x10004af9,0x10004bcc,0x10004bd6,0x10004c01 -> 0x10004b09   | cmp      byte ptr [esi - 1], 0xfe
+B91  0x10004b09-0x10004b09 n=1   in=1  <-0x10004b05 -> 0x10004b19,0x10004b0b   | jne      0x10004b19
+B92  0x10004b0b-0x10004b17 n=6   in=1  <-0x10004b09 -> 0x10004b19   | fstp     st(2)
+B93  0x10004b19-0x10004b19 n=1   in=3  <-0x10004ae9,0x10004b09,0x10004b0b -> 0x10004b1d   | test     byte ptr [ecx + 0x1c], 1
+B94  0x10004b1d-0x10004b1d n=1   in=1  <-0x10004b19 -> 0x10004b4d,0x10004b1f   | jne      0x10004b4d
+B95  0x10004b1f-0x10004b22 n=2   in=1  <-0x10004b1d -> 0x10004b24   | mov      al, byte ptr [esi + 0x18]
+B96  0x10004b24-0x10004b24 n=1   in=1  <-0x10004b1f -> 0x10004b2e,0x10004b26   | je       0x10004b2e
+B97  0x10004b26-0x10004b26 n=1   in=1  <-0x10004b24 -> 0x10004b28   | cmp      al, 3
+B98  0x10004b28-0x10004b28 n=1   in=1  <-0x10004b26 -> 0x10004c06,0x10004b2e   | jne      0x10004c06
+B99  0x10004b2e-0x10004b38 n=6   in=2  <-0x10004b24,0x10004b28 -> 0x10004b3a   | fstp     st(2)
+B100 0x10004b3a-0x10004b3a n=1   in=4  <-0x10004b2e,0x10004c08,0x10004c12,0x10004c3e -> 0x10004b3e   | cmp      byte ptr [esi + 0x17], 0xfe
+B101 0x10004b3e-0x10004b3e n=1   in=1  <-0x10004b3a -> 0x10004b4d,0x10004b40   | jne      0x10004b4d
+B102 0x10004b40-0x10004b4b n=6   in=1  <-0x10004b3e -> 0x10004b4d   | fstp     st(2)
+B103 0x10004b4d-0x10004b4d n=1   in=3  <-0x10004b1d,0x10004b3e,0x10004b40 -> 0x10004b51   | test     byte ptr [ecx + 0x4d], 1
+B104 0x10004b51-0x10004b51 n=1   in=1  <-0x10004b4d -> 0x10004c80,0x10004b57   | jne      0x10004c80
+B105 0x10004b57-0x10004b5a n=2   in=1  <-0x10004b51 -> 0x10004b5c   | mov      al, byte ptr [esi + 0x30]
+B106 0x10004b5c-0x10004b5c n=1   in=1  <-0x10004b57 -> 0x10004b66,0x10004b5e   | je       0x10004b66
+B107 0x10004b5e-0x10004b5e n=1   in=1  <-0x10004b5c -> 0x10004b60   | cmp      al, 3
+B108 0x10004b60-0x10004b60 n=1   in=1  <-0x10004b5e -> 0x10004c43,0x10004b66   | jne      0x10004c43
+B109 0x10004b66-0x10004b70 n=6   in=2  <-0x10004b5c,0x10004b60 -> 0x10004b72   | fstp     st(2)
+B110 0x10004b72-0x10004b72 n=1   in=4  <-0x10004b66,0x10004c45,0x10004c4f,0x10004c7b -> 0x10004b76   | cmp      byte ptr [esi + 0x2f], 0xfe
+B111 0x10004b76-0x10004b76 n=1   in=1  <-0x10004b72 -> 0x10004c80,0x10004b7c   | jne      0x10004c80
+B112 0x10004b7c-0x10004b85 n=5   in=1  <-0x10004b76 -> 0x10004b88   | fstp     st(2)
+B113 0x10004b88-0x10004b88 n=1   in=1  <-0x10004b7c -> 0x10004c84   | jmp      0x10004c84
+B114 0x10004b8d-0x10004b8d n=1   in=1  <-0x10004abf -> 0x10004b8f   | test     bl, bl
+B115 0x10004b8f-0x10004b8f n=1   in=1  <-0x10004b8d -> 0x10004ad1,0x10004b95   | je       0x10004ad1
+B116 0x10004b95-0x10004b95 n=1   in=1  <-0x10004b8f -> 0x10004b99   | cmp      dword ptr [ecx - 0x52], 1
+B117 0x10004b99-0x10004b99 n=1   in=1  <-0x10004b95 -> 0x10004ad1,0x10004b9f   | jne      0x10004ad1
+B118 0x10004b9f-0x10004ba6 n=4   in=1  <-0x10004b99 -> 0x10004ba9   | fxch     st(1)
+B119 0x10004ba9-0x10004ba9 n=1   in=1  <-0x10004b9f -> 0x10004bc3,0x10004bab   | jp       0x10004bc3
+B120 0x10004bab-0x10004bb2 n=4   in=1  <-0x10004ba9 -> 0x10004bb5   | fxch     st(2)
+B121 0x10004bb5-0x10004bb5 n=1   in=1  <-0x10004bab -> 0x10004bc1,0x10004bb7   | jne      0x10004bc1
+B122 0x10004bb7-0x10004bbf n=4   in=1  <-0x10004bb5 -> 0x10004bc1   | mov      eax, dword ptr [ecx - 0x3d]
+B123 0x10004bc1-0x10004bc1 n=1   in=2  <-0x10004bb5,0x10004bb7 -> 0x10004bc3   | fxch     st(2)
+B124 0x10004bc3-0x10004bc3 n=1   in=2  <-0x10004ba9,0x10004bc1 -> 0x10004bc5   | fxch     st(1)
+B125 0x10004bc5-0x10004bc5 n=1   in=1  <-0x10004bc3 -> 0x10004ad1   | jmp      0x10004ad1
+B126 0x10004bca-0x10004bca n=1   in=1  <-0x10004af3 -> 0x10004bcc   | test     bl, bl
+B127 0x10004bcc-0x10004bcc n=1   in=1  <-0x10004bca -> 0x10004b05,0x10004bd2   | je       0x10004b05
+B128 0x10004bd2-0x10004bd2 n=1   in=1  <-0x10004bcc -> 0x10004bd6   | cmp      dword ptr [ecx - 0x21], 1
+B129 0x10004bd6-0x10004bd6 n=1   in=1  <-0x10004bd2 -> 0x10004b05,0x10004bdc   | jne      0x10004b05
+B130 0x10004bdc-0x10004be2 n=4   in=1  <-0x10004bd6 -> 0x10004be5   | fxch     st(1)
+B131 0x10004be5-0x10004be5 n=1   in=1  <-0x10004bdc -> 0x10004bff,0x10004be7   | jp       0x10004bff
+B132 0x10004be7-0x10004bee n=4   in=1  <-0x10004be5 -> 0x10004bf1   | fxch     st(2)
+B133 0x10004bf1-0x10004bf1 n=1   in=1  <-0x10004be7 -> 0x10004bfd,0x10004bf3   | jne      0x10004bfd
+B134 0x10004bf3-0x10004bfb n=4   in=1  <-0x10004bf1 -> 0x10004bfd   | mov      eax, dword ptr [ecx - 0xc]
+B135 0x10004bfd-0x10004bfd n=1   in=2  <-0x10004bf1,0x10004bf3 -> 0x10004bff   | fxch     st(2)
+B136 0x10004bff-0x10004bff n=1   in=2  <-0x10004be5,0x10004bfd -> 0x10004c01   | fxch     st(1)
+B137 0x10004c01-0x10004c01 n=1   in=1  <-0x10004bff -> 0x10004b05   | jmp      0x10004b05
+B138 0x10004c06-0x10004c06 n=1   in=1  <-0x10004b28 -> 0x10004c08   | test     bl, bl
+B139 0x10004c08-0x10004c08 n=1   in=1  <-0x10004c06 -> 0x10004b3a,0x10004c0e   | je       0x10004b3a
+B140 0x10004c0e-0x10004c0e n=1   in=1  <-0x10004c08 -> 0x10004c12   | cmp      dword ptr [ecx + 0x10], 1
+B141 0x10004c12-0x10004c12 n=1   in=1  <-0x10004c0e -> 0x10004b3a,0x10004c18   | jne      0x10004b3a
+B142 0x10004c18-0x10004c1f n=4   in=1  <-0x10004c12 -> 0x10004c22   | fxch     st(1)
+B143 0x10004c22-0x10004c22 n=1   in=1  <-0x10004c18 -> 0x10004c3c,0x10004c24   | jp       0x10004c3c
+B144 0x10004c24-0x10004c2b n=4   in=1  <-0x10004c22 -> 0x10004c2e   | fxch     st(2)
+B145 0x10004c2e-0x10004c2e n=1   in=1  <-0x10004c24 -> 0x10004c3a,0x10004c30   | jne      0x10004c3a
+B146 0x10004c30-0x10004c38 n=4   in=1  <-0x10004c2e -> 0x10004c3a   | mov      eax, dword ptr [ecx + 0x25]
+B147 0x10004c3a-0x10004c3a n=1   in=2  <-0x10004c2e,0x10004c30 -> 0x10004c3c   | fxch     st(2)
+B148 0x10004c3c-0x10004c3c n=1   in=2  <-0x10004c22,0x10004c3a -> 0x10004c3e   | fxch     st(1)
+B149 0x10004c3e-0x10004c3e n=1   in=1  <-0x10004c3c -> 0x10004b3a   | jmp      0x10004b3a
+B150 0x10004c43-0x10004c43 n=1   in=1  <-0x10004b60 -> 0x10004c45   | test     bl, bl
+B151 0x10004c45-0x10004c45 n=1   in=1  <-0x10004c43 -> 0x10004b72,0x10004c4b   | je       0x10004b72
+B152 0x10004c4b-0x10004c4b n=1   in=1  <-0x10004c45 -> 0x10004c4f   | cmp      dword ptr [ecx + 0x41], 1
+B153 0x10004c4f-0x10004c4f n=1   in=1  <-0x10004c4b -> 0x10004b72,0x10004c55   | jne      0x10004b72
+B154 0x10004c55-0x10004c5c n=4   in=1  <-0x10004c4f -> 0x10004c5f   | fxch     st(1)
+B155 0x10004c5f-0x10004c5f n=1   in=1  <-0x10004c55 -> 0x10004c79,0x10004c61   | jp       0x10004c79
+B156 0x10004c61-0x10004c68 n=4   in=1  <-0x10004c5f -> 0x10004c6b   | fxch     st(2)
+B157 0x10004c6b-0x10004c6b n=1   in=1  <-0x10004c61 -> 0x10004c77,0x10004c6d   | jne      0x10004c77
+B158 0x10004c6d-0x10004c75 n=4   in=1  <-0x10004c6b -> 0x10004c77   | mov      eax, dword ptr [ecx + 0x56]
+B159 0x10004c77-0x10004c77 n=1   in=2  <-0x10004c6b,0x10004c6d -> 0x10004c79   | fxch     st(2)
+B160 0x10004c79-0x10004c79 n=1   in=2  <-0x10004c5f,0x10004c77 -> 0x10004c7b   | fxch     st(1)
+B161 0x10004c7b-0x10004c7b n=1   in=1  <-0x10004c79 -> 0x10004b72   | jmp      0x10004b72
+B162 0x10004c80-0x10004c82 n=2   in=2  <-0x10004b51,0x10004b76 -> 0x10004c84   | fxch     st(2)
+B163 0x10004c84-0x10004c8d n=3   in=2  <-0x10004b88,0x10004c80 -> 0x10004c90   | add      esi, 0x60
+B164 0x10004c90-0x10004c90 n=1   in=1  <-0x10004c84 -> 0x10004aac,0x10004c96   | jne      0x10004aac
+B165 0x10004c96-0x10004c96 n=1   in=1  <-0x10004c90 -> 0x10004c9f   | jmp      0x10004c9f
+B166 0x10004c98-0x10004c9d n=3   in=1  <-0x10004a84 -> 0x10004c9f   | mov      edi, dword ptr [ebp + 0xc]
+B167 0x10004c9f-0x10004ca3 n=2   in=2  <-0x10004c96,0x10004c98 -> 0x10004ca7   | mov      eax, dword ptr [esp + 0x18]
+B168 0x10004ca7-0x10004ca7 n=1   in=1  <-0x10004c9f -> 0x10004d2f,0x10004cad   | jae      0x10004d2f
+B169 0x10004cad-0x10004cc9 n=9   in=1  <-0x10004ca7 -> 0x10004ccb   | mov      edx, dword ptr [esp + 0x14]
+B170 0x10004ccb-0x10004ccb n=1   in=2  <-0x10004cad,0x10004d2d -> 0x10004ccf   | test     byte ptr [ecx - 0x15], 1
+B171 0x10004ccf-0x10004ccf n=1   in=1  <-0x10004ccb -> 0x10004d24,0x10004cd1   | jne      0x10004d24
+B172 0x10004cd1-0x10004cd3 n=2   in=1  <-0x10004ccf -> 0x10004cd5   | mov      al, byte ptr [esi]
+B173 0x10004cd5-0x10004cd5 n=1   in=1  <-0x10004cd1 -> 0x10004cdb,0x10004cd7   | je       0x10004cdb
+B174 0x10004cd7-0x10004cd7 n=1   in=1  <-0x10004cd5 -> 0x10004cd9   | cmp      al, 3
+B175 0x10004cd9-0x10004cd9 n=1   in=1  <-0x10004cd7 -> 0x10004ce7,0x10004cdb   | jne      0x10004ce7
+B176 0x10004cdb-0x10004ce3 n=5   in=2  <-0x10004cd5,0x10004cd9 -> 0x10004ce5   | fstp     st(1)
+B177 0x10004ce5-0x10004ce5 n=1   in=1  <-0x10004cdb -> 0x10004d10   | jmp      0x10004d10
+B178 0x10004ce7-0x10004ce7 n=1   in=1  <-0x10004cd9 -> 0x10004ce9   | test     bl, bl
+B179 0x10004ce9-0x10004ce9 n=1   in=1  <-0x10004ce7 -> 0x10004d12,0x10004ceb   | je       0x10004d12
+B180 0x10004ceb-0x10004ceb n=1   in=1  <-0x10004ce9 -> 0x10004cef   | cmp      dword ptr [ecx - 0x21], 1
+B181 0x10004cef-0x10004cef n=1   in=1  <-0x10004ceb -> 0x10004d12,0x10004cf1   | jne      0x10004d12
+B182 0x10004cf1-0x10004cf5 n=3   in=1  <-0x10004cef -> 0x10004cf8   | fcom     qword ptr [ecx]
+B183 0x10004cf8-0x10004cf8 n=1   in=1  <-0x10004cf1 -> 0x10004d12,0x10004cfa   | jp       0x10004d12
+B184 0x10004cfa-0x10004d01 n=4   in=1  <-0x10004cf8 -> 0x10004d04   | fxch     st(1)
+B185 0x10004d04-0x10004d04 n=1   in=1  <-0x10004cfa -> 0x10004d10,0x10004d06   | jne      0x10004d10
+B186 0x10004d06-0x10004d0e n=4   in=1  <-0x10004d04 -> 0x10004d10   | mov      eax, dword ptr [ecx - 0xc]
+B187 0x10004d10-0x10004d10 n=1   in=3  <-0x10004ce5,0x10004d04,0x10004d06 -> 0x10004d12   | fxch     st(1)
+B188 0x10004d12-0x10004d12 n=1   in=4  <-0x10004ce9,0x10004cef,0x10004cf8,0x10004d10 -> 0x10004d16   | cmp      byte ptr [esi - 1], 0xfe
+B189 0x10004d16-0x10004d16 n=1   in=1  <-0x10004d12 -> 0x10004d24,0x10004d18   | jne      0x10004d24
+B190 0x10004d18-0x10004d21 n=5   in=1  <-0x10004d16 -> 0x10004d24   | fstp     st(1)
+B191 0x10004d24-0x10004d2a n=3   in=3  <-0x10004ccf,0x10004d16,0x10004d18 -> 0x10004d2d   | add      esi, 0x18
+B192 0x10004d2d-0x10004d2d n=1   in=1  <-0x10004d24 -> 0x10004ccb,0x10004d2f   | jne      0x10004ccb
+B193 0x10004d2f-0x10004d3f n=11  in=2  <-0x10004ca7,0x10004d2d -> -   | fstp     st(1)
+B194 0x10004d42-0x10004d42 n=1   in=1  <-0x10004a66 -> 0x10004d45   | cmp      ebx, 4
+B195 0x10004d45-0x10004d45 n=1   in=1  <-0x10004d42 -> 0x10004fd3,0x10004d4b   | jne      0x10004fd3
+B196 0x10004d4b-0x10004d5b n=8   in=1  <-0x10004d45 -> 0x10004d63   | fldz
+B197 0x10004d63-0x10004d63 n=1   in=1  <-0x10004d4b -> 0x10004f65,0x10004d69   | jl       0x10004f65
+B198 0x10004d69-0x10004d85 n=8   in=1  <-0x10004d63 -> 0x10004d89   | add      edx, -5
+B199 0x10004d89-0x10004d89 n=1   in=2  <-0x10004d69,0x10004e67 -> 0x10004d8d   | test     byte ptr [ecx - 0x46], 1
+B200 0x10004d8d-0x10004d8d n=1   in=1  <-0x10004d89 -> 0x10004dbe,0x10004d8f   | jne      0x10004dbe
+B201 0x10004d8f-0x10004d92 n=2   in=1  <-0x10004d8d -> 0x10004d94   | mov      al, byte ptr [esi - 0x18]
+B202 0x10004d94-0x10004d94 n=1   in=1  <-0x10004d8f -> 0x10004d9e,0x10004d96   | je       0x10004d9e
+B203 0x10004d96-0x10004d96 n=1   in=1  <-0x10004d94 -> 0x10004d98   | cmp      al, 3
+B204 0x10004d98-0x10004d98 n=1   in=1  <-0x10004d96 -> 0x10004e72,0x10004d9e   | jne      0x10004e72
+B205 0x10004d9e-0x10004da8 n=6   in=2  <-0x10004d94,0x10004d98 -> 0x10004daa   | fstp     st(2)
+B206 0x10004daa-0x10004daa n=1   in=4  <-0x10004d9e,0x10004e74,0x10004e7e,0x10004eaa -> 0x10004dae   | cmp      byte ptr [esi - 0x19], 2
+B207 0x10004dae-0x10004dae n=1   in=1  <-0x10004daa -> 0x10004dbe,0x10004db0   | jne      0x10004dbe
+B208 0x10004db0-0x10004dbc n=6   in=1  <-0x10004dae -> 0x10004dbe   | fstp     st(2)
+B209 0x10004dbe-0x10004dbe n=1   in=3  <-0x10004d8d,0x10004dae,0x10004db0 -> 0x10004dc2   | test     byte ptr [ecx - 0x15], 1
+B210 0x10004dc2-0x10004dc2 n=1   in=1  <-0x10004dbe -> 0x10004df2,0x10004dc4   | jne      0x10004df2
+B211 0x10004dc4-0x10004dc6 n=2   in=1  <-0x10004dc2 -> 0x10004dc8   | mov      al, byte ptr [esi]
+B212 0x10004dc8-0x10004dc8 n=1   in=1  <-0x10004dc4 -> 0x10004dd2,0x10004dca   | je       0x10004dd2
+B213 0x10004dca-0x10004dca n=1   in=1  <-0x10004dc8 -> 0x10004dcc   | cmp      al, 3
+B214 0x10004dcc-0x10004dcc n=1   in=1  <-0x10004dca -> 0x10004eaf,0x10004dd2   | jne      0x10004eaf
+B215 0x10004dd2-0x10004ddc n=6   in=2  <-0x10004dc8,0x10004dcc -> 0x10004dde   | fstp     st(2)
+B216 0x10004dde-0x10004dde n=1   in=4  <-0x10004dd2,0x10004eb1,0x10004ebb,0x10004ee6 -> 0x10004de2   | cmp      byte ptr [esi - 1], 2
+B217 0x10004de2-0x10004de2 n=1   in=1  <-0x10004dde -> 0x10004df2,0x10004de4   | jne      0x10004df2
+B218 0x10004de4-0x10004df0 n=6   in=1  <-0x10004de2 -> 0x10004df2   | fstp     st(2)
+B219 0x10004df2-0x10004df2 n=1   in=3  <-0x10004dc2,0x10004de2,0x10004de4 -> 0x10004df6   | test     byte ptr [ecx + 0x1c], 1
+B220 0x10004df6-0x10004df6 n=1   in=1  <-0x10004df2 -> 0x10004e26,0x10004df8   | jne      0x10004e26
+B221 0x10004df8-0x10004dfb n=2   in=1  <-0x10004df6 -> 0x10004dfd   | mov      al, byte ptr [esi + 0x18]
+B222 0x10004dfd-0x10004dfd n=1   in=1  <-0x10004df8 -> 0x10004e07,0x10004dff   | je       0x10004e07
+B223 0x10004dff-0x10004dff n=1   in=1  <-0x10004dfd -> 0x10004e01   | cmp      al, 3
+B224 0x10004e01-0x10004e01 n=1   in=1  <-0x10004dff -> 0x10004eeb,0x10004e07   | jne      0x10004eeb
+B225 0x10004e07-0x10004e11 n=6   in=2  <-0x10004dfd,0x10004e01 -> 0x10004e13   | fstp     st(2)
+B226 0x10004e13-0x10004e13 n=1   in=4  <-0x10004e07,0x10004eed,0x10004ef7,0x10004f23 -> 0x10004e17   | cmp      byte ptr [esi + 0x17], 2
+B227 0x10004e17-0x10004e17 n=1   in=1  <-0x10004e13 -> 0x10004e26,0x10004e19   | jne      0x10004e26
+B228 0x10004e19-0x10004e24 n=6   in=1  <-0x10004e17 -> 0x10004e26   | fstp     st(2)
+B229 0x10004e26-0x10004e26 n=1   in=3  <-0x10004df6,0x10004e17,0x10004e19 -> 0x10004e2a   | test     byte ptr [ecx + 0x4d], 1
+B230 0x10004e2a-0x10004e2a n=1   in=1  <-0x10004e26 -> 0x10004e5b,0x10004e2c   | jne      0x10004e5b
+B231 0x10004e2c-0x10004e2f n=2   in=1  <-0x10004e2a -> 0x10004e31   | mov      al, byte ptr [esi + 0x30]
+B232 0x10004e31-0x10004e31 n=1   in=1  <-0x10004e2c -> 0x10004e3b,0x10004e33   | je       0x10004e3b
+B233 0x10004e33-0x10004e33 n=1   in=1  <-0x10004e31 -> 0x10004e35   | cmp      al, 3
+B234 0x10004e35-0x10004e35 n=1   in=1  <-0x10004e33 -> 0x10004f28,0x10004e3b   | jne      0x10004f28
+B235 0x10004e3b-0x10004e45 n=6   in=2  <-0x10004e31,0x10004e35 -> 0x10004e47   | fstp     st(2)
+B236 0x10004e47-0x10004e47 n=1   in=4  <-0x10004e3b,0x10004f2a,0x10004f34,0x10004f60 -> 0x10004e4b   | cmp      byte ptr [esi + 0x2f], 2
+B237 0x10004e4b-0x10004e4b n=1   in=1  <-0x10004e47 -> 0x10004e5b,0x10004e4d   | jne      0x10004e5b
+B238 0x10004e4d-0x10004e59 n=6   in=1  <-0x10004e4b -> 0x10004e5b   | fstp     st(2)
+B239 0x10004e5b-0x10004e64 n=3   in=3  <-0x10004e2a,0x10004e4b,0x10004e4d -> 0x10004e67   | add      esi, 0x60
+B240 0x10004e67-0x10004e67 n=1   in=1  <-0x10004e5b -> 0x10004d89,0x10004e6d   | jne      0x10004d89
+B241 0x10004e6d-0x10004e6d n=1   in=1  <-0x10004e67 -> 0x10004f68   | jmp      0x10004f68
+B242 0x10004e72-0x10004e72 n=1   in=1  <-0x10004d98 -> 0x10004e74   | test     bl, bl
+B243 0x10004e74-0x10004e74 n=1   in=1  <-0x10004e72 -> 0x10004daa,0x10004e7a   | je       0x10004daa
+B244 0x10004e7a-0x10004e7a n=1   in=1  <-0x10004e74 -> 0x10004e7e   | cmp      dword ptr [ecx - 0x52], -1
+B245 0x10004e7e-0x10004e7e n=1   in=1  <-0x10004e7a -> 0x10004daa,0x10004e84   | jne      0x10004daa
+B246 0x10004e84-0x10004e8b n=4   in=1  <-0x10004e7e -> 0x10004e8e   | fxch     st(1)
+B247 0x10004e8e-0x10004e8e n=1   in=1  <-0x10004e84 -> 0x10004ea8,0x10004e90   | jp       0x10004ea8
+B248 0x10004e90-0x10004e97 n=4   in=1  <-0x10004e8e -> 0x10004e9a   | fxch     st(2)
+B249 0x10004e9a-0x10004e9a n=1   in=1  <-0x10004e90 -> 0x10004ea6,0x10004e9c   | jne      0x10004ea6
+B250 0x10004e9c-0x10004ea4 n=4   in=1  <-0x10004e9a -> 0x10004ea6   | mov      eax, dword ptr [ecx - 0x3d]
+B251 0x10004ea6-0x10004ea6 n=1   in=2  <-0x10004e9a,0x10004e9c -> 0x10004ea8   | fxch     st(2)
+B252 0x10004ea8-0x10004ea8 n=1   in=2  <-0x10004e8e,0x10004ea6 -> 0x10004eaa   | fxch     st(1)
+B253 0x10004eaa-0x10004eaa n=1   in=1  <-0x10004ea8 -> 0x10004daa   | jmp      0x10004daa
+B254 0x10004eaf-0x10004eaf n=1   in=1  <-0x10004dcc -> 0x10004eb1   | test     bl, bl
+B255 0x10004eb1-0x10004eb1 n=1   in=1  <-0x10004eaf -> 0x10004dde,0x10004eb7   | je       0x10004dde
+B256 0x10004eb7-0x10004eb7 n=1   in=1  <-0x10004eb1 -> 0x10004ebb   | cmp      dword ptr [ecx - 0x21], -1
+B257 0x10004ebb-0x10004ebb n=1   in=1  <-0x10004eb7 -> 0x10004dde,0x10004ec1   | jne      0x10004dde
+B258 0x10004ec1-0x10004ec7 n=4   in=1  <-0x10004ebb -> 0x10004eca   | fxch     st(1)
+B259 0x10004eca-0x10004eca n=1   in=1  <-0x10004ec1 -> 0x10004ee4,0x10004ecc   | jp       0x10004ee4
+B260 0x10004ecc-0x10004ed3 n=4   in=1  <-0x10004eca -> 0x10004ed6   | fxch     st(2)
+B261 0x10004ed6-0x10004ed6 n=1   in=1  <-0x10004ecc -> 0x10004ee2,0x10004ed8   | jne      0x10004ee2
+B262 0x10004ed8-0x10004ee0 n=4   in=1  <-0x10004ed6 -> 0x10004ee2   | mov      eax, dword ptr [ecx - 0xc]
+B263 0x10004ee2-0x10004ee2 n=1   in=2  <-0x10004ed6,0x10004ed8 -> 0x10004ee4   | fxch     st(2)
+B264 0x10004ee4-0x10004ee4 n=1   in=2  <-0x10004eca,0x10004ee2 -> 0x10004ee6   | fxch     st(1)
+B265 0x10004ee6-0x10004ee6 n=1   in=1  <-0x10004ee4 -> 0x10004dde   | jmp      0x10004dde
+B266 0x10004eeb-0x10004eeb n=1   in=1  <-0x10004e01 -> 0x10004eed   | test     bl, bl
+B267 0x10004eed-0x10004eed n=1   in=1  <-0x10004eeb -> 0x10004e13,0x10004ef3   | je       0x10004e13
+B268 0x10004ef3-0x10004ef3 n=1   in=1  <-0x10004eed -> 0x10004ef7   | cmp      dword ptr [ecx + 0x10], -1
+B269 0x10004ef7-0x10004ef7 n=1   in=1  <-0x10004ef3 -> 0x10004e13,0x10004efd   | jne      0x10004e13
+B270 0x10004efd-0x10004f04 n=4   in=1  <-0x10004ef7 -> 0x10004f07   | fxch     st(1)
+B271 0x10004f07-0x10004f07 n=1   in=1  <-0x10004efd -> 0x10004f21,0x10004f09   | jp       0x10004f21
+B272 0x10004f09-0x10004f10 n=4   in=1  <-0x10004f07 -> 0x10004f13   | fxch     st(2)
+B273 0x10004f13-0x10004f13 n=1   in=1  <-0x10004f09 -> 0x10004f1f,0x10004f15   | jne      0x10004f1f
+B274 0x10004f15-0x10004f1d n=4   in=1  <-0x10004f13 -> 0x10004f1f   | mov      eax, dword ptr [ecx + 0x25]
+B275 0x10004f1f-0x10004f1f n=1   in=2  <-0x10004f13,0x10004f15 -> 0x10004f21   | fxch     st(2)
+B276 0x10004f21-0x10004f21 n=1   in=2  <-0x10004f07,0x10004f1f -> 0x10004f23   | fxch     st(1)
+B277 0x10004f23-0x10004f23 n=1   in=1  <-0x10004f21 -> 0x10004e13   | jmp      0x10004e13
+B278 0x10004f28-0x10004f28 n=1   in=1  <-0x10004e35 -> 0x10004f2a   | test     bl, bl
+B279 0x10004f2a-0x10004f2a n=1   in=1  <-0x10004f28 -> 0x10004e47,0x10004f30   | je       0x10004e47
+B280 0x10004f30-0x10004f30 n=1   in=1  <-0x10004f2a -> 0x10004f34   | cmp      dword ptr [ecx + 0x41], -1
+B281 0x10004f34-0x10004f34 n=1   in=1  <-0x10004f30 -> 0x10004e47,0x10004f3a   | jne      0x10004e47
+B282 0x10004f3a-0x10004f41 n=4   in=1  <-0x10004f34 -> 0x10004f44   | fxch     st(1)
+B283 0x10004f44-0x10004f44 n=1   in=1  <-0x10004f3a -> 0x10004f5e,0x10004f46   | jp       0x10004f5e
+B284 0x10004f46-0x10004f4d n=4   in=1  <-0x10004f44 -> 0x10004f50   | fxch     st(2)
+B285 0x10004f50-0x10004f50 n=1   in=1  <-0x10004f46 -> 0x10004f5c,0x10004f52   | jne      0x10004f5c
+B286 0x10004f52-0x10004f5a n=4   in=1  <-0x10004f50 -> 0x10004f5c   | mov      eax, dword ptr [ecx + 0x56]
+B287 0x10004f5c-0x10004f5c n=1   in=2  <-0x10004f50,0x10004f52 -> 0x10004f5e   | fxch     st(2)
+B288 0x10004f5e-0x10004f5e n=1   in=2  <-0x10004f44,0x10004f5c -> 0x10004f60   | fxch     st(1)
+B289 0x10004f60-0x10004f60 n=1   in=1  <-0x10004f5e -> 0x10004e47   | jmp      0x10004e47
+B290 0x10004f65-0x10004f65 n=1   in=1  <-0x10004d63 -> 0x10004f68   | mov      edi, dword ptr [ebp + 0xc]
+B291 0x10004f68-0x10004f6c n=2   in=2  <-0x10004e6d,0x10004f65 -> 0x10004f70   | mov      eax, dword ptr [esp + 0x18]
+B292 0x10004f70-0x10004f70 n=1   in=1  <-0x10004f68 -> 0x10004fcb,0x10004f72   | jae      0x10004fcb
+B293 0x10004f72-0x10004f8e n=9   in=1  <-0x10004f70 -> 0x10004f90   | mov      edx, dword ptr [esp + 0x14]
+B294 0x10004f90-0x10004f90 n=1   in=2  <-0x10004f72,0x10004fc9 -> 0x10004f94   | test     byte ptr [ecx - 0x15], 1
+B295 0x10004f94-0x10004f94 n=1   in=1  <-0x10004f90 -> 0x10004fc0,0x10004f96   | jne      0x10004fc0
+B296 0x10004f96-0x10004f98 n=2   in=1  <-0x10004f94 -> 0x10004f9a   | mov      al, byte ptr [esi]
+B297 0x10004f9a-0x10004f9a n=1   in=1  <-0x10004f96 -> 0x10004fa0,0x10004f9c   | je       0x10004fa0
+B298 0x10004f9c-0x10004f9c n=1   in=1  <-0x10004f9a -> 0x10004f9e   | cmp      al, 3
+B299 0x10004f9e-0x10004f9e n=1   in=1  <-0x10004f9c -> 0x10004fde,0x10004fa0   | jne      0x10004fde
+B300 0x10004fa0-0x10004faa n=6   in=2  <-0x10004f9a,0x10004f9e -> 0x10004fac   | fstp     st(2)
+B301 0x10004fac-0x10004fac n=1   in=4  <-0x10004fa0,0x10004fe0,0x10004fe6,0x1000500d -> 0x10004fb0   | cmp      byte ptr [esi - 1], 2
+B302 0x10004fb0-0x10004fb0 n=1   in=1  <-0x10004fac -> 0x10004fc0,0x10004fb2   | jne      0x10004fc0
+B303 0x10004fb2-0x10004fbe n=6   in=1  <-0x10004fb0 -> 0x10004fc0   | fstp     st(2)
+B304 0x10004fc0-0x10004fc6 n=3   in=3  <-0x10004f94,0x10004fb0,0x10004fb2 -> 0x10004fc9   | add      esi, 0x18
+B305 0x10004fc9-0x10004fc9 n=1   in=1  <-0x10004fc0 -> 0x10004f90,0x10004fcb   | jne      0x10004f90
+B306 0x10004fcb-0x10004fd1 n=4   in=2  <-0x10004f70,0x10004fc9 -> 0x10004fd3   | fstp     st(2)
+B307 0x10004fd3-0x10004fdb n=7   in=4  <-0x10004938,0x100049d3,0x10004d45,0x10004fcb -> -   | xor      eax, eax
+B308 0x10004fde-0x10004fde n=1   in=1  <-0x10004f9e -> 0x10004fe0   | test     bl, bl
+B309 0x10004fe0-0x10004fe0 n=1   in=1  <-0x10004fde -> 0x10004fac,0x10004fe2   | je       0x10004fac
+B310 0x10004fe2-0x10004fe2 n=1   in=1  <-0x10004fe0 -> 0x10004fe6   | cmp      dword ptr [ecx - 0x21], -1
+B311 0x10004fe6-0x10004fe6 n=1   in=1  <-0x10004fe2 -> 0x10004fac,0x10004fe8   | jne      0x10004fac
+B312 0x10004fe8-0x10004fee n=4   in=1  <-0x10004fe6 -> 0x10004ff1   | fxch     st(1)
+B313 0x10004ff1-0x10004ff1 n=1   in=1  <-0x10004fe8 -> 0x1000500b,0x10004ff3   | jp       0x1000500b
+B314 0x10004ff3-0x10004ffa n=4   in=1  <-0x10004ff1 -> 0x10004ffd   | fxch     st(2)
+B315 0x10004ffd-0x10004ffd n=1   in=1  <-0x10004ff3 -> 0x10005009,0x10004fff   | jne      0x10005009
+B316 0x10004fff-0x10005007 n=4   in=1  <-0x10004ffd -> 0x10005009   | mov      eax, dword ptr [ecx - 0xc]
+B317 0x10005009-0x10005009 n=1   in=2  <-0x10004ffd,0x10004fff -> 0x1000500b   | fxch     st(2)
+B318 0x1000500b-0x1000500b n=1   in=2  <-0x10004ff1,0x10005009 -> 0x1000500d   | fxch     st(1)
+B319 0x1000500d-0x1000500d n=1   in=1  <-0x1000500b -> 0x10004fac   | jmp      0x10004fac
+B320 0x1000500f-0x10005018 n=7   in=6  <-0x100048fb,0x10004907,0x1000490f,0x10004917,0x1000491f,0x10004927 -> -   | pop      edi

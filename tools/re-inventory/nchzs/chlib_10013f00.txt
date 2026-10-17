@@ -1,0 +1,31 @@
+10013f0c  push     ebx
+10013f0d  mov      bl, byte ptr [esp + 8]
+10013f11  test     bl, 2
+10013f14  push     esi
+10013f15  mov      esi, ecx
+10013f17  je       0x10013f3d
+10013f19  push     edi
+10013f1a  push     0x10014870
+10013f1f  lea      edi, [esi - 4]
+10013f22  push     dword ptr [edi]
+10013f24  push     0xc
+10013f26  push     esi
+10013f27  call     0x10014440
+10013f2c  test     bl, 1
+10013f2f  je       0x10013f38
+10013f31  push     edi
+10013f32  call     0x10013f00
+10013f37  pop      ecx
+10013f38  mov      eax, edi
+10013f3a  pop      edi
+10013f3b  jmp      0x10013f50
+10013f3d  call     0x10014870
+10013f42  test     bl, 1
+10013f45  je       0x10013f4e
+10013f47  push     esi
+10013f48  call     0x10013f00
+10013f4d  pop      ecx
+10013f4e  mov      eax, esi
+10013f50  pop      esi
+10013f51  pop      ebx
+10013f52  ret      4

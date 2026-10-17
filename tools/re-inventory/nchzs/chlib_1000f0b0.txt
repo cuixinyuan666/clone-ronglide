@@ -1,0 +1,18 @@
+1000f0b4  js       0x1000f0d9
+1000f0b6  mov      edi, dword ptr [esi + 0x2c]
+1000f0b9  mov      edx, ecx
+1000f0bb  imul     edx, edx, 0x1d
+1000f0be  mov      edi, edi
+1000f0c0  cmp      ecx, edi
+1000f0c2  jae      0x1000f0d9
+1000f0c4  mov      eax, dword ptr [esi + 0x4c]
+1000f0c7  add      eax, edx
+1000f0c9  test     byte ptr [eax + 4], 1
+1000f0cd  jne      0x1000f0db
+1000f0cf  sub      ecx, 1
+1000f0d2  sub      edx, 0x1d
+1000f0d5  test     ecx, ecx
+1000f0d7  jge      0x1000f0c0
+1000f0d9  xor      eax, eax
+1000f0db  pop      edi
+1000f0dc  ret      

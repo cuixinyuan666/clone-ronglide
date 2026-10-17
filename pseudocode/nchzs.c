@@ -17,7 +17,8 @@
  *                 chlib_1000f680.txt (段生产者) / chlib_10004720.txt (Breach) /
  *                 chlib_10005a50.txt (SelPri) / cond_chlib_10004720+10005a50+100048a0.txt /
  *                 chzs_container_layout.txt / nchzs2_wip.md
- * 批次: 第一批 (docs/31) + 第二批 (docs/32) + 第三批 (docs/33) + 第四批 (docs/34), 2026-10-17
+ * 批次: 第一批 (docs/31) + 第二批 (docs/32) + 第三批 (docs/33) + 第四批 (docs/34)
+ *       + 第五批 (docs/35, 招牌成员 Fj/Dg/HLTurn + mode 0x66) + 第六批 (docs/36, L2M 四模式), 2026-10-18
  * 第三批新增: 构建链中段 8 支 (seg_init/seg_extend/seg_endcheck/seg_wrapup/
  *              c2_reg_up/c2_reg_down/seg_finalize/seg_advance) + C1 段记录语义升级
  *              (ZG/ZD/GG/DD 四值 + 下标对 + A/B 输出区间) + 段入册器 0x1000f0e0
@@ -1113,3 +1114,137 @@ typedef struct engine_t {
  *   engine[+0x14] = n (setter 0x1000e0b0 第 5 槽) -> limit = engine[+0x14]-1 兜底
  *   engine[+0x18] 三支 producer 内 0 次读取 (派单假设勘误)
  */
+
+/* ============================================================================
+ * 21. NChZsL2M — 0x100048a0 (695 insns, ret 0x10)  [第六批 docs/36]
+ *
+ * 证据: chlib_100048a0.txt / l2m_cfg.txt (支配树, cfg_blocks.py) /
+ *       l2m_x87sim.txt / l2m_modes.txt / taf_100135e0.txt
+ * 包装: TAFLib 0x100135e0 (code 0xEA61) -> ch_api vt[+0x90]
+ *
+ * 21.1 外形 [A]
+ *   int L2M(this /*ecx*/, int n, double* out, void* buf6, void* P)   ret 0x10
+ *   P   = (int)(*(double**)P)[0]                     ; 0x100048b0 fld [[a4]] + _ftol2
+ *   memset(out, 0, n*8)                              ; 0x100048d6
+ *   switch (P) { 1,2,3,4 } else return 0
+ *   返回: 0 成功 / 0 当 P 越界或 C1.count==0 / -1 当 7 重非空门失败
+ *
+ * 21.2 七重非空门 [A]  (任一为 0 -> 0x1000500f: or eax,-1)
+ *   buf6[+0xc] | C0.base | C0.count | C1.base | C1.count | C2.base | (C0.base, C1.count 复判)
+ *   ★ 唯一失败口; 与 Fj/Dg/HLTurn 的 3 重门相比, L2M 同时依赖 C0/C1/C2
+ *
+ * 21.3 局部槽 (★ 栈槽 +4: 基线 = add esp,0xc 之后)
+ *   [esp+0x14]=C0.base (mode1/2 内复用为 C1 循环计数)  [esp+0x10]=C0.count
+ *   [esp+0x1c]=C2.base                                [esp+0x18]=mode3/4 尾部游标
+ *
+ * 21.4 mode 1 / mode 2 —— C1 段 -> C0 笔 隔笔扫描 [A]
+ */
+int L2M(int n, double* out, void* buf6, void* Pv)
+{
+    int P = (int)(*(double**)Pv)[0];
+    memset(out, 0, n * 8);
+    engine_t* e = this->engine;                       /* this[+0x18] */
+    C0_t* C0 = e->C0_base;  int c0n = e->C0_count;
+    C1_t* C1 = e->C1_base;  int c1n = e->C1_count;
+    C2_t* C2 = e->C2_base;
+    if (!buf6 || (int*)buf6[3] == 0 || !C0 || !c0n || !C1 || !c1n || !C2) return -1;
+
+    if (P == 1 || P == 2) {
+        int dirWant = (P == 1) ? -1 : +1;
+        for (int r = 0; r < c1n; ++r) {               /* 0x1000494a / 0x100049e5 */
+            C1_t* rec = &C1[r];
+            if (!(rec->flags /*+0x14*/ & 1)) continue;
+            int S = rec->startBar /*+0x08*/, E = rec->endBar /*+0x0c*/;
+            if (E - S + 1 <= 3) continue;             /* span >= 4 */
+            if (rec->dir /*+0x10*/ != dirWant) continue;
+            if (S + 3 > E) continue;                  /* 冗余 (span>=4 已蕴含) */
+            for (int i = S + 3; i <= E; i += 2) {     /* 0x1000497c / 0x10004a17 */
+                if (C0[i].mark /*+0x0c*/ & 1) continue;
+                if (P == 1) {
+                    if (!(rec->ZG /*+0x19*/ > C0[i].p2 /*+0x21*/)) continue;  /* 0x10004985 */
+                    if (!(C0[S].p2          > C0[i].p2))          continue;  /* 0x10004997 */
+                    out[C0[i].idxB /*+0x15*/] = 1.0;                          /* 0x100049a3 */
+                } else {
+                    if (!(rec->ZD /*+0x25*/ < C0[i].p1 /*+0x19*/)) continue;  /* 0x10004a20 */
+                    if (!(C0[S].p1          < C0[i].p1))          continue;  /* 0x10004a32 */
+                    out[C0[i].idxA /*+0x11*/] = 1.0;                          /* 0x10004a3e */
+                }
+            }
+        }
+        return 0;                                     /* 0x100049bd / 0x10004a58 */
+    }
+
+    /* 21.5 mode 3 / mode 4 —— C2 槽状态机 (结构 [A] / 语义 [B])
+     *   4 路展开: trip = ((n-5)>>2)+1, 标量尾起点 trip*4+1, 尾循环 k < c0n
+     *   C2 与 C0 同下标同步 (esi += 0x60 = 4*0x18, ecx += 0xc4 = 4*0x31)
+     *   | mode | SEED slotB[1] | DIRGATE | 参考 | 写点 |
+     *   |  3   | -2 (0xFE)     |  +1     | k-1  | idxB |
+     *   |  4   | +2            |  -1     | k-1  | idxB |
+     *   x87: 栈深 4 (fldz, fld st(0), fld st(1), fld1), 退出 4 次 fstp
+     *        单元素窗口净栈恒等; 写入值 = 常驻 fld1 = 1.0 [B]
+     */
+    if (P == 3 || P == 4) {
+        int seed    = (P == 3) ? -2 : +2;
+        int dirGate = (P == 3) ? +1 : -1;
+        int haveRef = 0;
+        double refLo = 0, refHi = 0;                  /* 对应 x87 常驻槽 */
+        for (int k = 1; k <= c0n - 1; ++k) {          /* 0x10004ab0 / 0x10004d89 */
+            if (C0[k].mark & 1) continue;
+            signed char s2 = C2[k].slotB[2] /*+0x16*/;
+            if (s2 == -3 || s2 == +3) {               /* 0xFD / 0x03 -> 结构边界 */
+                haveRef = 0;
+                if (C2[k].slotB[1] /*+0x15*/ == seed) {
+                    haveRef = 1; refLo = C0[k-1].p2; refHi = C0[k-1].p1;
+                }
+                continue;
+            }
+            if (haveRef && C0[k].dir == dirGate &&
+                refLo < C0[k].p2 && refHi > C0[k].p1)  /* 前一笔完全包含当前笔 */
+                out[C0[k].idxB] = 1.0;                 /* 0x10004bbc 等 4 写点 + 尾 0x10004d0b */
+            if (C2[k].slotB[1] == seed) {              /* 0x10004ad1 公共尾: 打锚 */
+                haveRef = 1; refLo = C0[k-1].p2; refHi = C0[k-1].p1;
+            }
+        }
+        return 0;                                     /* 0x10004d3f / 0x10004fdb */
+    }
+    return 0;                                         /* 0x10004fd3: P 越界 */
+}
+
+/* ============================================================================
+ * 22. 遗留基元 6 支  [第六批 docs/36 §六]
+ *
+ * 22.1 0x1000f010  C3 单条写入器  [A]
+ *   void c3_write(engine_t* e, int i)      ; e=esi, i=edx
+ *   if (i >= e->C0_count) return;
+ *   C3 = e->C3_base + i*0x1d;  C0 = e->C0_base + i*0x31;
+ *   C3->valid(+4)=1; C3->c0Index(+5)=i;
+ *   if (C0->dir==-1) { C3->dir(+0)=+1; C3->barIdx(+9)=C0->idxA(+0x11); }
+ *   else             { C3->dir(+0)=-1; C3->barIdx(+9)=C0->idxB(+0x15); }
+ *   C3->hi(+0xd)=C0->p1(+0x19); C3->lo(+0x15)=C0->p2(+0x21);
+ *   ★ 与第五批 C3 布局逐字段吻合, 且给出 dir = -C0.dir 的直证
+ *
+ * 22.2 0x1000f070  C3 区间打标器  [A]
+ *   for (i = start; i <= end && i < e->C0_count; ++i)
+ *       C3[i].valid = (C3[i].valid & 0xFE) | 2;       ; bit1 = 已收尾
+ *
+ * 22.3 0x1000f0b0  C3 反向查有效  [A]
+ *   C3_t* f(engine_t* e, int i) { for (; i >= 0; --i) if (C3[i].valid & 1) return &C3[i]; return 0; }
+ *
+ * 22.4 0x1000f490 / 0x1000f5b0  候选点收集器双胞胎  [A]
+ *   void collect(engine_t* e, int start, int end, vector<Rec12>* v)
+ *   {   ; e=ecx, start=eax, end=[esp+0x24]; v = 调用方栈上对象 (v[+4]=begin, v[+8]=end)
+ *       vector_init(0x10011da0, v);
+ *       for (i = start; i <= end && i < e->C0_count; i += 2) {
+ *           Rec12 r; r.price = (A) ? C0[i].p1(+0x19) : C0[i].p2(+0x21);
+ *                    r.pen   = i;                       // {f64 @+0, i32 @+8} = 12 B
+ *           push_back(0x10011ba0, v, &r);
+ *       }
+ *       std::reverse(v->begin, v->end);                  // 0x1000f570..f599, 步长 0xc
+ *   }
+ *   A: 0x1000f490 取 p1 (高) ; B: 0x1000f5b0 取 p2 (低)
+ *   选择者: 0x1000fe96 / 0x100107ac / 0x10010974  均为 if (rec.dir == -1) A else B
+ *           => 下跌段取高点序列, 其余取低点序列
+ *
+ * 22.5 0x10013f00  MSVC 局部展开 / EH 辅助  [B] (非业务)
+ *   funclet 0x10014870 + 0x10014440; 两分支均 call 0x10013f00 自递归做链式展开
+ * ==========================================================================*/

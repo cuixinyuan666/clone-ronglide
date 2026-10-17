@@ -1,0 +1,95 @@
+================================================================================
+ l2m_modes.txt — NChZsL2M(0x100048a0) 模式表（权威）  NChZs 第六批 2026-10-18
+ 证据: tools/re-inventory/nchzs/chlib_100048a0.txt (695 insns)
+       tools/re-inventory/nchzs/l2m_cfg.txt        (cfg_blocks.py 产出的支配树)
+       tools/re-inventory/nchzs/l2m_x87sim.txt     (块级 x87 条件表, 24 站点)
+       tools/re-inventory/nchzs/taf_100135e0.txt   (TAFLib 包装)
+       tools/re-inventory/nchzs/cond_chlib_100048a0.txt
+ 结论等级: 结构 [A] / 语义解释 [B]
+================================================================================
+
+[0] 函数外形
+--------------------------------------------------------------------------------
+  int L2M(this /*ecx*/, int n /*ebp+8*/, double* out /*ebp+0xc*/,
+          void* buf6 /*ebp+0x10*/, void* P /*ebp+0x14*/)   ret 0x10
+  0x100048a0  prologue, and esp,~7, sub esp,0x14, push ebx/esi/edi
+  0x100048b0  P = (int)(*(double**)P)[0]        ; fld qword [ [P] ] + _ftol2
+  0x100048d6  memset(out, 0, n*8)
+  0x1000492d  switch (P) { 1,2,3,4 } else return 0
+  返回: 0 = 成功(或 P 越界/无段) ; -1 = 容器缺失
+
+[1] 非空门（7 重，全 [A]；任一为 0 → 0x1000500f 返回 -1）
+--------------------------------------------------------------------------------
+  a3[+0xc] | engine[+0x20] C0.base | engine[+0x2c] C0.count | engine[+0x30] C1.base
+  engine[+0x3c] C1.count | engine[+0x40] C2.base | C0.base(局部位复判) | C1.count(复判)
+
+[2] 局部槽（★ 栈槽 +4：以 add esp,0xc 之后的 esp 为基线）
+--------------------------------------------------------------------------------
+  [esp+0x14] = C0.base        (mode1/2 内复用为 C1 循环计数)
+  [esp+0x10] = C0.count
+  [esp+0x1c] = C2.base
+  [esp+0x18] = mode3/4 标量尾游标
+
+[3] 模式总表
+--------------------------------------------------------------------------------
+ mode | 遍历对象            | 环头(2个)              | 门                      | 写入
+------+---------------------+------------------------+-------------------------+------------------------
+  1   | C1 段 → C0 笔(step2) | 0x1000494a / 0x1000497c | dir==-1, span>=4        | out[C0[i].idxB]=1.0
+  2   | C1 段 → C0 笔(step2) | 0x100049e5 / 0x10004a17 | dir==+1, span>=4        | out[C0[i].idxA]=1.0
+  3   | C0 笔(step1, 展开4×) | 0x10004ab0 / 0x10004ccb | C2 槽 −3/+3 重置, 锚 −2 | out[C0[k].idxB]=1.0
+  4   | C0 笔(step1, 展开4×) | 0x10004d89 / 0x10004f90 | C2 槽 −3/+3 重置, 锚 +2 | out[C0[k].idxB]=1.0
+ 其他 | —                   | —                       | —                        | 直接 return 0
+
+[4] mode 1 / 2（段内扫描，[A]）
+--------------------------------------------------------------------------------
+ for (each C1 rec) {                                  ; ecx = rec+8, step 0x5d, trip = C1.count
+   if (!(rec.flags(+0x14) & 1)) continue;
+   S = rec.startBar(+0x08); E = rec.endBar(+0x0c);
+   if (E-S+1 <= 3) continue;                          ; setg，等价 span>=4
+   if (rec.dir(+0x10) != ∓1) continue;                ; mode1 要 -1，mode2 要 +1
+   if (S+3 > E) continue;                             ; 与 span>=4 等价（冗余，编译产物）
+   for (i = S+3; i <= E; i += 2) {
+     if (C0[i].mark(+0x0c) & 1) continue;
+     mode1: if (!(rec.ZG(+0x19) > C0[i].p2(+0x21))) continue;   ; test ah,0x41 / jne  @0x10004985
+            if (!(C0[S].p2      > C0[i].p2))      continue;    ; test ah,0x05 / jp   @0x10004997
+            out[C0[i].idxB(+0x15)] = 1.0;
+     mode2: if (!(rec.ZD(+0x25) < C0[i].p1(+0x19))) continue;   ; test ah,0x05 / jp   @0x10004a20
+            if (!(C0[S].p1      < C0[i].p1))      continue;    ; test ah,0x41 / jne  @0x10004a32
+            out[C0[i].idxA(+0x11)] = 1.0;
+   }
+ }
+ 语义 [B]: 段内「相对段首抬高(压低) 且 仍在中枢带沿内」的笔 → 标 1。
+
+[5] mode 3 / 4（C2 槽状态机，结构 [A] / 语义 [B]）
+--------------------------------------------------------------------------------
+ for (k = 1; k <= C0.count-1; k += 1) {          ; 4 路展开 trip=((n-5)>>2)+1, 尾游标 trip*4+1
+   if (C0[k].mark & 1) goto next;
+   s2 = C2[k].slotB[2] (+0x16);
+   if (s2 == -3 || s2 == +3) {                     ; 0xFD / 0x03  → 结构边界
+       haveRef = 0;
+       if (C2[k].slotB[1] == SEED) { haveRef = 1; refLo = C0[k-1].p2; refHi = C0[k-1].p1; }
+       goto next;
+   }
+   if (haveRef && C0[k].dir == DIRGATE &&
+       refLo < C0[k].p2 && refHi > C0[k].p1)       ; 前一笔完全包含当前笔
+       out[C0[k].idxB] = 1.0;
+ next:
+   if (C2[k].slotB[1] == SEED) { haveRef = 1; refLo/refHi = C0[k-1].(p2,p1); }  ; 0x10004ad1
+ }
+   mode3: SEED = -2 (0xFE), DIRGATE = +1
+   mode4: SEED = +2        , DIRGATE = -1
+   C2 index 与 C0 index 同号同步（C2.count == C0.count）。
+
+[6] x87 使用 profile（[A]）
+--------------------------------------------------------------------------------
+  mode1/2: 栈深 1（fld1 常驻），退出 1× fstp
+  mode3/4: 栈深 4（fldz, dup, dup, fld1），退出 4× fstp
+  24 个比较站点: mode1 2 / mode2 2 / mode3 10 / mode4 10（= 4+4+4 写点 + 4+4 reset 后 0 个）
+
+[7] 调用者与 P 的来源（[A]）
+--------------------------------------------------------------------------------
+  TAFLib 0x100135e0 (code 0xEA61) → ch_api vt[+0x90]
+      fn(n /*a1*/, out /*a2*/, &buf6 /*a3*/, P /*a4*/)
+  未授权: memset(out,0,n*8) + return 0（不报错，试用版指标全 0）
+  P 由公式参数向量首元素取整得到（与 NChBi 族同一 idiom）
+  a3[+0xc] 仅作非空门，从不解引用 [B] — 待 frida [C]

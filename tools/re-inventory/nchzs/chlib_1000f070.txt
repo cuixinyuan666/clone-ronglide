@@ -1,0 +1,21 @@
+1000f075  push     esi
+1000f076  mov      esi, eax
+1000f078  cmp      esi, ebp
+1000f07a  mov      ecx, esi
+1000f07c  jg       0x1000f0a2
+1000f07e  imul     esi, esi, 0x1d
+1000f081  cmp      ecx, dword ptr [edi + 0x2c]
+1000f084  jae      0x1000f0a2
+1000f086  mov      eax, dword ptr [edi + 0x4c]
+1000f089  mov      dl, byte ptr [eax + esi + 4]
+1000f08d  add      eax, esi
+1000f08f  and      dl, 0xfe
+1000f092  or       dl, 2
+1000f095  add      ecx, 1
+1000f098  add      esi, 0x1d
+1000f09b  cmp      ecx, ebp
+1000f09d  mov      byte ptr [eax + 4], dl
+1000f0a0  jle      0x1000f081
+1000f0a2  pop      esi
+1000f0a3  pop      ebp
+1000f0a4  ret      4
