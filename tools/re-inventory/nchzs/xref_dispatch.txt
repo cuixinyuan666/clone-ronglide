@@ -1,0 +1,54 @@
+==============================================================================
+## DLL D:/a_ronglide/clone-ronglide/ronglide-app/chlib.dll  base=0x10000000
+
+---- target 0x1000ed20 ----
+  [code] 无立即数引用
+  [data] .rdata + 0x4ac -> VA 0x100154ac
+
+---- target 0x10011500 ----
+  [code] 0x1000ed9f  call     0x10011500
+       1000ed96  pop      esi
+       1000ed97  pop      ebx
+       1000ed98  mov      esp, ebp
+       1000ed9a  pop      ebp
+       1000ed9b  ret      4
+       1000ed9e  push     edi
+   >> 1000ed9f  call     0x10011500
+       1000eda4  pop      edi
+
+---- target 0x10011660 ----
+  [code] 0x1000ed90  call     0x10011660
+       1000ed87  pop      edi
+       1000ed88  pop      esi
+       1000ed89  pop      ebx
+       1000ed8a  mov      esp, ebp
+       1000ed8c  pop      ebp
+       1000ed8d  ret      4
+   >> 1000ed90  call     0x10011660
+       1000ed95  pop      edi
+
+---- target 0x100117b0 ----
+  [code] 0x1000ed82  call     0x100117b0
+       1000ed73  sub      eax, 1
+       1000ed76  je       0x1000ed9e
+       1000ed78  sub      eax, 1
+       1000ed7b  je       0x1000ed90
+       1000ed7d  sub      eax, 0x64
+       1000ed80  jne      0x1000ed32
+   >> 1000ed82  call     0x100117b0
+       1000ed87  pop      edi
+==============================================================================
+## DLL D:/a_ronglide/clone-ronglide/ronglide-app/TAFLib.dll  base=0x10000000
+
+---- target 0x1000ed20 ----
+  [code] 无立即数引用
+
+---- target 0x10011500 ----
+  [code] 无立即数引用
+
+---- target 0x10011660 ----
+  [code] 无立即数引用
+  [data] .data + 0x79e4 -> VA 0x100839e4
+
+---- target 0x100117b0 ----
+  [code] 无立即数引用

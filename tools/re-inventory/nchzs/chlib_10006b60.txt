@@ -1,0 +1,58 @@
+D:\a_ronglide\clone-ronglide\tools\re-inventory\disasm_func.py:10: SyntaxWarning: invalid escape sequence '\T'
+  默认 DLL = 缠中说禅\TAFLib.dll; 需要分析 chlib.dll 等其它模块时用 --dll 指定。
+
+[info] end≈0x10007b5f  insns=54  resync_skips=0
+10006b60  push     ebp
+10006b61  mov      ebp, dword ptr [esp + 8]
+10006b65  cmp      ebp, dword ptr [edi + 4]
+10006b68  ja       0x10006b73
+10006b6a  mov      dword ptr [edi + 8], ebp
+10006b6d  mov      al, 1
+10006b6f  pop      ebp
+10006b70  ret      4
+10006b73  push     ebx
+10006b74  push     esi
+10006b75  mov      esi, ebp
+10006b77  imul     esi, esi, 0x1d
+10006b7a  push     esi
+10006b7b  call     dword ptr [0x100150b4]
+10006b81  mov      ebx, eax
+10006b83  add      esp, 4
+10006b86  test     ebx, ebx
+10006b88  je       0x10006bd1
+10006b8a  push     esi
+10006b8b  push     0
+10006b8d  push     ebx
+10006b8e  call     0x1001494c
+10006b93  mov      ecx, dword ptr [edi]
+10006b95  add      esp, 0xc
+10006b98  test     ecx, ecx
+10006b9a  je       0x10006bb1
+10006b9c  mov      eax, dword ptr [edi + 8]
+10006b9f  test     eax, eax
+10006ba1  jbe      0x10006bb1
+10006ba3  imul     eax, eax, 0x1d
+10006ba6  push     eax
+10006ba7  push     ecx
+10006ba8  push     ebx
+10006ba9  call     0x10014952
+10006bae  add      esp, 0xc
+10006bb1  mov      eax, dword ptr [edi]
+10006bb3  test     eax, eax
+10006bb5  je       0x10006bc1
+10006bb7  push     eax
+10006bb8  call     dword ptr [0x100150b0]
+10006bbe  add      esp, 4
+10006bc1  pop      esi
+10006bc2  mov      dword ptr [edi], ebx
+10006bc4  pop      ebx
+10006bc5  mov      dword ptr [edi + 8], ebp
+10006bc8  mov      dword ptr [edi + 4], ebp
+10006bcb  mov      al, 1
+10006bcd  pop      ebp
+10006bce  ret      4
+10006bd1  pop      esi
+10006bd2  pop      ebx
+10006bd3  xor      al, al
+10006bd5  pop      ebp
+10006bd6  ret      4

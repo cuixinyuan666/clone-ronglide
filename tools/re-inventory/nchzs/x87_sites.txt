@@ -1,0 +1,119 @@
+============================================================================
+## Fj 0x10005020  (124 行)
+   **无任何 fcom/fcomp 站点** ⇒ 该函数不需要浮点比较（只有整数↔double 转换）
+============================================================================
+## Dg 0x10005160  (253 行)
+-- 站点 0x100052cf : fcom     qword ptr [edi + edx]
+     100052c6  jg       0x100052ff
+     100052c8  cmp      dword ptr [esp + 0x38], 1
+     100052cd  jne      0x100052e0
+  >> 100052cf  fcom     qword ptr [edi + edx]
+     100052d2  fnstsw   ax
+     100052d4  test     ah, 5
+     100052d7  jp       0x100052f3
+-- 站点 0x100052e0 : fcom     qword ptr [edx]
+     100052d9  fstp     st(0)
+     100052db  fld      qword ptr [edi + edx]
+     100052de  jmp      0x100052ed
+  >> 100052e0  fcom     qword ptr [edx]
+     100052e2  fnstsw   ax
+     100052e4  test     ah, 0x41
+     100052e7  jne      0x100052f3
+-- 站点 0x100053a2 : fcom     qword ptr [edx + edi]
+     10005399  jg       0x100053d2
+     1000539b  cmp      dword ptr [esp + 0x3c], 1
+     100053a0  jne      0x100053b3
+  >> 100053a2  fcom     qword ptr [edx + edi]
+     100053a5  fnstsw   ax
+     100053a7  test     ah, 5
+     100053aa  jp       0x100053c6
+-- 站点 0x100053b3 : fcom     qword ptr [edx]
+     100053ac  fstp     st(0)
+     100053ae  fld      qword ptr [edx + edi]
+     100053b1  jmp      0x100053c0
+  >> 100053b3  fcom     qword ptr [edx]
+     100053b5  fnstsw   ax
+     100053b7  test     ah, 0x41
+     100053ba  jne      0x100053c6
+============================================================================
+## HLTurn 0x10005480  (318 行)
+-- 站点 0x1000562e : fcom     qword ptr [esi - 0x18]
+     10005625  cmp      eax, 1
+     10005628  jne      0x10005641
+     1000562a  mov      esi, dword ptr [esp + 0x14]
+  >> 1000562e  fcom     qword ptr [esi - 0x18]
+     10005631  fnstsw   ax
+     10005633  test     ah, 0x41
+     10005636  jne      0x1000565b
+-- 站点 0x10005648 : fcom     qword ptr [edx - 8]
+     10005641  cmp      eax, -1
+     10005644  jne      0x1000565b
+     10005646  fxch     st(1)
+  >> 10005648  fcom     qword ptr [edx - 8]
+     1000564b  fnstsw   ax
+     1000564d  test     ah, 5
+     10005650  jp       0x10005659
+-- 站点 0x10005675 : fcom     qword ptr [eax + edx]
+     1000566c  cmp      eax, 1
+     1000566f  jne      0x1000568c
+     10005671  mov      eax, dword ptr [esp + 0x2c]
+  >> 10005675  fcom     qword ptr [eax + edx]
+     10005678  fnstsw   ax
+     1000567a  test     ah, 0x41
+     1000567d  jne      0x100056a4
+-- 站点 0x10005693 : fcom     qword ptr [edx]
+     1000568c  cmp      eax, -1
+     1000568f  jne      0x100056a4
+     10005691  fxch     st(1)
+  >> 10005693  fcom     qword ptr [edx]
+     10005695  fnstsw   ax
+     10005697  test     ah, 5
+     1000569a  jp       0x100056a2
+-- 站点 0x100056bb : fcom     qword ptr [esi - 8]
+     100056b2  cmp      eax, 1
+     100056b5  jne      0x100056ce
+     100056b7  mov      esi, dword ptr [esp + 0x14]
+  >> 100056bb  fcom     qword ptr [esi - 8]
+     100056be  fnstsw   ax
+     100056c0  test     ah, 0x41
+     100056c3  jne      0x100056e8
+-- 站点 0x100056d5 : fcom     qword ptr [edx + 8]
+     100056ce  cmp      eax, -1
+     100056d1  jne      0x100056e8
+     100056d3  fxch     st(1)
+  >> 100056d5  fcom     qword ptr [edx + 8]
+     100056d8  fnstsw   ax
+     100056da  test     ah, 5
+     100056dd  jp       0x100056e6
+-- 站点 0x10005702 : fcom     qword ptr [eax]
+     100056f9  cmp      eax, 1
+     100056fc  jne      0x10005717
+     100056fe  mov      eax, dword ptr [esp + 0x14]
+  >> 10005702  fcom     qword ptr [eax]
+     10005704  fnstsw   ax
+     10005706  test     ah, 0x41
+     10005709  jne      0x10005731
+-- 站点 0x1000571e : fcom     qword ptr [edx + 0x10]
+     10005717  cmp      eax, -1
+     1000571a  jne      0x10005731
+     1000571c  fxch     st(1)
+  >> 1000571e  fcom     qword ptr [edx + 0x10]
+     10005721  fnstsw   ax
+     10005723  test     ah, 5
+     10005726  jp       0x1000572f
+-- 站点 0x1000577d : fcom     qword ptr [esi + edx]
+     10005776  jge      0x100057b9
+     10005778  cmp      ebx, 1
+     1000577b  jne      0x10005790
+  >> 1000577d  fcom     qword ptr [esi + edx]
+     10005780  fnstsw   ax
+     10005782  test     ah, 0x41
+     10005785  jne      0x100057a8
+-- 站点 0x10005797 : fcom     qword ptr [edx]
+     10005790  cmp      ebx, -1
+     10005793  jne      0x100057a8
+     10005795  fxch     st(1)
+  >> 10005797  fcom     qword ptr [edx]
+     10005799  fnstsw   ax
+     1000579b  test     ah, 5
+     1000579e  jp       0x100057a6

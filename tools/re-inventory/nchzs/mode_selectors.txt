@@ -1,0 +1,67 @@
+# mode_selectors.txt — NChZs 引擎 vt[+0x10] dispatch 与 mode 1/2/0x66 选用者（权威表）
+# NChZs 第五批 2026-10-17 | 证据: chlib_1000ed20 / chlib_10011500 / chlib_10011660 / chlib_100117b0
+#        chlib_10011a70(push_back) / xref_dispatch.txt / dispatch_scan.txt / taflib_slot_scan.txt
+#        taflib_10013660|100136f0|10013780(包装) / chlib_1000e0b0(setter)
+
+## 一、dispatch 本体 0x1000ed20（虚表槽 vt+0x10，签名 `ret 4`：arg0 = u8 mode，ecx = engine）
+```
+if (mode == 0) return -1;                       ; 0x1000ed27 cmp byte [ebp+8],0
+V.compact(engine)                               ; 0x1000ed4c..64  call 0x10012550(&engine[+0x5c])
+movzx eax, byte [ebp+8]
+sub eax,1  ; je 0x1000ed9e → call 0x10011500    ; mode == 1
+sub eax,1  ; je 0x1000ed90 → call 0x10011660    ; mode == 2
+sub eax,0x64 ; jne fail                         ; mode == 0x66  ★（前三批记 0x65，本批勘误）
+call 0x100117b0                                 ; 0x1000ed82
+```
+dword 表证据：.rdata+0x4ac（VA **0x100154ac** = 0x1001549c + 0x10）是 0x1000ed20 的**唯一引用**。
+
+## 二、三支 mode 生产者的入口与出口
+| mode | 生产者 | 行数/ret | 唯一调用者 | 唯一出口 |
+|---|---|---|---|---|
+| 1 | 0x10011500 | 110 / ret 4 | 0x1000ed9f（dispatch） | 0x10011627 → push_back 0x10011a70 |
+| 2 | 0x10011660 | 103 / ret 0 | 0x1000ed90（dispatch） | 0x1001177a → push_back |
+| 0x66 | 0x100117b0 | 103 / ret 0 | 0x1000ed82（dispatch） | 0x100118ca → push_back |
+三支的 `arg0` 都是 **engine**（mode1 走 `[esp+0x34]`，mode2/0x66 直接读 edi —— dispatch 入口 `mov edi,ecx` 顺手复用）。
+`0x10011a70` 的 xref 全表 = 上述三处 ⇒ **V 向量只有这三个生产者**。
+
+## 三、★ 选用者结论：静态侧「无选用者」
+| 检查项 | 结果 |
+|---|---|
+| chlib `.text` 覆盖率（线性 + InvalidByte 续扫） | 81920/81920 B = 100.0%（resync 1 B） |
+| chlib `call 0x1000ed20` 立即数 | 0 |
+| chlib `call/jmp [reg+0x10]`（capstone 全扫） | **0** |
+| chlib 字节级 `FF /2,/4 mod=01 rm=reg disp8=0x10` | **0** |
+| chlib 任意 section 出现 dword 0x1000ed20 | 1 处（.rdata+0x4ac = 虚表槽，非代码） |
+| TAFLib `.text` 覆盖率 | 450560/450560 B = 100.0%（insns 142880） |
+| TAFLib `call/jmp [reg+0x10]` | **0** |
+| TAFLib 全部非索引 mem-call 位移 | 全部 = 导入表 0x1006f0xx/0x1006f1xx…（无小位移虚调用） |
+| TAFLib 立即数引用 0x1000ed20 / 0x10011500 / 0x100117b0 | 0（0x10011660 仅 .data+0x79e4 一处数据 dword） |
+⇒ **engine vt[+0x10] 在两个模块内都无调用点**；dispatch + 三支 producer + push_back
+构成**不可达子图**。TAFLib 侧不做任何虚调用（只调导入），因此也无法反向触达引擎私有虚表。
+
+`[C]` 待 frida 动态验证（等用户在场，方案）：
+1. `Interceptor.attach(chlib+0x10011a70)` 计数（push_back 命中数）
+2. `Interceptor.attach(chlib+0x1000ed20)` 计数 + 打印 `args[0]&0xff`（mode 实参）
+3. 在软件里逐个加载 NChZs 族指标（NChZs / NChZsSelPri / NChZsFj …）并滚动 K 线
+4. 判定：三处计数全 0 ⇒ 死代码成立；若 0x1000ed20 命中而 0x10011a70 也命中 ⇒ 需回查动态基址/重定位
+5. 附注：chlib 与 TAFLib 的 PE 首选基址同为 0x10000000，动态取模块基址必须用 `Module.findBaseAddress('chlib.dll')`
+
+## 四、limit 源（派单第二问）
+| 字段 | 语义 | 在三支 producer 中的用法 |
+|---|---|---|
+| engine[+0x14] | **n（bar 数）**，setter 0x1000e0b0 第 5 槽（← 核心体 0x100045f0 的 a1） | 扫描右边界**兜底**：`limit = engine[+0x14] - 1`（仅当 `i+2 >= C0.count`、无下一笔索引可借时） |
+| engine[+0x1c] | 常量 9（段长上限，第三批确权） | 本批三支 producer **未读** |
+| engine[+0x18] | u8 标志（布局表） | **三支 producer 内 0 次读取**（派单假设需勘误）；本批全族未见读者 ⇒ 登记遗留 |
+优先边界：`limit = (i+2 < C0.count) ? C0[i+2].idxA : engine[+0x14]-1`（mode 1）
+ / `C0[i+2].idxB : engine[+0x14]-1`（mode 0x66）。
+
+## 五、包装层证据（授权码直证）
+```
+TAFLib NChZsFj 0x10013660 / NChZsDg 0x100136f0 / NChZsHLTurn 0x10013780   (ret 0xc)
+  code = (this[+0xb8] > 1) ? 0xEA63 : 0xEA61          ; +0xb8 = 层计数器
+  if (!Authorize(0x10014e60, code)) { memset(out,0,n*8); return 0; }
+  Fetch6Buffers(0x10006cc0)(this, &buf)
+  fn = this[+0xbc]->vt[+0x94 | +0x98 | +0x9c]         ; ch_api 虚表 0x10015214
+  fn(n, out, &buf, arg3); return 1
+```
+ch_api 虚表 0x10015214 实测：`+0x94→0x10005020(Fj)` `+0x98→0x10005160(Dg)` `+0x9c→0x10005480(HLTurn)`。

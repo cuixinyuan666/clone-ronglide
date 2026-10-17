@@ -178,6 +178,7 @@ TARGETS = [
             ("第二批-核心体与三兄弟", "docs/32-NChZs-第二批-核心体与三兄弟.md"),
             ("第三批-构建链中段与C1语义", "docs/33-NChZs-第三批-构建链中段与C1语义.md"),
             ("第四批-消费侧闭环", "docs/34-NChZs-第四批-消费侧闭环.md"),
+            ("第五批-招牌成员消费链", "docs/35-NChZs-第五批-招牌成员消费链.md"),
         ],
         "artifacts": [
             "pseudocode/nchzs.c",
@@ -291,8 +292,28 @@ TARGETS = [
             "tools/re-inventory/nchzs/cond_chlib_1000fdf0.txt",
             "tools/re-inventory/nchzs/cond_chlib_1000fe50.txt",
             "tools/re-inventory/nchzs/cond_chlib_10010d60.txt",
+            # ---- 第五批 (招牌成员消费链) ----
+            "tools/re-inventory/nchzs/chlib_100069b0.txt",
+            "tools/re-inventory/nchzs/chlib_10006b60.txt",
+            "tools/re-inventory/nchzs/taflib_10013660.txt",
+            "tools/re-inventory/nchzs/taflib_100136f0.txt",
+            "tools/re-inventory/nchzs/taflib_10013780.txt",
+            "tools/re-inventory/nchzs/mode_selectors.txt",
+            "tools/re-inventory/nchzs/x87_sites.txt",
+            "tools/re-inventory/nchzs/x87_sites.py",
+            "tools/re-inventory/nchzs/read_consts.py",
+            "tools/re-inventory/nchzs/scan_dispatch.py",
+            "tools/re-inventory/nchzs/dispatch_scan.txt",
+            "tools/re-inventory/nchzs/scan_xref.py",
+            "tools/re-inventory/nchzs/xref_dispatch.txt",
+            "tools/re-inventory/nchzs/scan_callmem.py",
+            "tools/re-inventory/nchzs/scan_callslot.py",
+            "tools/re-inventory/nchzs/scan_taflib_slot.py",
+            "tools/re-inventory/nchzs/scan_taflib_hist.py",
+            "tools/re-inventory/nchzs/taflib_slot_scan.txt",
+            "tools/re-inventory/nchzs/nchzs5_wip.md",
         ],
-        "next": "NChZs 第四批已收官 (消费侧闭环): ① 0x1000ee30 = C3/C2 写入器, slot 字节语义钉死 (0x1000edf0 = 9 项跳转表 -> 4 槽, 只取决于 |slot|, 符号 = 方向门; 本批补齐 {8, 0xf8}); C2[stride 0x18] 布局闭合 (id@+0 / ptr@+4+s*4 / slotB@+0x14+s)。 ② V 向量 (engine[+0x5c]/[+0x60], 0x74 组 = 4 x 0x1d 子记录) 产线闭合: engine vt[+0x10] dispatch(mode 1/2/0x65) -> 0x10011500/10011660/100117b0 组装 -> 0x10011a70 push; 子记录 = {u8 tag@+0, i32 barIdx@+1, f64 v1@+5, f64 v2@+0xd, f64 v3@+0x15} (docs/32 的 +0/+4 勘误为错位 1 字节)。 ③ 四支收尾辅助全解 (0x1000fc10 重叠谓词 / 0x1000fdf0 前段查找 / 0x1000fe50 候选扫描 / 0x10010d60 段分裂+递归 buildSegment x2, 即 0x1000f680 内层递归真实源头)。 下一步三选一: ①(首选) NChZs 第五批 — 招牌成员消费链收口: NChZsFj(0x10005020,384)/NChZsDg(0x10005160,260)/NChZsHLTurn(0x10005480,318) (EA63+EA61 组, 与 engine[+0x14]/[+0x18] (V 生产 limit 源) 直接相关, 可钉死 mode 1/2/0x65 的选用者); ②(次选) NChZsL2M(0x100048a0) 按支配树分块收口 (695 行/189 块); ③(第三) 补完 T3 遗留 0x1000f490/0x1000f5b0 候选生成器 + 0x1000f070/0x1000f010/0x1000f0b0/0x10013f00。 可选: 用户在场时 frida 挂 0x1000ee30/0x10011a70 dump C2 并发槽与 V 子记录, 把本批 [B]/[C] 升 [A]",
+        "next": "NChZs 第五批已收官 (招牌成员消费链): ① NChZsFj 0x10005020 / NChZsDg 0x10005160 / NChZsHLTurn 0x10005480 三支逐条解出 — Fj = C3 端点直译 (out[C3.barIdx9] = ±dir, 0 个 x87 比较); Dg = 段内极值点 (升笔 max 高价 / 降笔 min 低价); HLTurn = 段起点转折点 (升笔 min 低价 / 降笔 max 高价, 与 Dg 方向相反, 首点直打 + 段末极值双写)。 ② 包装层直证: TAFLib 0x10013660/100136f0/10013780, code = (this[+0xb8]>1) ? 0xEA63 : 0xEA61, 未授权则 memset 清零并返 0; 转发 api->vt[+0x94/+0x98/+0x9c] (ch_api 虚表 0x10015214) -> 三支实现。 ③ C3 真实布局更正为 {i32 dir@0, u8 valid@4, i32 c0Index@5, i32 barIdx@9, f64 hi@0xd, f64 lo@0x15}, 并确权 engine[+8]=高价数组 / engine[+0xc]=低价数组、C0.p1=高 p2=低。 ④ mode 钉死: vt[+0x10] 的第三 mode 实为 0x66 (非 0x65, sub 1+sub 1+sub 0x64); 三支 producer 门表与 V 字段全解 (mode1 = 低点抬高后首个跌破前低; mode2 = 相邻两笔首破; 0x66 = 镜像)。 ⑤ limit 源: 只有 engine[+0x14]=n 作右边界兜底, engine[+0x18] 三支 0 次读取 (派单假设勘误)。 ⑥ ★ mode 选用者静态侧不存在: chlib/TAFLib 两模块 .text 100% 覆盖, call [reg+0x10] 计数 = 0 (含字节级 FF /2,/4 校验), 0x1000ed20 唯一引用 = 虚表槽 0x100154ac => V 产线为不可达子图 [C]。 下一步三选一: ①(首选) NChZsL2M(0x100048a0) 按支配树分块收口 (695 行/189 块); ②(次选) T3 遗留 0x1000f490/0x1000f5b0 候选生成器 + 0x1000f070/0x1000f010/0x1000f0b0/0x10013f00; ③(第三) 新族 kickoff: ChZhongShu(BIZHONGSHU, EA61) 或 zsdg(CHZSDG, EA63)。 可选: 用户在场时 frida 挂 0x1000ed20/0x10011a70/0x10011500 终判 V 可达性 + 验证 out[] 的 ±1/±2 值域",
     },
 ]
 
@@ -301,12 +322,15 @@ PRIORITY = [
     ("ChBi", "CHBI", "EA62", "已交付(五批)"),
     ("ChDuan", "CHDUAN", "-", "已交付(四批)"),
     ("NChBi", "NCHBI", "EA62", "已交付(六批)"),
-    ("NChZs", "NCHZS", "EA63", "已交付(四批/消费侧闭环)"),
-    ("NChZsG", "NCHZSG", "EA61", "已交付(四批/ZG 价带)"),
-    ("NChZsBs12", "NCHZSBS12", "EA61", "已交付(四批/分类)"),
-    ("NChZsBreach", "NCHZSBR", "EA61", "已交付(四批/突破计数)"),
-    ("NChZsSelPri", "NCHZSSP", "EA62", "已交付(四批/V 0x1d 闭环)"),
-    ("NChZsL2M", "NCHZSL2M", "EA61", "已交付(四批/骨架, 无递归)"),
+    ("NChZs", "NCHZS", "EA63", "已交付(五批/招牌成员消费链)"),
+    ("NChZsG", "NCHZSG", "EA61", "已交付(五批/ZG 价带)"),
+    ("NChZsBs12", "NCHZSBS12", "EA61", "已交付(五批/分类)"),
+    ("NChZsBreach", "NCHZSBR", "EA61", "已交付(五批/突破计数)"),
+    ("NChZsSelPri", "NCHZSSP", "EA62", "已交付(五批/V 0x1d 闭环)"),
+    ("NChZsL2M", "NCHZSL2M", "EA61", "已交付(五批/骨架, 无递归)"),
+    ("NChZsFj", "NCHZSFJ", "EA63", "已交付(五批/C3 端点直译)"),
+    ("NChZsDg", "NCHZSDG", "EA63", "已交付(五批/段内极值点)"),
+    ("NChZsHLTurn", "NCHZSHLTURN", "EA63", "已交付(五批/转折点)"),
     ("ChZhongShu", "BIZHONGSHU", "EA61", "未启动"),
     ("zsdg", "CHZSDG", "EA63", "未启动"),
     ("ZouShiBi", "ZOUSHIBI", "EA62", "未启动"),
@@ -356,7 +380,7 @@ def main():
     local, _ = sh(["git", "rev-parse", "HEAD"])
     remote, rc = sh(["git", "rev-parse", "origin/" + branch])
     log, _ = sh(["git", "log", "--oneline", "-8"])
-    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-", "docs/26-", "docs/27-", "docs/28-", "docs/29-", "docs/30-", "docs/31-", "docs/32-", "docs/33-", "docs/34-",
+    MY_SCOPE = ("docs/15-", "docs/16-", "docs/17-", "docs/18-", "docs/19-", "docs/20-", "docs/21-", "docs/22-", "docs/23-", "docs/24-", "docs/25-", "docs/26-", "docs/27-", "docs/28-", "docs/29-", "docs/30-", "docs/31-", "docs/32-", "docs/33-", "docs/34-", "docs/35-",
                 "tools/re-inventory", "tools/wnmr_py",
                 "pseudocode/chduan", "pseudocode/chbi", "pseudocode/nchbi", "pseudocode/nchzs", "README.md")
     tracked_mod = [l for l in status.splitlines() if not l.startswith("??")]

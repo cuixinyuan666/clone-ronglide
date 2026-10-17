@@ -1,0 +1,74 @@
+# scan_dispatch.py — chlib.dll  dispatching/收尾器 调用点扫描
+# dispatch = 0x1000ed20   tail = 0x100069b0   指令总数 30895
+
+# 命中统计: A=0 B=0 C=3 D=2
+### D tail-0x100069b0  命中 @ 0x10005148  (call 0x100069b0)
+   10005138  mov      ecx, dword ptr [edx]
+   1000513a  mov      eax, dword ptr [edx + 5]
+   1000513d  mov      edx, dword ptr [esp + 0x18]
+   10005141  push     ecx
+   10005142  push     ebp
+   10005143  push     edx
+   10005144  add      eax, 3
+   10005147  push     edi
+>> 10005148  call     0x100069b0
+   1000514d  pop      edi
+   1000514e  pop      esi
+
+### D tail-0x100069b0  命中 @ 0x10005448  (call 0x100069b0)
+   10005436  mov      ecx, dword ptr [esp + 0x40]
+   1000543a  push     edx
+   1000543b  mov      edx, dword ptr [esp + 0x30]
+   1000543f  push     ecx
+   10005440  mov      ecx, dword ptr [ebp + 0xc]
+   10005443  push     edx
+   10005444  add      eax, 3
+   10005447  push     ecx
+>> 10005448  call     0x100069b0
+   1000544d  mov      eax, dword ptr [esp + 0x44]
+   10005451  test     eax, eax
+
+### C slot-then-call  命中 @ 0x100013c2  (call edx)
+   100013aa  mov      edx, dword ptr [eax + 4]
+   100013ad  push     edi
+   100013ae  call     edx
+   100013b0  mov      ecx, dword ptr [esi + 0xc]
+   100013b3  mov      eax, dword ptr [ecx]
+   100013b5  mov      edx, dword ptr [eax + 4]
+   100013b8  call     edx
+   100013ba  mov      ecx, dword ptr [esi + 0x10]
+   100013bd  mov      eax, dword ptr [ecx]
+   100013bf  mov      edx, dword ptr [eax + 4]
+>> 100013c2  call     edx
+   100013c4  mov      ecx, dword ptr [esi + 0x14]
+   100013c7  mov      eax, dword ptr [ecx]
+
+### C slot-then-call  命中 @ 0x100023dd  (call eax)
+   100023ba  je       0x10002762
+   100023c0  mov      ecx, dword ptr [ebp + 8]
+   100023c3  mov      ebx, dword ptr [esp + 0x10]
+   100023c7  push     ecx
+   100023c8  call     0x10006670
+   100023cd  test     eax, eax
+   100023cf  jne      0x10002762
+   100023d5  mov      ecx, dword ptr [esi + 0x10]
+   100023d8  mov      edx, dword ptr [ecx]
+   100023da  mov      eax, dword ptr [edx + 4]
+>> 100023dd  call     eax
+   100023df  mov      ecx, dword ptr [esp + 0x24]
+   100023e3  mov      eax, dword ptr [esi + 0x10]
+
+### C slot-then-call  命中 @ 0x1000242f  (call eax)
+   10002412  mov      dword ptr [ecx + 0x24], edx
+   10002415  mov      eax, dword ptr [esi + 0xc]
+   10002418  mov      edx, dword ptr [eax + 0x34]
+   1000241b  mov      ecx, dword ptr [esi + 0x10]
+   1000241e  mov      eax, dword ptr [eax + 0x28]
+   10002421  mov      dword ptr [ecx + 0x28], eax
+   10002424  mov      dword ptr [ecx + 0x2c], edx
+   10002427  mov      ecx, dword ptr [esi + 0x10]
+   1000242a  mov      edx, dword ptr [ecx]
+   1000242c  mov      eax, dword ptr [edx + 8]
+>> 1000242f  call     eax
+   10002431  test     eax, eax
+   10002433  jne      0x10002762

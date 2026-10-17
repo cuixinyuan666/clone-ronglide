@@ -1,0 +1,2 @@
+TAFLib .text size=450560 covered=450553 (100.0%) insns=142880
+disp==0x10 hits: 0

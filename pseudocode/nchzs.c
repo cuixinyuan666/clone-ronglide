@@ -904,3 +904,212 @@ typedef struct engine_t {
  *   0x1000f200 前段查找器 <- 14.1     0x1000f0e0 段入册器 <- 14.4
  *   0x1000f680 buildSegment <- 14.4 (递归 x2)        engine[+0x1c]=9 段长上限 <- 14.4
  */
+
+/* =====================================================================
+ * 第五批 (docs/35) — 招牌成员消费链 + mode 选用者
+ *   15. 包装层骨架 (TAFLib) + C3 真实字段布局
+ *   16. NChZsFj  0x10005020  (C3 端点直译)
+ *   17. NChZsDg  0x10005160  (段内极值点)
+ *   18. NChZsHLTurn 0x10005480 (段起点/转折点)
+ *   19. 共用收尾补点器 0x100069b0 = ±2 唯一来源
+ *   20. mode 1/2/0x66 生产者 + 可达性判定 (vt[+0x10] 无调用者)
+ * ===================================================================== */
+
+/*
+ * 15. 包装层 (TAFLib) 与 C3 真实布局
+ *
+ * 15.1 三个导出包装完全同构 (ret 0xc: n, out, arg3)
+ *   NChZsFj=0x10013660  NChZsDg=0x100136f0  NChZsHLTurn=0x10013780
+ *
+ *   char wrapper(int n, double *out, int a3) {          // ecx = ch_api*
+ *     int code = (this[+0xb8] > 1) ? 0xEA63 : 0xEA61;   // ★ 层计数器
+ *     if (!Authorize(0x10014e60, code)) {               // ★ 未授权
+ *       memset(out, 0, n * 8);                          // ★ 清零(不是报错!)
+ *       return 0;
+ *     }
+ *     int buf[6]; Fetch6Buffers(0x10006cc0)(this, buf);
+ *     void **api = this[+0xbc];
+ *     fn = api->vt[+0x94 | +0x98 | +0x9c];              // ch_api 虚表 0x10015214
+ *     fn(n, out, buf, a3);
+ *     return 1;
+ *   }
+ *
+ * 15.2 ch_api 虚表 0x10015214 实测 (相邻槽)
+ *   +0x80 0x100046c0   +0x84 0x100046e0   +0x88 0x10004700   +0x8c 0x10004720
+ *   +0x90 0x100048a0   +0x94 0x10005020(Fj)  +0x98 0x10005160(Dg)  +0x9c 0x10005480(HLTurn)
+ *   +0xa0 0x10005810   +0xa4 0x100058f0   +0xa8 0x10005a50   +0xac 0x10005bb0   +0xb0 0x10005d10
+ *
+ * 15.3 ★ C3 记录 (stride 0x1d) 真实布局 —— 三支交叉实证，取代 docs/34 五节旧记
+ *   +0x00 i32  dir        ±1 方向                  (Fj fild [e]; Dg/HLTurn fild [ecx-5])
+ *   +0x04 u8   valid      bit0 = 有效              (三支 test byte [e+4],1)
+ *   +0x05 i32  c0Index    笔序号 (C0 下标)          (Fj 送 0x100069b0 起点; Dg imul 0x31 索引 C0)
+ *   +0x09 i32  barIdx     bar 下标 (out[]/价格数组) (三支 [e+9] 做 *8)
+ *   +0x0d f64  hi         高价 = C0.p1 (+0x19)      (0x1000ebe0 后处理)
+ *   +0x15 f64  lo         低价 = C0.p2 (+0x21)
+ *   注: C0 侧 p1(+0x19)=高、p2(+0x21)=低 —— 由 GG/DD 更新器 0x1000edb0/edd0 判据确权。
+ *   注: engine[+8] = 高价数组、engine[+0xc] = 低价数组 (本批确权)。
+ */
+
+/*
+ * 16. NChZsFj  0x10005020  (384 行, ret 0x10) — C3 端点直译器, 0 个 x87 比较
+ *
+ *   int NChZsFj(int n, double *out, void *buf, int a3) {
+ *     memset(out, 0, n * 8);                              // 0x1001494c
+ *     Eng *e = this[+0x18];
+ *     if (!e[+0x20] || !e[+0x4c] || !e[+0x2c]) return -1;  // C0.base / C3.base / C0.count
+ *     int last = -1, i = 0;
+ *     if (e[+0x2c] >= 4) {                                 // 0x10005072
+ *       C3Rec *p = (C3Rec *)e[+0x4c];
+ *       for (; i < e[+0x2c] - 3; i += 4) {                 // 4x 展开, 指针 +0x74
+ *         for (s = 0; s < 4; s++) {
+ *           C3Rec *r = p + (i + s);
+ *           if ((r->valid & 1) && r->barIdx >= 0 && r->barIdx < n) {
+ *             out[r->barIdx] = (double)r->dir;             // ★ fild dword[r] -> fstp qword
+ *             last = i + s;
+ *           }
+ *         }
+ *       }
+ *     }
+ *     for (; i < e[+0x2c]; i++) { /* 尾循环 0x100050f7: 同一逻辑 */ }
+ *     if (last > 0 && last < n - 1)                        // 0x10005126
+ *       tail(out, e[+0x20], e[+0x2c], C3[last].dir, C3[last].c0Index + 3);  // 0x100069b0, eax=起点
+ *     return 0;
+ *   }
+ *   => 语义: 逐条把 C3 的两个端点按方向打 ±1; 末尾用补点器补一个 ±2。
+ *   => 上界用 C0.count、步进用 C3 的 0x1d ⇒ 隐含 C3.count == C0.count。
+ */
+
+/*
+ * 17. NChZsDg  0x10005160  (260 行, ret 0x10) — 段内极值点 (顶/底)
+ *
+ *   int NChZsDg(int n, double *out, void *buf, int a3) {
+ *     memset(out, 0, n * 8);
+ *     Eng *e = this[+0x18];
+ *     double *hi = e[+8], *lo = e[+0xc];                  // ★ [esp+0x20]/[esp+0x10] (+4 换算)
+ *     if (!e[+0x2c] || !e[+0x4c] || !e[+0x2c]) return -1;
+ *     Vec0x1d tmp; tmp.resize(e[+0x2c]);                  // 0x10006b60: imul esi,0x1d
+ *     m = 0;
+ *     for (i = 0; i < e[+0x2c]; i++)                      // 0x100051ef: 过滤复制 29 字节
+ *       if ((C3[i].valid & 1) && C3[i].barIdx >= 0) tmp[m++] = C3[i];
+ *     if (m <= 0) goto done;
+ *     lastBest = -1;
+ *     for (k = 0; k < m; k++) {
+ *       cur = tmp[k];
+ *       acc = (cur.dir == 1) ? hi[cur.barIdx] : lo[cur.barIdx];
+ *       best = cur.c0Index;                             // [B] 下标种类混用隐患
+ *       j0 = (k == 0) ? 0 : tmp[k-1].c0Index + 3;       // 前段 0x1000526f
+ *       for (j = j0; j <= cur.c0Index; j++) {           // C0 stride 0x31
+ *         loIdx = (C0[j].dir == -1) ? C0[j].idxB : C0[j].idxA;
+ *         hiIdx = (C0[j].dir == -1) ? C0[j].idxA : C0[j].idxB;
+ *         if (loIdx <= lastBest) continue;
+ *         for (b = loIdx; b <= hiIdx && b <= n - 1; b++) {
+ *           if (cur.dir == 1) { if (acc <= hi[b]) { acc = hi[b]; best = b; } }   // max(高)
+ *           else              { if (acc >  lo[b]) { acc = lo[b]; best = b; } }   // min(低)
+ *         }
+ *       }
+ *       // 后段 0x10005332: cur.c0Index+3 .. tmp[k+1].c0Index-3, 同一逻辑
+ *       out[best] = (double)cur.dir;                    // 0x100053f9
+ *     }
+ *     if (lastBest > 0 && lastBest < n - 1)
+ *       tail(out, e[+0x20], e[+0x2c], tmp[lastBest].dir, lastBest + 3);
+ *   done: free(tmp); return 0;
+ *   }
+ *   => 语义: 升笔取段内最高高价、降笔取段内最低低价 ⇒ out[极值 bar] = ±1。
+ *   => x87 4 个比较站点: 0x100052cf(高,max) / 0x100052e0(低,min) / 0x100053a2 / 0x100053b3。
+ */
+
+/*
+ * 18. NChZsHLTurn  0x10005480  (318 行, ret 0x10) — 段起点 / 转折点
+ *
+ *   int NChZsHLTurn(int n, double *out, void *buf, int a3) {
+ *     memset(out, 0, n * 8);
+ *     Eng *e = this[+0x18];
+ *     double *hi = e[+8], *lo = e[+0xc];                  // [esp+0x30]/[esp+0x34]
+ *     if (!e[+0x20] || !e[+0x4c] || !e[+0x2c]) return -1;
+ *     Vec0x1d tmp; tmp.resize(e[+0x2c]);                  // 过滤复制同 Dg
+ *     if (m <= 0) goto done;
+ *     accMin = +DBL_MAX; accMax = -DBL_MAX;               // 0x100154c0 / 0x100154c8, fld st(1) x2
+ *     best = -1;
+ *     for (k = 0; k < m; k++) {
+ *       cur = tmp[k];
+ *       if (k == 0) out[cur.barIdx] = (double)cur.dir;    // ★ 首点直打 0x10005562
+ *       for (j = k+1; j < m && tmp[j].dir != cur.dir; j++) ;   // 找下一个同向记录
+ *       if (j >= m) { /* 尾处理 0x10005599 */ continue; }
+ *       idx0 = max(cur.barIdx, best);
+ *       if (n - idx0 < 4) { /* 短路径 0x10005759: 单步扫到 n, 无 limit */ }
+ *       else {
+ *         limit = tmp[j].barIdx;                          // 0x100055fe
+ *         for (b = idx0 + 2; b < limit; b += 4) {         // 4x 展开, 4 个块
+ *           if (cur.dir == 1) { if (accMin > lo[b]) accMin = lo[b], hit = b; }      // min(低)
+ *           else              { if (accMax <= hi[b]) accMax = hi[b], hit = b; }     // max(高)
+ *         }
+ *       }
+ *       if (hit >= 0) {                                   // 0x100057c5
+ *         out[hit] = (cur.dir == 1) ? +1.0 : -1.0;        // setne + lea eax,[eax*2-1]
+ *         best = hit;
+ *       }
+ *     }
+ *   done: free(tmp); return 0;
+ *   }
+ *   => 语义: 升笔取段内最低低价(起涨低点)、降笔取段内最高高价(起跌高点) ⇒ 转折点标注。
+ *   => 与 Dg 方向相反; 10 个比较站点 (4 个展开块 + 尾块)。
+ */
+
+/*
+ * 19. 共用收尾补点器 0x100069b0 (ret 0x10, ★ 第 5 参走 eax 寄存器)
+ *   void tail(double *out, C0Rec *C0, int end, int dir) {   // eax = start
+ *     int best = -1;
+ *     if (dir == 1) {
+ *       double mx = DBL_MAX;                        // 0x100154c0
+ *       for (j = start; j < end; j++)               // 4x 展开, stride 0x31
+ *         if (C0[j].p2 > mx) { mx = C0[j].p2; best = j; }        // p2 = 低
+ *       if (best >= 0) out[C0[best].idxB] = -2.0;   // 0x100154e0
+ *     } else {
+ *       double mn = -DBL_MAX;                       // 0x100154c8
+ *       for (j = start; j < end; j++)
+ *         if (C0[j].p1 < mn) { mn = C0[j].p1; best = j; }        // p1 = 高
+ *       if (best >= 0) out[C0[best].idxA] = +2.0;   // 0x100154b8
+ *     }
+ *   }
+ *   => ★ ±2 值域的唯一来源; 与 C0[+0x0c]「分型标记 = 1 当值 ∈ {−2,+2}」互为印证。
+ *   => xref 仅 2 处: 0x10005148(Fj) 0x10005448(Dg); HLTurn 不调用。
+ */
+
+/*
+ * 20. mode 1/2/0x66 生产者 与 可达性判定
+ *
+ * 20.1 dispatch 0x1000ed20 (vt[+0x10], ret 4, arg0 = u8 mode, ecx = engine)
+ *   if (mode == 0) return -1;
+ *   0x10012550(&engine[+0x5c]);                       // V 紧致化
+ *   movzx eax,[ebp+8]; sub 1 -> je 0x10011500          // mode 1
+ *                      sub 1 -> je 0x10011660          // mode 2
+ *                      sub 0x64 -> jne fail            // ★ mode = 0x66 (前批记 0x65, 勘误)
+ *                      call 0x100117b0
+ *
+ * 20.2 三支 producer 对照 (arg0 = engine; 唯一出口 0x10011a70 push_back)
+ *   | 项 | mode 1 | mode 2 | mode 0x66 |
+ *   | C0 门 | count<=1 退出 | count<=2 退出 | 同 m2 |
+ *   | C2 子对象 | p[0x10]==+1 | +1 | -1 |
+ *   | span 门 | >=8 | >=6 | 同 m2 |
+ *   | 相位门 | i-lo+1==8 | i-lo==8 | 同 m2 |
+ *   | 单调门 | C0[i+1].p2 > C0[lo..i].p2 | C0[i-1].p2 < C0[i].p2 | C0[i-1].p1 > C0[i].p1 |
+ *   | 起点 | C0[i+1].idxB | C0[i].idxB | C0[i].idxA |
+ *   | 上界 | C0[i+2].idxA 否则 engine[+0x14]-1 | 同 | idxB 版 |
+ *   | 数组 | engine[+8] | engine[+8] | engine[+0xc] |
+ *   | 命中 | price < C0[i].p2 | price < C0[i-1].p2 | price > C0[i-1].p1 |
+ *   | V.v1/v2 | C0[i].p2 / C0[i+1].p2 | C0[i].p2 / C0[i-1].p2 | C0[i].p1 / C0[i-1].p1 |
+ *   | V.v3 | 0.0 | 0.0 | 0.0 |
+ *   V 记录 {u8 tag(未写), i32 bar@+1, f64 v1@+5, f64 v2@+0xd, f64 v3@+0x15} = 0x1d
+ *   push_back 0x10011a70: 向量 = {begin engine[+0x5c], end engine[+0x60], cap engine[+0x64]},
+ *                         元素 0x1d (魔数 0x8d3dcb09 = 2^36/0x1d)。
+ *
+ * 20.3 ★ 可达性: 无选用者
+ *   chlib .text 100% 覆盖: call 0x1000ed20 = 0; call/jmp [reg+0x10] = 0; 字节级 FF /2,/4 disp8=0x10 = 0
+ *   0x1000ed20 的唯一引用 = .rdata+0x4ac (虚表槽 0x100154ac)
+ *   TAFLib .text 100% 覆盖: call/jmp [reg+0x10] = 0; 全部 mem-call 指向导入表 0x1006f0xx
+ *   => dispatch + 三支 producer + push_back 为不可达子图 (待 frida 终判, [C])
+ *
+ * 20.4 limit 源
+ *   engine[+0x14] = n (setter 0x1000e0b0 第 5 槽) -> limit = engine[+0x14]-1 兜底
+ *   engine[+0x18] 三支 producer 内 0 次读取 (派单假设勘误)
+ */

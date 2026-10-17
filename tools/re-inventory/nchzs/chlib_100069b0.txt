@@ -1,0 +1,167 @@
+D:\a_ronglide\clone-ronglide\tools\re-inventory\disasm_func.py:10: SyntaxWarning: invalid escape sequence '\T'
+  默认 DLL = 缠中说禅\TAFLib.dll; 需要分析 chlib.dll 等其它模块时用 --dll 指定。
+
+[info] end≈0x100079af  insns=163  resync_skips=0
+100069b0  push     ebp
+100069b1  mov      ebp, esp
+100069b3  and      esp, 0xfffffff8
+100069b6  push     ecx
+100069b7  cmp      dword ptr [ebp + 0x14], 1
+100069bb  push     ebx
+100069bc  mov      ebx, dword ptr [ebp + 0x10]
+100069bf  push     esi
+100069c0  push     edi
+100069c1  jne      0x10006a8f
+100069c7  fld      qword ptr [0x100154c0]
+100069cd  mov      edx, ebx
+100069cf  sub      edx, eax
+100069d1  or       esi, 0xffffffff
+100069d4  cmp      edx, 4
+100069d7  mov      ecx, eax
+100069d9  jl       0x10006a3d
+100069db  mov      edx, dword ptr [ebp + 0xc]
+100069de  imul     eax, eax, 0x31
+100069e1  lea      edi, [ebx - 3]
+100069e4  lea      edx, [eax + edx + 0x83]
+100069eb  fcom     qword ptr [edx - 0x62]
+100069ee  fnstsw   ax
+100069f0  test     ah, 0x41
+100069f3  jne      0x100069fc
+100069f5  fstp     st(0)
+100069f7  mov      esi, ecx
+100069f9  fld      qword ptr [edx - 0x62]
+100069fc  fcom     qword ptr [edx - 0x31]
+100069ff  fnstsw   ax
+10006a01  test     ah, 0x41
+10006a04  jne      0x10006a0e
+10006a06  fstp     st(0)
+10006a08  lea      esi, [ecx + 1]
+10006a0b  fld      qword ptr [edx - 0x31]
+10006a0e  fcom     qword ptr [edx]
+10006a10  fnstsw   ax
+10006a12  test     ah, 0x41
+10006a15  jne      0x10006a1e
+10006a17  fstp     st(0)
+10006a19  lea      esi, [ecx + 2]
+10006a1c  fld      qword ptr [edx]
+10006a1e  fcom     qword ptr [edx + 0x31]
+10006a21  fnstsw   ax
+10006a23  test     ah, 0x41
+10006a26  jne      0x10006a30
+10006a28  fstp     st(0)
+10006a2a  lea      esi, [ecx + 3]
+10006a2d  fld      qword ptr [edx + 0x31]
+10006a30  add      ecx, 4
+10006a33  add      edx, 0xc4
+10006a39  cmp      ecx, edi
+10006a3b  jl       0x100069eb
+10006a3d  cmp      ecx, ebx
+10006a3f  jae      0x10006a66
+10006a41  mov      edx, dword ptr [ebp + 0xc]
+10006a44  mov      eax, ecx
+10006a46  imul     eax, eax, 0x31
+10006a49  lea      edx, [eax + edx + 0x21]
+10006a4d  fcom     qword ptr [edx]
+10006a4f  fnstsw   ax
+10006a51  test     ah, 0x41
+10006a54  jne      0x10006a5c
+10006a56  fstp     st(0)
+10006a58  mov      esi, ecx
+10006a5a  fld      qword ptr [edx]
+10006a5c  add      ecx, 1
+10006a5f  add      edx, 0x31
+10006a62  cmp      ecx, ebx
+10006a64  jb       0x10006a4d
+10006a66  test     esi, esi
+10006a68  fstp     st(0)
+10006a6a  jl       0x10006b4f
+10006a70  mov      eax, dword ptr [ebp + 0xc]
+10006a73  fld      qword ptr [0x100154e0]
+10006a79  imul     esi, esi, 0x31
+10006a7c  mov      ecx, dword ptr [esi + eax + 0x15]
+10006a80  mov      edx, dword ptr [ebp + 8]
+10006a83  fstp     qword ptr [edx + ecx*8]
+10006a86  pop      edi
+10006a87  pop      esi
+10006a88  pop      ebx
+10006a89  mov      esp, ebp
+10006a8b  pop      ebp
+10006a8c  ret      0x10
+10006a8f  fld      qword ptr [0x100154c8]
+10006a95  mov      ecx, ebx
+10006a97  sub      ecx, eax
+10006a99  or       edi, 0xffffffff
+10006a9c  cmp      ecx, 4
+10006a9f  mov      edx, eax
+10006aa1  jl       0x10006b0a
+10006aa3  mov      ecx, dword ptr [ebp + 0xc]
+10006aa6  add      ebx, -3
+10006aa9  lea      esi, [eax + 2]
+10006aac  imul     eax, eax, 0x31
+10006aaf  lea      ecx, [eax + ecx + 0x7b]
+10006ab3  fcom     qword ptr [ecx - 0x62]
+10006ab6  fnstsw   ax
+10006ab8  test     ah, 5
+10006abb  jp       0x10006ac4
+10006abd  fstp     st(0)
+10006abf  mov      edi, edx
+10006ac1  fld      qword ptr [ecx - 0x62]
+10006ac4  fcom     qword ptr [ecx - 0x31]
+10006ac7  fnstsw   ax
+10006ac9  test     ah, 5
+10006acc  jp       0x10006ad6
+10006ace  fstp     st(0)
+10006ad0  lea      edi, [esi - 1]
+10006ad3  fld      qword ptr [ecx - 0x31]
+10006ad6  fcom     qword ptr [ecx]
+10006ad8  fnstsw   ax
+10006ada  test     ah, 5
+10006add  jp       0x10006ae5
+10006adf  fstp     st(0)
+10006ae1  mov      edi, esi
+10006ae3  fld      qword ptr [ecx]
+10006ae5  fcom     qword ptr [ecx + 0x31]
+10006ae8  fnstsw   ax
+10006aea  test     ah, 5
+10006aed  jp       0x10006af7
+10006aef  fstp     st(0)
+10006af1  lea      edi, [esi + 1]
+10006af4  fld      qword ptr [ecx + 0x31]
+10006af7  add      edx, 4
+10006afa  add      ecx, 0xc4
+10006b00  add      esi, 4
+10006b03  cmp      edx, ebx
+10006b05  jl       0x10006ab3
+10006b07  mov      ebx, dword ptr [ebp + 0x10]
+10006b0a  cmp      edx, ebx
+10006b0c  jae      0x10006b33
+10006b0e  mov      ecx, dword ptr [ebp + 0xc]
+10006b11  mov      eax, edx
+10006b13  imul     eax, eax, 0x31
+10006b16  lea      ecx, [eax + ecx + 0x19]
+10006b1a  fcom     qword ptr [ecx]
+10006b1c  fnstsw   ax
+10006b1e  test     ah, 5
+10006b21  jp       0x10006b29
+10006b23  fstp     st(0)
+10006b25  mov      edi, edx
+10006b27  fld      qword ptr [ecx]
+10006b29  add      edx, 1
+10006b2c  add      ecx, 0x31
+10006b2f  cmp      edx, ebx
+10006b31  jb       0x10006b1a
+10006b33  test     edi, edi
+10006b35  fstp     st(0)
+10006b37  jl       0x10006b4f
+10006b39  mov      edx, dword ptr [ebp + 0xc]
+10006b3c  fld      qword ptr [0x100154b8]
+10006b42  imul     edi, edi, 0x31
+10006b45  mov      eax, dword ptr [edi + edx + 0x11]
+10006b49  mov      ecx, dword ptr [ebp + 8]
+10006b4c  fstp     qword ptr [ecx + eax*8]
+10006b4f  pop      edi
+10006b50  pop      esi
+10006b51  pop      ebx
+10006b52  mov      esp, ebp
+10006b54  pop      ebp
+10006b55  ret      0x10
