@@ -1,0 +1,145 @@
+{
+  "count": 58560,
+  "records": 13110,
+  "native": {
+    "chbi_nonzero": 8518,
+    "chduan_nonzero": 831,
+    "wnmr_hist": {
+      "0.0": 58557,
+      "1.0": 1,
+      "2.0": 1,
+      "3.0": 1
+    },
+    "pri_nonzero": 3
+  },
+  "python": {
+    "wnmr_hist": {
+      "0.0": 58560
+    },
+    "pri_nonzero": 0
+  },
+  "diff": {
+    "status_count": 3,
+    "price_count": 3,
+    "status_first": [
+      [
+        35280,
+        1.0,
+        0.0
+      ],
+      [
+        35400,
+        3.0,
+        0.0
+      ],
+      [
+        35405,
+        2.0,
+        0.0
+      ]
+    ],
+    "price_first": [
+      [
+        35280,
+        12.720000267028809,
+        0.0
+      ],
+      [
+        35400,
+        12.699999809265137,
+        0.0
+      ],
+      [
+        35405,
+        12.720000267028809,
+        0.0
+      ]
+    ]
+  },
+  "detail": [
+    {
+      "side": "native",
+      "index": 35281,
+      "idx_prev": 1095478804,
+      "idx_next": 1095468319,
+      "low": 12.729999542236328,
+      "high": 12.720000267028809,
+      "level_type": -1,
+      "direction": -1,
+      "fractal": 0,
+      "signal_flag": 0,
+      "status": 0,
+      "price": 0.0
+    },
+    {
+      "side": "python",
+      "index": 35281,
+      "idx_prev": 1095478804,
+      "idx_next": 1095468319,
+      "low": 12.729999542236328,
+      "high": 12.720000267028809,
+      "level_type": -1,
+      "direction": -1,
+      "fractal": 0,
+      "signal_flag": -1,
+      "status": 0,
+      "price": 0.0
+    },
+    {
+      "side": "native",
+      "index": 35401,
+      "idx_prev": 1095457833,
+      "idx_next": 1095447347,
+      "low": 12.710000038146973,
+      "high": 12.699999809265137,
+      "level_type": -1,
+      "direction": -1,
+      "fractal": 0,
+      "signal_flag": 0,
+      "status": 0,
+      "price": 0.0
+    },
+    {
+      "side": "python",
+      "index": 35401,
+      "idx_prev": 1095457833,
+      "idx_next": 1095447347,
+      "low": 12.710000038146973,
+      "high": 12.699999809265137,
+      "level_type": -1,
+      "direction": -1,
+      "fractal": 0,
+      "signal_flag": -1,
+      "status": 0,
+      "price": 0.0
+    },
+    {
+      "side": "native",
+      "index": 35406,
+      "idx_prev": 1095478804,
+      "idx_next": 1095457833,
+      "low": 12.729999542236328,
+      "high": 12.710000038146973,
+      "level_type": 0,
+      "direction": 0,
+      "fractal": 0,
+      "signal_flag": 0,
+      "status": 0,
+      "price": 0.0
+    },
+    {
+      "side": "python",
+      "index": 35406,
+      "idx_prev": 1095478804,
+      "idx_next": 1095457833,
+      "low": 12.729999542236328,
+      "high": 12.710000038146973,
+      "level_type": 0,
+      "direction": 0,
+      "fractal": 0,
+      "signal_flag": 0,
+      "status": 0,
+      "price": 0.0
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+attach pid 11900
+[READY] func perm bypass @ 0x406960
+--- func perm bypass active ---
+[FUNC] this=0x136e5850 permcode 1 -> 0 (bypassed)
+[FUNC] this=0x136e5850 permcode 1 -> 0 (bypassed)
+[FUNC] this=0x136e5850 permcode 1 -> 0 (bypassed)
+[FUNC] this=0xec4ebf0 permcode 1 -> 0 (bypassed)

@@ -1,0 +1,72 @@
+100560d0  fld      dword ptr [ebx]
+100560d2  push     ebp
+100560d3  mov      ebp, dword ptr [esp + 8]
+100560d7  fstp     dword ptr [esp + 8]
+100560db  lea      eax, [ebp - 1]
+100560de  cmp      eax, 4
+100560e1  mov      ecx, 1
+100560e6  push     esi
+100560e7  mov      esi, ecx
+100560e9  jl       0x10056163
+100560eb  push     edi
+100560ec  lea      edi, [ebp - 3]
+100560ef  lea      edx, [ebx + 0xc]
+100560f2  fld      dword ptr [edx - 8]
+100560f5  fld      dword ptr [esp + 0x10]
+100560f9  fcompp   
+100560fb  fnstsw   ax
+100560fd  test     ah, 0x41
+10056100  jne      0x1005610c
+10056102  fld      dword ptr [edx - 8]
+10056105  lea      esi, [ecx + 1]
+10056108  fstp     dword ptr [esp + 0x10]
+1005610c  fld      dword ptr [edx - 4]
+1005610f  fld      dword ptr [esp + 0x10]
+10056113  fcompp   
+10056115  fnstsw   ax
+10056117  test     ah, 0x41
+1005611a  jne      0x10056126
+1005611c  fld      dword ptr [edx - 4]
+1005611f  lea      esi, [ecx + 2]
+10056122  fstp     dword ptr [esp + 0x10]
+10056126  fld      dword ptr [edx]
+10056128  fld      dword ptr [esp + 0x10]
+1005612c  fcompp   
+1005612e  fnstsw   ax
+10056130  test     ah, 0x41
+10056133  jne      0x1005613e
+10056135  fld      dword ptr [edx]
+10056137  lea      esi, [ecx + 3]
+1005613a  fstp     dword ptr [esp + 0x10]
+1005613e  fld      dword ptr [edx + 4]
+10056141  fld      dword ptr [esp + 0x10]
+10056145  fcompp   
+10056147  fnstsw   ax
+10056149  test     ah, 0x41
+1005614c  jne      0x10056158
+1005614e  fld      dword ptr [edx + 4]
+10056151  lea      esi, [ecx + 4]
+10056154  fstp     dword ptr [esp + 0x10]
+10056158  add      ecx, 4
+1005615b  add      edx, 0x10
+1005615e  cmp      ecx, edi
+10056160  jl       0x100560f2
+10056162  pop      edi
+10056163  cmp      ecx, ebp
+10056165  jge      0x10056188
+10056167  fld      dword ptr [ebx + ecx*4]
+1005616a  fld      dword ptr [esp + 0xc]
+1005616e  fcompp   
+10056170  fnstsw   ax
+10056172  test     ah, 0x41
+10056175  jne      0x10056181
+10056177  fld      dword ptr [ebx + ecx*4]
+1005617a  lea      esi, [ecx + 1]
+1005617d  fstp     dword ptr [esp + 0xc]
+10056181  add      ecx, 1
+10056184  cmp      ecx, ebp
+10056186  jl       0x10056167
+10056188  mov      eax, esi
+1005618a  pop      esi
+1005618b  pop      ebp
+1005618c  ret      4

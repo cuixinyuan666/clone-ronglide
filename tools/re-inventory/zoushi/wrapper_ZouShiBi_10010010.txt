@@ -1,0 +1,87 @@
+10010010  push     ebp
+10010011  mov      ebp, esp
+10010013  and      esp, 0xfffffff8
+10010016  push     -1
+10010018  push     0x1006ceeb
+1001001d  mov      eax, dword ptr fs:[0]
+10010023  push     eax
+10010024  sub      esp, 0xc
+10010027  push     esi
+10010028  push     edi
+10010029  mov      eax, dword ptr [0x1007c018]
+1001002e  xor      eax, esp
+10010030  push     eax
+10010031  lea      eax, [esp + 0x18]
+10010035  mov      dword ptr fs:[0], eax
+1001003b  mov      edi, ecx
+1001003d  cmp      dword ptr [edi + 0xb0], 0
+10010044  jne      0x10010079
+10010046  push     4
+10010048  call     0x1006b32c
+1001004d  add      esp, 4
+10010050  mov      dword ptr [esp + 0x10], eax
+10010054  test     eax, eax
+10010056  mov      dword ptr [esp + 0x20], 0
+1001005e  je       0x10010069
+10010060  mov      esi, eax
+10010062  call     0x1002c160
+10010067  jmp      0x1001006b
+10010069  xor      eax, eax
+1001006b  mov      dword ptr [esp + 0x20], 0xffffffff
+10010073  mov      dword ptr [edi + 0xb0], eax
+10010079  push     0xea62
+1001007e  mov      ecx, edi
+10010080  call     0x10014e60
+10010085  test     al, al
+10010087  jne      0x100100b8
+10010089  mov      eax, dword ptr [ebp + 8]
+1001008c  mov      edx, dword ptr [ebp + 0xc]
+1001008f  lea      ecx, [eax*8]
+10010096  push     ecx
+10010097  push     0
+10010099  push     edx
+1001009a  call     0x1006bd22
+1001009f  add      esp, 0xc
+100100a2  xor      al, al
+100100a4  mov      ecx, dword ptr [esp + 0x18]
+100100a8  mov      dword ptr fs:[0], ecx
+100100af  pop      ecx
+100100b0  pop      edi
+100100b1  pop      esi
+100100b2  mov      esp, ebp
+100100b4  pop      ebp
+100100b5  ret      0xc
+100100b8  push     4
+100100ba  call     0x1006b32c
+100100bf  add      esp, 4
+100100c2  test     eax, eax
+100100c4  je       0x100100d0
+100100c6  mov      dword ptr [eax], 0x1006f708
+100100cc  mov      esi, eax
+100100ce  jmp      0x100100d2
+100100d0  xor      esi, esi
+100100d2  mov      eax, dword ptr [ebp + 0xc]
+100100d5  mov      ecx, dword ptr [ebp + 8]
+100100d8  mov      edx, dword ptr [edi + 0xb0]
+100100de  push     esi
+100100df  push     eax
+100100e0  mov      eax, dword ptr [ebp + 0x10]
+100100e3  push     ecx
+100100e4  push     edx
+100100e5  call     0x1002fbf0
+100100ea  test     esi, esi
+100100ec  je       0x100100f8
+100100ee  mov      eax, dword ptr [esi]
+100100f0  mov      edx, dword ptr [eax]
+100100f2  push     1
+100100f4  mov      ecx, esi
+100100f6  call     edx
+100100f8  mov      al, 1
+100100fa  mov      ecx, dword ptr [esp + 0x18]
+100100fe  mov      dword ptr fs:[0], ecx
+10010105  pop      ecx
+10010106  pop      edi
+10010107  pop      esi
+10010108  mov      esp, ebp
+1001010a  pop      ebp
+1001010b  ret      0xc

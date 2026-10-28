@@ -1,0 +1,540 @@
+1006f190  or       byte ptr [esi + 7], cl
+1006f193  add      ah, ch
+1006f195  dec      ebp
+1006f196  pop      es
+1006f197  add      ah, ah
+1006f199  dec      ebp
+1006f19a  pop      es
+1006f19b  add      ah, bl
+1006f19d  dec      ebp
+1006f19e  pop      es
+1006f19f  add      dl, dl
+1006f1a1  dec      ebp
+1006f1a2  pop      es
+1006f1a3  add      al, cl
+1006f1a5  dec      ebp
+1006f1a6  pop      es
+1006f1a7  add      al, al
+1006f1a9  dec      ebp
+1006f1aa  pop      es
+1006f1ab  add      byte ptr [eax + 0x5c], dh
+1006f1ae  pop      es
+1006f1af  add      byte ptr [eax + 0x5c], bh
+1006f1b2  pop      es
+1006f1b3  add      byte ptr [edx - 0x73fff8a4], al
+1006f1b9  pop      esp
+1006f1ba  pop      es
+1006f1bb  add      byte ptr [esi - 0x5ffff8a4], dl
+1006f1c1  pop      esp
+1006f1c2  pop      es
+1006f1c3  add      byte ptr [edx - 0x4bfff8a4], ch
+1006f1c9  pop      esp
+1006f1ca  pop      es
+1006f1cb  add      byte ptr [esi - 0x2dfff8a4], bh
+1006f1d1  pop      esp
+1006f1d2  pop      es
+1006f1d3  add      al, cl
+1006f1d5  pop      esp
+1006f1d6  pop      es
+1006f1d7  add      al, ch
+1006f1d9  dec      edi
+1006f1da  pop      es
+1006f1db  add      byte ptr [esi - 0x49fff8b3], ch
+1006f1e1  dec      ebp
+1006f1e2  pop      es
+1006f1e3  add      byte ptr [eax], al
+1006f1e5  add      byte ptr [eax], al
+1006f1e7  add      byte ptr [esi + 0x743], dl
+1006f1ed  add      byte ptr [eax], al
+1006f1ef  add      byte ptr [eax + eax*2 + 7], cl
+1006f1f3  add      byte ptr [edx + 0x40], ch
+1006f1f6  pop      es
+1006f1f7  add      byte ptr [eax + eax*2 + 0x40d40007], bl
+1006f1fe  pop      es
+1006f1ff  add      byte ptr [eax], bl
+1006f201  inc      ecx
+1006f202  pop      es
+1006f203  add      byte ptr [esi + 0x41], dl
+1006f206  pop      es
+1006f207  add      byte ptr [eax], dl
+1006f209  inc      eax
+1006f20a  pop      es
+1006f20b  add      ah, al
+1006f20d  inc      ecx
+1006f20e  pop      es
+1006f20f  add      dh, dh
+1006f211  inc      ecx
+1006f212  pop      es
+1006f213  add      byte ptr [edx + eax*2 + 7], ah
+1006f217  add      byte ptr [edx + eax*2 + 0x3f800007], dl
+1006f21e  pop      es
+1006f21f  add      byte ptr [edx], bh
+1006f221  aas      
+1006f222  pop      es
+1006f223  add      byte ptr [eax], dl
+1006f225  inc      ebx
+1006f226  pop      es
+1006f227  add      byte ptr [ecx + eax*2 + 0x3e880007], dl
+1006f22e  pop      es
+1006f22f  add      byte ptr [eax], al
+1006f231  add      byte ptr [eax], al
+1006f233  add      ah, al
+1006f235  dec      ecx
+1006f236  pop      es
+1006f237  add      byte ptr [edx + 0x68000749], ch
+1006f23d  dec      ecx
+1006f23e  pop      es
+1006f23f  add      byte ptr [ecx + ecx*2 + 7], al
+1006f243  add      byte ptr [edx], bl
+1006f245  dec      ecx
+1006f246  pop      es
+1006f247  add      al, bh
+1006f249  dec      eax
+1006f24a  pop      es
+1006f24b  add      ah, dl
+1006f24d  dec      eax
+1006f24e  pop      es
+1006f24f  add      byte ptr [edx - 0x71fff8b8], dh
+1006f255  dec      eax
+1006f256  pop      es
+1006f257  add      byte ptr [edx + 0x48], ch
+1006f25a  pop      es
+1006f25b  add      byte ptr [eax + ecx*2 + 7], cl
+1006f25f  add      byte ptr [esi], ah
+1006f261  dec      eax
+1006f262  pop      es
+1006f263  add      byte ptr [eax], al
+1006f265  dec      eax
+1006f266  pop      es
+1006f267  add      dh, bl
+1006f269  inc      edi
+1006f26a  pop      es
+1006f26b  add      byte ptr [eax - 0x5ffff8b9], bh
+1006f271  inc      edi
+1006f272  pop      es
+1006f273  add      byte ptr [edx + 0x47], bh
+1006f276  pop      es
+1006f277  add      byte ptr [edi + eax*2 + 7], ah
+1006f27b  add      byte ptr [eax + 0x47], al
+1006f27e  pop      es
+1006f27f  add      byte ptr [edx], al
+1006f281  dec      edx
+1006f282  pop      es
+1006f283  add      byte ptr [esi], al
+1006f285  inc      edi
+1006f286  pop      es
+1006f287  add      al, cl
+1006f289  inc      esi
+1006f28a  pop      es
+1006f28b  add      byte ptr [esi + 0x54000746], cl
+1006f291  inc      esi
+1006f292  pop      es
+1006f293  add      byte ptr [eax], bh
+1006f295  inc      esi
+1006f296  pop      es
+1006f297  add      byte ptr [edx], dl
+1006f299  inc      esi
+1006f29a  pop      es
+1006f29b  add      al, dh
+1006f29d  inc      ebp
+1006f29e  pop      es
+1006f29f  add      dh, dl
+1006f2a1  inc      ebp
+1006f2a2  pop      es
+1006f2a3  add      byte ptr [ebp + eax*2 + 0x45700007], ch
+1006f2aa  pop      es
+1006f2ab  add      byte ptr [eax + 0x45], dl
+1006f2ae  pop      es
+1006f2af  add      byte ptr [eax*2 + 0x44fe0007], ah
+1006f2b6  pop      es
+1006f2b7  add      al, cl
+1006f2b9  inc      esp
+1006f2ba  pop      es
+1006f2bb  add      byte ptr [eax + 0x7e000744], ch
+1006f2c1  inc      esp
+1006f2c2  pop      es
+1006f2c3  add      byte ptr [esi + 0x44], cl
+1006f2c6  pop      es
+1006f2c7  add      byte ptr [esp + eax*2], ah
+1006f2ca  pop      es
+1006f2cb  add      dh, bh
+1006f2cd  inc      ebx
+1006f2ce  pop      es
+1006f2cf  add      byte ptr [eax], ch
+1006f2d1  dec      edx
+1006f2d2  pop      es
+1006f2d3  add      byte ptr [esi + 0x4a], ah
+1006f2d6  pop      es
+1006f2d7  add      byte ptr [edx + ecx*2 + 7], bh
+1006f2db  add      byte ptr [esi - 0x1bfff8b6], bh
+1006f2e1  dec      edx
+1006f2e2  pop      es
+1006f2e3  add      byte ptr [eax], cl
+1006f2e5  dec      ebx
+1006f2e6  pop      es
+1006f2e7  add      byte ptr [esi], ch
+1006f2e9  dec      ebx
+1006f2ea  pop      es
+1006f2eb  add      byte ptr [esi + 0x4b], bl
+1006f2ee  pop      es
+1006f2ef  add      byte ptr [esi + 0x4b], dh
+1006f2f2  pop      es
+1006f2f3  add      byte ptr [esi - 0x33fff8b5], bl
+1006f2f9  dec      ebx
+1006f2fa  pop      es
+1006f2fb  add      byte ptr [esi], cl
+1006f2fd  dec      esp
+1006f2fe  pop      es
+1006f2ff  add      byte ptr [esi + 0x4c], cl
+1006f302  pop      es
+1006f303  add      byte ptr [esi - 0x2ffff8b4], al
+1006f309  dec      esp
+1006f30a  pop      es
+1006f30b  add      byte ptr [eax], bl
+1006f30d  dec      ebp
+1006f30e  pop      es
+1006f30f  add      byte ptr [ecx*2 + 0x4d580007], bh
+1006f316  pop      es
+1006f317  add      byte ptr [ebp + ecx*2 + 7], bh
+1006f31b  add      byte ptr [esi], ah
+1006f31d  inc      edi
+1006f31e  pop      es
+1006f31f  add      byte ptr [eax], al
+1006f321  add      byte ptr [eax], al
+1006f323  add      byte ptr [esi + edi + 7], bl
+1006f327  add      byte ptr [esi + edi], ch
+1006f32a  pop      es
+1006f32b  add      byte ptr [eax], al
+1006f32d  add      byte ptr [eax], al
+1006f32f  add      byte ptr [eax], cl
+1006f331  pop      es
+1006f333  add      dh, ah
+1006f335  cmp      eax, 0x3dc40007
+1006f33a  pop      es
+1006f33b  add      byte ptr [edx - 0x7bfff8c3], ah
+1006f341  cmp      eax, 0x3d640007
+1006f346  pop      es
+1006f347  add      byte ptr [ebp + edi + 7], al
+1006f34b  add      byte ptr [esi], ah
+1006f34d  cmp      eax, 0x3d040007
+1006f352  pop      es
+1006f353  add      al, ah
+1006f355  cmp      al, 7
+1006f357  add      dl, al
+1006f359  cmp      al, 7
+1006f35b  add      byte ptr [esi - 0x7ffff8c4], bl
+1006f361  cmp      al, 7
+1006f363  add      byte ptr [esi + 0x3c], bl
+1006f366  pop      es
+1006f367  add      byte ptr [eax + 0x3c], al
+1006f36a  pop      es
+1006f36b  add      byte ptr [edx], bl
+1006f36d  cmp      al, 7
+1006f36f  add      al, bh
+1006f371  cmp      eax, dword ptr [edi]
+1006f373  add      dh, dl
+1006f375  cmp      eax, dword ptr [edi]
+1006f377  add      byte ptr [edx - 0x6ffff8c5], dh
+1006f37d  cmp      eax, dword ptr [edi]
+1006f37f  add      byte ptr [esi + 0x3b], bl
+1006f382  pop      es
+1006f383  add      byte ptr [eax + 0x3b], al
+1006f386  pop      es
+1006f387  add      byte ptr [esi], bl
+1006f389  cmp      eax, dword ptr [edi]
+1006f38b  add      byte ptr [eax], al
+1006f38d  cmp      eax, dword ptr [edi]
+1006f38f  add      ah, ah
+1006f391  cmp      al, byte ptr [edi]
+1006f393  add      byte ptr [eax - 0x65fff8c6], bh
+1006f399  cmp      al, byte ptr [edi]
+1006f39b  add      byte ptr [edx + edi + 7], bh
+1006f39f  add      byte ptr [edx + 0x3a], ah
+1006f3a2  pop      es
+1006f3a3  add      byte ptr [eax + 0x3a], cl
+1006f3a6  pop      es
+1006f3a7  add      byte ptr [edx + edi], bl
+1006f3aa  pop      es
+1006f3ab  add      al, al
+1006f3ad  cmp      dword ptr [edi], eax
+1006f3af  add      byte ptr [eax], al
+1006f3b1  add      byte ptr [eax], al
+1006f3b3  add      byte ptr [eax], al
+1006f3b5  add      byte ptr [eax], al
+1006f3b7  add      al, dh
+1006f3b9  loope    0x1006f3c1
+1006f3bb  adc      byte ptr [eax], al
+1006f3bd  add      byte ptr [eax], al
+1006f3bf  add      byte ptr [eax], al
+1006f3c1  add      byte ptr [eax], al
+1006f3c3  add      byte ptr [edx - 0x4c], dh
+1006f3c6  push     es
+1006f3c7  adc      byte ptr [esi + edi*4], ch
+1006f3ca  push     es
+1006f3cb  adc      byte ptr [eax], al
+1006f3cd  add      byte ptr [eax], al
+1006f3cf  add      byte ptr [eax], al
+1006f3d1  add      byte ptr [eax], al
+1006f3d3  add      byte ptr [ecx + 0x64], al
+1006f3d6  adc      dword ptr [eax + eax], esp
+1006f3da  add      byte ptr [eax], al
+1006f3dc  add      al, byte ptr [eax]
+1006f3de  add      byte ptr [eax], al
+1006f3e0  cmp      al, 0
+1006f3e2  add      byte ptr [eax], al
+1006f3e4  pushal   
+1006f3e5  std      
+1006f3e6  push     es
+1006f3e7  add      byte ptr [eax - 3], ah
+1006f3ea  push     es
+1006f3eb  add      byte ptr [eax + eax + 0x65], al
+1006f3ef  add      byte ptr [eax + eax + 0x65], ch
+1006f3f3  add      byte ptr [eax + eax + 0x65], dh
+1006f3f7  add      byte ptr [eax], al
+1006f3f9  add      byte ptr [eax], al
+1006f3fb  add      byte ptr [esi], cl
+1006f3fe  outsd    dx, dword ptr [esi]
+1006f3ff  add      byte ptr [edx], dl
+1006f402  add      byte ptr gs:[ebp], ch
+1006f406  outsd    dx, dword ptr [esi]
+1006f407  add      byte ptr [esi], dh
+1006f40a  add      byte ptr gs:[eax], al
+1006f40d  add      byte ptr [eax], al
+1006f40f  add      byte ptr [esi], al
+1006f412  outsd    dx, dword ptr [esi]
+1006f413  add      byte ptr [edx], dh
+1006f416  arpl     word ptr [eax], ax
+1006f418  add      byte ptr gs:[edx], dl
+1006f41c  add      byte ptr gs:[ebp], ch
+1006f420  outsd    dx, dword ptr [esi]
+1006f421  add      byte ptr [esi], dh
+1006f424  add      byte ptr gs:[eax], al
+1006f427  add      byte ptr [esi], dl
+1006f42a  popal    
+1006f42b  add      byte ptr [eax + eax], ch
+1006f42f  add      byte ptr [edx], al
+1006f432  add      byte ptr [eax], al
+1006f434  inc      esp
+1006f435  add      byte ptr [eax], al
+1006f437  add      byte ptr [ebp], cl
+1006f43a  add      byte ptr [eax], al
+1006f43c  push     ebx
+1006f43d  add      byte ptr [eax], al
+1006f43f  add      byte ptr [esp + esi*8], bh
+1006f442  push     es
+1006f443  adc      byte ptr [eax], bh
+1006f445  hlt      
+1006f446  push     es
+1006f447  adc      byte ptr [esp + esi*8], dh
+1006f44a  push     es
+1006f44b  adc      byte ptr [eax], dh
+1006f44d  hlt      
+1006f44e  push     es
+1006f44f  adc      byte ptr [eax], ch
+1006f451  hlt      
+1006f452  push     es
+1006f453  adc      byte ptr [eax], dl
+1006f455  hlt      
+1006f456  push     es
+1006f457  adc      ah, bh
+1006f459  push     es
+1006f45b  adc      ah, ch
+1006f45d  push     es
+1006f45f  adc      byte ptr [ebp + edi*8 - 0x4cafeffa], bl
+1006f466  push     es
+1006f467  adc      byte ptr [eax], al
+1006f469  add      byte ptr [eax], al
+1006f46b  add      byte ptr [eax], dl
+1006f46d  or       byte ptr ds:[eax], dl
+1006f470  push     0x110083e
+1006f475  add      byte ptr [eax], al
+1006f477  add      byte ptr [edx], cl
+1006f479  add      byte ptr [eax], al
+1006f47b  add      byte ptr [eax + eax], ah
+1006f47f  add      al, ch
+1006f481  add      eax, dword ptr [eax]
+1006f483  add      byte ptr [eax], dl
+1006f485  daa      
+1006f486  add      byte ptr [eax], al
+1006f488  mov      al, byte ptr [0x40000186]
+1006f48d  inc      edx
+1006f48e  sldt     word ptr [eax + 0x9896]
+1006f495  loope    0x1006f48c
+1006f497  add      eax, 1
+1006f49c  or       al, byte ptr [eax]
+1006f49e  add      byte ptr [eax], al
+1006f4a0  add      byte ptr fs:[eax], al
+1006f4a3  add      al, ch
+1006f4a5  add      eax, dword ptr [eax]
+1006f4a7  add      byte ptr [eax], dl
+1006f4a9  daa      
+1006f4aa  add      byte ptr [eax], al
+1006f4ac  mov      al, byte ptr [0x40000186]
+1006f4b1  inc      edx
+1006f4b2  sldt     word ptr [eax + 0x9896]
+1006f4b9  loope    0x1006f4b0
+1006f4bb  add      eax, 1
+1006f4c0  or       al, byte ptr [eax]
+1006f4c2  add      byte ptr [eax], al
+1006f4c4  add      byte ptr fs:[eax], al
+1006f4c7  add      al, ch
+1006f4c9  add      eax, dword ptr [eax]
+1006f4cb  add      byte ptr [eax], dl
+1006f4cd  daa      
+1006f4ce  add      byte ptr [eax], al
+1006f4d0  mov      al, byte ptr [0x40000186]
+1006f4d5  inc      edx
+1006f4d6  sldt     word ptr [eax + 0x9896]
+1006f4dd  loope    0x1006f4d4
+1006f4df  add      eax, 1
+1006f4e4  or       al, byte ptr [eax]
+1006f4e6  add      byte ptr [eax], al
+1006f4e8  add      byte ptr fs:[eax], al
+1006f4eb  add      al, ch
+1006f4ed  add      eax, dword ptr [eax]
+1006f4ef  add      byte ptr [eax], dl
+1006f4f1  daa      
+1006f4f2  add      byte ptr [eax], al
+1006f4f4  mov      al, byte ptr [0x40000186]
+1006f4f9  inc      edx
+1006f4fa  sldt     word ptr [eax + 0x9896]
+1006f501  loope    0x1006f4f8
+1006f503  add      eax, 0x10001000
+1006f508  bound    esp, qword ptr [ecx + 0x64]
+1006f50b  and      byte ptr [ecx + 0x6c], ah
+1006f50e  insb     byte ptr es:[edi], dx
+1006f50f  outsd    dx, dword ptr [esi]
+1006f510  arpl     word ptr [ecx + 0x74], sp
+1006f513  imul     ebp, dword ptr [edi + 0x6e], 0x482e0000
+1006f51a  dec      ecx
+1006f51b  push     ebx
+1006f51c  add      byte ptr [eax], al
+1006f51e  add      byte ptr [eax], al
+1006f520  mov      eax, dword ptr [0x317b978b]
+1006f525  pop      ecx
+1006f526  and      eax, 0x20002c8d
+1006f52b  add      byte ptr [ecx - 0x2846875], ah
+1006f531  push     ecx
+1006f532  jo       0x1006f599
+1006f534  cmp      bh, byte ptr [edi + 0x31]
+1006f537  pop      ecx
+1006f538  and      dword ptr [eax], eax
+1006f53a  or       eax, 0x46000a00
+1006f53f  add      byte ptr [ebp], dh
+1006f542  outsb    dx, byte ptr [esi]
+1006f543  add      byte ptr [ebx], ah
+1006f546  cmp      eax, 0x64002500
+1006f54b  add      byte ptr [eax], al
+1006f54d  add      byte ptr [eax], al
+1006f54f  add      byte ptr [eax], al
+1006f552  add      byte ptr [eax], al
+1006f554  and      eax, 0x69425c73
+1006f559  push     eax
+1006f55a  insb     byte ptr es:[edi], dx
+1006f55b  popal    
+1006f55c  outsb    dx, byte ptr [esi]
+1006f55d  bound    ebp, qword ptr cs:[ecx + 0x6e]
+1006f561  add      byte ptr [eax], al
+1006f563  add      byte ptr [edx + 0x62], dh
+1006f566  add      byte ptr [eax], al
+1006f568  and      eax, 0x642573
+1006f56d  add      byte ptr [eax], al
+1006f56f  add      byte ptr [0x662a2e], ah
+1006f575  add      byte ptr [eax], al
+1006f577  add      byte ptr [0x23000064], ah
+1006f57d  add      byte ptr [eax], al
+1006f57f  add      byte ptr [eax + eax], ah
+1006f582  add      byte ptr [eax], al
+1006f584  pop      edi
+1006f585  add      byte ptr [eax], al
+1006f587  add      byte ptr [ebx + 0x48], dl
+1006f58a  add      byte ptr [eax], al
+1006f58c  push     ebx
+1006f58d  pop      edx
+1006f58e  add      byte ptr [eax], al
+1006f590  dec      ecx
+1006f591  add      byte ptr [eax], al
+1006f593  add      byte ptr [ebp + 0x4b], cl
+1006f596  push     esp
+1006f597  dec      ebp
+1006f598  inc      ecx
+1006f599  dec      ecx
+1006f59a  dec      esi
+1006f59b  add      byte ptr [edx + 0x4c], dl
+1006f59e  inc      esp
+1006f59f  dec      eax
+1006f5a0  pop      ecx
+1006f5a1  inc      edx
+1006f5a2  dec      ebx
+1006f5a3  add      byte ptr [ebx + 0x57], dl
+1006f5a6  dec      eax
+1006f5a7  pop      ecx
+1006f5a8  inc      edx
+1006f5a9  dec      ebx
+1006f5aa  xor      dword ptr [eax], eax
+1006f5ac  push     ebx
+1006f5ad  push     edi
+1006f5ae  dec      eax
+1006f5af  pop      ecx
+1006f5b0  inc      edx
+1006f5b1  dec      ebx
+1006f5b2  xor      al, byte ptr [eax]
+1006f5b4  jbe      0x1006f61b
+1006f5b6  arpl     word ptr [edi + ebp*2 + 0x72], si
+1006f5ba  cmp      al, 0x54
+1006f5bc  and      byte ptr ds:[edi + ebp*2 + 0x6f], dh
+1006f5c1  and      byte ptr [edi + ebp*2 + 0x6e], ch
+1006f5c5  add      byte ptr [bx + si], al
+1006f5c8  imul     ebp, dword ptr [esi + 0x76], 0x64696c61
+1006f5cf  and      byte ptr [ebp + 0x61], ch
+1006f5d2  jo       0x1006f603
+1006f5d4  jae      0x1006f63b
+1006f5d6  je       0x1006f614
+1006f5d8  push     esp
+1006f5d9  and      byte ptr ds:[ecx + 0x74], ch
+1006f5dd  jb       0x1006f641
+1006f5e0  je       0x1006f651
+1006f5e2  jb       0x1006f5e4
+1006f5e4  insd     dword ptr es:[edi], dx
+1006f5e5  popal    
+1006f5e6  jo       0x1006f617
+1006f5e8  jae      0x1006f64f
+1006f5ea  je       0x1006f628
+1006f5ec  push     esp
+1006f5ed  and      byte ptr ds:[edi + ebp*2 + 0x6f], dh
+1006f5f2  and      byte ptr [edi + ebp*2 + 0x6e], ch
+1006f5f6  add      byte ptr [si + 0x65], ah
+1006f5fa  jno      0x1006f671
+1006f5fc  cmp      al, 0x54
+1006f5ff  and      byte ptr ds:[edi + ebp*2 + 0x6f], dh
+1006f604  and      byte ptr [edi + ebp*2 + 0x6e], ch
+1006f608  add      byte ptr [bx + si], al
+1006f60b  add      byte ptr [eax], ch
+1006f60d  add      eax, dword ptr [edi]
+1006f60f  adc      byte ptr [eax + 0x66100010], dh
+1006f615  mov      ah, 6
+1006f617  adc      ah, bl
+1006f619  add      al, byte ptr [edi]
+1006f61b  adc      byte ptr [eax + 0x11], dh
+1006f61e  add      byte ptr [eax], dl
+1006f620  inc      eax
+1006f621  adc      dword ptr [eax], eax
+1006f623  adc      byte ptr [edx + eax + 0x11701007], cl
+1006f62a  add      byte ptr [eax], dl
+1006f62c  inc      eax
+1006f62d  adc      dword ptr [eax], eax
+1006f62f  adc      byte ptr [edx + eax], bh
+1006f632  pop      es
+1006f633  adc      byte ptr [eax + 0x11], dh
+1006f636  add      byte ptr [eax], dl
+1006f638  inc      eax
+1006f639  adc      dword ptr [eax], eax
+1006f63b  adc      ah, dh
+1006f63d  add      dword ptr [edi], eax
+1006f63f  adc      byte ptr [eax + 0x6c1001e3], dl
+1006f645  mov      ah, 6
+1006f647  adc      byte ptr [eax + 0x6c100013], dl
+1006f64d  mov      ah, 6
+1006f64f  adc      byte ptr [esp + esi*4 + 6], ch
+1006f653  adc      byte ptr [ecx + eax + 0x37601007], ch
+1006f65a  add      byte ptr [eax], dl

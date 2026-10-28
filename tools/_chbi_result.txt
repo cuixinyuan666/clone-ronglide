@@ -1,0 +1,5 @@
+授权 combo text: '无'
+set name='TESTCHBI1' code='VAR1:=CHBI(H,L,11);\r\nVAR2:=CHDUAN;\r\nTESTCHBI:VAR1;'
+compile output:
+编译成功
+授权 combo text after: '无'

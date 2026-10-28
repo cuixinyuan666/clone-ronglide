@@ -1,0 +1,16 @@
+1006a830  cmp      dword ptr [esi], 0
+1006a833  push     edi
+1006a834  mov      edi, dword ptr [0x1006f194]
+1006a83a  jne      0x1006a83e
+1006a83c  call     edi
+1006a83e  mov      eax, dword ptr [esi]
+1006a840  mov      ecx, dword ptr [esi + 4]
+1006a843  cmp      ecx, dword ptr [eax + 8]
+1006a846  jb       0x1006a84f
+1006a848  call     edi
+1006a84a  mov      eax, dword ptr [esi + 4]
+1006a84d  pop      edi
+1006a84e  ret      
+1006a84f  mov      eax, ecx
+1006a851  pop      edi
+1006a852  ret      

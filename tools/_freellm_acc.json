@@ -1,0 +1,15 @@
+{
+  "model": "deepseek-v4-flash",
+  "reasoning_effort": "high",
+  "max_tokens": 600,
+  "messages": [
+    {
+      "role": "system",
+      "content": "你是验收人。用简体中文给出通过或不通过。先写结论，再按检查项写一句话。不要编造证据里没有的事实。不要提供绕过软件授权的做法。不超过 14 行。"
+    },
+    {
+      "role": "user",
+      "content": "按下面标准验收「用 wnmr_full.py 替换原版无脑买入线段」。\n\n标准：\n1. 实际调用了 wnmr_full.py，不再走原版公式。\n2. 执行成功。\n3. 58560 根里的三个信号与基线一致：1 基 index 35281=1、35401=3、35406=2。\n4. 价格 12.72、12.70、12.72。\n5. 有可视图，三处有信号标记。\n6. 未改安装目录。\n7. 未绕过购买框。\n\n证据：\n- 命令：在 tools/wnmr_py 下执行 python wnmr_full.py --max-bars 58560 --ckpt dumps/ckpt_pre_wnmr_58560.pkl --dump-json dumps/wnmr_run_latest.json，然后 python plot_wnmr_full.py。\n- 监督者直接读了 dumps/wnmr_run_latest.json：count=58560，非零恰好 3 个，均为 0 基下标：(35280, 状态 1.0, 价格 12.720000267028809)、(35400, 3.0, 12.699999809265137)、(35405, 2.0, 12.720000267028809)。0 基加 1 等于基线的 1 基下标。价格是 float32，四舍五入为 12.72 和 12.70。\n- 人手报告控制台有 RESULT: ALL MATCH，以及 chduan 非零 831、WNMR 直方图 {1×1,2×1,3×1}。监督者没有重跑，没有亲自看到这行控制台。\n- 图已生成：D:\\a_ronglide\\clone-ronglide\\tools\\wnmr_py\\wnmr_full_chart.png。监督者看过：窗口 34800–36000，标题 WNMR full signals (wnmr_full.py)，有价格折线。约 35280 处蓝点标「1 / 12.72」。约 35400 与 35405 两处很近，标了「止损价 / 12.70」和「买入价 / 12.72」，两个文字叠在一起。状态 1 没有公式中文名，图上只标了数字 1。\n- plot_wnmr_full.py 只读 JSON 和只读行情文件 Dat\\His\\02\\1\\600000.1 来画 (H+L)/2，没有写安装目录。\n- 没有对正版软件做购买框绕过。\n\n请给出通过或不通过。若有保留项，单独写，不要因此否定已经对上的信号点。"
+    }
+  ]
+}

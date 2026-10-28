@@ -1,0 +1,11 @@
+1006a680  push     ebx
+1006a681  mov      ebx, dword ptr [edi + 4]
+1006a684  cmp      ebx, dword ptr [edi + 8]
+1006a687  mov      dword ptr [esi], 0
+1006a68d  jbe      0x1006a695
+1006a68f  call     dword ptr [0x1006f194]
+1006a695  mov      dword ptr [esi + 4], ebx
+1006a698  mov      dword ptr [esi], edi
+1006a69a  mov      eax, esi
+1006a69c  pop      ebx
+1006a69d  ret      

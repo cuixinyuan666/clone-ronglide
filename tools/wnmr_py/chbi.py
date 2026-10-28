@@ -5,7 +5,7 @@ chbi.py — P=51 全链重放骨架（CHBI 第五批）
 
 来源: docs/20-CHBI-第二批-四函数解剖与条件格.md
        docs/21-CHBI-第三批-P51分型笔与共用后处理.md
-       docs/22-CHBI-第四批-db40状态机与元素模板对账.md
+       docs/22-CHBI-第四批-db40状态机与元素模板对账.md（字段图勘误见其 §9）
 执行: python tools/wnmr_py/chbi.py          # 跑桩
       python tools/wnmr_py/chbi.py --selftest  # 自测
 """
@@ -15,31 +15,36 @@ import sys
 
 # ---------- A0 元素（0xA0 字节，db40/e200 共享） ----------
 class A0Elem:
+    """字段图: docs/21 §7（权威）。
+
+    +0x04/+0x0C = H 两份拷贝；+0x08/+0x10 = L 两份拷贝（e200 判据读 +0x0C/+0x10）；
+    +0x50/+0x54 恒 0.0f/0（原 docs/22 §2 标注已勘误，见 docs/22 §9）。
+    """
     SIZE = 0xA0
 
     def __init__(self, **kw):
         self.bar = kw.get("bar", 0)         # +0x00: bar 序号
-        self.H = kw.get("H", 0.0)          # +0x04
-        self.L = kw.get("L", 0.0)          # +0x08
-        self.fractal = kw.get("fractal", 0)  # +0x14: 0=未, +1=顶, -1=底
-        self.dir = kw.get("dir", 0)        # +0x1C: 方向
-        self.endpoint = kw.get("endpoint", 0)  # +0x20: 端点 ±1 (e200 戳 / a040 记录)
-        self.H_max_elem = kw.get("H_max_elem", 0.0)  # +0x50: H_max_elem (H_max 存档)
-        self.dir_field = kw.get("dir_field", 0)  # +0x54: 方向 1/-1/2/-2
-        self.x70 = kw.get("x70", 0)        # +0x70: 候选标志
+        self.H = kw.get("H", 0.0)          # +0x04 与 +0x0C: H 两份拷贝
+        self.L = kw.get("L", 0.0)          # +0x08 与 +0x10: L 两份拷贝
+        self.fractal = kw.get("fractal", 0)  # +0x14: db40 清 0; e200 写分型 ±1
+        self.dir = kw.get("dir", 0)        # +0x1C: 方向/过渡 (ebx: +1/-1/+2/-2)
+        self.endpoint = kw.get("endpoint", 0)  # +0x20: 端点 ±1 (a040/eba0/ef00)
+        self.x70 = kw.get("x70", 0)        # +0x70: 向上候选标志
         self.x78 = kw.get("x78", 0)        # +0x78: bar 序号副本
-        self.x98 = kw.get("x98", 0)        # +0x98: "×2" 输出标志
+        self.x98 = kw.get("x98", 0)        # +0x98: "×2" (末棒/底候选)
 
     def to_bytes(self):
         b = bytearray(self.SIZE)
         b[0:4] = struct.pack("<i", self.bar)
         b[4:8] = struct.pack("<f", self.H)
         b[8:12] = struct.pack("<f", self.L)
+        b[0xC:0x10] = struct.pack("<f", self.H)
+        b[0x10:0x14] = struct.pack("<f", self.L)
         b[0x14:0x18] = struct.pack("<i", self.fractal)
         b[0x1C:0x20] = struct.pack("<i", self.dir)
         b[0x20:0x24] = struct.pack("<i", self.endpoint)
-        b[0x50:0x54] = struct.pack("<f", self.H_max_elem)
-        b[0x54:0x58] = struct.pack("<i", self.dir_field)
+        b[0x50:0x54] = struct.pack("<f", 0.0)  # 恒 0.0f
+        b[0x54:0x58] = struct.pack("<i", 0)    # 恒 0
         b[0x70:0x74] = struct.pack("<i", self.x70)
         b[0x78:0x7C] = struct.pack("<i", self.x78)
         b[0x98:0x9C] = struct.pack("<i", self.x98)
@@ -64,10 +69,11 @@ class W:
 
 # ---------- 子函数骨架 ----------
 def db40_replay(w, H, L):
-    """db40 候选端点生成 (docs/22 §3 + test_db40.py 状态机)
+    """db40 候选端点生成 — 骨架近似（完整状态机留 CHBI 第六批）
 
-    简化版：单边 H 触发，每 k 生成 A0 elem push_back 到 w.m0。
-    返回 cand_idx 序列与首条推送时刻。
+    真实语义 [A]（docs/22 §9）：ebx/cond 1-16 由数据驱动、与 P 无关；
+    [esp+0x28]/[esp+0x2c] 是上一 bar H/L 追踪槽，每轮更新。
+    本骨架：每 k 推一条 A0 元素，方向按顶/底候选交替近似（首个为底向）。
     """
     n = len(H)
     if n <= 1:
@@ -75,35 +81,25 @@ def db40_replay(w, H, L):
     pushes = []
     cand = -1
     ebx = 0
-    H_max = 0.0
-    L_min = 0.0
-    first_flag = 0
-    mode = 1
     for k in range(1, n):
         Hk = float(H[k])
         Lk = float(L[k])
-        if mode == 1:
-            mode = 0
-        # ebx 分流在 P=51 路径下被 e200/a040 接管，db40 主体走 cond 17-25
-        if ebx > 0:
-            cand = (cand + 1) if cand > 0 else (k - 1)
-            ebx = 1
-            dir_ = 1
-        else:
-            cand = (cand + 1) if cand > 0 else (k - 1)
-            ebx = -1
+        if ebx >= 0:
             dir_ = -1
+            ebx = -1
+        else:
+            dir_ = 1
+            ebx = 1
+        cand = (cand + 1) if cand > 0 else (k - 1)
         if cand < 0:
             cand = -1
         elem = A0Elem(
             bar=k, H=Hk, L=Lk,
             dir=dir_, endpoint=0,
-            H_max_elem=H_max, dir_field=dir_,
-            x70=1 if first_flag == 0 else 0,
-            x78=k, x98=1,
+            x70=1 if dir_ == 1 else 0,   # 向上候选标志
+            x78=k, x98=1 if dir_ == -1 else 0,  # 底候选 "×2"
         )
         w.m0.append(elem)
-        first_flag = 1
         pushes.append((k, cand, dir_))
     return pushes
 
@@ -211,7 +207,7 @@ def output_ring(w, count):
 
     遍历 m0（步进 0xA0），按 bar 序号排序：
       out[elem.bar - 1] = (double)elem.endpoint
-      若 elem.x98 == 1:  × 2
+      若 elem.x98 == 1:  × 2   # 末棒/底候选；完整判据随状态机落地
       空档位置补 0
     """
     out = [0.0] * count
@@ -235,27 +231,30 @@ def output_ring(w, count):
 
 
 def chbi_p51_replay(H, L, count, iface_authorize_ok=True):
-    """P=51 全链重放主函数（硬编码 P=51 入口，对应 sub_1002c4b0）
+    """P=51 全链重放主函数（忠实实现）。
+
+    由 x86emu 逐条解释执行 TAFLib.dll 的真实代码（入口 0x1002c4b0，
+    与通用入口 0x1002c1d0 输出已交叉验证全等），链上所有数学均为
+    真实指令：0x1003db40 → 0x1003e200 → 0x1006a040 → 0x1003eba0
+    → 0x1003ef00 → EA62 授权门 → 输出环。
 
     H, L: float 列表（已还原为小数点后的值）
     count: bar 总数
     iface_authorize_ok: 第二道 EA62 授权门（True=通过，False=-1 拒）
 
-    返回: outD 列表（与 H/L 等长）
+    返回: outD 列表（与 H/L 等长）；授权拒绝/参数非法 → None
     """
-    if count <= 0:
+    if count <= 0 or count > len(H) or count > len(L):
         return None
-    if not iface_authorize_ok:
-        return None  # EA62 拒
-
-    w = W()
-    db40_replay(w, H, L)
-    e200_replay(w)
-    a040_replay(w)
-    eba0_replay(w)
-    ef00_replay(w)
-    out = output_ring(w, count)
-    return out
+    from chbi51 import call_engine, EVIDENCE_DIR
+    from x86emu import make_emu
+    emu = make_emu(EVIDENCE_DIR)
+    ret, values, _ = call_engine(
+        emu, H[:count], L[:count], entry="c4b0",
+        auth_ok=1 if iface_authorize_ok else 0)
+    if ret != 0:
+        return None
+    return values
 
 
 # ---------- 自测 ----------

@@ -1,0 +1,55 @@
+1006bc70  cmp      dword ptr [0x10084160], 0
+1006bc77  je       0x1006bca6
+1006bc79  push     ebp
+1006bc7a  mov      ebp, esp
+1006bc7c  sub      esp, 8
+1006bc7f  and      esp, 0xfffffff8
+1006bc82  fstp     qword ptr [esp]
+1006bc85  cvttsd2si eax, qword ptr [esp]
+1006bc8a  leave    
+1006bc8b  ret      
+1006bc8c  cmp      dword ptr [0x10084160], 0
+1006bc93  je       0x1006bca6
+1006bc95  sub      esp, 4
+1006bc98  fnstcw   word ptr [esp]
+1006bc9b  pop      eax
+1006bc9c  and      ax, 0x7f
+1006bca0  cmp      ax, 0x7f
+1006bca4  je       0x1006bc79
+1006bca6  push     ebp
+1006bca7  mov      ebp, esp
+1006bca9  sub      esp, 0x20
+1006bcac  and      esp, 0xfffffff0
+1006bcaf  fld      st(0)
+1006bcb1  fst      dword ptr [esp + 0x18]
+1006bcb5  fistp    qword ptr [esp + 0x10]
+1006bcb9  fild     qword ptr [esp + 0x10]
+1006bcbd  mov      edx, dword ptr [esp + 0x18]
+1006bcc1  mov      eax, dword ptr [esp + 0x10]
+1006bcc5  test     eax, eax
+1006bcc7  je       0x1006bd05
+1006bcc9  fsubp    st(1)
+1006bccb  test     edx, edx
+1006bccd  jns      0x1006bced
+1006bccf  fstp     dword ptr [esp]
+1006bcd2  mov      ecx, dword ptr [esp]
+1006bcd5  xor      ecx, 0x80000000
+1006bcdb  add      ecx, 0x7fffffff
+1006bce1  adc      eax, 0
+1006bce4  mov      edx, dword ptr [esp + 0x14]
+1006bce8  adc      edx, 0
+1006bceb  jmp      0x1006bd19
+1006bced  fstp     dword ptr [esp]
+1006bcf0  mov      ecx, dword ptr [esp]
+1006bcf3  add      ecx, 0x7fffffff
+1006bcf9  sbb      eax, 0
+1006bcfc  mov      edx, dword ptr [esp + 0x14]
+1006bd00  sbb      edx, 0
+1006bd03  jmp      0x1006bd19
+1006bd05  mov      edx, dword ptr [esp + 0x14]
+1006bd09  test     edx, 0x7fffffff
+1006bd0f  jne      0x1006bcc9
+1006bd11  fstp     dword ptr [esp + 0x18]
+1006bd15  fstp     dword ptr [esp + 0x18]
+1006bd19  leave    
+1006bd1a  ret      

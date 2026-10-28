@@ -1,0 +1,116 @@
+10060aa0  push     ecx
+10060aa1  push     ebx
+10060aa2  push     ebp
+10060aa3  mov      ebp, dword ptr [0x1006f194]
+10060aa9  push     esi
+10060aaa  push     edi
+10060aab  mov      edi, eax
+10060aad  mov      eax, dword ptr [edi + 4]
+10060ab0  cmp      eax, dword ptr [edi + 8]
+10060ab3  mov      dword ptr [esp + 0x10], 0
+10060abb  jbe      0x10060abf
+10060abd  call     ebp
+10060abf  mov      esi, dword ptr [edi + 4]
+10060ac2  cmp      esi, dword ptr [edi + 8]
+10060ac5  jbe      0x10060ad0
+10060ac7  call     ebp
+10060ac9  lea      esp, [esp]
+10060ad0  mov      ebx, dword ptr [edi + 8]
+10060ad3  cmp      dword ptr [edi + 4], ebx
+10060ad6  jbe      0x10060ae0
+10060ad8  call     ebp
+10060ada  mov      ebp, dword ptr [0x1006f194]
+10060ae0  test     edi, edi
+10060ae2  je       0x10060ae8
+10060ae4  cmp      edi, edi
+10060ae6  je       0x10060af0
+10060ae8  call     ebp
+10060aea  mov      ebp, dword ptr [0x1006f194]
+10060af0  cmp      esi, ebx
+10060af2  je       0x10060b1a
+10060af4  test     edi, edi
+10060af6  jne      0x10060afa
+10060af8  call     ebp
+10060afa  cmp      esi, dword ptr [edi + 8]
+10060afd  jb       0x10060b01
+10060aff  call     ebp
+10060b01  mov      dword ptr [esi + 0x8c], 0
+10060b0b  cmp      esi, dword ptr [edi + 8]
+10060b0e  jb       0x10060b12
+10060b10  call     ebp
+10060b12  add      esi, 0xa0
+10060b18  jmp      0x10060ad0
+10060b1a  mov      esi, dword ptr [edi + 4]
+10060b1d  cmp      esi, dword ptr [edi + 8]
+10060b20  jbe      0x10060b24
+10060b22  call     ebp
+10060b24  cmp      dword ptr [esp + 0x18], 0
+10060b29  jle      0x10060bee
+10060b2f  nop      
+10060b30  fld1     
+10060b32  mov      ecx, dword ptr [esp + 0x1c]
+10060b36  mov      edx, dword ptr [esp + 0x10]
+10060b3a  fcomp    dword ptr [ecx + edx*4]
+10060b3d  fnstsw   ax
+10060b3f  test     ah, 0x44
+10060b42  jnp      0x10060b58
+10060b44  fld      dword ptr [0x1006fc50]
+10060b4a  fcomp    dword ptr [ecx + edx*4]
+10060b4d  fnstsw   ax
+10060b4f  test     ah, 0x44
+10060b52  jp       0x10060bd9
+10060b58  mov      ebx, dword ptr [edi + 8]
+10060b5b  cmp      dword ptr [edi + 4], ebx
+10060b5e  jbe      0x10060b68
+10060b60  call     ebp
+10060b62  mov      ebp, dword ptr [0x1006f194]
+10060b68  test     edi, edi
+10060b6a  je       0x10060b70
+10060b6c  cmp      edi, edi
+10060b6e  je       0x10060b78
+10060b70  call     ebp
+10060b72  mov      ebp, dword ptr [0x1006f194]
+10060b78  cmp      esi, ebx
+10060b7a  je       0x10060bd9
+10060b7c  test     edi, edi
+10060b7e  jne      0x10060b82
+10060b80  call     ebp
+10060b82  cmp      esi, dword ptr [edi + 8]
+10060b85  jb       0x10060b89
+10060b87  call     ebp
+10060b89  mov      ecx, dword ptr [esi]
+10060b8b  mov      eax, dword ptr [esp + 0x10]
+10060b8f  sub      ecx, 1
+10060b92  cmp      eax, ecx
+10060b94  je       0x10060ba5
+10060b96  cmp      esi, dword ptr [edi + 8]
+10060b99  jb       0x10060b9d
+10060b9b  call     ebp
+10060b9d  add      esi, 0xa0
+10060ba3  jmp      0x10060b58
+10060ba5  fld1     
+10060ba7  mov      edx, dword ptr [esp + 0x1c]
+10060bab  fcomp    dword ptr [edx + eax*4]
+10060bae  fnstsw   ax
+10060bb0  test     ah, 0x44
+10060bb3  jp       0x10060bc8
+10060bb5  cmp      esi, dword ptr [edi + 8]
+10060bb8  jb       0x10060bbc
+10060bba  call     ebp
+10060bbc  mov      dword ptr [esi + 0x8c], 1
+10060bc6  jmp      0x10060bd9
+10060bc8  cmp      esi, dword ptr [edi + 8]
+10060bcb  jb       0x10060bcf
+10060bcd  call     ebp
+10060bcf  mov      dword ptr [esi + 0x8c], 0xffffffff
+10060bd9  mov      eax, dword ptr [esp + 0x10]
+10060bdd  add      eax, 1
+10060be0  cmp      eax, dword ptr [esp + 0x18]
+10060be4  mov      dword ptr [esp + 0x10], eax
+10060be8  jl       0x10060b30
+10060bee  pop      edi
+10060bef  pop      esi
+10060bf0  pop      ebp
+10060bf1  pop      ebx
+10060bf2  pop      ecx
+10060bf3  ret      8

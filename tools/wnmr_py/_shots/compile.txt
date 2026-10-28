@@ -1,0 +1,10 @@
+name before ''
+draw '副图指标'
+coord '自动'
+type '缠论'
+ver '0.0.0'
+auth '无'
+name after 'WNMRSHOW'
+code after 'ST1:=DATE=20170810 AND HOUR=9 AND MINUTE=31;\r\nST3:=DATE=20170810 AND HOUR=13 AND'
+compile:
+编译成功

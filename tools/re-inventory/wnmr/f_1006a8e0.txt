@@ -1,0 +1,12 @@
+1006a8e0  mov      eax, dword ptr [edi]
+1006a8e2  test     eax, eax
+1006a8e4  je       0x1006a8ea
+1006a8e6  cmp      eax, dword ptr [esi]
+1006a8e8  je       0x1006a8f0
+1006a8ea  call     dword ptr [0x1006f194]
+1006a8f0  mov      eax, dword ptr [edi + 4]
+1006a8f3  xor      ecx, ecx
+1006a8f5  cmp      eax, dword ptr [esi + 4]
+1006a8f8  setne    cl
+1006a8fb  mov      al, cl
+1006a8fd  ret      

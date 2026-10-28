@@ -1,0 +1,18 @@
+1003d720  mov      eax, dword ptr [esi]
+1003d722  test     eax, eax
+1003d724  mov      ecx, dword ptr [esi + 4]
+1003d727  push     ebx
+1003d728  mov      ebx, dword ptr [0x1006f194]
+1003d72e  mov      dword ptr [edi], eax
+1003d730  mov      dword ptr [edi + 4], ecx
+1003d733  jne      0x1003d737
+1003d735  call     ebx
+1003d737  mov      edx, dword ptr [esi]
+1003d739  mov      eax, dword ptr [esi + 4]
+1003d73c  cmp      eax, dword ptr [edx + 8]
+1003d73f  jb       0x1003d743
+1003d741  call     ebx
+1003d743  add      dword ptr [esi + 4], 0xa0
+1003d74a  mov      eax, edi
+1003d74c  pop      ebx
+1003d74d  ret      

@@ -1,0 +1,20 @@
+[
+ {
+  "name": "TESTMA",
+  "title": "",
+  "category": "技术指标/缠论",
+  "version": "0.0.0",
+  "desc": "",
+  "source": "MA5:MA(C,5);\r\nMA20:MA(C,20);",
+  "offset": 20
+ },
+ {
+  "name": "TESTCHBI1",
+  "title": "",
+  "category": "技术指标/缠论",
+  "version": "0.0.0",
+  "desc": "",
+  "source": "VAR1:=CHBI(H,L,11);\r\nVAR2:=CHDUAN;\r\nTESTCHBI:VAR1;",
+  "offset": 115
+ }
+]

@@ -1,0 +1,12 @@
+[23:35:41] resolved None -> pid 7320 (main window)
+[23:35:41] attaching to pid 7320 ...
+[e2e] TAFLib base=0x1210000 size=569344
+[e2e] hook installed: c4b0 @ 0x123c4b0
+[e2e] hook installed: c1d0 @ 0x123c1d0
+[e2e] ready
+[23:35:41] script loaded. Trigger CHBI P=51 in the client (formula preview etc.).
+[23:35:41] Ctrl+C to stop.
+[e2e] c1d0 p=12 n=240
+[e2e] c1d0 first-call args=0x180c89e8,0xf0,0x15b3c510,0x19fa6c,0x180c88f8
+[e2e] c1d0 p=12 n=240
+[e2e] c1d0 first-call args=0x180c8928,0xf0,0x15b3c510,0x19fa6c,0x180c8a08

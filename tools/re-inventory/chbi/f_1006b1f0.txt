@@ -1,0 +1,17 @@
+1006b1f0  test     edx, edx
+1006b1f2  jbe      0x1006b211
+1006b1f4  push     esi
+1006b1f5  push     edi
+1006b1f6  test     eax, eax
+1006b1f8  je       0x1006b205
+1006b1fa  mov      ecx, 0xa
+1006b1ff  mov      esi, ebx
+1006b201  mov      edi, eax
+1006b203  rep movsd dword ptr es:[edi], dword ptr [esi]
+1006b205  sub      edx, 1
+1006b208  add      eax, 0x28
+1006b20b  test     edx, edx
+1006b20d  ja       0x1006b1f6
+1006b20f  pop      edi
+1006b210  pop      esi
+1006b211  ret      

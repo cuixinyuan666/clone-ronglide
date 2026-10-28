@@ -1,0 +1,136 @@
+1003a7c0  sub      esp, 0x20
+1003a7c3  push     ebx
+1003a7c4  push     ebp
+1003a7c5  mov      ebp, dword ptr [esp + 0x34]
+1003a7c9  push     esi
+1003a7ca  mov      esi, ecx
+1003a7cc  test     esi, esi
+1003a7ce  push     edi
+1003a7cf  jle      0x1003a947
+1003a7d5  test     ebp, ebp
+1003a7d7  je       0x1003a947
+1003a7dd  mov      edi, dword ptr [eax]
+1003a7df  xor      ecx, ecx
+1003a7e1  mov      eax, esi
+1003a7e3  mov      edx, 4
+1003a7e8  mul      edx
+1003a7ea  seto     cl
+1003a7ed  neg      ecx
+1003a7ef  or       ecx, eax
+1003a7f1  push     ecx
+1003a7f2  call     0x1006b34a
+1003a7f7  add      esp, 4
+1003a7fa  mov      ebx, eax
+1003a7fc  xor      ecx, ecx
+1003a7fe  test     esi, esi
+1003a800  mov      dword ptr [esp + 0x14], ebx
+1003a804  jle      0x1003a829
+1003a806  mov      eax, dword ptr [esp + 0x38]
+1003a80a  fldz     
+1003a80c  mov      eax, dword ptr [eax]
+1003a80e  mov      edx, dword ptr [esp + 0x34]
+1003a812  sub      edx, eax
+1003a814  fst      qword ptr [edx + eax]
+1003a817  add      ecx, 1
+1003a81a  fld      qword ptr [eax]
+1003a81c  add      eax, 8
+1003a81f  cmp      ecx, esi
+1003a821  fstp     dword ptr [ebx + ecx*4 - 4]
+1003a825  jl       0x1003a814
+1003a827  fstp     st(0)
+1003a829  mov      edx, dword ptr [ebp]
+1003a82c  mov      eax, dword ptr [edx + 4]
+1003a82f  push     0xea63
+1003a834  mov      ecx, ebp
+1003a836  call     eax
+1003a838  test     al, al
+1003a83a  je       0x1003a947
+1003a840  push     ebx
+1003a841  push     esi
+1003a842  mov      eax, edi
+1003a844  call     0x10060aa0
+1003a849  mov      eax, edi
+1003a84b  call     0x100616b0
+1003a850  push     edi
+1003a851  call     0x10056190
+1003a856  lea      esi, [esp + 0x20]
+1003a85a  mov      ecx, edi
+1003a85c  call     0x1003f150
+1003a861  mov      esi, dword ptr [esp + 0x24]
+1003a865  xor      ebx, ebx
+1003a867  cmp      esi, dword ptr [esp + 0x28]
+1003a86b  jbe      0x1003a873
+1003a86d  call     dword ptr [0x1006f194]
+1003a873  lea      edi, [esp + 0x20]
+1003a877  mov      dword ptr [esp + 0x18], edi
+1003a87b  mov      ebp, esi
+1003a87d  lea      ecx, [ecx]
+1003a880  cmp      esi, dword ptr [esp + 0x28]
+1003a884  jbe      0x1003a88c
+1003a886  call     dword ptr [0x1006f194]
+1003a88c  test     edi, edi
+1003a88e  je       0x1003a898
+1003a890  lea      ecx, [esp + 0x20]
+1003a894  cmp      edi, ecx
+1003a896  je       0x1003a89e
+1003a898  call     dword ptr [0x1006f194]
+1003a89e  cmp      ebp, dword ptr [esp + 0x28]
+1003a8a2  je       0x1003a91e
+1003a8a4  test     edi, edi
+1003a8a6  jne      0x1003a8ae
+1003a8a8  call     dword ptr [0x1006f194]
+1003a8ae  cmp      ebp, dword ptr [edi + 8]
+1003a8b1  jb       0x1003a8b9
+1003a8b3  call     dword ptr [0x1006f194]
+1003a8b9  mov      esi, dword ptr [ebp]
+1003a8bc  sub      esi, 1
+1003a8bf  cmp      ebp, dword ptr [edi + 8]
+1003a8c2  jb       0x1003a8ca
+1003a8c4  call     dword ptr [0x1006f194]
+1003a8ca  cmp      ebx, esi
+1003a8cc  mov      edx, dword ptr [ebp + 0x90]
+1003a8d2  mov      dword ptr [esp + 0x3c], edx
+1003a8d6  jge      0x1003a8f5
+1003a8d8  mov      eax, dword ptr [esp + 0x34]
+1003a8dc  sub      esi, ebx
+1003a8de  mov      ecx, esi
+1003a8e0  and      ecx, 0x1fffffff
+1003a8e6  lea      edi, [eax + ebx*8]
+1003a8e9  add      ecx, ecx
+1003a8eb  xor      eax, eax
+1003a8ed  rep stosd dword ptr es:[edi], eax
+1003a8ef  mov      edi, dword ptr [esp + 0x18]
+1003a8f3  add      ebx, esi
+1003a8f5  fild     dword ptr [esp + 0x3c]
+1003a8f9  mov      ecx, dword ptr [esp + 0x34]
+1003a8fd  add      ebx, 1
+1003a900  fstp     qword ptr [ecx + ebx*8 - 8]
+1003a904  cmp      ebp, dword ptr [edi + 8]
+1003a907  jb       0x1003a90f
+1003a909  call     dword ptr [0x1006f194]
+1003a90f  mov      esi, dword ptr [esp + 0x24]
+1003a913  add      ebp, 0xa0
+1003a919  jmp      0x1003a880
+1003a91e  mov      edx, dword ptr [esp + 0x14]
+1003a922  push     edx
+1003a923  call     0x1006b344
+1003a928  add      esp, 4
+1003a92b  test     esi, esi
+1003a92d  je       0x1003a938
+1003a92f  push     esi
+1003a930  call     0x1006b320
+1003a935  add      esp, 4
+1003a938  mov      eax, 1
+1003a93d  pop      edi
+1003a93e  pop      esi
+1003a93f  pop      ebp
+1003a940  pop      ebx
+1003a941  add      esp, 0x20
+1003a944  ret      0xc
+1003a947  pop      edi
+1003a948  pop      esi
+1003a949  pop      ebp
+1003a94a  or       eax, 0xffffffff
+1003a94d  pop      ebx
+1003a94e  add      esp, 0x20
+1003a951  ret      0xc

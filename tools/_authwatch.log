@@ -1,0 +1,622 @@
+09:40:13 app modules: MainApp.exe@0x400000, libcurl.dll@0x10000000, rld_lib.dll@0xe60000, rdm.dll@0xea0000, RDM_C.dll@0xec0000, RNC.dll@0xf70000, RCtrl.dll@0x10d0000, RCommon.dll@0x1170000, RData.dll@0x11c0000, TAFLib.dll@0x1200000, rld_net.dll@0x12c0000, rquo.dll@0x12f0000, rblock.dll@0x13c0000, rnotify.dll@0x13f0000, chlib.dll@0x1430000, snappy32.dll@0x72430000, rldcef.dll@0x71ac0000, libcef.dll@0x60650000, chrome_elf.dll@0x6f960000
+09:40:13 hooked rdm.dll!??0dm_authset@@QAE@XZ @ 0xea11c0
+09:40:13 hooked rdm.dll!??1dm_authset@@UAE@XZ @ 0xea1250
+09:40:13 hooked rdm.dll!?authorize@dm_authset@@QAE_NI@Z @ 0xea13f0
+09:40:13 hooked rdm.dll!?clear@dm_authset@@QAEXXZ @ 0xea1470
+09:40:13 hooked rdm.dll!?combine@dm_authset@@QAE_NAAVbinwriter@rld@@@Z @ 0xea1500
+09:40:13 hooked rdm.dll!?empty@dm_authset@@QAE_NXZ @ 0xea13c0
+09:40:13 hooked rdm.dll!?insert@dm_authset@@QAEXI@Z @ 0xea1340
+09:40:13 hooked rdm.dll!?insert@dm_authset@@QAEXV?$set@IU?$less@I@std@@V?$allocator@I@2@@std@@@Z @ 0xea12b0
+09:40:13 hooked rdm.dll!?parse@dm_authset@@QAE_NAAVbinreader@rld@@@Z @ 0xea1640
+09:40:13 hooked RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z @ 0xec2920
+09:40:13 hooked RDM_C.dll!?AuthorizeCloudFactorName@AuthApi@@SA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z @ 0xec2940
+09:40:13 hooked RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ @ 0xecac90
+09:40:13 hooked RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ @ 0xeca9b0
+09:40:13 hooked RNC.dll!png_permit_mng_features @ 0xf9c760
+09:40:13 hooked TAFLib.dll!?Authorize@TAF_Calculator@@IAE_NI@Z @ 0x1214e60
+09:40:13 hooked rquo.dll!?authorize@q_module@@UAE_NI@Z @ 0x1341660
+09:40:13 hooked rnotify.dll!?authorize@n_module@@UAE_NI@Z @ 0x13f19b0
+09:40:13 hooked chlib.dll!?CreateLib@ch_api@ch@@SAPAV12@PAVch_auth@2@@Z @ 0x1431010
+09:40:13 total hooks: 18
+--- hooks installed, watching ---
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:42 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:42 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:42 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:42 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:42 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50001 ecx=0x1
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x1
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50001 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50003 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x3
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50003 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+09:48:43 [HIT] enter RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z a0=50002 ecx=0x2
+09:48:43 [HIT] enter RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:43 [HIT] enter RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ a0=81271823 ecx=0x2
+09:48:43 [HIT] leave RDM_C.dll!?get_instance@?$singleton@Vdmc_auth@@@serialization@boost@@CAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] leave RDM_C.dll!?get_mutable_instance@?$singleton@Vdmc_auth@@@serialization@boost@@SAAAVdmc_auth@@XZ ret=16050640
+09:48:43 [HIT] enter rdm.dll!?authorize@dm_authset@@QAE_NI@Z a0=50002 ecx=0xf4ea10
+09:48:43 [HIT] leave rdm.dll!?authorize@dm_authset@@QAE_NI@Z ret=0
+09:48:43 [HIT] leave RDM_C.dll!?Authorize@AuthApi@@SA_NI@Z ret=0
+--- stop flag found, detaching ---

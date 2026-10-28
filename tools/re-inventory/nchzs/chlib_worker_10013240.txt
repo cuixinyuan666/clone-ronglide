@@ -1,0 +1,48 @@
+10013240  enter    -0x3b7d, 0x14
+10013244  cmp      ecx, eax
+10013246  lea      ebx, [ebx + edx*4]
+10013249  mov      edi, ebp
+1001324b  mov      dword ptr [esp + 0x24], ecx
+1001324f  jge      0x100131e0
+10013251  mov      eax, dword ptr [esp + 0x20]
+10013255  pop      esi
+10013256  pop      ebp
+10013257  cmp      dword ptr [esp + 0x1c], eax
+1001325b  jg       0x10013287
+1001325d  mov      eax, dword ptr [esp + 0x14]
+10013261  cmp      edi, eax
+10013263  je       0x100132b3
+10013265  sub      ebx, edi
+10013267  mov      ecx, dword ptr [edi]
+10013269  mov      dword ptr [ebx + edi], ecx
+1001326c  mov      edx, dword ptr [edi + 4]
+1001326f  mov      dword ptr [ebx + edi + 4], edx
+10013273  mov      ecx, dword ptr [edi + 8]
+10013276  mov      dword ptr [ebx + edi + 8], ecx
+1001327a  add      edi, 0xc
+1001327d  cmp      edi, eax
+1001327f  jne      0x10013267
+10013281  pop      edi
+10013282  pop      ebx
+10013283  add      esp, 8
+10013286  ret      
+10013287  lea      edx, [eax + eax*2]
+1001328a  lea      ecx, [edi + edx*4]
+1001328d  mov      byte ptr [esp + 0x1c], 0
+10013292  mov      eax, dword ptr [esp + 0x1c]
+10013296  mov      edx, dword ptr [esp + 0x1c]
+1001329a  push     eax
+1001329b  mov      eax, dword ptr [esp + 0x24]
+1001329f  push     edx
+100132a0  mov      edx, dword ptr [esp + 0x1c]
+100132a4  push     eax
+100132a5  push     edx
+100132a6  push     ecx
+100132a7  mov      eax, ebx
+100132a9  mov      edx, edi
+100132ab  call     0x100136e0
+100132b0  add      esp, 0x14
+100132b3  pop      edi
+100132b4  pop      ebx
+100132b5  add      esp, 8
+100132b8  ret      

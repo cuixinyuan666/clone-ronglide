@@ -1,0 +1,37 @@
+10013460  sar      edx, 1
+10013462  push     edi
+10013463  mov      edi, edx
+10013465  shr      edi, 0x1f
+10013468  add      edi, edx
+1001346a  test     edi, edi
+1001346c  jle      0x100134a5
+1001346e  push     ebx
+1001346f  push     esi
+10013470  mov      ecx, dword ptr [esp + 0x18]
+10013474  mov      eax, edi
+10013476  cdq      
+10013477  sub      eax, edx
+10013479  mov      esi, eax
+1001347b  sar      esi, 1
+1001347d  lea      eax, [esi + esi*2]
+10013480  lea      ebx, [ebp + eax*4]
+10013484  push     ebx
+10013485  push     ecx
+10013486  call     dword ptr [esp + 0x24]
+1001348a  add      esp, 8
+1001348d  test     al, al
+1001348f  jne      0x1001349d
+10013491  or       edx, 0xffffffff
+10013494  sub      edx, esi
+10013496  lea      ebp, [ebx + 0xc]
+10013499  add      edi, edx
+1001349b  jmp      0x1001349f
+1001349d  mov      edi, esi
+1001349f  test     edi, edi
+100134a1  jg       0x10013470
+100134a3  pop      esi
+100134a4  pop      ebx
+100134a5  pop      edi
+100134a6  mov      eax, ebp
+100134a8  pop      ebp
+100134a9  ret      

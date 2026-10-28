@@ -1,0 +1,66 @@
+1006a9e0  push     ecx
+1006a9e1  push     ebx
+1006a9e2  push     ebp
+1006a9e3  mov      ebp, dword ptr [esp + 0x1c]
+1006a9e7  push     esi
+1006a9e8  mov      esi, eax
+1006a9ea  push     edi
+1006a9eb  mov      edi, dword ptr [esi + 4]
+1006a9ee  test     edi, edi
+1006a9f0  je       0x1006aa0c
+1006a9f2  mov      ebx, dword ptr [esi + 8]
+1006a9f5  mov      ecx, ebx
+1006a9f7  sub      ecx, edi
+1006a9f9  mov      eax, 0x66666667
+1006a9fe  imul     ecx
+1006aa00  sar      edx, 4
+1006aa03  mov      eax, edx
+1006aa05  shr      eax, 0x1f
+1006aa08  add      eax, edx
+1006aa0a  jne      0x1006aa14
+1006aa0c  mov      ebx, dword ptr [esp + 0x20]
+1006aa10  xor      edi, edi
+1006aa12  jmp      0x1006aa45
+1006aa14  cmp      edi, ebx
+1006aa16  jbe      0x1006aa1e
+1006aa18  call     dword ptr [0x1006f194]
+1006aa1e  mov      ebx, dword ptr [esp + 0x20]
+1006aa22  test     ebx, ebx
+1006aa24  je       0x1006aa2a
+1006aa26  cmp      ebx, esi
+1006aa28  je       0x1006aa30
+1006aa2a  call     dword ptr [0x1006f194]
+1006aa30  mov      ecx, ebp
+1006aa32  sub      ecx, edi
+1006aa34  mov      eax, 0x66666667
+1006aa39  imul     ecx
+1006aa3b  sar      edx, 4
+1006aa3e  mov      edi, edx
+1006aa40  shr      edi, 0x1f
+1006aa43  add      edi, edx
+1006aa45  mov      edx, dword ptr [esp + 0x1c]
+1006aa49  push     ebp
+1006aa4a  push     ebx
+1006aa4b  push     esi
+1006aa4c  call     0x1006ad60
+1006aa51  mov      ebx, dword ptr [esi + 4]
+1006aa54  cmp      ebx, dword ptr [esi + 8]
+1006aa57  jbe      0x1006aa5f
+1006aa59  call     dword ptr [0x1006f194]
+1006aa5f  lea      ecx, [edi + edi*4]
+1006aa62  lea      edi, [ebx + ecx*8]
+1006aa65  cmp      edi, dword ptr [esi + 8]
+1006aa68  mov      dword ptr [esp + 0x24], ebx
+1006aa6c  ja       0x1006aa73
+1006aa6e  cmp      edi, dword ptr [esi + 4]
+1006aa71  jae      0x1006aa79
+1006aa73  call     dword ptr [0x1006f194]
+1006aa79  mov      eax, dword ptr [esp + 0x18]
+1006aa7d  mov      dword ptr [eax + 4], edi
+1006aa80  pop      edi
+1006aa81  mov      dword ptr [eax], esi
+1006aa83  pop      esi
+1006aa84  pop      ebp
+1006aa85  pop      ebx
+1006aa86  pop      ecx
+1006aa87  ret      0x10

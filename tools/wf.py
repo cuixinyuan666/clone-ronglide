@@ -24,9 +24,19 @@ def force_focus():
     main = find_main()
     if not main:
         return None
+    # 主进程 pid: 属于同进程的窗口(对话框)不做最小化
+    app_pid = ctypes.c_ulong(0)
+    u32.GetWindowThreadProcessId(main, ctypes.byref(app_pid))
+    app_pid = app_pid.value
     for _ in range(12):
         fg = u32.GetForegroundWindow()
         if fg == main:
+            return main
+        fg_pid = ctypes.c_ulong(0)
+        if fg:
+            u32.GetWindowThreadProcessId(fg, ctypes.byref(fg_pid))
+        if fg and fg_pid.value == app_pid:
+            # 前台是应用自己的窗口/对话框 → 应用已激活, 直接返回
             return main
         if fg and fg != main:
             t = win32gui.GetWindowText(fg)
@@ -72,11 +82,12 @@ if __name__ == '__main__':
     elif cmd == 'click':
         nums = sys.argv[2:]
         pts = [(int(nums[i]), int(nums[i+1])) for i in range(0, len(nums), 2)]
-        for i, (x, y) in enumerate(pts):
-            m = force_focus()
-            if not m:
-                print('FOCUS FAILED before click', (x, y)); sys.exit(2)
-            click(x, y, wait=1.0 if i < len(pts)-1 else 1.5)
+        m = force_focus()          # 只在整串开始时抢一次焦点
+        if not m:
+            print('FOCUS FAILED'); sys.exit(2)
+        print('focus ok', hex(m))
+        for (x, y) in pts:
+            click(x, y, wait=0.8)
             print('clicked', (x, y))
     elif cmd == 'shot':
         name = sys.argv[2]
