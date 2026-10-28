@@ -465,7 +465,7 @@
 11. **F7/F9/F10 遗留 [C] 收口**（共 ~18 条）：`elem+0x24` 段端点戳语义、MACD 面积未做原生对拍、ZouShiZsAll 四组嵌套扫描的业务命名、ZouShimmd 面积积分的业务含义、raw 分型 `+0x09` 之外字段语义。收口办法同 §5.9：GUI 触发对应公式 + frida 打点打印字段真实取值分布。
 12. ~~F12+F14 / F13+F15+F16 验收~~ → ✅ 全部验收完成（docs/51 §2.19、docs/52 §2.18）。
 13. ~~全批收尾：刷新 `docs/19` 看板 + 汇总遗留 [C] 清单~~ → ✅ 本轮全部 61 支已验收（8 支核销 + 53 支本会话交付）；**遗留 [C] 汇总已落盘 `docs/53-遗留问题汇总.md`（79 条，严格 [C] 约 50 条；按收口方法分四类）**。⚠️ 看板曾漏登记 F5+F6 批次，见 §3.11。
-14. **`esp` 槽位坑的自动化**（**已从"可选"提升为必做**）：在 `disasm_func.py` 加 `--fix-esp` 开关自动识别 `push;call;mov [esp+X]` 序列并输出修正后槽位表。理由：该坑已跨 3 个批次、3 个不同函数族重复出现（F4 ChBmmd / F10 ZouShiZsAll+ZouShimmd / F5+F6 dnum），且同一伪码文件内都会一支错一支对。
+14. ~~**`esp` 槽位坑的自动化**~~ → ✅ **已完成（2026-10-29）**：`disasm_func.py --fix-esp` 已实现并验证。识别 `push; call malloc/new; mov [esp+X],reg` 序列，按 `add esp,4` 之前的 push 条数将槽位减 `4*push_count`，输出修正表 + 按 call 目标汇总。四个历史踩坑点全部与手工修正表一致：ChBmmd 5 条、ZouShiZsAll 10 条、ZouShimmd 8 条、dnum 6 条。用法：`python disasm_func.py 0x10033760 --fix-esp`（stdout 是反汇编，stderr 是修正表）。
 15. **下一波候选**：① ~~ygj 的 chlib 侧实现~~ → ✅ 已关闭（chlib!0x10006260 = EMA(30, scale=0.01)，文档 docs/51 §二.2）；② 动态对拍收口（GUI 触发付费公式 + frida 打点）——**bypass 四路已于 2026-10-28 全部停止、MainApp 8392 已退出（非崩溃），需重启客户端并重挂 bypass 才能继续**；③ 各批遗留 [C] 的字段语义批量收口（清单见 docs/53）。
 16. **动态对拍执行清单（重启 MainApp 后）**：① 重启 `D:\a_ronglide\缠中说禅\MainApp.exe`；② 重挂 `inject_{authorize,perm,func_perm,cmd_perm}_bypass.py <新PID>` 四路；③ 挂 `tools/probe_legacy_c.js`（已写好，含 `[REC]` 记录写点 + `[YGJ]` chlib worker 探针）；④ 在 GUI 依次预览付费公式；⑤ 按 docs/53 §三「需 GUI 触发 + frida 打点」分类逐项取数。
 
